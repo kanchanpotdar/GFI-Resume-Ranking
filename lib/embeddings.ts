@@ -2,6 +2,8 @@ import { pipeline, env } from "@xenova/transformers";
 
 export const EMBEDDING_MODEL = "BAAI/bge-small-en-v1.5";
 export const EMBEDDING_DIMENSIONS = 384;
+export const MAX_CHUNK_CHARS = 1500;
+export const CHUNK_OVERLAP_CHARS = 150;
 
 let pipelineInstance: any = null;
 
@@ -13,7 +15,10 @@ export async function getEmbeddingPipeline() {
   return pipelineInstance;
 }
 
-export function computeCosineSimilarity(vecA: number[], vecB: number[]): number {
+export function computeCosineSimilarity(
+  vecA: number[] | null | undefined,
+  vecB: number[] | null | undefined
+): number {
   if (!vecA || !vecB || vecA.length === 0 || vecB.length === 0) return 0;
   if (vecA.length !== vecB.length) return 0;
 
@@ -28,42 +33,73 @@ export function computeCosineSimilarity(vecA: number[], vecB: number[]): number 
   }
 
   const denom = Math.sqrt(normA) * Math.sqrt(normB);
-  if (denom === 0) return 0;
-  return dotProduct / denom;
+  if (denom === 0 || !isFinite(denom)) return 0;
+  const sim = dotProduct / denom;
+  return isFinite(sim) ? Math.max(-1, Math.min(1, sim)) : 0;
 }
 
-export async function generateEmbedding(text: string): Promise<number[]> {
-  const cleanText = (text || "").trim().slice(0, 2000);
+function chunkText(text: string, maxLen = MAX_CHUNK_CHARS, overlap = CHUNK_OVERLAP_CHARS): string[] {
+  if (text.length <= maxLen) return [text];
+  const chunks: string[] = [];
+  let start = 0;
+  while (start < text.length) {
+    let end = start + maxLen;
+    if (end < text.length) {
+      // Look for a whitespace or period boundary near end
+      const lastSpace = text.lastIndexOf(" ", end);
+      if (lastSpace > start + maxLen * 0.7) {
+        end = lastSpace;
+      }
+    } else {
+      end = text.length;
+    }
+    const chunk = text.slice(start, end).trim();
+    if (chunk) chunks.push(chunk);
+    if (end >= text.length) break;
+    start = Math.max(start + 1, end - overlap);
+  }
+  return chunks.length > 0 ? chunks : [text];
+}
+
+/**
+ * Generates canonical 384-dimensional BGE-small-en-v1.5 embeddings using local ONNX inference.
+ * For empty text or unpopulated resumes, returns null (unscorable state).
+ * For long texts exceeding model context, segments into chunks and mean-pools vectors.
+ */
+export async function generateEmbedding(text: string): Promise<number[] | null> {
+  const cleanText = (text || "").trim();
   if (!cleanText) {
-    return new Array(EMBEDDING_DIMENSIONS).fill(0);
+    return null;
   }
 
-  // Optional server-side Hugging Face API call if configured
-  const hfToken = process.env.HUGGINGFACE_API_KEY;
-  if (hfToken && !hfToken.includes("your_token_here")) {
-    try {
-      const response = await fetch("https://router.huggingface.co/hf-inference/models/BAAI/bge-small-en-v1.5", {
-        method: "POST",
-        headers: {
-          "Authorization": `Bearer ${hfToken}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ inputs: cleanText }),
-      });
+  const extractor = await getEmbeddingPipeline();
+  const chunks = chunkText(cleanText);
 
-      if (response.ok) {
-        const result = await response.json();
-        if (Array.isArray(result) && typeof result[0] === "number") {
-          return result as number[];
-        }
-      }
-    } catch {
-      // Fall back to verified local ONNX pipeline
+  if (chunks.length === 1) {
+    const output = await extractor(chunks[0], { pooling: "mean", normalize: true });
+    return Array.from(output.data);
+  }
+
+  // Multi-chunk pooling
+  const pooled = new Float64Array(EMBEDDING_DIMENSIONS);
+  for (const chunk of chunks) {
+    const output = await extractor(chunk, { pooling: "mean", normalize: true });
+    const data = output.data as Float32Array;
+    for (let i = 0; i < EMBEDDING_DIMENSIONS; i++) {
+      pooled[i] += data[i];
     }
   }
 
-  // Local verified BGE-small ONNX pipeline
-  const extractor = await getEmbeddingPipeline();
-  const output = await extractor(cleanText, { pooling: "mean", normalize: true });
-  return Array.from(output.data);
+  // Mean-pool and re-normalize to unit L2 norm
+  let sumSq = 0;
+  for (let i = 0; i < EMBEDDING_DIMENSIONS; i++) {
+    pooled[i] /= chunks.length;
+    sumSq += pooled[i] * pooled[i];
+  }
+  const norm = Math.sqrt(sumSq);
+  const result = new Array(EMBEDDING_DIMENSIONS);
+  for (let i = 0; i < EMBEDDING_DIMENSIONS; i++) {
+    result[i] = norm > 0 ? pooled[i] / norm : 0;
+  }
+  return result;
 }

@@ -6,7 +6,7 @@ import {
   SubScoreBreakdown,
 } from "./types";
 
-export const SCORING_VERSION = "1.5.0";
+export const SCORING_VERSION = "1.5.0-remediated";
 export const LCA_THRESHOLD = 50;
 export const UIUX_THRESHOLD = 50;
 
@@ -83,22 +83,43 @@ export function scoreLCARole(
     evidenceSpan: gabiEvidence,
   });
 
-  // 1.2 ISO 14040 / ISO 14044 compliance (8 pts) - Essential
-  // Matches explicit ISO 14040/14044 as well as anonymized tokens ('ISO /', 'ISO :2006', 'ISO LCA') in LCA contexts
-  const hasIsoExplicit = allText.includes("iso 14040") || allText.includes("iso 14044") || allText.includes("iso14040") || allText.includes("iso14044");
-  const hasIsoAnonymized = (allText.includes("iso /") || allText.includes("iso :2006") || allText.includes("iso lca") || allText.includes("iso s")) &&
-                           (allText.includes("lca") || allText.includes("life cycle") || allText.includes("footprint") || allText.includes("epd"));
-  const hasIso = hasIsoExplicit || hasIsoAnonymized;
-  const isoPoints = hasIso ? 8 : 0;
+  // 1.2 ISO 14040 / ISO 14044 compliance (8 pts) - 4-Tier Calibration
+  const hasIsoExplicit = allText.includes("iso 14040") || allText.includes("iso 14044") ||
+                         allText.includes("iso14040") || allText.includes("iso14044") ||
+                         allText.includes("iso 14040/44") || allText.includes("iso 14040/14044");
+  const hasIsoGeneric = (allText.includes("iso standard") || allText.includes("iso standards") ||
+                         allText.includes("iso compliant lca") || allText.includes("iso-compliant lca") ||
+                         allText.includes("iso methodology")) &&
+                        (allText.includes("lca") || allText.includes("life cycle"));
+  const hasIsoAnonymized = (allText.includes("iso /") || allText.includes("iso :2006") ||
+                            allText.includes("iso lca") || allText.includes("iso s") || allText.includes("iso /s")) &&
+                           (allText.includes("lca") || allText.includes("life cycle") || allText.includes("footprint") || allText.includes("pcf") || allText.includes("epd"));
+
+  let isoPoints = 0;
+  let isoStatus: "evidenced" | "partially_evidenced" | "needs_confirmation" | "not_evidenced" = "not_evidenced";
+  let isoEvidence = "No explicit ISO 14040/14044 standards reference found.";
+
+  if (hasIsoExplicit) {
+    isoPoints = 8;
+    isoStatus = "evidenced";
+    isoEvidence = "Explicitly references ISO 14040/14044 standards adherence.";
+  } else if (hasIsoGeneric) {
+    isoPoints = 4;
+    isoStatus = "partially_evidenced";
+    isoEvidence = "Verifiable LCA context with generic standards adherence language (requires confirmation of 14040/44 citation).";
+  } else if (hasIsoAnonymized) {
+    isoPoints = 0;
+    isoStatus = "needs_confirmation";
+    isoEvidence = "Anonymized or masked ISO token ('ISO /' or 'ISO :2006') in LCA context; awarded 0 pts pending human unmasking.";
+  }
+
   reqEvidence.push({
     requirementKey: "standards_iso",
     requirementName: "ISO 14040 / ISO 14044 compliance",
-    status: hasIso ? "evidenced" : "not_evidenced",
+    status: isoStatus,
     pointsAwarded: isoPoints,
     pointsMax: 8,
-    evidenceSpan: hasIso
-      ? (hasIsoExplicit ? "Explicitly references ISO 14040/14044 standards adherence." : "Evidenced ISO LCA standards compliance (anonymized standard token in source).")
-      : "No explicit ISO 14040/14044 standards reference found.",
+    evidenceSpan: isoEvidence,
   });
 
   // 1.3 LCI Data Collection, Validation & LCA Modelling (7 pts)
@@ -213,11 +234,23 @@ export function scoreLCARole(
 
   // Critical requirement flags
   const criticalMissing: string[] = [];
-  if (gabiPoints === 0) criticalMissing.push("Missing GaBi/SimaPro software expertise");
-  if (completedProjects < 3) criticalMissing.push(`Completed projects (${completedProjects}) below required 3`);
+  if (gabiPoints === 0) {
+    criticalMissing.push("Missing GaBi/SimaPro software expertise");
+  } else if (gabiPoints === 5) {
+    criticalMissing.push("GaBi/SimaPro software expertise not evidenced (OpenLCA requires verification)");
+  }
+  if (isoStatus === "not_evidenced") {
+    criticalMissing.push("Missing ISO 14040 / ISO 14044 standards compliance");
+  }
+  if (completedProjects < 3) {
+    criticalMissing.push(`Completed LCA projects (${completedProjects}) below required 3`);
+  }
 
-  // Review flags (Logistics)
+  // Review flags (Logistics & ISO Masking)
   const reviewFlags: string[] = [];
+  if (isoStatus === "needs_confirmation") {
+    reviewFlags.push("Anonymized ISO standard token ('ISO /' or 'ISO :2006') requires human unmasking and verification");
+  }
   if (!extraction.contextualFlags.relocationMentioned) {
     reviewFlags.push("Willingness to relocate to Chennai requires confirmation");
   }

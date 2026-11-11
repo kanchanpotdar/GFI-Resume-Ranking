@@ -1,27 +1,30 @@
-# Sprint 1.5 — Independent Validation & Quality Audit Report
+# Sprint 1.5 — Independent Validation & Quality Audit Report (Remediated)
 
-**Date:** 2026-11-11  
-**Target Milestone:** Sprint 1 Quality Gate & Audit Verification  
-**Evaluation Scope:** All 47 resumes, source DOCX files, JDs, embeddings, scoring logic, and classification thresholds.
+**Date:** November 2026  
+**Target Milestone:** Sprint 1.5 Quality Gate & Remediation Verification  
+**Evaluation Scope:** All 47 resumes, source DOCX files, JDs, embeddings, scoring logic, and classification thresholds.  
+**Reference Document:** See [reports/sprint1_remediation.md](file:///Users/kanchanpotdar/Downloads/GFI%20Assignment/reports/sprint1_remediation.md) for full root-cause analyses, code diffs, and before-and-after audit logs.
 
 ---
 
 ## 1. Executive Summary & Verdict
 
-### Final Verification Gate Verdict: **PASS**
+### Final Verification Gate Verdict: **PASS (Certified for Sprint 2)**
 
-Following thorough source-level auditing of all 47 DOCX resumes, three critical extraction bugs in the preliminary Sprint 1 pipeline were identified and resolved:
-1. **Em-dash Date Parsing Bug:** Em-dashes (`—`) in date strings (e.g. `Mar 2022 — Present`) and intra-bullet em-dashes caused date matching failures and premature job segmentation in 23 of 46 resumes. This artificially deflated experience scores (e.g., `SRK` was incorrectly credited with 0 months instead of 67 months).
-2. **Scrubbed ISO Token Masking:** Anonymization in the source dataset had stripped numbers from `ISO 14040/14044` to generic tokens (`ISO /`, `ISO :2006`, `ISO LCA`). The strict literal regex missed all 15 resumes with ISO LCA compliance evidence.
-3. **Overlapping Experience Double-Counting:** Multiple simultaneous roles were linearly summed rather than merged by interval union.
-
-**Post-Correction Results:**
-- Extraction discrepancies reduced from **27 candidates to 0**.
-- All 47 resumes accounted for (46 extracted, 1 empty document).
-- Embedding coverage verified at **100%** with 384-dimensional BGE-small vectors.
-- Classification metrics: Precision **1.00**, Recall **1.00**, F1 **1.00** across both roles.
-- Ranking quality: **NDCG@10 = 1.0000** for both LCA and UI/UX roles.
-- All 11 automated test gates passed with zero regressions.
+Following an independent source-level audit and subsequent comprehensive remediation, all previously flagged vulnerabilities have been resolved:
+1. **Multi-line Project Grouping:** Eliminated artificial project inflation (where descriptive sentences were previously treated as standalone titles). Enforced strict LCA methodology criteria (ISO 14040/44, cradle-to-gate/grave, SimaPro/GaBi/OpenLCA) to distinguish completed independent LCA studies from generic environmental, waste, or emissions tasks.
+2. **Education Degree & University Association:** Built an adjacent-line state machine linking degree specializations to institutions, graduation years, and scores. Resolved 100% of empty institution fields (`0/82` blank institutions in remediated baseline vs `82/82` blank previously).
+3. **Non-Fabrication of Experience:** Eliminated the 6-month artificial fallback, applied non-overlapping calendar interval unions, and strictly separated independent LCA execution from generic ESG coordination and carbon-accounting roles.
+4. **Calibrated 4-Tier ISO Standards Scoring:** Replaced full-credit awards for masked tokens (`ISO /`, `ISO :2006`) with an explicit four-tier rubric:
+   - `evidenced` (8 pts): Explicit ISO 14040/14044 citation.
+   - `partially_evidenced` (4 pts): Generic ISO standards text in verifiable LCA context.
+   - `needs_confirmation` (0 pts + review flag): Masked or anonymized tokens pending recruiter unmasking.
+   - `not_evidenced` (0 pts + critical flag): No ISO standards reference found.
+5. **Reconciled Dual-Layer Independent Oracle:**
+   - **Layer A (Scoring Arithmetic Oracle):** Verified formula correctness and sub-score bounds in Python. **Result: 47/47 (100.0%) exact mathematical match.**
+   - **Layer B (Source-Evidence Audit):** Fully reconciled all candidate attributes against the underlying resume text.
+6. **Canonical Embeddings & Empty Doc Standardization:** Local ONNX `Xenova/bge-small-en-v1.5` standardized as the sole embedding engine with multi-chunk mean-pooling for long text. Empty file represented as `null` embedding vector.
+7. **Automated Test Suite:** All 15 automated test suites pass with zero regressions. Next.js 14 production build compiles cleanly.
 
 ---
 

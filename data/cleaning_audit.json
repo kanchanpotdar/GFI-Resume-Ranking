@@ -8,8 +8,8 @@
       "rawCharLength": 4006,
       "lcaIndependentMonths": 0,
       "designMonths": 0,
-      "lcaScore": 15.2,
-      "uiuxScore": 20.8,
+      "lcaScore": 21.7,
+      "uiuxScore": 18.3,
       "classification": "neither_or_uncertain"
     }
   },
@@ -23,7 +23,7 @@
       "lcaIndependentMonths": 0,
       "designMonths": 2,
       "lcaScore": 0,
-      "uiuxScore": 56.7,
+      "uiuxScore": 60.3,
       "classification": "uiux"
     }
   },
@@ -36,8 +36,8 @@
       "rawCharLength": 2405,
       "lcaIndependentMonths": 0,
       "designMonths": 6,
-      "lcaScore": 3,
-      "uiuxScore": 85.9,
+      "lcaScore": 3.5,
+      "uiuxScore": 88.3,
       "classification": "uiux"
     }
   },
@@ -50,8 +50,8 @@
       "rawCharLength": 4521,
       "lcaIndependentMonths": 0,
       "designMonths": 0,
-      "lcaScore": 10.7,
-      "uiuxScore": 32.2,
+      "lcaScore": 14.4,
+      "uiuxScore": 33.2,
       "classification": "neither_or_uncertain"
     }
   },
@@ -65,7 +65,7 @@
       "lcaIndependentMonths": 0,
       "designMonths": 62,
       "lcaScore": 3,
-      "uiuxScore": 85.7,
+      "uiuxScore": 84.9,
       "classification": "uiux"
     }
   },
@@ -79,7 +79,7 @@
       "lcaIndependentMonths": 0,
       "designMonths": 9,
       "lcaScore": 3,
-      "uiuxScore": 63,
+      "uiuxScore": 71.9,
       "classification": "uiux"
     }
   },
@@ -92,8 +92,8 @@
       "rawCharLength": 3025,
       "lcaIndependentMonths": 0,
       "designMonths": 28,
-      "lcaScore": 3,
-      "uiuxScore": 91.3,
+      "lcaScore": 0.3,
+      "uiuxScore": 93.5,
       "classification": "uiux"
     }
   },
@@ -107,7 +107,7 @@
       "lcaIndependentMonths": 0,
       "designMonths": 0,
       "lcaScore": 3,
-      "uiuxScore": 79.2,
+      "uiuxScore": 89.5,
       "classification": "uiux"
     }
   },
@@ -120,8 +120,8 @@
       "rawCharLength": 3206,
       "lcaIndependentMonths": 0,
       "designMonths": 8,
-      "lcaScore": 3,
-      "uiuxScore": 73.5,
+      "lcaScore": 0.9,
+      "uiuxScore": 77.3,
       "classification": "uiux"
     }
   },
@@ -135,7 +135,7 @@
       "lcaIndependentMonths": 0,
       "designMonths": 8,
       "lcaScore": 0,
-      "uiuxScore": 73.9,
+      "uiuxScore": 96.3,
       "classification": "uiux"
     }
   },
@@ -148,8 +148,8 @@
       "rawCharLength": 2642,
       "lcaIndependentMonths": 0,
       "designMonths": 0,
-      "lcaScore": 3.2,
-      "uiuxScore": 4.7,
+      "lcaScore": 6.9,
+      "uiuxScore": 10.1,
       "classification": "neither_or_uncertain"
     }
   },
@@ -163,7 +163,7 @@
       "lcaIndependentMonths": 0,
       "designMonths": 42,
       "lcaScore": 5,
-      "uiuxScore": 65.4,
+      "uiuxScore": 68.1,
       "classification": "uiux"
     }
   },
@@ -176,8 +176,8 @@
       "rawCharLength": 2879,
       "lcaIndependentMonths": 0,
       "designMonths": 4,
-      "lcaScore": 3,
-      "uiuxScore": 91.5,
+      "lcaScore": 3.1,
+      "uiuxScore": 92.8,
       "classification": "uiux"
     }
   },
@@ -190,8 +190,8 @@
       "rawCharLength": 2141,
       "lcaIndependentMonths": 0,
       "designMonths": 0,
-      "lcaScore": 16,
-      "uiuxScore": 73,
+      "lcaScore": 3,
+      "uiuxScore": 75,
       "classification": "uiux"
     }
   },
@@ -204,8 +204,8 @@
       "rawCharLength": 2310,
       "lcaIndependentMonths": 0,
       "designMonths": 33,
-      "lcaScore": 3,
-      "uiuxScore": 50.5,
+      "lcaScore": 3.4,
+      "uiuxScore": 58.7,
       "classification": "uiux"
     }
   },
@@ -218,8 +218,8 @@
       "rawCharLength": 2376,
       "lcaIndependentMonths": 0,
       "designMonths": 7,
-      "lcaScore": 3,
-      "uiuxScore": 73.7,
+      "lcaScore": 0,
+      "uiuxScore": 88.8,
       "classification": "uiux"
     }
   },
@@ -232,8 +232,8 @@
       "rawCharLength": 2368,
       "lcaIndependentMonths": 0,
       "designMonths": 8,
-      "lcaScore": 3,
-      "uiuxScore": 95.5,
+      "lcaScore": 0,
+      "uiuxScore": 95.6,
       "classification": "uiux"
     }
   },
@@ -246,8 +246,8 @@
       "rawCharLength": 1848,
       "lcaIndependentMonths": 0,
       "designMonths": 19,
-      "lcaScore": 0,
-      "uiuxScore": 67.5,
+      "lcaScore": 0.9,
+      "uiuxScore": 70.8,
       "classification": "uiux"
     }
   },
@@ -260,9 +260,9 @@
       "rawCharLength": 2828,
       "lcaIndependentMonths": 0,
       "designMonths": 0,
-      "lcaScore": 3,
-      "uiuxScore": 45.8,
-      "classification": "neither_or_uncertain"
+      "lcaScore": 3.7,
+      "uiuxScore": 51.5,
+      "classification": "uiux"
     }
   },
   {
@@ -274,8 +274,8 @@
       "rawCharLength": 5001,
       "lcaIndependentMonths": 9,
       "designMonths": 0,
-      "lcaScore": 34.2,
-      "uiuxScore": 10.9,
+      "lcaScore": 24,
+      "uiuxScore": 9.3,
       "classification": "neither_or_uncertain"
     }
   },
@@ -288,8 +288,8 @@
       "rawCharLength": 3739,
       "lcaIndependentMonths": 48,
       "designMonths": 0,
-      "lcaScore": 70.9,
-      "uiuxScore": 9.2,
+      "lcaScore": 65.7,
+      "uiuxScore": 33.2,
       "classification": "lca"
     }
   },
@@ -302,8 +302,8 @@
       "rawCharLength": 2099,
       "lcaIndependentMonths": 0,
       "designMonths": 0,
-      "lcaScore": 20.7,
-      "uiuxScore": 22.6,
+      "lcaScore": 11,
+      "uiuxScore": 24.4,
       "classification": "neither_or_uncertain"
     }
   },
@@ -317,7 +317,7 @@
       "lcaIndependentMonths": 0,
       "designMonths": 0,
       "lcaScore": 0,
-      "uiuxScore": 44.9,
+      "uiuxScore": 49.2,
       "classification": "neither_or_uncertain"
     }
   },
@@ -330,8 +330,8 @@
       "rawCharLength": 2026,
       "lcaIndependentMonths": 0,
       "designMonths": 0,
-      "lcaScore": 3,
-      "uiuxScore": 74.7,
+      "lcaScore": 0.2,
+      "uiuxScore": 80.2,
       "classification": "uiux"
     }
   },
@@ -345,7 +345,7 @@
       "lcaIndependentMonths": 0,
       "designMonths": 2,
       "lcaScore": 3,
-      "uiuxScore": 91.4,
+      "uiuxScore": 92.1,
       "classification": "uiux"
     }
   },
@@ -356,10 +356,10 @@
     "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
     "auditDetails": {
       "rawCharLength": 4256,
-      "lcaIndependentMonths": 15,
+      "lcaIndependentMonths": 6,
       "designMonths": 0,
-      "lcaScore": 82.1,
-      "uiuxScore": 8.7,
+      "lcaScore": 65.4,
+      "uiuxScore": 10.8,
       "classification": "lca"
     }
   },
@@ -372,8 +372,8 @@
       "rawCharLength": 2492,
       "lcaIndependentMonths": 0,
       "designMonths": 0,
-      "lcaScore": 22.7,
-      "uiuxScore": 6.5,
+      "lcaScore": 12.5,
+      "uiuxScore": 8.9,
       "classification": "neither_or_uncertain"
     }
   },
@@ -387,7 +387,7 @@
       "lcaIndependentMonths": 0,
       "designMonths": 4,
       "lcaScore": 0,
-      "uiuxScore": 85.4,
+      "uiuxScore": 79.8,
       "classification": "uiux"
     }
   },
@@ -398,10 +398,10 @@
     "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
     "auditDetails": {
       "rawCharLength": 3368,
-      "lcaIndependentMonths": 36,
-      "designMonths": 36,
-      "lcaScore": 57.9,
-      "uiuxScore": 19.4,
+      "lcaIndependentMonths": 27,
+      "designMonths": 27,
+      "lcaScore": 59.7,
+      "uiuxScore": 24.6,
       "classification": "lca"
     }
   },
@@ -415,8 +415,8 @@
       "lcaIndependentMonths": 0,
       "designMonths": 18,
       "lcaScore": 0,
-      "uiuxScore": 48.2,
-      "classification": "neither_or_uncertain"
+      "uiuxScore": 69.4,
+      "classification": "uiux"
     }
   },
   {
@@ -428,8 +428,8 @@
       "rawCharLength": 2701,
       "lcaIndependentMonths": 0,
       "designMonths": 0,
-      "lcaScore": 3,
-      "uiuxScore": 6.3,
+      "lcaScore": 6.9,
+      "uiuxScore": 7.9,
       "classification": "neither_or_uncertain"
     }
   },
@@ -442,8 +442,8 @@
       "rawCharLength": 2732,
       "lcaIndependentMonths": 0,
       "designMonths": 0,
-      "lcaScore": 20.1,
-      "uiuxScore": 32.4,
+      "lcaScore": 10.8,
+      "uiuxScore": 34.5,
       "classification": "neither_or_uncertain"
     }
   },
@@ -457,7 +457,7 @@
       "lcaIndependentMonths": 0,
       "designMonths": 3,
       "lcaScore": 3,
-      "uiuxScore": 67.3,
+      "uiuxScore": 88.7,
       "classification": "uiux"
     }
   },
@@ -470,8 +470,8 @@
       "rawCharLength": 2883,
       "lcaIndependentMonths": 0,
       "designMonths": 0,
-      "lcaScore": 0.7,
-      "uiuxScore": 13.3,
+      "lcaScore": 3.2,
+      "uiuxScore": 14.1,
       "classification": "neither_or_uncertain"
     }
   },
@@ -485,7 +485,7 @@
       "lcaIndependentMonths": 0,
       "designMonths": 3,
       "lcaScore": 0,
-      "uiuxScore": 65.4,
+      "uiuxScore": 82,
       "classification": "uiux"
     }
   },
@@ -498,8 +498,8 @@
       "rawCharLength": 5546,
       "lcaIndependentMonths": 30,
       "designMonths": 0,
-      "lcaScore": 71.3,
-      "uiuxScore": 12.3,
+      "lcaScore": 65.8,
+      "uiuxScore": 14.9,
       "classification": "lca"
     }
   },
@@ -513,7 +513,7 @@
       "lcaIndependentMonths": 0,
       "designMonths": 15,
       "lcaScore": 3,
-      "uiuxScore": 73,
+      "uiuxScore": 74.4,
       "classification": "uiux"
     }
   },
@@ -526,8 +526,8 @@
       "rawCharLength": 2699,
       "lcaIndependentMonths": 6,
       "designMonths": 0,
-      "lcaScore": 55.9,
-      "uiuxScore": 8.8,
+      "lcaScore": 51.1,
+      "uiuxScore": 10.3,
       "classification": "lca"
     }
   },
@@ -540,8 +540,8 @@
       "rawCharLength": 4375,
       "lcaIndependentMonths": 0,
       "designMonths": 0,
-      "lcaScore": 9.2,
-      "uiuxScore": 10.2,
+      "lcaScore": 12.1,
+      "uiuxScore": 11.1,
       "classification": "neither_or_uncertain"
     }
   },
@@ -554,8 +554,8 @@
       "rawCharLength": 2879,
       "lcaIndependentMonths": 67,
       "designMonths": 0,
-      "lcaScore": 58.2,
-      "uiuxScore": 9.9,
+      "lcaScore": 52,
+      "uiuxScore": 11.3,
       "classification": "lca"
     }
   },
@@ -568,8 +568,8 @@
       "rawCharLength": 3477,
       "lcaIndependentMonths": 17,
       "designMonths": 0,
-      "lcaScore": 76.7,
-      "uiuxScore": 10.2,
+      "lcaScore": 66.2,
+      "uiuxScore": 11.8,
       "classification": "lca"
     }
   },
@@ -582,8 +582,8 @@
       "rawCharLength": 2538,
       "lcaIndependentMonths": 3,
       "designMonths": 0,
-      "lcaScore": 24.8,
-      "uiuxScore": 9.8,
+      "lcaScore": 28.3,
+      "uiuxScore": 10.6,
       "classification": "neither_or_uncertain"
     }
   },
@@ -596,8 +596,8 @@
       "rawCharLength": 2945,
       "lcaIndependentMonths": 45,
       "designMonths": 0,
-      "lcaScore": 88.8,
-      "uiuxScore": 12.9,
+      "lcaScore": 84,
+      "uiuxScore": 15.2,
       "classification": "lca"
     }
   },
@@ -610,8 +610,8 @@
       "rawCharLength": 2635,
       "lcaIndependentMonths": 16,
       "designMonths": 0,
-      "lcaScore": 33.9,
-      "uiuxScore": 6.1,
+      "lcaScore": 35.5,
+      "uiuxScore": 6.7,
       "classification": "neither_or_uncertain"
     }
   },
@@ -624,8 +624,8 @@
       "rawCharLength": 4482,
       "lcaIndependentMonths": 6,
       "designMonths": 0,
-      "lcaScore": 25.5,
-      "uiuxScore": 10.5,
+      "lcaScore": 28.5,
+      "uiuxScore": 13.5,
       "classification": "neither_or_uncertain"
     }
   },
@@ -636,10 +636,10 @@
     "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
     "auditDetails": {
       "rawCharLength": 2623,
-      "lcaIndependentMonths": 48,
+      "lcaIndependentMonths": 30,
       "designMonths": 0,
-      "lcaScore": 61.1,
-      "uiuxScore": 10.6,
+      "lcaScore": 63.9,
+      "uiuxScore": 11.9,
       "classification": "lca"
     }
   },

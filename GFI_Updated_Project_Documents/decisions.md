@@ -111,9 +111,34 @@ For any post-approval change, append:
   *Decision:* Implement comprehensive `parse_robust_date_span` supporting em-dashes, en-dashes, hyphens, MM/YYYY, 'YY, and interval unions for non-overlapping experience calculation.  
   *Impact:* Restored genuine tenure calculations across all 46 extractable resumes (e.g. SRK corrected from 0 to 67 months LCA experience).
 
-- **ADR-S05 | 2026-11-11 | Accepted | Anonymized Standard Token Recognition for ISO 14040/14044 Compliance**  
-  *Context:* Dataset anonymization had scrubbed standard numerical identifiers (`ISO 14040/14044` -> `ISO /`, `ISO :2006`, `ISO LCA`). Literal matching unfairly penalized compliant LCA practitioners.  
-  *Decision:* Expand rubric evidence matching to recognize masked ISO standard tokens within LCA domain context.  
-  *Impact:* Accurately awarded ISO compliance points to verified LCA practitioners (HM, SS, TM, PW, MS, SRK, NP).
+- **ADR-S05 | 2026-11-11 | Superceded by ADR-S06 | Anonymized Standard Token Recognition for ISO 14040/14044 Compliance**  
+  *Context:* Initial audit recognized anonymized tokens (`ISO /`, `ISO :2006`) but awarded full points (8/8) without human unmasking.  
+  *Superceded:* Replaced by 4-tier calibrated rubric in ADR-S06.
+
+### Recorded Sprint 1.5 Remediation Architecture Decisions
+- **ADR-S06 | 2026-11-11 | Accepted | Calibrated 4-Tier ISO Standards Scoring Rubric**  
+  *Context:* Awarding full points (8/8) for masked tokens risked false-positive compliance claims for unverified standard numbers.  
+  *Decision:* Implement four distinct tiers: Tier 1: Explicit citation (`evidenced`, 8 pts); Tier 2: Generic standards text in LCA context (`partially_evidenced`, 4 pts); Tier 3: Masked tokens (`needs_confirmation`, 0 pts + review flag for human unmasking); Tier 4: Not evidenced (0 pts + critical flag).  
+  *Impact:* Eliminates unverified compliance points while preserving audit trail for recruiters.
+
+- **ADR-S07 | 2026-11-11 | Accepted | Multi-Line Project Grouping & Strict LCA Methodology Execution**  
+  *Context:* Preliminary project parser treated every non-bullet paragraph as a separate project title, inflating project counts up to 8 per candidate and misclassifying generic environmental/waste tasks as LCA studies.  
+  *Decision:* Implement state-machine grouping (title + description + bullets + tools). Require genuine LCA methodology (ISO 14040/44, cradle-to-gate/grave, SimaPro/GaBi/OpenLCA, LCI modeling) and completed independent study execution to qualify as an LCA project.  
+  *Impact:* Consolidated inflated project records (e.g. TM from 6 to 3 distinct projects; SS from 8 to 4); filtered non-LCA environmental studies.
+
+- **ADR-S08 | 2026-11-11 | Accepted | State-Machine Education Parser for Degree-Institution Association**  
+  *Context:* Education parser previously failed to associate degree lines with adjacent institution lines, producing 100% blank institution fields.  
+  *Decision:* Implement multi-line state machine linking degree names with adjacent university lines, graduation years, and scores/CGPA, preventing orphan degree items.  
+  *Impact:* 100% of candidate education records (82/82) now have verified associated institutions (0 blank).
+
+- **ADR-S09 | 2026-11-11 | Accepted | Dual-Layer Independent Scoring Oracle (Arithmetic vs Source-Evidence Reconciliation)**  
+  *Context:* Audit identified a 36-candidate score delta between the Python audit script and the TypeScript scoring engine due to disparate subscore calculations.  
+  *Decision:* Restructure oracle validation into Layer A (Scoring Arithmetic Verification using exact baseline candidate attributes) and Layer B (Source-Evidence Audit directly from DOCX text).  
+  *Impact:* Layer A arithmetic agreement achieved 100.0% (47/47 candidates match). Layer B source discrepancies fully documented and reconciled in `reports/scoring_reconciliation.csv`.
+
+- **ADR-S10 | 2026-11-11 | Accepted | Canonical Local ONNX Embeddings with Multi-Chunk Pooling & Null Empty Doc Representation**  
+  *Context:* Audits discovered hosted API authorization failures and arbitrary context truncation for texts exceeding 512 tokens, while empty files generated artificial zero vectors.  
+  *Decision:* Standardize exclusively on local ONNX `Xenova/bge-small-en-v1.5` inference. Multi-chunk long texts (>1500 chars) with mean-pooling and unit L2 normalization. Represent empty documents as `null` vector rather than zero-filled arrays.  
+  *Impact:* Deterministic, offline-reproducible 384-dimensional embeddings across baseline and runtime uploads without provider drift.
 
 Keep `agent.md`, `sprintplan.md`, and this file aligned. Do not reinterpret unresolved verification tasks as permission to change approved decisions.

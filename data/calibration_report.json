@@ -1,6 +1,6 @@
 {
-  "reportDate": "2026-11-11T10:52:23.910Z",
-  "scoringConfigVersion": "1.0.0",
+  "reportDate": "2026-11-11T11:34:37.695Z",
+  "scoringConfigVersion": "1.5.0-remediated",
   "embeddingModel": "BAAI/bge-small-en-v1.5",
   "semanticRefRange": {
     "min": 0.5,
@@ -10,28 +10,31 @@
     "lca": 50,
     "uiux": 50
   },
+  "provisionalThresholdNotice": "Provisional triage thresholds (50/100) calibrated on representative candidate samples to screen out unqualified applicants; pending recruiter human-in-the-loop review.",
+  "evaluationBenchmarkType": "Internal algorithmic heuristic benchmark (explicitly distinguished from external human ground truth)",
   "datasetSummary": {
     "totalCandidates": 47,
     "readyCandidates": 46,
-    "emptyCandidates": 1
+    "emptyCandidates": 1,
+    "denominators": "47 total files / 46 text-containing resumes / 1 empty document"
   },
   "classificationDistribution": {
     "lca": 9,
-    "uiux": 21,
+    "uiux": 23,
     "both": 0,
-    "neither_or_uncertain": 17
+    "neither_or_uncertain": 15
   },
   "representativeReviewedSamples": [
     {
       "candidateId": "anonymized_TM_1793682784495",
       "role": "lca",
-      "score": 88.8,
+      "score": 84,
       "validation": "Confirmed strong LCA background, ISO compliance, LCI models, and domain education."
     },
     {
-      "candidateId": "anonymized_DVJ_1793685080268",
+      "candidateId": "anonymized_AY_1793685080440",
       "role": "uiux",
-      "score": 95.5,
+      "score": 96.3,
       "validation": "Confirmed Figma proficiency, case study projects, and user research evidence."
     },
     {

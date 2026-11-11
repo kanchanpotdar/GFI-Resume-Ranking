@@ -1,4 +1,32 @@
-candidate_id,headline,baseline_class,oracle_class,reason
-anonymized_AA_1793682784144,Graduate Engineer Trainee – Environment,neither_or_uncertain,neither_or_uncertain,"Score delta LCA=-5.0, UIUX=-10.0"
-anonymized_NP_1793682784325,Senior Engineer – R&D,lca,lca,"Score delta LCA=10.0, UIUX=0.0"
-anonymized_N_1793685080389,UI/UX Designer,neither_or_uncertain,uiux,"Score delta LCA=0.0, UIUX=3.0"
+candidateId,role,reason,currentScore,potentialScoreIfConfirmed
+anonymized_AA_1793685080195,uiux,Qualified UI/UX candidate requires human review of portfolio aesthetics and design craft.,60.3,60.3
+anonymized_AA_1793685080402,uiux,Qualified UI/UX candidate requires human review of portfolio aesthetics and design craft.,88.3,88.3
+anonymized_AL_1793685080183,uiux,Qualified UI/UX candidate requires human review of portfolio aesthetics and design craft.,84.9,84.9
+anonymized_APS_1793685080222,uiux,Qualified UI/UX candidate requires human review of portfolio aesthetics and design craft.,93.5,93.5
+anonymized_AR_1793685080207,uiux,Qualified UI/UX candidate requires human review of portfolio aesthetics and design craft.,89.5,89.5
+anonymized_AS_1793685080379,uiux,Qualified UI/UX candidate requires human review of portfolio aesthetics and design craft.,77.3,77.3
+anonymized_AY_1793685080440,uiux,Qualified UI/UX candidate requires human review of portfolio aesthetics and design craft.,96.3,96.3
+anonymized_BS_1793685080461,uiux,Qualified UI/UX candidate requires human review of portfolio aesthetics and design craft.,68.1,68.1
+anonymized_DP_1793685080247,uiux,Qualified UI/UX candidate requires human review of portfolio aesthetics and design craft.,58.7,58.7
+anonymized_DS_1793685080257,uiux,Qualified UI/UX candidate requires human review of portfolio aesthetics and design craft.,88.8,88.8
+anonymized_FK_1793685080451,uiux,Qualified UI/UX candidate requires human review of portfolio aesthetics and design craft.,70.8,70.8
+anonymized_FT_1793685080301,uiux,Qualified UI/UX candidate requires human review of portfolio aesthetics and design craft.,51.5,51.5
+anonymized_HM_1793682784257,lca,Anonymized ISO standard token requires unmasking to confirm ISO 14040/14044 adherence.,65.7,73.7
+anonymized_HM_1793682784257,lca,Candidate qualified for LCA but Chennai relocation willingness is unconfirmed.,65.7,65.7
+anonymized_MI_1793685080235,uiux,Qualified UI/UX candidate requires human review of portfolio aesthetics and design craft.,80.2,80.2
+anonymized_MS_1793682784442,lca,Anonymized ISO standard token requires unmasking to confirm ISO 14040/14044 adherence.,65.4,73.4
+anonymized_MS_1793682784442,lca,Candidate qualified for LCA but Chennai relocation willingness is unconfirmed.,65.4,65.4
+anonymized_NP_1793682784325,lca,Anonymized ISO standard token requires unmasking to confirm ISO 14040/14044 adherence.,59.7,67.7
+anonymized_NP_1793682784325,lca,Candidate qualified for LCA but Chennai relocation willingness is unconfirmed.,59.7,59.7
+anonymized_N_1793685080389,uiux,Qualified UI/UX candidate requires human review of portfolio aesthetics and design craft.,69.4,69.4
+anonymized_PV_1793685080171,uiux,Qualified UI/UX candidate requires human review of portfolio aesthetics and design craft.,82,82
+anonymized_PW_1793682784228,lca,Anonymized ISO standard token requires unmasking to confirm ISO 14040/14044 adherence.,65.8,73.8
+anonymized_PW_1793682784228,lca,Candidate qualified for LCA but Chennai relocation willingness is unconfirmed.,65.8,65.8
+anonymized_RR_1793682784428,lca,Candidate qualified for LCA but Chennai relocation willingness is unconfirmed.,51.1,51.1
+anonymized_SRK_1793682784455,lca,Anonymized ISO standard token requires unmasking to confirm ISO 14040/14044 adherence.,52,60.0
+anonymized_SRK_1793682784455,lca,Candidate qualified for LCA but Chennai relocation willingness is unconfirmed.,52,52
+anonymized_SS_1793682784470,lca,Anonymized ISO standard token requires unmasking to confirm ISO 14040/14044 adherence.,66.2,74.2
+anonymized_SS_1793682784470,lca,Candidate qualified for LCA but Chennai relocation willingness is unconfirmed.,66.2,66.2
+anonymized_TM_1793682784495,lca,Anonymized ISO standard token requires unmasking to confirm ISO 14040/14044 adherence.,84,92.0
+anonymized_TM_1793682784495,lca,Candidate qualified for LCA but Chennai relocation willingness is unconfirmed.,84,84
+anonymized_VM_1793682784520,lca,Candidate qualified for LCA but Chennai relocation willingness is unconfirmed.,63.9,63.9

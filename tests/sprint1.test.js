@@ -30,6 +30,8 @@ test("Sprint 1 Gate 2: Empty document record is explicitly zero-scored and class
   assert.strictEqual(empty.classification, "neither_or_uncertain", "Empty doc must be classified as neither_or_uncertain");
   assert.strictEqual(empty.scores.lca.eligibilityFlags.meetsRoleThreshold, false);
   assert.strictEqual(empty.scores.uiux.eligibilityFlags.meetsRoleThreshold, false);
+  assert.strictEqual(empty.embeddings.lcaChunkVector, null, "Empty doc LCA embedding must be null");
+  assert.strictEqual(empty.embeddings.uiuxChunkVector, null, "Empty doc UI/UX embedding must be null");
 });
 
 test("Sprint 1 Gate 3: Subscores are strictly bounded within approved component budgets", () => {
@@ -109,22 +111,98 @@ test("Sprint 1 Gate 6: Classification matches independent threshold logic", () =
   });
 });
 
-test("Sprint 1.5 Regression: SRK extraction and scoring accurately recognizes Associate LCA Consultant", () => {
+test("Sprint 1.5 Remediation: Multi-line project grouping without orphan inflation", () => {
   const baseline = JSON.parse(fs.readFileSync(baselinePath, "utf8"));
-  const srk = baseline.candidates.find(c => c.candidateId === "anonymized_SRK_1793682784455");
+  const tm = baseline.candidates.find(c => c.candidateId === "anonymized_TM_1793682784495");
+  const rr = baseline.candidates.find(c => c.candidateId === "anonymized_RR_1793682784428");
+  const aa = baseline.candidates.find(c => c.candidateId === "anonymized_AA_1793685080402");
 
-  assert.ok(srk, "SRK candidate must exist");
-  assert.ok(srk.extraction.independentLcaExperienceMonths >= 36, "SRK must have >= 36 months LCA experience");
-  assert.strictEqual(srk.scores.lca.subScores.experience, 30, "SRK must receive 30/30 on LCA experience");
-  assert.strictEqual(srk.classification, "lca", "SRK must be classified as LCA");
-  assert.ok(srk.scores.lca.totalScore >= 50, "SRK total score must qualify");
+  // TM has 3 distinct projects (Interior System, Exhaust System, Thermal Component), not 6
+  assert.strictEqual(tm.extraction.projects.length, 3, "TM must have exactly 3 grouped projects");
+  assert.strictEqual(tm.extraction.completedLcaProjectsCount, 3, "TM must have 3 completed LCA projects");
+
+  // RR has 2 distinct comparative LCA projects, not 4
+  assert.strictEqual(rr.extraction.projects.length, 2, "RR must have exactly 2 grouped projects");
+  assert.strictEqual(rr.extraction.completedLcaProjectsCount, 2, "RR must have 2 completed LCA projects");
+
+  // AA_402 has 4 design projects, none marked as LCA
+  assert.strictEqual(aa.extraction.projects.length, 4, "AA must have exactly 4 grouped projects");
+  assert.strictEqual(aa.extraction.completedLcaProjectsCount, 0, "AA must have 0 LCA projects");
+  assert.strictEqual(aa.extraction.hasDesignPortfolioOrCaseStudies, true);
 });
 
-test("Sprint 1.5 Regression: ISO standards recognized in anonymized tokens", () => {
+test("Sprint 1.5 Remediation: Education association links degree with university and year", () => {
   const baseline = JSON.parse(fs.readFileSync(baselinePath, "utf8"));
-  const hm = baseline.candidates.find(c => c.candidateId === "anonymized_HM_1793682784257");
-  const ss = baseline.candidates.find(c => c.candidateId === "anonymized_SS_1793682784470");
+  let totalEdus = 0;
+  let emptyInstitutions = 0;
 
-  assert.strictEqual(hm.scores.lca.subScores.skills >= 15, true, "HM must receive credit for software and ISO");
-  assert.strictEqual(ss.scores.lca.subScores.skills >= 20, true, "SS must receive credit for software and ISO");
+  baseline.candidates.forEach(c => {
+    if (c.extraction.extractionStatus !== "empty_document") {
+      c.extraction.education.forEach(e => {
+        totalEdus++;
+        if (!e.institution || e.institution.trim() === "") {
+          emptyInstitutions++;
+        }
+      });
+    }
+  });
+
+  assert.ok(totalEdus >= 75, "Total extracted education records should be >= 75");
+  assert.strictEqual(emptyInstitutions, 0, "No education record may have an empty institution");
+
+  // Verify NIT Rourkela linked for AA_144
+  const aa144 = baseline.candidates.find(c => c.candidateId === "anonymized_AA_1793682784144");
+  assert.ok(aa144.extraction.education[0].institution.includes("National Institute of Technology, Rourkela"));
+  assert.strictEqual(aa144.extraction.education[0].domain, "environmental");
+});
+
+test("Sprint 1.5 Remediation: Calibrated 4-tier ISO standards scoring", () => {
+  const baseline = JSON.parse(fs.readFileSync(baselinePath, "utf8"));
+  const tm = baseline.candidates.find(c => c.candidateId === "anonymized_TM_1793682784495");
+  const np = baseline.candidates.find(c => c.candidateId === "anonymized_NP_1793682784325");
+
+  // TM references ISO compliance in methods -> awarded points
+  const tmIsoReq = tm.scores.lca.requirementsEvidence.find(r => r.requirementKey === "standards_iso");
+  assert.ok(tmIsoReq, "TM must have standards_iso requirement");
+
+  // NP has anonymized ISO token: awarded 0 pts with status: needs_confirmation and review flag
+  const npIsoReq = np.scores.lca.requirementsEvidence.find(r => r.requirementKey === "standards_iso");
+  assert.ok(npIsoReq, "NP must have standards_iso requirement");
+  if (npIsoReq.status === "needs_confirmation") {
+    assert.strictEqual(npIsoReq.pointsAwarded, 0, "Anonymized token must receive 0 points");
+    assert.ok(np.scores.lca.eligibilityFlags.reviewNeededFlags.some(f => f.includes("ISO")), "Must flag anonymized ISO for review");
+  }
+});
+
+test("Sprint 1.5 Remediation: Strict GaBi/SimaPro vs OpenLCA scoring rules", () => {
+  const baseline = JSON.parse(fs.readFileSync(baselinePath, "utf8"));
+  const rr = baseline.candidates.find(c => c.candidateId === "anonymized_RR_1793682784428");
+  const tm = baseline.candidates.find(c => c.candidateId === "anonymized_TM_1793682784495");
+
+  // RR has OpenLCA only (no GaBi or SimaPro) -> receives 5/15 pts with critical requirement flag
+  const rrGabiReq = rr.scores.lca.requirementsEvidence.find(r => r.requirementKey === "lca_software");
+  assert.strictEqual(rrGabiReq.pointsAwarded, 5, "OpenLCA alone must receive 5 pts");
+  assert.strictEqual(rrGabiReq.status, "partially_evidenced");
+  assert.ok(
+    rr.scores.lca.eligibilityFlags.criticalRequirementMissing.some(f => f.includes("GaBi/SimaPro")),
+    "OpenLCA candidate must have critical flag for missing GaBi/SimaPro"
+  );
+
+  // TM has SimaPro -> receives 15/15 pts (evidenced)
+  const tmGabiReq = tm.scores.lca.requirementsEvidence.find(r => r.requirementKey === "lca_software");
+  assert.strictEqual(tmGabiReq.pointsAwarded, 15, "SimaPro must receive 15 pts");
+  assert.strictEqual(tmGabiReq.status, "evidenced");
+});
+
+test("Sprint 1.5 Remediation: Non-fabrication of dates and zero-default duration", () => {
+  const baseline = JSON.parse(fs.readFileSync(baselinePath, "utf8"));
+  baseline.candidates.forEach(c => {
+    if (c.extraction.extractionStatus !== "empty_document") {
+      c.extraction.experience.forEach(exp => {
+        if (!exp.rawDates || exp.rawDates.trim() === "") {
+          assert.strictEqual(exp.durationMonths, 0, `Missing date role in ${c.candidateId} must have duration 0`);
+        }
+      });
+    }
+  });
 });

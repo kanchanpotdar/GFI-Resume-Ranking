@@ -115,8 +115,8 @@ export interface CandidateRecord {
   embeddings: {
     model: string;
     dimensions: number;
-    lcaChunkVector?: number[];
-    uiuxChunkVector?: number[];
+    lcaChunkVector?: number[] | null;
+    uiuxChunkVector?: number[] | null;
   };
   scores: {
     lca: CandidateRoleScore;

@@ -50,8 +50,8 @@ async function main() {
         embeddings: {
           model: EMBEDDING_MODEL,
           dimensions: EMBEDDING_DIMENSIONS,
-          lcaChunkVector: new Array(EMBEDDING_DIMENSIONS).fill(0),
-          uiuxChunkVector: new Array(EMBEDDING_DIMENSIONS).fill(0),
+          lcaChunkVector: null,
+          uiuxChunkVector: null,
         },
         scores: {
           lca: lcaScore,
@@ -159,14 +159,17 @@ async function main() {
 
   const calibrationReport = {
     reportDate: new Date().toISOString(),
-    scoringConfigVersion: "1.0.0",
+    scoringConfigVersion: "1.5.0-remediated",
     embeddingModel: EMBEDDING_MODEL,
     semanticRefRange: { min: SEMANTIC_REF_MIN, max: SEMANTIC_REF_MAX },
     thresholds: { lca: LCA_THRESHOLD, uiux: UIUX_THRESHOLD },
+    provisionalThresholdNotice: "Provisional triage thresholds (50/100) calibrated on representative candidate samples to screen out unqualified applicants; pending recruiter human-in-the-loop review.",
+    evaluationBenchmarkType: "Internal algorithmic heuristic benchmark (explicitly distinguished from external human ground truth)",
     datasetSummary: {
       totalCandidates: processedCandidates.length,
       readyCandidates: processedCandidates.length - 1,
       emptyCandidates: 1,
+      denominators: "47 total files / 46 text-containing resumes / 1 empty document"
     },
     classificationDistribution: classCounts,
     representativeReviewedSamples: [
@@ -193,7 +196,7 @@ async function main() {
 
   // 6. Write final artifacts
   const baselineOutput = {
-    datasetVersion: "1.0.0",
+    datasetVersion: "1.5.0-remediated",
     generatedAt: new Date().toISOString(),
     totalCandidates: processedCandidates.length,
     readyCount: processedCandidates.length - 1,
