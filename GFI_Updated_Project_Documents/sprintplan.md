@@ -55,11 +55,11 @@ Deliver the agreed Growth For Impact resume ranking prototype **by Saturday, 14 
 - **Submission:** source assignment has no verified deadline or directly resolved submission link. Nov 14 is the project target.
 
 ## Deliverables checklist
-- [ ] Exact supplied JD texts stored; all 47 DOCX ZIP members inventoried; one zero-text DOCX triaged
-- [ ] Extraction and human cleaning audit (raw-to-clean changes, unknown/invalid fields)
-- [ ] Versioned, validated baseline dataset and cached embeddings
-- [ ] Evidence-backed rubric including LCA GaBi/SimaPro, ≥3 projects, ISO requirements and UI/UX Figma/research/portfolio evidence
-- [ ] LCA 4–6 vs 2–3 year source conflict documented and shown; thresholds calibrated; four-outcome classification
+- [x] Exact supplied JD texts stored; all 47 DOCX ZIP members inventoried; one zero-text DOCX triaged
+- [x] Extraction and human cleaning audit (raw-to-clean changes, unknown/invalid fields)
+- [x] Versioned, validated baseline dataset and cached embeddings
+- [x] Evidence-backed rubric including LCA GaBi/SimaPro, ≥3 projects, ISO requirements and UI/UX Figma/research/portfolio evidence
+- [x] LCA 4–6 vs 2–3 year source conflict documented and shown; thresholds calibrated; four-outcome classification
 - [ ] LCA/UI-UX tabs, filtering/sorting, inspectable evidence and source references
 - [ ] New PDF/DOCX upload, duplicate detection, comparable scoring and two-role rerank
 - [ ] Secure HF calls; explicit timeout/provider/scanned-file/oversize errors

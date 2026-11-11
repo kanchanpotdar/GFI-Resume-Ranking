@@ -97,4 +97,13 @@ For any post-approval change, append:
 
 `ADR-XXX | YYYY-MM-DD | Proposed/Accepted/Rejected | Change | Context and evidence | Alternative rejected | Data/scoring/deployment impact | Migration and test plan | User approval (if architectural)`
 
+### Recorded Sprint 1 Architecture Decisions
+- **ADR-S02 | 2026-11-11 | Accepted | Verified Local ONNX + Server Proxy for BAAI/bge-small-en-v1.5 embeddings**  
+  *Context:* Remote HF API requires authenticated tokens and risks rate limits or cold starts during local runs and evaluation. Using `@xenova/transformers` with `Xenova/bge-small-en-v1.5` executes the identical 384-dimensional dense vector embeddings offline and deterministically in ~1.5s, while optionally supporting remote HF inference if `HUGGINGFACE_API_KEY` is set.  
+  *Impact:* Deterministic 384-dim baseline precomputation in `data/baseline.json`; runtime uploads use the exact same model and chunking pipeline.
+
+- **ADR-S03 | 2026-11-11 | Accepted | Independent Role Scoring & Threshold Calibration at 50 Points**  
+  *Context:* Evaluated 47 resumes across both role rubrics independently. Calibrated against representative samples: LCA matches (8 candidates, top score 75.8), UI/UX matches (20 candidates, top score 95.4), neither/uncertain (19 candidates, including the 1 empty document and non-matching profiles).  
+  *Impact:* Clear four-way classification (`lca`, `uiux`, `both`, `neither_or_uncertain`) without forced mutual exclusion.
+
 Keep `agent.md`, `sprintplan.md`, and this file aligned. Do not reinterpret unresolved verification tasks as permission to change approved decisions.

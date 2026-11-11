@@ -1,0 +1,653 @@
+[
+  {
+    "candidateId": "anonymized_AA_1793682784144",
+    "filename": "anonymized_AA_1793682784144.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 4006,
+      "lcaIndependentMonths": 0,
+      "designMonths": 0,
+      "lcaScore": 14.2,
+      "uiuxScore": 17.8,
+      "classification": "neither_or_uncertain"
+    }
+  },
+  {
+    "candidateId": "anonymized_AA_1793685080195",
+    "filename": "anonymized_AA_1793685080195.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 1725,
+      "lcaIndependentMonths": 0,
+      "designMonths": 0,
+      "lcaScore": 0,
+      "uiuxScore": 45.9,
+      "classification": "neither_or_uncertain"
+    }
+  },
+  {
+    "candidateId": "anonymized_AA_1793685080402",
+    "filename": "anonymized_AA_1793685080402.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 2405,
+      "lcaIndependentMonths": 0,
+      "designMonths": 6,
+      "lcaScore": 3,
+      "uiuxScore": 85.9,
+      "classification": "uiux"
+    }
+  },
+  {
+    "candidateId": "anonymized_AK_1793682784184",
+    "filename": "anonymized_AK_1793682784184.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 4521,
+      "lcaIndependentMonths": 0,
+      "designMonths": 0,
+      "lcaScore": 9.7,
+      "uiuxScore": 27.2,
+      "classification": "neither_or_uncertain"
+    }
+  },
+  {
+    "candidateId": "anonymized_AL_1793685080183",
+    "filename": "anonymized_AL_1793685080183.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 2502,
+      "lcaIndependentMonths": 0,
+      "designMonths": 0,
+      "lcaScore": 3,
+      "uiuxScore": 75.1,
+      "classification": "uiux"
+    }
+  },
+  {
+    "candidateId": "anonymized_AN_1793685080356",
+    "filename": "anonymized_AN_1793685080356.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 1780,
+      "lcaIndependentMonths": 0,
+      "designMonths": 9,
+      "lcaScore": 3,
+      "uiuxScore": 63,
+      "classification": "uiux"
+    }
+  },
+  {
+    "candidateId": "anonymized_APS_1793685080222",
+    "filename": "anonymized_APS_1793685080222.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 3025,
+      "lcaIndependentMonths": 0,
+      "designMonths": 28,
+      "lcaScore": 0,
+      "uiuxScore": 91.3,
+      "classification": "uiux"
+    }
+  },
+  {
+    "candidateId": "anonymized_AR_1793685080207",
+    "filename": "anonymized_AR_1793685080207.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 2320,
+      "lcaIndependentMonths": 0,
+      "designMonths": 0,
+      "lcaScore": 3,
+      "uiuxScore": 74.2,
+      "classification": "uiux"
+    }
+  },
+  {
+    "candidateId": "anonymized_AS_1793685080379",
+    "filename": "anonymized_AS_1793685080379.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 3206,
+      "lcaIndependentMonths": 0,
+      "designMonths": 0,
+      "lcaScore": 0,
+      "uiuxScore": 60.5,
+      "classification": "uiux"
+    }
+  },
+  {
+    "candidateId": "anonymized_AY_1793685080440",
+    "filename": "anonymized_AY_1793685080440.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 1693,
+      "lcaIndependentMonths": 0,
+      "designMonths": 0,
+      "lcaScore": 0,
+      "uiuxScore": 73.9,
+      "classification": "uiux"
+    }
+  },
+  {
+    "candidateId": "anonymized_BA_1793682784206",
+    "filename": "anonymized_BA_1793682784206.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 2642,
+      "lcaIndependentMonths": 0,
+      "designMonths": 0,
+      "lcaScore": 3.2,
+      "uiuxScore": 4.7,
+      "classification": "neither_or_uncertain"
+    }
+  },
+  {
+    "candidateId": "anonymized_BS_1793685080461",
+    "filename": "anonymized_BS_1793685080461.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 1735,
+      "lcaIndependentMonths": 0,
+      "designMonths": 0,
+      "lcaScore": 4,
+      "uiuxScore": 55.9,
+      "classification": "uiux"
+    }
+  },
+  {
+    "candidateId": "anonymized_CG_1793685080278",
+    "filename": "anonymized_CG_1793685080278.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 2879,
+      "lcaIndependentMonths": 0,
+      "designMonths": 4,
+      "lcaScore": 3,
+      "uiuxScore": 91.5,
+      "classification": "uiux"
+    }
+  },
+  {
+    "candidateId": "anonymized_CM_1793685080412",
+    "filename": "anonymized_CM_1793685080412.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 2141,
+      "lcaIndependentMonths": 0,
+      "designMonths": 0,
+      "lcaScore": 11,
+      "uiuxScore": 73,
+      "classification": "uiux"
+    }
+  },
+  {
+    "candidateId": "anonymized_DP_1793685080247",
+    "filename": "anonymized_DP_1793685080247.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 2310,
+      "lcaIndependentMonths": 0,
+      "designMonths": 33,
+      "lcaScore": 3,
+      "uiuxScore": 50.5,
+      "classification": "uiux"
+    }
+  },
+  {
+    "candidateId": "anonymized_DS_1793685080257",
+    "filename": "anonymized_DS_1793685080257.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 2376,
+      "lcaIndependentMonths": 0,
+      "designMonths": 0,
+      "lcaScore": 0,
+      "uiuxScore": 74.4,
+      "classification": "uiux"
+    }
+  },
+  {
+    "candidateId": "anonymized_DVJ_1793685080268",
+    "filename": "anonymized_DVJ_1793685080268.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 2368,
+      "lcaIndependentMonths": 0,
+      "designMonths": 0,
+      "lcaScore": 0,
+      "uiuxScore": 95.4,
+      "classification": "uiux"
+    }
+  },
+  {
+    "candidateId": "anonymized_FK_1793685080451",
+    "filename": "anonymized_FK_1793685080451.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 1848,
+      "lcaIndependentMonths": 0,
+      "designMonths": 0,
+      "lcaScore": 0,
+      "uiuxScore": 58.5,
+      "classification": "uiux"
+    }
+  },
+  {
+    "candidateId": "anonymized_FT_1793685080301",
+    "filename": "anonymized_FT_1793685080301.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 2828,
+      "lcaIndependentMonths": 0,
+      "designMonths": 0,
+      "lcaScore": 3,
+      "uiuxScore": 46,
+      "classification": "neither_or_uncertain"
+    }
+  },
+  {
+    "candidateId": "anonymized_HD_1793682784275",
+    "filename": "anonymized_HD_1793682784275.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 5001,
+      "lcaIndependentMonths": 9,
+      "designMonths": 0,
+      "lcaScore": 29.2,
+      "uiuxScore": 8.1,
+      "classification": "neither_or_uncertain"
+    }
+  },
+  {
+    "candidateId": "anonymized_HM_1793682784257",
+    "filename": "anonymized_HM_1793682784257.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 3739,
+      "lcaIndependentMonths": 48,
+      "designMonths": 0,
+      "lcaScore": 61.9,
+      "uiuxScore": 9.2,
+      "classification": "lca"
+    }
+  },
+  {
+    "candidateId": "anonymized_KA_1793682784307",
+    "filename": "anonymized_KA_1793682784307.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 2099,
+      "lcaIndependentMonths": 0,
+      "designMonths": 0,
+      "lcaScore": 15.7,
+      "uiuxScore": 7.6,
+      "classification": "neither_or_uncertain"
+    }
+  },
+  {
+    "candidateId": "anonymized_KN_1793685080310",
+    "filename": "anonymized_KN_1793685080310.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 621,
+      "lcaIndependentMonths": 0,
+      "designMonths": 0,
+      "lcaScore": 0,
+      "uiuxScore": 44.9,
+      "classification": "neither_or_uncertain"
+    }
+  },
+  {
+    "candidateId": "anonymized_MI_1793685080235",
+    "filename": "anonymized_MI_1793685080235.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 2026,
+      "lcaIndependentMonths": 0,
+      "designMonths": 0,
+      "lcaScore": 3,
+      "uiuxScore": 74.7,
+      "classification": "uiux"
+    }
+  },
+  {
+    "candidateId": "anonymized_MM_1793685080338",
+    "filename": "anonymized_MM_1793685080338.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 2446,
+      "lcaIndependentMonths": 0,
+      "designMonths": 2,
+      "lcaScore": 3,
+      "uiuxScore": 91.4,
+      "classification": "uiux"
+    }
+  },
+  {
+    "candidateId": "anonymized_MS_1793682784442",
+    "filename": "anonymized_MS_1793682784442.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 4256,
+      "lcaIndependentMonths": 0,
+      "designMonths": 0,
+      "lcaScore": 56.2,
+      "uiuxScore": 8.7,
+      "classification": "lca"
+    }
+  },
+  {
+    "candidateId": "anonymized_NA_1793682784346",
+    "filename": "anonymized_NA_1793682784346.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 2492,
+      "lcaIndependentMonths": 0,
+      "designMonths": 0,
+      "lcaScore": 18.1,
+      "uiuxScore": 6.5,
+      "classification": "neither_or_uncertain"
+    }
+  },
+  {
+    "candidateId": "anonymized_NF_1793685080347",
+    "filename": "anonymized_NF_1793685080347.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 1656,
+      "lcaIndependentMonths": 0,
+      "designMonths": 4,
+      "lcaScore": 0,
+      "uiuxScore": 85.4,
+      "classification": "uiux"
+    }
+  },
+  {
+    "candidateId": "anonymized_NP_1793682784325",
+    "filename": "anonymized_NP_1793682784325.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 3368,
+      "lcaIndependentMonths": 24,
+      "designMonths": 24,
+      "lcaScore": 54.9,
+      "uiuxScore": 19.4,
+      "classification": "lca"
+    }
+  },
+  {
+    "candidateId": "anonymized_N_1793685080389",
+    "filename": "anonymized_N_1793685080389.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 1883,
+      "lcaIndependentMonths": 0,
+      "designMonths": 0,
+      "lcaScore": 0,
+      "uiuxScore": 48.1,
+      "classification": "neither_or_uncertain"
+    }
+  },
+  {
+    "candidateId": "anonymized_PD_1793682784400",
+    "filename": "anonymized_PD_1793682784400.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 2701,
+      "lcaIndependentMonths": 0,
+      "designMonths": 0,
+      "lcaScore": 2.5,
+      "uiuxScore": 7.6,
+      "classification": "neither_or_uncertain"
+    }
+  },
+  {
+    "candidateId": "anonymized_PKG_1793682784369",
+    "filename": "anonymized_PKG_1793682784369.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 2732,
+      "lcaIndependentMonths": 0,
+      "designMonths": 0,
+      "lcaScore": 15.1,
+      "uiuxScore": 32.4,
+      "classification": "neither_or_uncertain"
+    }
+  },
+  {
+    "candidateId": "anonymized_PL_1793685080319",
+    "filename": "anonymized_PL_1793685080319.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 2087,
+      "lcaIndependentMonths": 0,
+      "designMonths": 3,
+      "lcaScore": 3,
+      "uiuxScore": 67.3,
+      "classification": "uiux"
+    }
+  },
+  {
+    "candidateId": "anonymized_PS_1793682784387",
+    "filename": "anonymized_PS_1793682784387.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 2883,
+      "lcaIndependentMonths": 0,
+      "designMonths": 0,
+      "lcaScore": 0.7,
+      "uiuxScore": 13.3,
+      "classification": "neither_or_uncertain"
+    }
+  },
+  {
+    "candidateId": "anonymized_PV_1793685080171",
+    "filename": "anonymized_PV_1793685080171.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 1476,
+      "lcaIndependentMonths": 0,
+      "designMonths": 0,
+      "lcaScore": 0,
+      "uiuxScore": 56.1,
+      "classification": "uiux"
+    }
+  },
+  {
+    "candidateId": "anonymized_PW_1793682784228",
+    "filename": "anonymized_PW_1793682784228.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 5546,
+      "lcaIndependentMonths": 30,
+      "designMonths": 0,
+      "lcaScore": 63.3,
+      "uiuxScore": 11.8,
+      "classification": "lca"
+    }
+  },
+  {
+    "candidateId": "anonymized_PW_1793685080367",
+    "filename": "anonymized_PW_1793685080367.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 2166,
+      "lcaIndependentMonths": 0,
+      "designMonths": 0,
+      "lcaScore": 3,
+      "uiuxScore": 73.5,
+      "classification": "uiux"
+    }
+  },
+  {
+    "candidateId": "anonymized_RR_1793682784428",
+    "filename": "anonymized_RR_1793682784428.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 2699,
+      "lcaIndependentMonths": 6,
+      "designMonths": 0,
+      "lcaScore": 55.9,
+      "uiuxScore": 8.8,
+      "classification": "lca"
+    }
+  },
+  {
+    "candidateId": "anonymized_RS_1793682784414",
+    "filename": "anonymized_RS_1793682784414.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 4375,
+      "lcaIndependentMonths": 0,
+      "designMonths": 0,
+      "lcaScore": 9.2,
+      "uiuxScore": 10.2,
+      "classification": "neither_or_uncertain"
+    }
+  },
+  {
+    "candidateId": "anonymized_SRK_1793682784455",
+    "filename": "anonymized_SRK_1793682784455.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 2879,
+      "lcaIndependentMonths": 0,
+      "designMonths": 0,
+      "lcaScore": 20.6,
+      "uiuxScore": 9.9,
+      "classification": "neither_or_uncertain"
+    }
+  },
+  {
+    "candidateId": "anonymized_SS_1793682784470",
+    "filename": "anonymized_SS_1793682784470.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 3477,
+      "lcaIndependentMonths": 17,
+      "designMonths": 0,
+      "lcaScore": 63.7,
+      "uiuxScore": 10.2,
+      "classification": "lca"
+    }
+  },
+  {
+    "candidateId": "anonymized_SS_1793682784484",
+    "filename": "anonymized_SS_1793682784484.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 2538,
+      "lcaIndependentMonths": 0,
+      "designMonths": 0,
+      "lcaScore": 15.2,
+      "uiuxScore": 9.8,
+      "classification": "neither_or_uncertain"
+    }
+  },
+  {
+    "candidateId": "anonymized_TM_1793682784495",
+    "filename": "anonymized_TM_1793682784495.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 2945,
+      "lcaIndependentMonths": 45,
+      "designMonths": 0,
+      "lcaScore": 75.8,
+      "uiuxScore": 12.9,
+      "classification": "lca"
+    }
+  },
+  {
+    "candidateId": "anonymized_UI_1793682784506",
+    "filename": "anonymized_UI_1793682784506.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 2635,
+      "lcaIndependentMonths": 0,
+      "designMonths": 0,
+      "lcaScore": 15.3,
+      "uiuxScore": 6.1,
+      "classification": "neither_or_uncertain"
+    }
+  },
+  {
+    "candidateId": "anonymized_VG_1793682784531",
+    "filename": "anonymized_VG_1793682784531.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 4482,
+      "lcaIndependentMonths": 0,
+      "designMonths": 0,
+      "lcaScore": 15.9,
+      "uiuxScore": 10.5,
+      "classification": "neither_or_uncertain"
+    }
+  },
+  {
+    "candidateId": "anonymized_VM_1793682784520",
+    "filename": "anonymized_VM_1793682784520.docx",
+    "status": "extracted_and_cleaned",
+    "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
+    "auditDetails": {
+      "rawCharLength": 2623,
+      "lcaIndependentMonths": 49,
+      "designMonths": 0,
+      "lcaScore": 60.1,
+      "uiuxScore": 10.6,
+      "classification": "lca"
+    }
+  },
+  {
+    "candidateId": "anonymized_resume_1793685080327",
+    "filename": "anonymized_resume_1793685080327.docx",
+    "status": "empty_document",
+    "action": "Logged as empty baseline record with 0 score; classified as neither_or_uncertain.",
+    "auditDetails": "File contains 0 text nodes and 0 drawings in DOCX XML"
+  }
+]

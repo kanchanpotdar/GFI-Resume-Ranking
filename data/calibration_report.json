@@ -1,0 +1,44 @@
+{
+  "reportDate": "2026-11-11T08:35:07.788Z",
+  "scoringConfigVersion": "1.0.0",
+  "embeddingModel": "BAAI/bge-small-en-v1.5",
+  "semanticRefRange": {
+    "min": 0.5,
+    "max": 0.85
+  },
+  "thresholds": {
+    "lca": 50,
+    "uiux": 50
+  },
+  "datasetSummary": {
+    "totalCandidates": 47,
+    "readyCandidates": 46,
+    "emptyCandidates": 1
+  },
+  "classificationDistribution": {
+    "lca": 8,
+    "uiux": 20,
+    "both": 0,
+    "neither_or_uncertain": 19
+  },
+  "representativeReviewedSamples": [
+    {
+      "candidateId": "anonymized_TM_1793682784495",
+      "role": "lca",
+      "score": 75.8,
+      "validation": "Confirmed strong LCA background, ISO compliance, LCI models, and domain education."
+    },
+    {
+      "candidateId": "anonymized_DVJ_1793685080268",
+      "role": "uiux",
+      "score": 95.4,
+      "validation": "Confirmed Figma proficiency, case study projects, and user research evidence."
+    },
+    {
+      "candidateId": "anonymized_resume_1793685080327",
+      "role": "empty_document",
+      "score": 0,
+      "validation": "Confirmed empty XML paragraph, correctly zero-scored and classified as neither_or_uncertain."
+    }
+  ]
+}
