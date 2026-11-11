@@ -8,7 +8,7 @@
       "rawCharLength": 4006,
       "lcaIndependentMonths": 0,
       "designMonths": 0,
-      "lcaScore": 21.7,
+      "lcaScore": 19.7,
       "uiuxScore": 18.3,
       "classification": "neither_or_uncertain"
     }
@@ -23,7 +23,7 @@
       "lcaIndependentMonths": 0,
       "designMonths": 2,
       "lcaScore": 0,
-      "uiuxScore": 60.3,
+      "uiuxScore": 57.3,
       "classification": "uiux"
     }
   },
@@ -37,7 +37,7 @@
       "lcaIndependentMonths": 0,
       "designMonths": 6,
       "lcaScore": 3.5,
-      "uiuxScore": 88.3,
+      "uiuxScore": 85.3,
       "classification": "uiux"
     }
   },
@@ -50,7 +50,7 @@
       "rawCharLength": 4521,
       "lcaIndependentMonths": 0,
       "designMonths": 0,
-      "lcaScore": 14.4,
+      "lcaScore": 12.4,
       "uiuxScore": 33.2,
       "classification": "neither_or_uncertain"
     }
@@ -79,7 +79,7 @@
       "lcaIndependentMonths": 0,
       "designMonths": 9,
       "lcaScore": 3,
-      "uiuxScore": 71.9,
+      "uiuxScore": 68.9,
       "classification": "uiux"
     }
   },
@@ -107,7 +107,7 @@
       "lcaIndependentMonths": 0,
       "designMonths": 0,
       "lcaScore": 3,
-      "uiuxScore": 89.5,
+      "uiuxScore": 87.5,
       "classification": "uiux"
     }
   },
@@ -121,7 +121,7 @@
       "lcaIndependentMonths": 0,
       "designMonths": 8,
       "lcaScore": 0.9,
-      "uiuxScore": 77.3,
+      "uiuxScore": 75.3,
       "classification": "uiux"
     }
   },
@@ -162,8 +162,8 @@
       "rawCharLength": 1735,
       "lcaIndependentMonths": 0,
       "designMonths": 42,
-      "lcaScore": 5,
-      "uiuxScore": 68.1,
+      "lcaScore": 0,
+      "uiuxScore": 65.1,
       "classification": "uiux"
     }
   },
@@ -191,7 +191,7 @@
       "lcaIndependentMonths": 0,
       "designMonths": 0,
       "lcaScore": 3,
-      "uiuxScore": 75,
+      "uiuxScore": 73,
       "classification": "uiux"
     }
   },
@@ -219,7 +219,7 @@
       "lcaIndependentMonths": 0,
       "designMonths": 7,
       "lcaScore": 0,
-      "uiuxScore": 88.8,
+      "uiuxScore": 85.8,
       "classification": "uiux"
     }
   },
@@ -245,7 +245,7 @@
     "auditDetails": {
       "rawCharLength": 1848,
       "lcaIndependentMonths": 0,
-      "designMonths": 19,
+      "designMonths": 18,
       "lcaScore": 0.9,
       "uiuxScore": 70.8,
       "classification": "uiux"
@@ -261,8 +261,8 @@
       "lcaIndependentMonths": 0,
       "designMonths": 0,
       "lcaScore": 3.7,
-      "uiuxScore": 51.5,
-      "classification": "uiux"
+      "uiuxScore": 48.5,
+      "classification": "neither_or_uncertain"
     }
   },
   {
@@ -288,7 +288,7 @@
       "rawCharLength": 3739,
       "lcaIndependentMonths": 48,
       "designMonths": 0,
-      "lcaScore": 65.7,
+      "lcaScore": 60.7,
       "uiuxScore": 33.2,
       "classification": "lca"
     }
@@ -317,7 +317,7 @@
       "lcaIndependentMonths": 0,
       "designMonths": 0,
       "lcaScore": 0,
-      "uiuxScore": 49.2,
+      "uiuxScore": 46.2,
       "classification": "neither_or_uncertain"
     }
   },
@@ -387,7 +387,7 @@
       "lcaIndependentMonths": 0,
       "designMonths": 4,
       "lcaScore": 0,
-      "uiuxScore": 79.8,
+      "uiuxScore": 76.8,
       "classification": "uiux"
     }
   },
@@ -400,7 +400,7 @@
       "rawCharLength": 3368,
       "lcaIndependentMonths": 27,
       "designMonths": 27,
-      "lcaScore": 59.7,
+      "lcaScore": 56.7,
       "uiuxScore": 24.6,
       "classification": "lca"
     }
@@ -415,7 +415,7 @@
       "lcaIndependentMonths": 0,
       "designMonths": 18,
       "lcaScore": 0,
-      "uiuxScore": 69.4,
+      "uiuxScore": 66.4,
       "classification": "uiux"
     }
   },
@@ -457,7 +457,7 @@
       "lcaIndependentMonths": 0,
       "designMonths": 3,
       "lcaScore": 3,
-      "uiuxScore": 88.7,
+      "uiuxScore": 85.7,
       "classification": "uiux"
     }
   },
@@ -485,7 +485,7 @@
       "lcaIndependentMonths": 0,
       "designMonths": 3,
       "lcaScore": 0,
-      "uiuxScore": 82,
+      "uiuxScore": 79,
       "classification": "uiux"
     }
   },
@@ -610,7 +610,7 @@
       "rawCharLength": 2635,
       "lcaIndependentMonths": 16,
       "designMonths": 0,
-      "lcaScore": 35.5,
+      "lcaScore": 33.5,
       "uiuxScore": 6.7,
       "classification": "neither_or_uncertain"
     }
@@ -638,7 +638,7 @@
       "rawCharLength": 2623,
       "lcaIndependentMonths": 30,
       "designMonths": 0,
-      "lcaScore": 63.9,
+      "lcaScore": 58.9,
       "uiuxScore": 11.9,
       "classification": "lca"
     }

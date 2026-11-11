@@ -8,6 +8,7 @@ export interface ExperienceItem {
   rawDates: string;
   startDate?: string;
   endDate?: string;
+  interval?: [number, number] | null;
   isCurrent: boolean;
   durationMonths: number;
   bullets: string[];
@@ -29,8 +30,8 @@ export interface ProjectItem {
 export interface EducationItem {
   degree: string;
   institution: string;
-  year?: string;
-  score?: string;
+  year?: string | null;
+  score?: string | null;
   domain: "environmental" | "design" | "allied_technical" | "general" | "unknown";
   evidenceSpan?: string;
 }
@@ -69,6 +70,8 @@ export interface CandidateExtraction {
   };
   rawTextLength: number;
   warnings: string[];
+  lcaChunk?: string;
+  uiuxChunk?: string;
 }
 
 export interface SubScoreBreakdown {
@@ -88,6 +91,8 @@ export interface RequirementEvidence {
   evidenceSpan: string;
 }
 
+export type EligibilityStatus = "eligible" | "conditionally_eligible" | "ineligible";
+
 export interface CandidateRoleScore {
   roleId: RoleType;
   roleTitle: string;
@@ -98,6 +103,9 @@ export interface CandidateRoleScore {
   semanticNormalized: number;
   requirementsEvidence: RequirementEvidence[];
   eligibilityFlags: {
+    isEligible: boolean;
+    eligibilityStatus: EligibilityStatus;
+    meetsMandatoryRequirements: boolean;
     experienceConflictNotice?: string;
     meetsRoleThreshold: boolean;
     criticalRequirementMissing?: string[];

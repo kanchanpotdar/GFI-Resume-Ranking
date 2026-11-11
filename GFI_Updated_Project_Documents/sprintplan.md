@@ -62,8 +62,8 @@ Deliver the agreed Growth For Impact resume ranking prototype **by Saturday, 14 
 - [x] LCA 4–6 vs 2–3 year source conflict documented and shown; thresholds calibrated; four-outcome classification
 - [x] Sprint 1.5 Independent validation audit: extraction discrepancies resolved, test oracle reconciliation, NDCG/Precision evaluated, 6 audit reports created
 - [x] Sprint 1.5 Remediation: Multi-line project grouping, education university linking (0/82 blank), 4-tier ISO standards scoring, dual-layer oracle reconciliation (100.0% Layer A agreement), canonical ONNX embeddings with multi-chunk pooling, honest evaluation benchmarks certified
-- [ ] LCA/UI-UX tabs, filtering/sorting, inspectable evidence and source references
-- [ ] New PDF/DOCX upload, duplicate detection, comparable scoring and two-role rerank
+- [x] LCA/UI-UX tabs, filtering/sorting, inspectable evidence and source references
+- [x] New PDF/DOCX upload, duplicate detection, comparable scoring and two-role rerank
 - [ ] Secure HF calls; explicit timeout/provider/scanned-file/oversize errors
 - [ ] IndexedDB recovery, per-upload delete and reset, privacy messaging
 - [ ] Unit/integration tests and representative human review

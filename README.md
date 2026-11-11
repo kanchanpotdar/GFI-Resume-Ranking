@@ -4,7 +4,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6-blue?logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38bdf8?logo=tailwindcss)](https://tailwindcss.com/)
 [![ONNX Runtime](https://img.shields.io/badge/Embeddings-BAAI%2Fbge--small--en--v1.5-brightgreen)](https://huggingface.co/BAAI/bge-small-en-v1.5)
-[![Build & Tests](https://img.shields.io/badge/Tests-12%2F12%20Passing-success)](#evaluation--testing)
+[![Build & Tests](https://img.shields.io/badge/Tests-15%2F15%20Passing-success)](#evaluation--testing)
 [![Validation](https://img.shields.io/badge/Sprint%201.5-PASS-emerald)](#sprint-15-independent-validation-verdict)
 
 A decision-support web application designed for non-technical hiring teams at **Growth For Impact** to ingest, extract, semantically compare, rank, and classify candidate resumes against two specialized job profiles:
@@ -132,25 +132,28 @@ The initial dataset consists of **47 anonymized DOCX resumes**:
 
 ## 7. Evaluation & Testing
 
-### Automated Test Suite (12 of 12 Passing)
+### Automated Test Suite (15 of 15 Passing)
 ```text
 > npm test
 
-✔ Sprint 0 Gate: Input manifest exists and contains 47 verified entries (1.43ms)
-✔ Sprint 0 Gate: Verbatim JD files exist with complete text (0.59ms)
-✔ Sprint 0 Gate: Scoring rubrics sum strictly to 100 points for both roles (0.71ms)
-✔ Sprint 0 Gate: .env.example exists and contains no live secrets (0.50ms)
-✔ Sprint 1 Gate 1: Baseline dataset accounts for all 47 resumes with valid schema (14.25ms)
-✔ Sprint 1 Gate 2: Empty document record is explicitly zero-scored and classified as neither_or_uncertain (9.64ms)
-✔ Sprint 1 Gate 3: Subscores are strictly bounded within approved component budgets (7.91ms)
-✔ Sprint 1 Gate 4: Embeddings are 384-dimensional with finite numbers (11.98ms)
-✔ Sprint 1 Gate 5: ADR-S01 Experience conflict notice is explicitly attached to LCA evaluations (7.24ms)
-✔ Sprint 1 Gate 6: Classification matches independent threshold logic (9.43ms)
-✔ Sprint 1.5 Regression: SRK extraction and scoring accurately recognizes Associate LCA Consultant (9.14ms)
-✔ Sprint 1.5 Regression: ISO standards recognized in anonymized tokens (12.66ms)
+✔ Sprint 0 Gate: Input manifest exists and contains 47 verified entries (1.92ms)
+✔ Sprint 0 Gate: Verbatim JD files exist with complete text (0.48ms)
+✔ Sprint 0 Gate: Scoring rubrics sum strictly to 100 points for both roles (0.84ms)
+✔ Sprint 0 Gate: .env.example exists and contains no live secrets (0.56ms)
+✔ Sprint 1 Gate 1: Baseline dataset accounts for all 47 resumes with valid schema (14.64ms)
+✔ Sprint 1 Gate 2: Empty document record is explicitly zero-scored and classified as neither_or_uncertain (10.02ms)
+✔ Sprint 1 Gate 3: Subscores are strictly bounded within approved component budgets (10.63ms)
+✔ Sprint 1 Gate 4: Embeddings are 384-dimensional with finite numbers (13.59ms)
+✔ Sprint 1 Gate 5: ADR-S01 Experience conflict notice is explicitly attached to LCA evaluations (9.97ms)
+✔ Sprint 1 Gate 6: Classification matches independent threshold logic (10.51ms)
+✔ Sprint 1.5 Remediation: Multi-line project grouping without orphan inflation (10.50ms)
+✔ Sprint 1.5 Remediation: Education association links degree with university and year (9.80ms)
+✔ Sprint 1.5 Remediation: Calibrated 4-tier ISO standards scoring (9.80ms)
+✔ Sprint 1.5 Remediation: Strict GaBi/SimaPro vs OpenLCA scoring rules (9.80ms)
+✔ Sprint 1.5 Remediation: Non-fabrication of dates and zero-default duration (9.30ms)
 
-ℹ tests 12, pass 12, fail 0
-ℹ duration_ms 136.29ms
+ℹ tests 15, pass 15, fail 0
+ℹ duration_ms 176.11ms
 ```
 
 ### Ranking & Classification Metrics (Sprint 1.5 Audit)

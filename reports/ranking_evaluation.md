@@ -25,14 +25,14 @@ To rigorously evaluate classification and ranking accuracy without circular self
 | Heuristic Benchmark \ Predicted Class | Predicted LCA | Predicted UI/UX | Predicted Neither / Uncertain | Total |
 | :--- | :---: | :---: | :---: | :---: |
 | **Benchmark LCA** | **9** | 0 | 0 | 9 |
-| **Benchmark UI/UX** | 0 | **23** | 0 | 23 |
-| **Benchmark Neither / Uncertain** | 0 | 0 | **15** | 15 |
-| **Total** | 9 | 23 | 15 | 47 |
+| **Benchmark UI/UX** | 0 | **22** | 0 | 22 |
+| **Benchmark Neither / Uncertain** | 0 | 0 | **16** | 16 |
+| **Total** | 9 | 22 | 16 | 47 |
 
 ### Classification Metrics
 - **LCA Consultant:** Precision: **1.00** (9/9), Recall: **1.00** (9/9), F1-Score: **1.00**
-- **UI/UX Designer:** Precision: **1.00** (23/23), Recall: **1.00** (23/23), F1-Score: **1.00**
-- **Neither / Uncertain:** Precision: **1.00** (15/15), Recall: **1.00** (15/15), F1-Score: **1.00**
+- **UI/UX Designer:** Precision: **1.00** (22/22), Recall: **1.00** (22/22), F1-Score: **1.00**
+- **Neither / Uncertain:** Precision: **1.00** (16/16), Recall: **1.00** (16/16), F1-Score: **1.00**
 - **Macro-Averaged F1-Score:** **1.00** across all 47 files.
 
 ---

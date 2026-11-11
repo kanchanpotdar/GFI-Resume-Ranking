@@ -2,6 +2,7 @@ import {
   CandidateExtraction,
   CandidateRoleScore,
   ClassificationType,
+  EligibilityStatus,
   RequirementEvidence,
   SubScoreBreakdown,
 } from "./types";
@@ -35,6 +36,9 @@ export function scoreLCARole(
       semanticNormalized: 0,
       requirementsEvidence: [],
       eligibilityFlags: {
+        isEligible: false,
+        eligibilityStatus: "ineligible",
+        meetsMandatoryRequirements: false,
         meetsRoleThreshold: false,
         criticalRequirementMissing: ["Document contains no text/content (0 XML text nodes)"],
         reviewNeededFlags: ["Empty document record: Unscorable due to insufficient evidence"],
@@ -43,34 +47,57 @@ export function scoreLCARole(
     };
   }
 
+  const expAndProjectText = [
+    ...extraction.experience.map(e => `${e.title} ${e.company} ${e.bullets.join(" ")}`),
+    ...extraction.projects.map(p => `${p.title} ${p.description} ${p.bullets.join(" ")}`),
+  ].join(" ").toLowerCase();
+  const skillsListText = extraction.skills.allSkills.join(" ").toLowerCase();
+
   const allText = [
     extraction.headline,
     extraction.summary,
-    ...extraction.skills.allSkills,
-    ...extraction.experience.map(e => `${e.title} ${e.company} ${e.bullets.join(" ")}`),
-    ...extraction.projects.map(p => `${p.title} ${p.description} ${p.bullets.join(" ")}`),
+    skillsListText,
+    expAndProjectText,
   ].join(" ").toLowerCase();
 
   const reqEvidence: RequirementEvidence[] = [];
 
   // 1. SKILLS (Max 30 pts)
   // 1.1 GaBi or SimaPro hands-on (15 pts) - Essential JD requirement
-  const hasGabi = allText.includes("gabi");
-  const hasSimaPro = allText.includes("simapro");
-  const hasOpenLca = allText.includes("openlca") || allText.includes("open lca");
+  const gabiInExpProj = expAndProjectText.includes("gabi");
+  const simaProInExpProj = expAndProjectText.includes("simapro") || expAndProjectText.includes("sima pro");
+  const openLcaInExpProj = expAndProjectText.includes("openlca") || expAndProjectText.includes("open lca");
+
+  const gabiInSkills = skillsListText.includes("gabi");
+  const simaProInSkills = skillsListText.includes("simapro") || skillsListText.includes("sima pro");
+  const openLcaInSkills = skillsListText.includes("openlca") || skillsListText.includes("open lca");
+
+  const hasGabi = gabiInExpProj || gabiInSkills;
+  const hasSimaPro = simaProInExpProj || simaProInSkills;
+  const hasOpenLca = openLcaInExpProj || openLcaInSkills;
+
   let gabiPoints = 0;
+  let gabiDemonstrated = false;
   let gabiEvidence = "Neither GaBi nor SimaPro explicitly evidenced in resume.";
-  if (hasGabi && hasSimaPro) {
+
+  if (gabiInExpProj || simaProInExpProj) {
     gabiPoints = 15;
-    gabiEvidence = "Evidenced hands-on expertise in both GaBi and SimaPro software.";
-  } else if (hasGabi) {
-    gabiPoints = 15;
-    gabiEvidence = "Evidenced hands-on expertise in GaBi software.";
-  } else if (hasSimaPro) {
-    gabiPoints = 15;
-    gabiEvidence = "Evidenced hands-on expertise in SimaPro software.";
+    gabiDemonstrated = true;
+    if (gabiInExpProj && simaProInExpProj) {
+      gabiEvidence = "Evidenced hands-on expertise in both GaBi and SimaPro software in experience/projects.";
+    } else if (gabiInExpProj) {
+      gabiEvidence = "Evidenced hands-on expertise in GaBi software in experience/projects.";
+    } else {
+      gabiEvidence = "Evidenced hands-on expertise in SimaPro software in experience/projects.";
+    }
+  } else if (gabiInSkills || simaProInSkills) {
+    gabiPoints = 12;
+    gabiDemonstrated = false;
+    const tools = [gabiInSkills ? "GaBi" : "", simaProInSkills ? "SimaPro" : ""].filter(Boolean).join(" and ");
+    gabiEvidence = `${tools} listed in skills section without explicit project/experience bullets; requires recruiter verification of hands-on application.`;
   } else if (hasOpenLca) {
     gabiPoints = 5;
+    gabiDemonstrated = false;
     gabiEvidence = "Mentions OpenLCA; GaBi/SimaPro hands-on experience requires verification.";
   }
 
@@ -123,19 +150,31 @@ export function scoreLCARole(
   });
 
   // 1.3 LCI Data Collection, Validation & LCA Modelling (7 pts)
+  // Requires explicit LCA/LCI modeling context. Generic CAD/Aspen/ML modeling does NOT earn credit.
   const hasLci = allText.includes("lci") || allText.includes("life cycle inventory");
-  const hasModelling = allText.includes("lca modelling") || allText.includes("modelling") || allText.includes("modeling");
+  const hasLcaModelling = allText.includes("lca modelling") || allText.includes("lca modeling") ||
+                          allText.includes("inventory modelling") || allText.includes("inventory modeling") ||
+                          allText.includes("lci modelling") || allText.includes("lci modeling") ||
+                          allText.includes("carbon modelling") || allText.includes("carbon modeling") ||
+                          allText.includes("emission modelling") || allText.includes("emission modeling") ||
+                          allText.includes("mrio modelling") || allText.includes("mrio modeling") ||
+                          allText.includes("environmental modelling") || allText.includes("environmental modeling") ||
+                          ((allText.includes("modelling") || allText.includes("modeling")) &&
+                           (allText.includes("life cycle") || allText.includes("gabi") || allText.includes("simapro") || allText.includes("openlca") || allText.includes("ecoinvent")));
   const hasEpd = allText.includes("epd") || allText.includes("environmental product declaration");
+
   let lciPoints = 0;
-  if (hasLci && hasModelling) lciPoints = 7;
-  else if (hasLci || hasModelling || hasEpd || extraction.completedLcaProjectsCount > 0) lciPoints = 5;
+  if (hasLci && hasLcaModelling) lciPoints = 7;
+  else if (hasLci || (hasEpd && hasLcaModelling) || extraction.completedLcaProjectsCount > 0) lciPoints = 5;
+  else if (hasEpd || hasLcaModelling) lciPoints = 3;
+
   reqEvidence.push({
     requirementKey: "lci_methodology",
     requirementName: "LCI Data Collection, Validation & Modelling",
     status: lciPoints === 7 ? "evidenced" : lciPoints > 0 ? "partially_evidenced" : "not_evidenced",
     pointsAwarded: lciPoints,
     pointsMax: 7,
-    evidenceSpan: lciPoints === 7 ? "Demonstrated LCI data collection & LCA modelling workflows." : lciPoints > 0 ? "Mention of LCI/EPD or modeling concepts in projects." : "Not evidenced.",
+    evidenceSpan: lciPoints === 7 ? "Demonstrated LCI data collection & LCA modelling workflows." : lciPoints > 0 ? "Mention of LCI/EPD or LCA modeling concepts in projects." : "Not evidenced.",
   });
 
   const skillsScore = gabiPoints + isoPoints + lciPoints;
@@ -236,8 +275,8 @@ export function scoreLCARole(
   const criticalMissing: string[] = [];
   if (gabiPoints === 0) {
     criticalMissing.push("Missing GaBi/SimaPro software expertise");
-  } else if (gabiPoints === 5) {
-    criticalMissing.push("GaBi/SimaPro software expertise not evidenced (OpenLCA requires verification)");
+  } else if (!gabiDemonstrated) {
+    criticalMissing.push("GaBi/SimaPro software listed without demonstrated project/experience evidence (requires verification)");
   }
   if (isoStatus === "not_evidenced") {
     criticalMissing.push("Missing ISO 14040 / ISO 14044 standards compliance");
@@ -261,6 +300,17 @@ export function scoreLCARole(
     reviewFlags.push("Minimum 1-year commitment requires confirmation");
   }
 
+  const meetsMandatoryLca = hasGabi || hasSimaPro;
+  const meetsRoleThreshold = totalScore >= LCA_THRESHOLD;
+  let eligibilityStatus: EligibilityStatus;
+  if (meetsRoleThreshold && meetsMandatoryLca && (isoStatus === "evidenced" || isoStatus === "partially_evidenced") && completedProjects >= 1) {
+    eligibilityStatus = "eligible";
+  } else if (meetsRoleThreshold || totalScore >= 40) {
+    eligibilityStatus = "conditionally_eligible";
+  } else {
+    eligibilityStatus = "ineligible";
+  }
+
   return {
     roleId: "lca",
     roleTitle: "LifeCycle Assessment (LCA) Consultant",
@@ -271,8 +321,11 @@ export function scoreLCARole(
     semanticNormalized: normCosine,
     requirementsEvidence: reqEvidence,
     eligibilityFlags: {
+      isEligible: eligibilityStatus === "eligible",
+      eligibilityStatus,
+      meetsMandatoryRequirements: meetsMandatoryLca,
       experienceConflictNotice: expNotice,
-      meetsRoleThreshold: totalScore >= LCA_THRESHOLD,
+      meetsRoleThreshold,
       criticalRequirementMissing: criticalMissing.length > 0 ? criticalMissing : undefined,
       reviewNeededFlags: reviewFlags,
     },
@@ -295,6 +348,9 @@ export function scoreUIUXRole(
       semanticNormalized: 0,
       requirementsEvidence: [],
       eligibilityFlags: {
+        isEligible: false,
+        eligibilityStatus: "ineligible",
+        meetsMandatoryRequirements: false,
         meetsRoleThreshold: false,
         criticalRequirementMissing: ["Document contains no text/content (0 XML text nodes)"],
         reviewNeededFlags: ["Empty document record: Unscorable due to insufficient evidence"],
@@ -303,24 +359,49 @@ export function scoreUIUXRole(
     };
   }
 
+  const expAndProjectText = [
+    ...extraction.experience.map(e => `${e.title} ${e.company} ${e.bullets.join(" ")}`),
+    ...extraction.projects.map(p => `${p.title} ${p.description} ${p.bullets.join(" ")}`),
+  ].join(" ").toLowerCase();
+  const skillsListText = extraction.skills.allSkills.join(" ").toLowerCase();
+
   const allText = [
     extraction.headline,
     extraction.summary,
-    ...extraction.skills.allSkills,
-    ...extraction.experience.map(e => `${e.title} ${e.company} ${e.bullets.join(" ")}`),
-    ...extraction.projects.map(p => `${p.title} ${p.description} ${p.bullets.join(" ")}`),
+    skillsListText,
+    expAndProjectText,
   ].join(" ").toLowerCase();
 
   const reqEvidence: RequirementEvidence[] = [];
 
   // 1. SKILLS (Max 30 pts)
   // 1.1 Figma & Prototyping (15 pts) - Essential
-  const hasFigma = allText.includes("figma");
-  const hasPrototyping = allText.includes("prototyp") || allText.includes("wirefram") || allText.includes("mockup");
+  const figmaInExpProj = expAndProjectText.includes("figma");
+  const figmaInSkills = skillsListText.includes("figma");
+  const protoInExpProj = expAndProjectText.includes("prototyp") || expAndProjectText.includes("wirefram") || expAndProjectText.includes("mockup");
+  const protoInSkills = skillsListText.includes("prototyp") || skillsListText.includes("wirefram") || skillsListText.includes("mockup");
+
+  const hasFigma = figmaInExpProj || figmaInSkills;
+  const hasPrototyping = protoInExpProj || protoInSkills;
+
   let figmaPoints = 0;
-  if (hasFigma && hasPrototyping) figmaPoints = 15;
-  else if (hasFigma) figmaPoints = 12;
-  else if (hasPrototyping) figmaPoints = 6;
+  let figmaDemonstrated = false;
+  if (figmaInExpProj && protoInExpProj) {
+    figmaPoints = 15;
+    figmaDemonstrated = true;
+  } else if (figmaInExpProj) {
+    figmaPoints = 13;
+    figmaDemonstrated = true;
+  } else if (figmaInSkills && hasPrototyping) {
+    figmaPoints = 12;
+    figmaDemonstrated = false;
+  } else if (figmaInSkills) {
+    figmaPoints = 10;
+    figmaDemonstrated = false;
+  } else if (hasPrototyping) {
+    figmaPoints = 6;
+    figmaDemonstrated = false;
+  }
 
   reqEvidence.push({
     requirementKey: "figma_prototyping",
@@ -328,7 +409,13 @@ export function scoreUIUXRole(
     status: figmaPoints >= 12 ? "evidenced" : figmaPoints > 0 ? "partially_evidenced" : "not_evidenced",
     pointsAwarded: figmaPoints,
     pointsMax: 15,
-    evidenceSpan: hasFigma ? "Evidenced hands-on proficiency in Figma and wireframing/prototyping." : "Figma not explicitly evidenced.",
+    evidenceSpan: figmaDemonstrated
+      ? "Evidenced hands-on proficiency in Figma and prototyping in project/work experience."
+      : hasFigma
+      ? "Figma listed in skills section without explicit project/experience bullets; requires portfolio verification."
+      : hasPrototyping
+      ? "Prototyping mentioned without explicit Figma citation."
+      : "Figma not explicitly evidenced.",
   });
 
   // 1.2 UI/UX Design Principles & Design Systems (10 pts)
@@ -470,13 +557,28 @@ export function scoreUIUXRole(
 
   // Critical requirement flags
   const criticalMissing: string[] = [];
-  if (figmaPoints === 0) criticalMissing.push("Missing Figma proficiency");
+  if (figmaPoints === 0) {
+    criticalMissing.push("Missing Figma proficiency");
+  } else if (!figmaDemonstrated) {
+    criticalMissing.push("Figma hands-on usage requires portfolio verification (listed only in skills)");
+  }
   if (projectsScore === 0) criticalMissing.push("Missing design case study or prototype evidence");
 
   // Subjective trait reviews
   const reviewFlags: string[] = [
     "Subjective traits (aesthetic sense, eye for detail, user psychology intuition) require human portfolio review",
   ];
+
+  const meetsMandatoryUIUX = hasFigma && (projectsScore >= 15 || extraction.hasDesignPortfolioOrCaseStudies);
+  const meetsRoleThreshold = totalScore >= UIUX_THRESHOLD;
+  let eligibilityStatus: EligibilityStatus;
+  if (meetsRoleThreshold && meetsMandatoryUIUX && criticalMissing.length === 0) {
+    eligibilityStatus = "eligible";
+  } else if (meetsRoleThreshold || totalScore >= 40) {
+    eligibilityStatus = "conditionally_eligible";
+  } else {
+    eligibilityStatus = "ineligible";
+  }
 
   return {
     roleId: "uiux",
@@ -488,7 +590,10 @@ export function scoreUIUXRole(
     semanticNormalized: normCosine,
     requirementsEvidence: reqEvidence,
     eligibilityFlags: {
-      meetsRoleThreshold: totalScore >= UIUX_THRESHOLD,
+      isEligible: eligibilityStatus === "eligible",
+      eligibilityStatus,
+      meetsMandatoryRequirements: meetsMandatoryUIUX,
+      meetsRoleThreshold,
       criticalRequirementMissing: criticalMissing.length > 0 ? criticalMissing : undefined,
       reviewNeededFlags: reviewFlags,
     },

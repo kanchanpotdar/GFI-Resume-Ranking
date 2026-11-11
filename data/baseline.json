@@ -1,6 +1,6 @@
 {
   "datasetVersion": "1.5.0-remediated",
-  "generatedAt": "2026-11-11T11:34:37.695Z",
+  "generatedAt": "2026-11-11T12:01:05.684Z",
   "totalCandidates": 47,
   "readyCount": 46,
   "emptyCount": 1,
@@ -948,9 +948,9 @@
           "roleId": "lca",
           "roleTitle": "LifeCycle Assessment (LCA) Consultant",
           "rubricVersion": "1.5.0-remediated",
-          "totalScore": 21.7,
+          "totalScore": 19.7,
           "subScores": {
-            "skills": 10,
+            "skills": 8,
             "experience": 0,
             "projects": 0,
             "semantic": 6.7,
@@ -979,9 +979,9 @@
               "requirementKey": "lci_methodology",
               "requirementName": "LCI Data Collection, Validation & Modelling",
               "status": "partially_evidenced",
-              "pointsAwarded": 5,
+              "pointsAwarded": 3,
               "pointsMax": 7,
-              "evidenceSpan": "Mention of LCI/EPD or modeling concepts in projects."
+              "evidenceSpan": "Mention of LCI/EPD or LCA modeling concepts in projects."
             },
             {
               "requirementKey": "independent_lca_experience",
@@ -1017,10 +1017,13 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "No evidenced independent LCA execution tenure.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
-              "GaBi/SimaPro software expertise not evidenced (OpenLCA requires verification)",
+              "GaBi/SimaPro software listed without demonstrated project/experience evidence (requires verification)",
               "Missing ISO 14040 / ISO 14044 standards compliance",
               "Completed LCA projects (0) below required 3"
             ],
@@ -1029,7 +1032,7 @@
               "Willingness to travel extensively across India requires confirmation"
             ]
           },
-          "explanation": "Total LCA score: 21.7/100. Skills: 10/30, Experience: 0/30, Projects: 0/20, Semantic: 6.7/15, Education: 5/5."
+          "explanation": "Total LCA score: 19.7/100. Skills: 8/30, Experience: 0/30, Projects: 0/20, Semantic: 6.7/15, Education: 5/5."
         },
         "uiux": {
           "roleId": "uiux",
@@ -1112,6 +1115,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
               "Missing Figma proficiency"
@@ -1124,9 +1130,9 @@
         }
       },
       "classification": "neither_or_uncertain",
-      "classificationReason": "Neither role threshold met: LCA score 21.7/100, UI/UX score 18.3/100 (both < 50).",
+      "classificationReason": "Neither role threshold met: LCA score 19.7/100, UI/UX score 18.3/100 (both < 50).",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:33.946Z"
+      "updatedAt": "2026-11-11T12:00:56.349Z"
     },
     {
       "candidateId": "anonymized_AA_1793685080195",
@@ -2115,6 +2121,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "No evidenced independent LCA execution tenure.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
@@ -2134,9 +2143,9 @@
           "roleId": "uiux",
           "roleTitle": "UI/UX Designer Intern",
           "rubricVersion": "1.5.0-remediated",
-          "totalScore": 60.3,
+          "totalScore": 57.3,
           "subScores": {
-            "skills": 20,
+            "skills": 17,
             "experience": 10,
             "projects": 10,
             "semantic": 10.3,
@@ -2149,9 +2158,9 @@
               "requirementKey": "figma_prototyping",
               "requirementName": "Figma & Interactive Prototyping Proficiency",
               "status": "evidenced",
-              "pointsAwarded": 15,
+              "pointsAwarded": 12,
               "pointsMax": 15,
-              "evidenceSpan": "Evidenced hands-on proficiency in Figma and wireframing/prototyping."
+              "evidenceSpan": "Figma listed in skills section without explicit project/experience bullets; requires portfolio verification."
             },
             {
               "requirementKey": "design_principles",
@@ -2211,18 +2220,24 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "conditionally_eligible",
+            "meetsMandatoryRequirements": false,
             "meetsRoleThreshold": true,
+            "criticalRequirementMissing": [
+              "Figma hands-on usage requires portfolio verification (listed only in skills)"
+            ],
             "reviewNeededFlags": [
               "Subjective traits (aesthetic sense, eye for detail, user psychology intuition) require human portfolio review"
             ]
           },
-          "explanation": "Total UI/UX score: 60.3/100. Skills: 20/30, Experience: 10/10, Projects: 10/30, Semantic: 10.3/20, Education: 10/10."
+          "explanation": "Total UI/UX score: 57.3/100. Skills: 17/30, Experience: 10/10, Projects: 10/30, Semantic: 10.3/20, Education: 10/10."
         }
       },
       "classification": "uiux",
-      "classificationReason": "Qualified for UI/UX Design Intern (score 60.3/100 >= 50); LCA score (0/100) below threshold.",
+      "classificationReason": "Qualified for UI/UX Design Intern (score 57.3/100 >= 50); LCA score (0/100) below threshold.",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:34.008Z"
+      "updatedAt": "2026-11-11T12:00:56.506Z"
     },
     {
       "candidateId": "anonymized_AA_1793685080402",
@@ -3255,6 +3270,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "No evidenced independent LCA execution tenure.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
@@ -3274,9 +3292,9 @@
           "roleId": "uiux",
           "roleTitle": "UI/UX Designer Intern",
           "rubricVersion": "1.5.0-remediated",
-          "totalScore": 88.3,
+          "totalScore": 85.3,
           "subScores": {
-            "skills": 27,
+            "skills": 24,
             "experience": 10,
             "projects": 30,
             "semantic": 14.3,
@@ -3289,9 +3307,9 @@
               "requirementKey": "figma_prototyping",
               "requirementName": "Figma & Interactive Prototyping Proficiency",
               "status": "evidenced",
-              "pointsAwarded": 15,
+              "pointsAwarded": 12,
               "pointsMax": 15,
-              "evidenceSpan": "Evidenced hands-on proficiency in Figma and wireframing/prototyping."
+              "evidenceSpan": "Figma listed in skills section without explicit project/experience bullets; requires portfolio verification."
             },
             {
               "requirementKey": "design_principles",
@@ -3351,18 +3369,24 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "conditionally_eligible",
+            "meetsMandatoryRequirements": true,
             "meetsRoleThreshold": true,
+            "criticalRequirementMissing": [
+              "Figma hands-on usage requires portfolio verification (listed only in skills)"
+            ],
             "reviewNeededFlags": [
               "Subjective traits (aesthetic sense, eye for detail, user psychology intuition) require human portfolio review"
             ]
           },
-          "explanation": "Total UI/UX score: 88.3/100. Skills: 27/30, Experience: 10/10, Projects: 30/30, Semantic: 14.3/20, Education: 7/10."
+          "explanation": "Total UI/UX score: 85.3/100. Skills: 24/30, Experience: 10/10, Projects: 30/30, Semantic: 14.3/20, Education: 7/10."
         }
       },
       "classification": "uiux",
-      "classificationReason": "Qualified for UI/UX Design Intern (score 88.3/100 >= 50); LCA score (3.5/100) below threshold.",
+      "classificationReason": "Qualified for UI/UX Design Intern (score 85.3/100 >= 50); LCA score (3.5/100) below threshold.",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:34.137Z"
+      "updatedAt": "2026-11-11T12:00:56.756Z"
     },
     {
       "candidateId": "anonymized_AK_1793682784184",
@@ -4341,9 +4365,9 @@
           "roleId": "lca",
           "roleTitle": "LifeCycle Assessment (LCA) Consultant",
           "rubricVersion": "1.5.0-remediated",
-          "totalScore": 14.4,
+          "totalScore": 12.4,
           "subScores": {
-            "skills": 5,
+            "skills": 3,
             "experience": 0,
             "projects": 0,
             "semantic": 4.4,
@@ -4372,9 +4396,9 @@
               "requirementKey": "lci_methodology",
               "requirementName": "LCI Data Collection, Validation & Modelling",
               "status": "partially_evidenced",
-              "pointsAwarded": 5,
+              "pointsAwarded": 3,
               "pointsMax": 7,
-              "evidenceSpan": "Mention of LCI/EPD or modeling concepts in projects."
+              "evidenceSpan": "Mention of LCI/EPD or LCA modeling concepts in projects."
             },
             {
               "requirementKey": "independent_lca_experience",
@@ -4410,6 +4434,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "No evidenced independent LCA execution tenure.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
@@ -4423,7 +4450,7 @@
               "Minimum 1-year commitment requires confirmation"
             ]
           },
-          "explanation": "Total LCA score: 14.4/100. Skills: 5/30, Experience: 0/30, Projects: 0/20, Semantic: 4.4/15, Education: 5/5."
+          "explanation": "Total LCA score: 12.4/100. Skills: 3/30, Experience: 0/30, Projects: 0/20, Semantic: 4.4/15, Education: 5/5."
         },
         "uiux": {
           "roleId": "uiux",
@@ -4506,6 +4533,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
               "Missing Figma proficiency"
@@ -4518,9 +4548,9 @@
         }
       },
       "classification": "neither_or_uncertain",
-      "classificationReason": "Neither role threshold met: LCA score 14.4/100, UI/UX score 33.2/100 (both < 50).",
+      "classificationReason": "Neither role threshold met: LCA score 12.4/100, UI/UX score 33.2/100 (both < 50).",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:34.215Z"
+      "updatedAt": "2026-11-11T12:00:56.952Z"
     },
     {
       "candidateId": "anonymized_AL_1793685080183",
@@ -5505,6 +5535,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "No evidenced independent LCA execution tenure.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
@@ -5541,7 +5574,7 @@
               "status": "evidenced",
               "pointsAwarded": 15,
               "pointsMax": 15,
-              "evidenceSpan": "Evidenced hands-on proficiency in Figma and wireframing/prototyping."
+              "evidenceSpan": "Evidenced hands-on proficiency in Figma and prototyping in project/work experience."
             },
             {
               "requirementKey": "design_principles",
@@ -5601,6 +5634,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": true,
+            "eligibilityStatus": "eligible",
+            "meetsMandatoryRequirements": true,
             "meetsRoleThreshold": true,
             "reviewNeededFlags": [
               "Subjective traits (aesthetic sense, eye for detail, user psychology intuition) require human portfolio review"
@@ -5612,7 +5648,7 @@
       "classification": "uiux",
       "classificationReason": "Qualified for UI/UX Design Intern (score 84.9/100 >= 50); LCA score (3/100) below threshold.",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:34.308Z"
+      "updatedAt": "2026-11-11T12:00:57.182Z"
     },
     {
       "candidateId": "anonymized_AN_1793685080356",
@@ -6593,6 +6629,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "No evidenced independent LCA execution tenure.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
@@ -6612,9 +6651,9 @@
           "roleId": "uiux",
           "roleTitle": "UI/UX Designer Intern",
           "rubricVersion": "1.5.0-remediated",
-          "totalScore": 71.9,
+          "totalScore": 68.9,
           "subScores": {
-            "skills": 22,
+            "skills": 19,
             "experience": 10,
             "projects": 20,
             "semantic": 12.9,
@@ -6627,9 +6666,9 @@
               "requirementKey": "figma_prototyping",
               "requirementName": "Figma & Interactive Prototyping Proficiency",
               "status": "evidenced",
-              "pointsAwarded": 15,
+              "pointsAwarded": 12,
               "pointsMax": 15,
-              "evidenceSpan": "Evidenced hands-on proficiency in Figma and wireframing/prototyping."
+              "evidenceSpan": "Figma listed in skills section without explicit project/experience bullets; requires portfolio verification."
             },
             {
               "requirementKey": "design_principles",
@@ -6689,18 +6728,24 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "conditionally_eligible",
+            "meetsMandatoryRequirements": true,
             "meetsRoleThreshold": true,
+            "criticalRequirementMissing": [
+              "Figma hands-on usage requires portfolio verification (listed only in skills)"
+            ],
             "reviewNeededFlags": [
               "Subjective traits (aesthetic sense, eye for detail, user psychology intuition) require human portfolio review"
             ]
           },
-          "explanation": "Total UI/UX score: 71.9/100. Skills: 22/30, Experience: 10/10, Projects: 20/30, Semantic: 12.9/20, Education: 7/10."
+          "explanation": "Total UI/UX score: 68.9/100. Skills: 19/30, Experience: 10/10, Projects: 20/30, Semantic: 12.9/20, Education: 7/10."
         }
       },
       "classification": "uiux",
-      "classificationReason": "Qualified for UI/UX Design Intern (score 71.9/100 >= 50); LCA score (3/100) below threshold.",
+      "classificationReason": "Qualified for UI/UX Design Intern (score 68.9/100 >= 50); LCA score (3/100) below threshold.",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:34.377Z"
+      "updatedAt": "2026-11-11T12:00:57.344Z"
     },
     {
       "candidateId": "anonymized_APS_1793685080222",
@@ -7752,6 +7797,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "No evidenced independent LCA execution tenure.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
@@ -7788,7 +7836,7 @@
               "status": "evidenced",
               "pointsAwarded": 15,
               "pointsMax": 15,
-              "evidenceSpan": "Evidenced hands-on proficiency in Figma and wireframing/prototyping."
+              "evidenceSpan": "Evidenced hands-on proficiency in Figma and prototyping in project/work experience."
             },
             {
               "requirementKey": "design_principles",
@@ -7848,6 +7896,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": true,
+            "eligibilityStatus": "eligible",
+            "meetsMandatoryRequirements": true,
             "meetsRoleThreshold": true,
             "reviewNeededFlags": [
               "Subjective traits (aesthetic sense, eye for detail, user psychology intuition) require human portfolio review"
@@ -7859,7 +7910,7 @@
       "classification": "uiux",
       "classificationReason": "Qualified for UI/UX Design Intern (score 93.5/100 >= 50); LCA score (0.3/100) below threshold.",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:34.466Z"
+      "updatedAt": "2026-11-11T12:00:57.544Z"
     },
     {
       "candidateId": "anonymized_AR_1793685080207",
@@ -8844,6 +8895,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "No evidenced independent LCA execution tenure.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
@@ -8863,9 +8917,9 @@
           "roleId": "uiux",
           "roleTitle": "UI/UX Designer Intern",
           "rubricVersion": "1.5.0-remediated",
-          "totalScore": 89.5,
+          "totalScore": 87.5,
           "subScores": {
-            "skills": 27,
+            "skills": 25,
             "experience": 10,
             "projects": 30,
             "semantic": 15.5,
@@ -8878,9 +8932,9 @@
               "requirementKey": "figma_prototyping",
               "requirementName": "Figma & Interactive Prototyping Proficiency",
               "status": "evidenced",
-              "pointsAwarded": 15,
+              "pointsAwarded": 13,
               "pointsMax": 15,
-              "evidenceSpan": "Evidenced hands-on proficiency in Figma and wireframing/prototyping."
+              "evidenceSpan": "Evidenced hands-on proficiency in Figma and prototyping in project/work experience."
             },
             {
               "requirementKey": "design_principles",
@@ -8940,18 +8994,21 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": true,
+            "eligibilityStatus": "eligible",
+            "meetsMandatoryRequirements": true,
             "meetsRoleThreshold": true,
             "reviewNeededFlags": [
               "Subjective traits (aesthetic sense, eye for detail, user psychology intuition) require human portfolio review"
             ]
           },
-          "explanation": "Total UI/UX score: 89.5/100. Skills: 27/30, Experience: 10/10, Projects: 30/30, Semantic: 15.5/20, Education: 7/10."
+          "explanation": "Total UI/UX score: 87.5/100. Skills: 25/30, Experience: 10/10, Projects: 30/30, Semantic: 15.5/20, Education: 7/10."
         }
       },
       "classification": "uiux",
-      "classificationReason": "Qualified for UI/UX Design Intern (score 89.5/100 >= 50); LCA score (3/100) below threshold.",
+      "classificationReason": "Qualified for UI/UX Design Intern (score 87.5/100 >= 50); LCA score (3/100) below threshold.",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:34.583Z"
+      "updatedAt": "2026-11-11T12:00:57.779Z"
     },
     {
       "candidateId": "anonymized_AS_1793685080379",
@@ -9996,6 +10053,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "No evidenced independent LCA execution tenure.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
@@ -10015,9 +10075,9 @@
           "roleId": "uiux",
           "roleTitle": "UI/UX Designer Intern",
           "rubricVersion": "1.5.0-remediated",
-          "totalScore": 77.3,
+          "totalScore": 75.3,
           "subScores": {
-            "skills": 24,
+            "skills": 22,
             "experience": 10,
             "projects": 24,
             "semantic": 15.3,
@@ -10029,10 +10089,10 @@
             {
               "requirementKey": "figma_prototyping",
               "requirementName": "Figma & Interactive Prototyping Proficiency",
-              "status": "evidenced",
-              "pointsAwarded": 12,
+              "status": "partially_evidenced",
+              "pointsAwarded": 10,
               "pointsMax": 15,
-              "evidenceSpan": "Evidenced hands-on proficiency in Figma and wireframing/prototyping."
+              "evidenceSpan": "Figma listed in skills section without explicit project/experience bullets; requires portfolio verification."
             },
             {
               "requirementKey": "design_principles",
@@ -10092,18 +10152,24 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "conditionally_eligible",
+            "meetsMandatoryRequirements": true,
             "meetsRoleThreshold": true,
+            "criticalRequirementMissing": [
+              "Figma hands-on usage requires portfolio verification (listed only in skills)"
+            ],
             "reviewNeededFlags": [
               "Subjective traits (aesthetic sense, eye for detail, user psychology intuition) require human portfolio review"
             ]
           },
-          "explanation": "Total UI/UX score: 77.3/100. Skills: 24/30, Experience: 10/10, Projects: 24/30, Semantic: 15.3/20, Education: 4/10."
+          "explanation": "Total UI/UX score: 75.3/100. Skills: 22/30, Experience: 10/10, Projects: 24/30, Semantic: 15.3/20, Education: 4/10."
         }
       },
       "classification": "uiux",
-      "classificationReason": "Qualified for UI/UX Design Intern (score 77.3/100 >= 50); LCA score (0.9/100) below threshold.",
+      "classificationReason": "Qualified for UI/UX Design Intern (score 75.3/100 >= 50); LCA score (0.9/100) below threshold.",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:34.678Z"
+      "updatedAt": "2026-11-11T12:00:58.006Z"
     },
     {
       "candidateId": "anonymized_AY_1793685080440",
@@ -11113,6 +11179,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "No evidenced independent LCA execution tenure.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
@@ -11149,7 +11218,7 @@
               "status": "evidenced",
               "pointsAwarded": 15,
               "pointsMax": 15,
-              "evidenceSpan": "Evidenced hands-on proficiency in Figma and wireframing/prototyping."
+              "evidenceSpan": "Evidenced hands-on proficiency in Figma and prototyping in project/work experience."
             },
             {
               "requirementKey": "design_principles",
@@ -11209,6 +11278,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": true,
+            "eligibilityStatus": "eligible",
+            "meetsMandatoryRequirements": true,
             "meetsRoleThreshold": true,
             "reviewNeededFlags": [
               "Subjective traits (aesthetic sense, eye for detail, user psychology intuition) require human portfolio review"
@@ -11220,7 +11292,7 @@
       "classification": "uiux",
       "classificationReason": "Qualified for UI/UX Design Intern (score 96.3/100 >= 50); LCA score (0/100) below threshold.",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:34.733Z"
+      "updatedAt": "2026-11-11T12:00:58.165Z"
     },
     {
       "candidateId": "anonymized_BA_1793682784206",
@@ -12215,6 +12287,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "No evidenced independent LCA execution tenure.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
@@ -12311,6 +12386,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
               "Missing Figma proficiency",
@@ -12326,7 +12404,7 @@
       "classification": "neither_or_uncertain",
       "classificationReason": "Neither role threshold met: LCA score 6.9/100, UI/UX score 10.1/100 (both < 50).",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:34.835Z"
+      "updatedAt": "2026-11-11T12:00:58.458Z"
     },
     {
       "candidateId": "anonymized_BS_1793685080461",
@@ -13258,9 +13336,9 @@
           "roleId": "lca",
           "roleTitle": "LifeCycle Assessment (LCA) Consultant",
           "rubricVersion": "1.5.0-remediated",
-          "totalScore": 5,
+          "totalScore": 0,
           "subScores": {
-            "skills": 5,
+            "skills": 0,
             "experience": 0,
             "projects": 0,
             "semantic": 0,
@@ -13288,10 +13366,10 @@
             {
               "requirementKey": "lci_methodology",
               "requirementName": "LCI Data Collection, Validation & Modelling",
-              "status": "partially_evidenced",
-              "pointsAwarded": 5,
+              "status": "not_evidenced",
+              "pointsAwarded": 0,
               "pointsMax": 7,
-              "evidenceSpan": "Mention of LCI/EPD or modeling concepts in projects."
+              "evidenceSpan": "Not evidenced."
             },
             {
               "requirementKey": "independent_lca_experience",
@@ -13327,6 +13405,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "No evidenced independent LCA execution tenure.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
@@ -13340,15 +13421,15 @@
               "Minimum 1-year commitment requires confirmation"
             ]
           },
-          "explanation": "Total LCA score: 5/100. Skills: 5/30, Experience: 0/30, Projects: 0/20, Semantic: 0/15, Education: 0/5."
+          "explanation": "Total LCA score: 0/100. Skills: 0/30, Experience: 0/30, Projects: 0/20, Semantic: 0/15, Education: 0/5."
         },
         "uiux": {
           "roleId": "uiux",
           "roleTitle": "UI/UX Designer Intern",
           "rubricVersion": "1.5.0-remediated",
-          "totalScore": 68.1,
+          "totalScore": 65.1,
           "subScores": {
-            "skills": 27,
+            "skills": 24,
             "experience": 10,
             "projects": 10,
             "semantic": 11.1,
@@ -13361,9 +13442,9 @@
               "requirementKey": "figma_prototyping",
               "requirementName": "Figma & Interactive Prototyping Proficiency",
               "status": "evidenced",
-              "pointsAwarded": 15,
+              "pointsAwarded": 12,
               "pointsMax": 15,
-              "evidenceSpan": "Evidenced hands-on proficiency in Figma and wireframing/prototyping."
+              "evidenceSpan": "Figma listed in skills section without explicit project/experience bullets; requires portfolio verification."
             },
             {
               "requirementKey": "design_principles",
@@ -13423,18 +13504,24 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "conditionally_eligible",
+            "meetsMandatoryRequirements": false,
             "meetsRoleThreshold": true,
+            "criticalRequirementMissing": [
+              "Figma hands-on usage requires portfolio verification (listed only in skills)"
+            ],
             "reviewNeededFlags": [
               "Subjective traits (aesthetic sense, eye for detail, user psychology intuition) require human portfolio review"
             ]
           },
-          "explanation": "Total UI/UX score: 68.1/100. Skills: 27/30, Experience: 10/10, Projects: 10/30, Semantic: 11.1/20, Education: 10/10."
+          "explanation": "Total UI/UX score: 65.1/100. Skills: 24/30, Experience: 10/10, Projects: 10/30, Semantic: 11.1/20, Education: 10/10."
         }
       },
       "classification": "uiux",
-      "classificationReason": "Qualified for UI/UX Design Intern (score 68.1/100 >= 50); LCA score (5/100) below threshold.",
+      "classificationReason": "Qualified for UI/UX Design Intern (score 65.1/100 >= 50); LCA score (0/100) below threshold.",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:34.912Z"
+      "updatedAt": "2026-11-11T12:00:58.680Z"
     },
     {
       "candidateId": "anonymized_CG_1793685080278",
@@ -14449,6 +14536,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "No evidenced independent LCA execution tenure.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
@@ -14485,7 +14575,7 @@
               "status": "evidenced",
               "pointsAwarded": 15,
               "pointsMax": 15,
-              "evidenceSpan": "Evidenced hands-on proficiency in Figma and wireframing/prototyping."
+              "evidenceSpan": "Evidenced hands-on proficiency in Figma and prototyping in project/work experience."
             },
             {
               "requirementKey": "design_principles",
@@ -14545,6 +14635,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": true,
+            "eligibilityStatus": "eligible",
+            "meetsMandatoryRequirements": true,
             "meetsRoleThreshold": true,
             "reviewNeededFlags": [
               "Subjective traits (aesthetic sense, eye for detail, user psychology intuition) require human portfolio review"
@@ -14556,7 +14649,7 @@
       "classification": "uiux",
       "classificationReason": "Qualified for UI/UX Design Intern (score 92.8/100 >= 50); LCA score (3.1/100) below threshold.",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:35.008Z"
+      "updatedAt": "2026-11-11T12:00:58.942Z"
     },
     {
       "candidateId": "anonymized_CM_1793685080412",
@@ -15522,6 +15615,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "No evidenced independent LCA execution tenure.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
@@ -15540,9 +15636,9 @@
           "roleId": "uiux",
           "roleTitle": "UI/UX Designer Intern",
           "rubricVersion": "1.5.0-remediated",
-          "totalScore": 75,
+          "totalScore": 73,
           "subScores": {
-            "skills": 25,
+            "skills": 23,
             "experience": 8,
             "projects": 20,
             "semantic": 15,
@@ -15555,9 +15651,9 @@
               "requirementKey": "figma_prototyping",
               "requirementName": "Figma & Interactive Prototyping Proficiency",
               "status": "evidenced",
-              "pointsAwarded": 15,
+              "pointsAwarded": 13,
               "pointsMax": 15,
-              "evidenceSpan": "Evidenced hands-on proficiency in Figma and wireframing/prototyping."
+              "evidenceSpan": "Evidenced hands-on proficiency in Figma and prototyping in project/work experience."
             },
             {
               "requirementKey": "design_principles",
@@ -15617,18 +15713,21 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": true,
+            "eligibilityStatus": "eligible",
+            "meetsMandatoryRequirements": true,
             "meetsRoleThreshold": true,
             "reviewNeededFlags": [
               "Subjective traits (aesthetic sense, eye for detail, user psychology intuition) require human portfolio review"
             ]
           },
-          "explanation": "Total UI/UX score: 75/100. Skills: 25/30, Experience: 8/10, Projects: 20/30, Semantic: 15/20, Education: 7/10."
+          "explanation": "Total UI/UX score: 73/100. Skills: 23/30, Experience: 8/10, Projects: 20/30, Semantic: 15/20, Education: 7/10."
         }
       },
       "classification": "uiux",
-      "classificationReason": "Qualified for UI/UX Design Intern (score 75/100 >= 50); LCA score (3/100) below threshold.",
+      "classificationReason": "Qualified for UI/UX Design Intern (score 73/100 >= 50); LCA score (3/100) below threshold.",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:35.094Z"
+      "updatedAt": "2026-11-11T12:00:59.135Z"
     },
     {
       "candidateId": "anonymized_DP_1793685080247",
@@ -16634,6 +16733,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "No evidenced independent LCA execution tenure.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
@@ -16670,7 +16772,7 @@
               "status": "evidenced",
               "pointsAwarded": 15,
               "pointsMax": 15,
-              "evidenceSpan": "Evidenced hands-on proficiency in Figma and wireframing/prototyping."
+              "evidenceSpan": "Evidenced hands-on proficiency in Figma and prototyping in project/work experience."
             },
             {
               "requirementKey": "design_principles",
@@ -16730,6 +16832,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "conditionally_eligible",
+            "meetsMandatoryRequirements": false,
             "meetsRoleThreshold": true,
             "criticalRequirementMissing": [
               "Missing design case study or prototype evidence"
@@ -16744,7 +16849,7 @@
       "classification": "uiux",
       "classificationReason": "Qualified for UI/UX Design Intern (score 58.7/100 >= 50); LCA score (3.4/100) below threshold.",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:35.182Z"
+      "updatedAt": "2026-11-11T12:00:59.337Z"
     },
     {
       "candidateId": "anonymized_DS_1793685080257",
@@ -17768,6 +17873,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "No evidenced independent LCA execution tenure.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
@@ -17787,9 +17895,9 @@
           "roleId": "uiux",
           "roleTitle": "UI/UX Designer Intern",
           "rubricVersion": "1.5.0-remediated",
-          "totalScore": 88.8,
+          "totalScore": 85.8,
           "subScores": {
-            "skills": 27,
+            "skills": 24,
             "experience": 10,
             "projects": 24,
             "semantic": 17.8,
@@ -17802,9 +17910,9 @@
               "requirementKey": "figma_prototyping",
               "requirementName": "Figma & Interactive Prototyping Proficiency",
               "status": "evidenced",
-              "pointsAwarded": 15,
+              "pointsAwarded": 12,
               "pointsMax": 15,
-              "evidenceSpan": "Evidenced hands-on proficiency in Figma and wireframing/prototyping."
+              "evidenceSpan": "Figma listed in skills section without explicit project/experience bullets; requires portfolio verification."
             },
             {
               "requirementKey": "design_principles",
@@ -17864,18 +17972,24 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "conditionally_eligible",
+            "meetsMandatoryRequirements": true,
             "meetsRoleThreshold": true,
+            "criticalRequirementMissing": [
+              "Figma hands-on usage requires portfolio verification (listed only in skills)"
+            ],
             "reviewNeededFlags": [
               "Subjective traits (aesthetic sense, eye for detail, user psychology intuition) require human portfolio review"
             ]
           },
-          "explanation": "Total UI/UX score: 88.8/100. Skills: 27/30, Experience: 10/10, Projects: 24/30, Semantic: 17.8/20, Education: 10/10."
+          "explanation": "Total UI/UX score: 85.8/100. Skills: 24/30, Experience: 10/10, Projects: 24/30, Semantic: 17.8/20, Education: 10/10."
         }
       },
       "classification": "uiux",
-      "classificationReason": "Qualified for UI/UX Design Intern (score 88.8/100 >= 50); LCA score (0/100) below threshold.",
+      "classificationReason": "Qualified for UI/UX Design Intern (score 85.8/100 >= 50); LCA score (0/100) below threshold.",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:35.249Z"
+      "updatedAt": "2026-11-11T12:00:59.491Z"
     },
     {
       "candidateId": "anonymized_DVJ_1793685080268",
@@ -18878,6 +18992,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "No evidenced independent LCA execution tenure.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
@@ -18914,7 +19031,7 @@
               "status": "evidenced",
               "pointsAwarded": 15,
               "pointsMax": 15,
-              "evidenceSpan": "Evidenced hands-on proficiency in Figma and wireframing/prototyping."
+              "evidenceSpan": "Evidenced hands-on proficiency in Figma and prototyping in project/work experience."
             },
             {
               "requirementKey": "design_principles",
@@ -18974,6 +19091,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": true,
+            "eligibilityStatus": "eligible",
+            "meetsMandatoryRequirements": true,
             "meetsRoleThreshold": true,
             "reviewNeededFlags": [
               "Subjective traits (aesthetic sense, eye for detail, user psychology intuition) require human portfolio review"
@@ -18985,7 +19105,7 @@
       "classification": "uiux",
       "classificationReason": "Qualified for UI/UX Design Intern (score 95.6/100 >= 50); LCA score (0/100) below threshold.",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:35.380Z"
+      "updatedAt": "2026-11-11T12:00:59.762Z"
     },
     {
       "candidateId": "anonymized_FK_1793685080451",
@@ -19021,7 +19141,7 @@
             "title": "UI/UX Designer (Internships)",
             "company": "Engineer Sahab",
             "rawDates": "Engineer Sahab   Jun 2025 — Dec 2026",
-            "durationMonths": 19,
+            "durationMonths": 18,
             "isCurrent": false,
             "bullets": [
               "• Designed end-to-end user experience for financial products across mobile and web platforms, focusing on intuitive navigation and clean UI.",
@@ -19103,9 +19223,9 @@
             "CSS"
           ]
         },
-        "totalExperienceMonths": 33,
+        "totalExperienceMonths": 32,
         "independentLcaExperienceMonths": 0,
-        "designExperienceMonths": 19,
+        "designExperienceMonths": 18,
         "completedLcaProjectsCount": 0,
         "hasDesignPortfolioOrCaseStudies": false,
         "hasUserResearchEvidence": true,
@@ -19970,6 +20090,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "No evidenced independent LCA execution tenure.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
@@ -20006,7 +20129,7 @@
               "status": "evidenced",
               "pointsAwarded": 15,
               "pointsMax": 15,
-              "evidenceSpan": "Evidenced hands-on proficiency in Figma and wireframing/prototyping."
+              "evidenceSpan": "Evidenced hands-on proficiency in Figma and prototyping in project/work experience."
             },
             {
               "requirementKey": "design_principles",
@@ -20030,7 +20153,7 @@
               "status": "evidenced",
               "pointsAwarded": 10,
               "pointsMax": 10,
-              "evidenceSpan": "Candidate has 1.6 years evidenced UI/UX or design experience (satisfies 0–1 yr requirement)."
+              "evidenceSpan": "Candidate has 1.5 years evidenced UI/UX or design experience (satisfies 0–1 yr requirement)."
             },
             {
               "requirementKey": "portfolio_projects",
@@ -20066,6 +20189,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "conditionally_eligible",
+            "meetsMandatoryRequirements": false,
             "meetsRoleThreshold": true,
             "reviewNeededFlags": [
               "Subjective traits (aesthetic sense, eye for detail, user psychology intuition) require human portfolio review"
@@ -20077,7 +20203,7 @@
       "classification": "uiux",
       "classificationReason": "Qualified for UI/UX Design Intern (score 70.8/100 >= 50); LCA score (0.9/100) below threshold.",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:35.489Z"
+      "updatedAt": "2026-11-11T12:00:59.999Z"
     },
     {
       "candidateId": "anonymized_FT_1793685080301",
@@ -21096,6 +21222,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "No evidenced independent LCA execution tenure.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
@@ -21115,9 +21244,9 @@
           "roleId": "uiux",
           "roleTitle": "UI/UX Designer Intern",
           "rubricVersion": "1.5.0-remediated",
-          "totalScore": 51.5,
+          "totalScore": 48.5,
           "subScores": {
-            "skills": 22,
+            "skills": 19,
             "experience": 10,
             "projects": 0,
             "semantic": 12.5,
@@ -21130,9 +21259,9 @@
               "requirementKey": "figma_prototyping",
               "requirementName": "Figma & Interactive Prototyping Proficiency",
               "status": "evidenced",
-              "pointsAwarded": 15,
+              "pointsAwarded": 12,
               "pointsMax": 15,
-              "evidenceSpan": "Evidenced hands-on proficiency in Figma and wireframing/prototyping."
+              "evidenceSpan": "Figma listed in skills section without explicit project/experience bullets; requires portfolio verification."
             },
             {
               "requirementKey": "design_principles",
@@ -21192,21 +21321,25 @@
             }
           ],
           "eligibilityFlags": {
-            "meetsRoleThreshold": true,
+            "isEligible": false,
+            "eligibilityStatus": "conditionally_eligible",
+            "meetsMandatoryRequirements": false,
+            "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
+              "Figma hands-on usage requires portfolio verification (listed only in skills)",
               "Missing design case study or prototype evidence"
             ],
             "reviewNeededFlags": [
               "Subjective traits (aesthetic sense, eye for detail, user psychology intuition) require human portfolio review"
             ]
           },
-          "explanation": "Total UI/UX score: 51.5/100. Skills: 22/30, Experience: 10/10, Projects: 0/30, Semantic: 12.5/20, Education: 7/10."
+          "explanation": "Total UI/UX score: 48.5/100. Skills: 19/30, Experience: 10/10, Projects: 0/30, Semantic: 12.5/20, Education: 7/10."
         }
       },
-      "classification": "uiux",
-      "classificationReason": "Qualified for UI/UX Design Intern (score 51.5/100 >= 50); LCA score (3.7/100) below threshold.",
+      "classification": "neither_or_uncertain",
+      "classificationReason": "Neither role threshold met: LCA score 3.7/100, UI/UX score 48.5/100 (both < 50).",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:35.594Z"
+      "updatedAt": "2026-11-11T12:01:00.221Z"
     },
     {
       "candidateId": "anonymized_HD_1793682784275",
@@ -22219,6 +22352,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "Candidate has <1 year LCA experience or internship exposure only.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
@@ -22315,6 +22451,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
               "Missing Figma proficiency",
@@ -22330,7 +22469,7 @@
       "classification": "neither_or_uncertain",
       "classificationReason": "Neither role threshold met: LCA score 24/100, UI/UX score 9.3/100 (both < 50).",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:35.687Z"
+      "updatedAt": "2026-11-11T12:01:00.434Z"
     },
     {
       "candidateId": "anonymized_HM_1793682784257",
@@ -23283,9 +23422,9 @@
           "roleId": "lca",
           "roleTitle": "LifeCycle Assessment (LCA) Consultant",
           "rubricVersion": "1.5.0-remediated",
-          "totalScore": 65.7,
+          "totalScore": 60.7,
           "subScores": {
-            "skills": 20,
+            "skills": 15,
             "experience": 30,
             "projects": 0,
             "semantic": 12.7,
@@ -23297,10 +23436,10 @@
             {
               "requirementKey": "lca_software",
               "requirementName": "GaBi or SimaPro hands-on software expertise",
-              "status": "evidenced",
-              "pointsAwarded": 15,
+              "status": "partially_evidenced",
+              "pointsAwarded": 12,
               "pointsMax": 15,
-              "evidenceSpan": "Evidenced hands-on expertise in SimaPro software."
+              "evidenceSpan": "SimaPro listed in skills section without explicit project/experience bullets; requires recruiter verification of hands-on application."
             },
             {
               "requirementKey": "standards_iso",
@@ -23314,9 +23453,9 @@
               "requirementKey": "lci_methodology",
               "requirementName": "LCI Data Collection, Validation & Modelling",
               "status": "partially_evidenced",
-              "pointsAwarded": 5,
+              "pointsAwarded": 3,
               "pointsMax": 7,
-              "evidenceSpan": "Mention of LCI/EPD or modeling concepts in projects."
+              "evidenceSpan": "Mention of LCI/EPD or LCA modeling concepts in projects."
             },
             {
               "requirementKey": "independent_lca_experience",
@@ -23352,9 +23491,13 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "conditionally_eligible",
+            "meetsMandatoryRequirements": true,
             "experienceConflictNotice": "Candidate has ≥3 years independent LCA experience (satisfies both 2–3 yr detailed JD and approaches 4–6 yr overview).",
             "meetsRoleThreshold": true,
             "criticalRequirementMissing": [
+              "GaBi/SimaPro software listed without demonstrated project/experience evidence (requires verification)",
               "Completed LCA projects (0) below required 3"
             ],
             "reviewNeededFlags": [
@@ -23364,7 +23507,7 @@
               "Minimum 1-year commitment requires confirmation"
             ]
           },
-          "explanation": "Total LCA score: 65.7/100. Skills: 20/30, Experience: 30/30, Projects: 0/20, Semantic: 12.7/15, Education: 3/5."
+          "explanation": "Total LCA score: 60.7/100. Skills: 15/30, Experience: 30/30, Projects: 0/20, Semantic: 12.7/15, Education: 3/5."
         },
         "uiux": {
           "roleId": "uiux",
@@ -23447,6 +23590,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
               "Missing Figma proficiency"
@@ -23459,9 +23605,9 @@
         }
       },
       "classification": "lca",
-      "classificationReason": "Qualified for LCA Consultant (score 65.7/100 >= 50); UI/UX score (33.2/100) below threshold.",
+      "classificationReason": "Qualified for LCA Consultant (score 60.7/100 >= 50); UI/UX score (33.2/100) below threshold.",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:35.790Z"
+      "updatedAt": "2026-11-11T12:01:00.715Z"
     },
     {
       "candidateId": "anonymized_KA_1793682784307",
@@ -24486,6 +24632,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "No evidenced independent LCA execution tenure.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
@@ -24582,6 +24731,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
               "Missing Figma proficiency"
@@ -24596,7 +24748,7 @@
       "classification": "neither_or_uncertain",
       "classificationReason": "Neither role threshold met: LCA score 11/100, UI/UX score 24.4/100 (both < 50).",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:35.828Z"
+      "updatedAt": "2026-11-11T12:01:00.821Z"
     },
     {
       "candidateId": "anonymized_KN_1793685080310",
@@ -25536,6 +25688,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "No evidenced independent LCA execution tenure.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
@@ -25555,9 +25710,9 @@
           "roleId": "uiux",
           "roleTitle": "UI/UX Designer Intern",
           "rubricVersion": "1.5.0-remediated",
-          "totalScore": 49.2,
+          "totalScore": 46.2,
           "subScores": {
-            "skills": 22,
+            "skills": 19,
             "experience": 0,
             "projects": 0,
             "semantic": 17.2,
@@ -25570,9 +25725,9 @@
               "requirementKey": "figma_prototyping",
               "requirementName": "Figma & Interactive Prototyping Proficiency",
               "status": "evidenced",
-              "pointsAwarded": 15,
+              "pointsAwarded": 12,
               "pointsMax": 15,
-              "evidenceSpan": "Evidenced hands-on proficiency in Figma and wireframing/prototyping."
+              "evidenceSpan": "Figma listed in skills section without explicit project/experience bullets; requires portfolio verification."
             },
             {
               "requirementKey": "design_principles",
@@ -25632,21 +25787,25 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "conditionally_eligible",
+            "meetsMandatoryRequirements": false,
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
+              "Figma hands-on usage requires portfolio verification (listed only in skills)",
               "Missing design case study or prototype evidence"
             ],
             "reviewNeededFlags": [
               "Subjective traits (aesthetic sense, eye for detail, user psychology intuition) require human portfolio review"
             ]
           },
-          "explanation": "Total UI/UX score: 49.2/100. Skills: 22/30, Experience: 0/10, Projects: 0/30, Semantic: 17.2/20, Education: 10/10."
+          "explanation": "Total UI/UX score: 46.2/100. Skills: 19/30, Experience: 0/10, Projects: 0/30, Semantic: 17.2/20, Education: 10/10."
         }
       },
       "classification": "neither_or_uncertain",
-      "classificationReason": "Neither role threshold met: LCA score 0/100, UI/UX score 49.2/100 (both < 50).",
+      "classificationReason": "Neither role threshold met: LCA score 0/100, UI/UX score 46.2/100 (both < 50).",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:35.858Z"
+      "updatedAt": "2026-11-11T12:01:00.891Z"
     },
     {
       "candidateId": "anonymized_MI_1793685080235",
@@ -26650,6 +26809,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "No evidenced independent LCA execution tenure.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
@@ -26686,7 +26848,7 @@
               "status": "evidenced",
               "pointsAwarded": 15,
               "pointsMax": 15,
-              "evidenceSpan": "Evidenced hands-on proficiency in Figma and wireframing/prototyping."
+              "evidenceSpan": "Evidenced hands-on proficiency in Figma and prototyping in project/work experience."
             },
             {
               "requirementKey": "design_principles",
@@ -26746,6 +26908,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": true,
+            "eligibilityStatus": "eligible",
+            "meetsMandatoryRequirements": true,
             "meetsRoleThreshold": true,
             "reviewNeededFlags": [
               "Subjective traits (aesthetic sense, eye for detail, user psychology intuition) require human portfolio review"
@@ -26757,7 +26922,7 @@
       "classification": "uiux",
       "classificationReason": "Qualified for UI/UX Design Intern (score 80.2/100 >= 50); LCA score (0.2/100) below threshold.",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:35.918Z"
+      "updatedAt": "2026-11-11T12:01:01.041Z"
     },
     {
       "candidateId": "anonymized_MM_1793685080338",
@@ -27758,6 +27923,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "No evidenced independent LCA execution tenure.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
@@ -27794,7 +27962,7 @@
               "status": "evidenced",
               "pointsAwarded": 15,
               "pointsMax": 15,
-              "evidenceSpan": "Evidenced hands-on proficiency in Figma and wireframing/prototyping."
+              "evidenceSpan": "Evidenced hands-on proficiency in Figma and prototyping in project/work experience."
             },
             {
               "requirementKey": "design_principles",
@@ -27854,6 +28022,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": true,
+            "eligibilityStatus": "eligible",
+            "meetsMandatoryRequirements": true,
             "meetsRoleThreshold": true,
             "reviewNeededFlags": [
               "Subjective traits (aesthetic sense, eye for detail, user psychology intuition) require human portfolio review"
@@ -27865,7 +28036,7 @@
       "classification": "uiux",
       "classificationReason": "Qualified for UI/UX Design Intern (score 92.1/100 >= 50); LCA score (3/100) below threshold.",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:36.013Z"
+      "updatedAt": "2026-11-11T12:01:01.253Z"
     },
     {
       "candidateId": "anonymized_MS_1793682784442",
@@ -28867,7 +29038,7 @@
               "status": "evidenced",
               "pointsAwarded": 15,
               "pointsMax": 15,
-              "evidenceSpan": "Evidenced hands-on expertise in SimaPro software."
+              "evidenceSpan": "Evidenced hands-on expertise in SimaPro software in experience/projects."
             },
             {
               "requirementKey": "standards_iso",
@@ -28919,6 +29090,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "conditionally_eligible",
+            "meetsMandatoryRequirements": true,
             "experienceConflictNotice": "Candidate has <1 year LCA experience or internship exposure only.",
             "meetsRoleThreshold": true,
             "reviewNeededFlags": [
@@ -29011,6 +29185,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
               "Missing Figma proficiency",
@@ -29026,7 +29203,7 @@
       "classification": "lca",
       "classificationReason": "Qualified for LCA Consultant (score 65.4/100 >= 50); UI/UX score (10.8/100) below threshold.",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:36.119Z"
+      "updatedAt": "2026-11-11T12:01:01.464Z"
     },
     {
       "candidateId": "anonymized_NA_1793682784346",
@@ -30026,6 +30203,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "No evidenced independent LCA execution tenure.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
@@ -30122,6 +30302,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
               "Missing Figma proficiency",
@@ -30137,7 +30320,7 @@
       "classification": "neither_or_uncertain",
       "classificationReason": "Neither role threshold met: LCA score 12.5/100, UI/UX score 8.9/100 (both < 50).",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:36.164Z"
+      "updatedAt": "2026-11-11T12:01:01.568Z"
     },
     {
       "candidateId": "anonymized_NF_1793685080347",
@@ -31116,6 +31299,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "No evidenced independent LCA execution tenure.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
@@ -31135,9 +31321,9 @@
           "roleId": "uiux",
           "roleTitle": "UI/UX Designer Intern",
           "rubricVersion": "1.5.0-remediated",
-          "totalScore": 79.8,
+          "totalScore": 76.8,
           "subScores": {
-            "skills": 27,
+            "skills": 24,
             "experience": 10,
             "projects": 24,
             "semantic": 14.8,
@@ -31150,9 +31336,9 @@
               "requirementKey": "figma_prototyping",
               "requirementName": "Figma & Interactive Prototyping Proficiency",
               "status": "evidenced",
-              "pointsAwarded": 15,
+              "pointsAwarded": 12,
               "pointsMax": 15,
-              "evidenceSpan": "Evidenced hands-on proficiency in Figma and wireframing/prototyping."
+              "evidenceSpan": "Figma listed in skills section without explicit project/experience bullets; requires portfolio verification."
             },
             {
               "requirementKey": "design_principles",
@@ -31212,18 +31398,24 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "conditionally_eligible",
+            "meetsMandatoryRequirements": true,
             "meetsRoleThreshold": true,
+            "criticalRequirementMissing": [
+              "Figma hands-on usage requires portfolio verification (listed only in skills)"
+            ],
             "reviewNeededFlags": [
               "Subjective traits (aesthetic sense, eye for detail, user psychology intuition) require human portfolio review"
             ]
           },
-          "explanation": "Total UI/UX score: 79.8/100. Skills: 27/30, Experience: 10/10, Projects: 24/30, Semantic: 14.8/20, Education: 4/10."
+          "explanation": "Total UI/UX score: 76.8/100. Skills: 24/30, Experience: 10/10, Projects: 24/30, Semantic: 14.8/20, Education: 4/10."
         }
       },
       "classification": "uiux",
-      "classificationReason": "Qualified for UI/UX Design Intern (score 79.8/100 >= 50); LCA score (0/100) below threshold.",
+      "classificationReason": "Qualified for UI/UX Design Intern (score 76.8/100 >= 50); LCA score (0/100) below threshold.",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:36.233Z"
+      "updatedAt": "2026-11-11T12:01:01.713Z"
     },
     {
       "candidateId": "anonymized_NP_1793682784325",
@@ -32140,9 +32332,9 @@
           "roleId": "lca",
           "roleTitle": "LifeCycle Assessment (LCA) Consultant",
           "rubricVersion": "1.5.0-remediated",
-          "totalScore": 59.7,
+          "totalScore": 56.7,
           "subScores": {
-            "skills": 20,
+            "skills": 17,
             "experience": 28,
             "projects": 0,
             "semantic": 8.7,
@@ -32154,10 +32346,10 @@
             {
               "requirementKey": "lca_software",
               "requirementName": "GaBi or SimaPro hands-on software expertise",
-              "status": "evidenced",
-              "pointsAwarded": 15,
+              "status": "partially_evidenced",
+              "pointsAwarded": 12,
               "pointsMax": 15,
-              "evidenceSpan": "Evidenced hands-on expertise in both GaBi and SimaPro software."
+              "evidenceSpan": "GaBi and SimaPro listed in skills section without explicit project/experience bullets; requires recruiter verification of hands-on application."
             },
             {
               "requirementKey": "standards_iso",
@@ -32173,7 +32365,7 @@
               "status": "partially_evidenced",
               "pointsAwarded": 5,
               "pointsMax": 7,
-              "evidenceSpan": "Mention of LCI/EPD or modeling concepts in projects."
+              "evidenceSpan": "Mention of LCI/EPD or LCA modeling concepts in projects."
             },
             {
               "requirementKey": "independent_lca_experience",
@@ -32209,9 +32401,13 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "conditionally_eligible",
+            "meetsMandatoryRequirements": true,
             "experienceConflictNotice": "ADR-S01 Notice: Candidate has 2–3 years independent LCA experience (meets detailed JD requirement; recruiter should review against 4–6 yr overview summary).",
             "meetsRoleThreshold": true,
             "criticalRequirementMissing": [
+              "GaBi/SimaPro software listed without demonstrated project/experience evidence (requires verification)",
               "Missing ISO 14040 / ISO 14044 standards compliance",
               "Completed LCA projects (0) below required 3"
             ],
@@ -32221,7 +32417,7 @@
               "Minimum 1-year commitment requires confirmation"
             ]
           },
-          "explanation": "Total LCA score: 59.7/100. Skills: 20/30, Experience: 28/30, Projects: 0/20, Semantic: 8.7/15, Education: 3/5."
+          "explanation": "Total LCA score: 56.7/100. Skills: 17/30, Experience: 28/30, Projects: 0/20, Semantic: 8.7/15, Education: 3/5."
         },
         "uiux": {
           "roleId": "uiux",
@@ -32304,6 +32500,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
               "Missing Figma proficiency",
@@ -32317,9 +32516,9 @@
         }
       },
       "classification": "lca",
-      "classificationReason": "Qualified for LCA Consultant (score 59.7/100 >= 50); UI/UX score (24.6/100) below threshold.",
+      "classificationReason": "Qualified for LCA Consultant (score 56.7/100 >= 50); UI/UX score (24.6/100) below threshold.",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:36.392Z"
+      "updatedAt": "2026-11-11T12:01:02.058Z"
     },
     {
       "candidateId": "anonymized_N_1793685080389",
@@ -33320,6 +33519,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "No evidenced independent LCA execution tenure.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
@@ -33339,9 +33541,9 @@
           "roleId": "uiux",
           "roleTitle": "UI/UX Designer Intern",
           "rubricVersion": "1.5.0-remediated",
-          "totalScore": 69.4,
+          "totalScore": 66.4,
           "subScores": {
-            "skills": 22,
+            "skills": 19,
             "experience": 10,
             "projects": 20,
             "semantic": 13.4,
@@ -33354,9 +33556,9 @@
               "requirementKey": "figma_prototyping",
               "requirementName": "Figma & Interactive Prototyping Proficiency",
               "status": "evidenced",
-              "pointsAwarded": 15,
+              "pointsAwarded": 12,
               "pointsMax": 15,
-              "evidenceSpan": "Evidenced hands-on proficiency in Figma and wireframing/prototyping."
+              "evidenceSpan": "Figma listed in skills section without explicit project/experience bullets; requires portfolio verification."
             },
             {
               "requirementKey": "design_principles",
@@ -33416,18 +33618,24 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "conditionally_eligible",
+            "meetsMandatoryRequirements": true,
             "meetsRoleThreshold": true,
+            "criticalRequirementMissing": [
+              "Figma hands-on usage requires portfolio verification (listed only in skills)"
+            ],
             "reviewNeededFlags": [
               "Subjective traits (aesthetic sense, eye for detail, user psychology intuition) require human portfolio review"
             ]
           },
-          "explanation": "Total UI/UX score: 69.4/100. Skills: 22/30, Experience: 10/10, Projects: 20/30, Semantic: 13.4/20, Education: 4/10."
+          "explanation": "Total UI/UX score: 66.4/100. Skills: 19/30, Experience: 10/10, Projects: 20/30, Semantic: 13.4/20, Education: 4/10."
         }
       },
       "classification": "uiux",
-      "classificationReason": "Qualified for UI/UX Design Intern (score 69.4/100 >= 50); LCA score (0/100) below threshold.",
+      "classificationReason": "Qualified for UI/UX Design Intern (score 66.4/100 >= 50); LCA score (0/100) below threshold.",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:36.463Z"
+      "updatedAt": "2026-11-11T12:01:02.250Z"
     },
     {
       "candidateId": "anonymized_PD_1793682784400",
@@ -34420,6 +34628,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "No evidenced independent LCA execution tenure.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
@@ -34516,6 +34727,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
               "Missing Figma proficiency",
@@ -34531,7 +34745,7 @@
       "classification": "neither_or_uncertain",
       "classificationReason": "Neither role threshold met: LCA score 6.9/100, UI/UX score 7.9/100 (both < 50).",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:36.500Z"
+      "updatedAt": "2026-11-11T12:01:02.342Z"
     },
     {
       "candidateId": "anonymized_PKG_1793682784369",
@@ -35555,6 +35769,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "No evidenced independent LCA execution tenure.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
@@ -35651,6 +35868,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
               "Missing Figma proficiency"
@@ -35665,7 +35885,7 @@
       "classification": "neither_or_uncertain",
       "classificationReason": "Neither role threshold met: LCA score 10.8/100, UI/UX score 34.5/100 (both < 50).",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:36.548Z"
+      "updatedAt": "2026-11-11T12:01:02.447Z"
     },
     {
       "candidateId": "anonymized_PL_1793685080319",
@@ -36669,6 +36889,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "No evidenced independent LCA execution tenure.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
@@ -36688,9 +36911,9 @@
           "roleId": "uiux",
           "roleTitle": "UI/UX Designer Intern",
           "rubricVersion": "1.5.0-remediated",
-          "totalScore": 88.7,
+          "totalScore": 85.7,
           "subScores": {
-            "skills": 27,
+            "skills": 24,
             "experience": 10,
             "projects": 30,
             "semantic": 14.7,
@@ -36703,9 +36926,9 @@
               "requirementKey": "figma_prototyping",
               "requirementName": "Figma & Interactive Prototyping Proficiency",
               "status": "evidenced",
-              "pointsAwarded": 15,
+              "pointsAwarded": 12,
               "pointsMax": 15,
-              "evidenceSpan": "Evidenced hands-on proficiency in Figma and wireframing/prototyping."
+              "evidenceSpan": "Figma listed in skills section without explicit project/experience bullets; requires portfolio verification."
             },
             {
               "requirementKey": "design_principles",
@@ -36765,18 +36988,24 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "conditionally_eligible",
+            "meetsMandatoryRequirements": true,
             "meetsRoleThreshold": true,
+            "criticalRequirementMissing": [
+              "Figma hands-on usage requires portfolio verification (listed only in skills)"
+            ],
             "reviewNeededFlags": [
               "Subjective traits (aesthetic sense, eye for detail, user psychology intuition) require human portfolio review"
             ]
           },
-          "explanation": "Total UI/UX score: 88.7/100. Skills: 27/30, Experience: 10/10, Projects: 30/30, Semantic: 14.7/20, Education: 7/10."
+          "explanation": "Total UI/UX score: 85.7/100. Skills: 24/30, Experience: 10/10, Projects: 30/30, Semantic: 14.7/20, Education: 7/10."
         }
       },
       "classification": "uiux",
-      "classificationReason": "Qualified for UI/UX Design Intern (score 88.7/100 >= 50); LCA score (3/100) below threshold.",
+      "classificationReason": "Qualified for UI/UX Design Intern (score 85.7/100 >= 50); LCA score (3/100) below threshold.",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:36.614Z"
+      "updatedAt": "2026-11-11T12:01:02.621Z"
     },
     {
       "candidateId": "anonymized_PS_1793682784387",
@@ -37786,6 +38015,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "No evidenced independent LCA execution tenure.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
@@ -37882,6 +38114,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
               "Missing Figma proficiency",
@@ -37897,7 +38132,7 @@
       "classification": "neither_or_uncertain",
       "classificationReason": "Neither role threshold met: LCA score 3.2/100, UI/UX score 14.1/100 (both < 50).",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:36.648Z"
+      "updatedAt": "2026-11-11T12:01:02.718Z"
     },
     {
       "candidateId": "anonymized_PV_1793685080171",
@@ -38878,6 +39113,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "No evidenced independent LCA execution tenure.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
@@ -38897,9 +39135,9 @@
           "roleId": "uiux",
           "roleTitle": "UI/UX Designer Intern",
           "rubricVersion": "1.5.0-remediated",
-          "totalScore": 82,
+          "totalScore": 79,
           "subScores": {
-            "skills": 27,
+            "skills": 24,
             "experience": 10,
             "projects": 24,
             "semantic": 11,
@@ -38912,9 +39150,9 @@
               "requirementKey": "figma_prototyping",
               "requirementName": "Figma & Interactive Prototyping Proficiency",
               "status": "evidenced",
-              "pointsAwarded": 15,
+              "pointsAwarded": 12,
               "pointsMax": 15,
-              "evidenceSpan": "Evidenced hands-on proficiency in Figma and wireframing/prototyping."
+              "evidenceSpan": "Figma listed in skills section without explicit project/experience bullets; requires portfolio verification."
             },
             {
               "requirementKey": "design_principles",
@@ -38974,18 +39212,24 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "conditionally_eligible",
+            "meetsMandatoryRequirements": true,
             "meetsRoleThreshold": true,
+            "criticalRequirementMissing": [
+              "Figma hands-on usage requires portfolio verification (listed only in skills)"
+            ],
             "reviewNeededFlags": [
               "Subjective traits (aesthetic sense, eye for detail, user psychology intuition) require human portfolio review"
             ]
           },
-          "explanation": "Total UI/UX score: 82/100. Skills: 27/30, Experience: 10/10, Projects: 24/30, Semantic: 11/20, Education: 10/10."
+          "explanation": "Total UI/UX score: 79/100. Skills: 24/30, Experience: 10/10, Projects: 24/30, Semantic: 11/20, Education: 10/10."
         }
       },
       "classification": "uiux",
-      "classificationReason": "Qualified for UI/UX Design Intern (score 82/100 >= 50); LCA score (0/100) below threshold.",
+      "classificationReason": "Qualified for UI/UX Design Intern (score 79/100 >= 50); LCA score (0/100) below threshold.",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:36.691Z"
+      "updatedAt": "2026-11-11T12:01:02.828Z"
     },
     {
       "candidateId": "anonymized_PW_1793682784228",
@@ -39983,7 +40227,7 @@
               "status": "evidenced",
               "pointsAwarded": 15,
               "pointsMax": 15,
-              "evidenceSpan": "Evidenced hands-on expertise in GaBi software."
+              "evidenceSpan": "Evidenced hands-on expertise in GaBi software in experience/projects."
             },
             {
               "requirementKey": "standards_iso",
@@ -40035,6 +40279,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "conditionally_eligible",
+            "meetsMandatoryRequirements": true,
             "experienceConflictNotice": "ADR-S01 Notice: Candidate has 2–3 years independent LCA experience (meets detailed JD requirement; recruiter should review against 4–6 yr overview summary).",
             "meetsRoleThreshold": true,
             "criticalRequirementMissing": [
@@ -40130,6 +40377,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
               "Missing Figma proficiency",
@@ -40145,7 +40395,7 @@
       "classification": "lca",
       "classificationReason": "Qualified for LCA Consultant (score 65.8/100 >= 50); UI/UX score (14.9/100) below threshold.",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:36.828Z"
+      "updatedAt": "2026-11-11T12:01:03.104Z"
     },
     {
       "candidateId": "anonymized_PW_1793685080367",
@@ -41136,6 +41386,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "No evidenced independent LCA execution tenure.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
@@ -41171,7 +41424,7 @@
               "status": "evidenced",
               "pointsAwarded": 15,
               "pointsMax": 15,
-              "evidenceSpan": "Evidenced hands-on proficiency in Figma and wireframing/prototyping."
+              "evidenceSpan": "Evidenced hands-on proficiency in Figma and prototyping in project/work experience."
             },
             {
               "requirementKey": "design_principles",
@@ -41231,6 +41484,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": true,
+            "eligibilityStatus": "eligible",
+            "meetsMandatoryRequirements": true,
             "meetsRoleThreshold": true,
             "reviewNeededFlags": [
               "Subjective traits (aesthetic sense, eye for detail, user psychology intuition) require human portfolio review"
@@ -41242,7 +41498,7 @@
       "classification": "uiux",
       "classificationReason": "Qualified for UI/UX Design Intern (score 74.4/100 >= 50); LCA score (3/100) below threshold.",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:36.918Z"
+      "updatedAt": "2026-11-11T12:01:03.303Z"
     },
     {
       "candidateId": "anonymized_RR_1793682784428",
@@ -42228,10 +42484,13 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "conditionally_eligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "Candidate has <1 year LCA experience or internship exposure only.",
             "meetsRoleThreshold": true,
             "criticalRequirementMissing": [
-              "GaBi/SimaPro software expertise not evidenced (OpenLCA requires verification)",
+              "GaBi/SimaPro software listed without demonstrated project/experience evidence (requires verification)",
               "Missing ISO 14040 / ISO 14044 standards compliance",
               "Completed LCA projects (2) below required 3"
             ],
@@ -42324,6 +42583,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
               "Missing Figma proficiency",
@@ -42339,7 +42601,7 @@
       "classification": "lca",
       "classificationReason": "Qualified for LCA Consultant (score 51.1/100 >= 50); UI/UX score (10.3/100) below threshold.",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:37.011Z"
+      "updatedAt": "2026-11-11T12:01:03.683Z"
     },
     {
       "candidateId": "anonymized_RS_1793682784414",
@@ -43391,6 +43653,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "No evidenced independent LCA execution tenure.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
@@ -43487,6 +43752,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
               "Missing Figma proficiency",
@@ -43502,7 +43770,7 @@
       "classification": "neither_or_uncertain",
       "classificationReason": "Neither role threshold met: LCA score 12.1/100, UI/UX score 11.1/100 (both < 50).",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:37.111Z"
+      "updatedAt": "2026-11-11T12:01:03.942Z"
     },
     {
       "candidateId": "anonymized_SRK_1793682784455",
@@ -44518,10 +44786,13 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "conditionally_eligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "Candidate has ≥3 years independent LCA experience (satisfies both 2–3 yr detailed JD and approaches 4–6 yr overview).",
             "meetsRoleThreshold": true,
             "criticalRequirementMissing": [
-              "GaBi/SimaPro software expertise not evidenced (OpenLCA requires verification)",
+              "GaBi/SimaPro software listed without demonstrated project/experience evidence (requires verification)",
               "Completed LCA projects (0) below required 3"
             ],
             "reviewNeededFlags": [
@@ -44614,6 +44885,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
               "Missing Figma proficiency",
@@ -44629,7 +44903,7 @@
       "classification": "lca",
       "classificationReason": "Qualified for LCA Consultant (score 52/100 >= 50); UI/UX score (11.3/100) below threshold.",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:37.198Z"
+      "updatedAt": "2026-11-11T12:01:04.131Z"
     },
     {
       "candidateId": "anonymized_SS_1793682784470",
@@ -45617,7 +45891,7 @@
               "status": "evidenced",
               "pointsAwarded": 15,
               "pointsMax": 15,
-              "evidenceSpan": "Evidenced hands-on expertise in both GaBi and SimaPro software."
+              "evidenceSpan": "Evidenced hands-on expertise in SimaPro software in experience/projects."
             },
             {
               "requirementKey": "standards_iso",
@@ -45633,7 +45907,7 @@
               "status": "partially_evidenced",
               "pointsAwarded": 5,
               "pointsMax": 7,
-              "evidenceSpan": "Mention of LCI/EPD or modeling concepts in projects."
+              "evidenceSpan": "Mention of LCI/EPD or LCA modeling concepts in projects."
             },
             {
               "requirementKey": "independent_lca_experience",
@@ -45669,6 +45943,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "conditionally_eligible",
+            "meetsMandatoryRequirements": true,
             "experienceConflictNotice": "Candidate has 1–2 years LCA experience (below 2–3 yr detailed requirement).",
             "meetsRoleThreshold": true,
             "criticalRequirementMissing": [
@@ -45764,6 +46041,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
               "Missing Figma proficiency",
@@ -45779,7 +46059,7 @@
       "classification": "lca",
       "classificationReason": "Qualified for LCA Consultant (score 66.2/100 >= 50); UI/UX score (11.8/100) below threshold.",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:37.306Z"
+      "updatedAt": "2026-11-11T12:01:04.408Z"
     },
     {
       "candidateId": "anonymized_SS_1793682784484",
@@ -46772,10 +47052,13 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "Candidate has <1 year LCA experience or internship exposure only.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
-              "GaBi/SimaPro software expertise not evidenced (OpenLCA requires verification)",
+              "GaBi/SimaPro software listed without demonstrated project/experience evidence (requires verification)",
               "Missing ISO 14040 / ISO 14044 standards compliance",
               "Completed LCA projects (0) below required 3"
             ],
@@ -46868,6 +47151,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
               "Missing Figma proficiency",
@@ -46883,7 +47169,7 @@
       "classification": "neither_or_uncertain",
       "classificationReason": "Neither role threshold met: LCA score 28.3/100, UI/UX score 10.6/100 (both < 50).",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:37.362Z"
+      "updatedAt": "2026-11-11T12:01:04.621Z"
     },
     {
       "candidateId": "anonymized_TM_1793682784495",
@@ -47841,7 +48127,7 @@
               "status": "evidenced",
               "pointsAwarded": 15,
               "pointsMax": 15,
-              "evidenceSpan": "Evidenced hands-on expertise in SimaPro software."
+              "evidenceSpan": "Evidenced hands-on expertise in SimaPro software in experience/projects."
             },
             {
               "requirementKey": "standards_iso",
@@ -47857,7 +48143,7 @@
               "status": "partially_evidenced",
               "pointsAwarded": 5,
               "pointsMax": 7,
-              "evidenceSpan": "Mention of LCI/EPD or modeling concepts in projects."
+              "evidenceSpan": "Mention of LCI/EPD or LCA modeling concepts in projects."
             },
             {
               "requirementKey": "independent_lca_experience",
@@ -47893,6 +48179,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "conditionally_eligible",
+            "meetsMandatoryRequirements": true,
             "experienceConflictNotice": "Candidate has ≥3 years independent LCA experience (satisfies both 2–3 yr detailed JD and approaches 4–6 yr overview).",
             "meetsRoleThreshold": true,
             "reviewNeededFlags": [
@@ -47985,6 +48274,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
               "Missing Figma proficiency",
@@ -48000,7 +48292,7 @@
       "classification": "lca",
       "classificationReason": "Qualified for LCA Consultant (score 84/100 >= 50); UI/UX score (15.2/100) below threshold.",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:37.449Z"
+      "updatedAt": "2026-11-11T12:01:04.940Z"
     },
     {
       "candidateId": "anonymized_UI_1793682784506",
@@ -48930,9 +49222,9 @@
           "roleId": "lca",
           "roleTitle": "LifeCycle Assessment (LCA) Consultant",
           "rubricVersion": "1.5.0-remediated",
-          "totalScore": 35.5,
+          "totalScore": 33.5,
           "subScores": {
-            "skills": 5,
+            "skills": 3,
             "experience": 18,
             "projects": 0,
             "semantic": 7.5,
@@ -48961,9 +49253,9 @@
               "requirementKey": "lci_methodology",
               "requirementName": "LCI Data Collection, Validation & Modelling",
               "status": "partially_evidenced",
-              "pointsAwarded": 5,
+              "pointsAwarded": 3,
               "pointsMax": 7,
-              "evidenceSpan": "Mention of LCI/EPD or modeling concepts in projects."
+              "evidenceSpan": "Mention of LCI/EPD or LCA modeling concepts in projects."
             },
             {
               "requirementKey": "independent_lca_experience",
@@ -48999,6 +49291,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "Candidate has 1–2 years LCA experience (below 2–3 yr detailed requirement).",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
@@ -49012,7 +49307,7 @@
               "Minimum 1-year commitment requires confirmation"
             ]
           },
-          "explanation": "Total LCA score: 35.5/100. Skills: 5/30, Experience: 18/30, Projects: 0/20, Semantic: 7.5/15, Education: 5/5."
+          "explanation": "Total LCA score: 33.5/100. Skills: 3/30, Experience: 18/30, Projects: 0/20, Semantic: 7.5/15, Education: 5/5."
         },
         "uiux": {
           "roleId": "uiux",
@@ -49095,6 +49390,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
               "Missing Figma proficiency",
@@ -49108,9 +49406,9 @@
         }
       },
       "classification": "neither_or_uncertain",
-      "classificationReason": "Neither role threshold met: LCA score 35.5/100, UI/UX score 6.7/100 (both < 50).",
+      "classificationReason": "Neither role threshold met: LCA score 33.5/100, UI/UX score 6.7/100 (both < 50).",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:37.499Z"
+      "updatedAt": "2026-11-11T12:01:05.075Z"
     },
     {
       "candidateId": "anonymized_VG_1793682784531",
@@ -50150,10 +50448,13 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "experienceConflictNotice": "Candidate has <1 year LCA experience or internship exposure only.",
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
-              "GaBi/SimaPro software expertise not evidenced (OpenLCA requires verification)",
+              "GaBi/SimaPro software listed without demonstrated project/experience evidence (requires verification)",
               "Missing ISO 14040 / ISO 14044 standards compliance",
               "Completed LCA projects (0) below required 3"
             ],
@@ -50246,6 +50547,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
               "Missing Figma proficiency",
@@ -50261,7 +50565,7 @@
       "classification": "neither_or_uncertain",
       "classificationReason": "Neither role threshold met: LCA score 28.5/100, UI/UX score 13.5/100 (both < 50).",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:37.601Z"
+      "updatedAt": "2026-11-11T12:01:05.357Z"
     },
     {
       "candidateId": "anonymized_VM_1793682784520",
@@ -51199,9 +51503,9 @@
           "roleId": "lca",
           "roleTitle": "LifeCycle Assessment (LCA) Consultant",
           "rubricVersion": "1.5.0-remediated",
-          "totalScore": 63.9,
+          "totalScore": 58.9,
           "subScores": {
-            "skills": 20,
+            "skills": 15,
             "experience": 28,
             "projects": 0,
             "semantic": 10.9,
@@ -51213,10 +51517,10 @@
             {
               "requirementKey": "lca_software",
               "requirementName": "GaBi or SimaPro hands-on software expertise",
-              "status": "evidenced",
-              "pointsAwarded": 15,
+              "status": "partially_evidenced",
+              "pointsAwarded": 12,
               "pointsMax": 15,
-              "evidenceSpan": "Evidenced hands-on expertise in GaBi software."
+              "evidenceSpan": "GaBi listed in skills section without explicit project/experience bullets; requires recruiter verification of hands-on application."
             },
             {
               "requirementKey": "standards_iso",
@@ -51230,9 +51534,9 @@
               "requirementKey": "lci_methodology",
               "requirementName": "LCI Data Collection, Validation & Modelling",
               "status": "partially_evidenced",
-              "pointsAwarded": 5,
+              "pointsAwarded": 3,
               "pointsMax": 7,
-              "evidenceSpan": "Mention of LCI/EPD or modeling concepts in projects."
+              "evidenceSpan": "Mention of LCI/EPD or LCA modeling concepts in projects."
             },
             {
               "requirementKey": "independent_lca_experience",
@@ -51268,9 +51572,13 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "conditionally_eligible",
+            "meetsMandatoryRequirements": true,
             "experienceConflictNotice": "ADR-S01 Notice: Candidate has 2–3 years independent LCA experience (meets detailed JD requirement; recruiter should review against 4–6 yr overview summary).",
             "meetsRoleThreshold": true,
             "criticalRequirementMissing": [
+              "GaBi/SimaPro software listed without demonstrated project/experience evidence (requires verification)",
               "Missing ISO 14040 / ISO 14044 standards compliance",
               "Completed LCA projects (0) below required 3"
             ],
@@ -51280,7 +51588,7 @@
               "Minimum 1-year commitment requires confirmation"
             ]
           },
-          "explanation": "Total LCA score: 63.9/100. Skills: 20/30, Experience: 28/30, Projects: 0/20, Semantic: 10.9/15, Education: 5/5."
+          "explanation": "Total LCA score: 58.9/100. Skills: 15/30, Experience: 28/30, Projects: 0/20, Semantic: 10.9/15, Education: 5/5."
         },
         "uiux": {
           "roleId": "uiux",
@@ -51363,6 +51671,9 @@
             }
           ],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
               "Missing Figma proficiency",
@@ -51376,9 +51687,9 @@
         }
       },
       "classification": "lca",
-      "classificationReason": "Qualified for LCA Consultant (score 63.9/100 >= 50); UI/UX score (11.9/100) below threshold.",
+      "classificationReason": "Qualified for LCA Consultant (score 58.9/100 >= 50); UI/UX score (11.9/100) below threshold.",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:37.687Z"
+      "updatedAt": "2026-11-11T12:01:05.647Z"
     },
     {
       "candidateId": "anonymized_resume_1793685080327",
@@ -51447,6 +51758,9 @@
           "semanticNormalized": 0,
           "requirementsEvidence": [],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
               "Document contains no text/content (0 XML text nodes)"
@@ -51473,6 +51787,9 @@
           "semanticNormalized": 0,
           "requirementsEvidence": [],
           "eligibilityFlags": {
+            "isEligible": false,
+            "eligibilityStatus": "ineligible",
+            "meetsMandatoryRequirements": false,
             "meetsRoleThreshold": false,
             "criticalRequirementMissing": [
               "Document contains no text/content (0 XML text nodes)"
@@ -51487,7 +51804,7 @@
       "classification": "neither_or_uncertain",
       "classificationReason": "Document contains 0 text nodes. Unscorable due to insufficient evidence.",
       "schemaVersion": "1.0.0",
-      "updatedAt": "2026-11-11T11:34:37.687Z"
+      "updatedAt": "2026-11-11T12:01:05.648Z"
     }
   ]
 }

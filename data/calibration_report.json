@@ -1,5 +1,5 @@
 {
-  "reportDate": "2026-11-11T11:34:37.695Z",
+  "reportDate": "2026-11-11T12:01:05.684Z",
   "scoringConfigVersion": "1.5.0-remediated",
   "embeddingModel": "BAAI/bge-small-en-v1.5",
   "semanticRefRange": {
@@ -20,9 +20,9 @@
   },
   "classificationDistribution": {
     "lca": 9,
-    "uiux": 23,
+    "uiux": 22,
     "both": 0,
-    "neither_or_uncertain": 15
+    "neither_or_uncertain": 16
   },
   "representativeReviewedSamples": [
     {

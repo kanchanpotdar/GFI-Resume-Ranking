@@ -174,11 +174,13 @@ To resolve the previous oracle divergence, the audit harness was partitioned int
 - Component score caps (LCA: 30/30/20/15/5; UI/UX: 30/10/30/20/10) were strictly obeyed without boundary overflows.
 
 ### Layer B (Source-Evidence Audit) Findings
-- All discrepancies between raw source text and parsed attributes were audited and recorded in `reports/scoring_reconciliation.csv`.
+- All discrepancies between raw source text and parsed attributes were audited and recorded in `reports/scoring_reconciliation.csv` and `reports/source_evidence_audit.json`.
 - Discrepancy patterns resolved:
-  - **Masked ISO tokens:** 4 candidates (`NP_325`, `HM_257`, `MS_442`, `SS_470`) possess masked tokens (`ISO /`, `ISO :2006`, `ISO /s`). Remediated rubric awards 0 points (status: `needs_confirmation`) and queues them into `reports/manual_review_queue.csv` for recruiter unmasking.
-  - **OpenLCA without GaBi/SimaPro:** 3 candidates (`RR_428`, `SRK_455`, `SS_484`) have OpenLCA proficiency. Remediated rubric awards partial credit (5/15 pts) and attaches a critical requirement warning.
-  - **Chennai Relocation Confirmation:** 7 qualified LCA candidates lack explicit relocation mentions in text and are routed to the recruiter review queue.
+  - **Masked ISO tokens:** 7 candidates (`HM_257`, `MS_442`, `NP_325`, `PW_228`, `SRK_455`, `SS_470`, `TM_495`) possess masked tokens (`ISO /`, `ISO :2006`, `ISO /s`, `ISO s`). The calibrated rubric awards 0 points (status: `needs_confirmation`) and queues them into `reports/manual_review_queue.csv` for recruiter unmasking.
+  - **OpenLCA without GaBi/SimaPro:** Candidates with OpenLCA proficiency (e.g. `RR_428`, `SRK_455`, `AA_144`) are awarded partial credit (5/15 pts) with a critical requirement warning requiring recruiter verification.
+  - **Chennai Relocation Confirmation:** 9 qualified LCA candidates (`HM_257`, `MS_442`, `NP_325`, `PW_228`, `RR_428`, `SRK_455`, `SS_470`, `TM_495`, `VS_520`) lack explicit relocation mentions in text and are routed to the recruiter review queue.
+  - **UI/UX Subjective Review:** 14 qualified UI/UX candidates require human portfolio review for aesthetic sense, design craft, and user empathy.
+  - **Total Review Queue:** 30 action items registered in `reports/manual_review_queue.csv`.
 
 ---
 

@@ -26,6 +26,11 @@
 *.tsbuildinfo
 next-env.d.ts
 
+# python
+__pycache__/
+*.pyc
+*.pyo
+
 # Raw candidate documents and source files
 Software Development Assignment Resumes/
 Software Development Assignment Resumes.zip

@@ -33,30 +33,41 @@ def layer_a_score_lca(extraction, raw_cosine=0.0):
             'total': 0.0, 'classification': 'neither_or_uncertain'
         }
 
-    all_text = ' '.join([
-        extraction.get('headline', ''),
-        extraction.get('summary', ''),
-        ' '.join(extraction.get('skills', {}).get('allSkills', [])),
+    exp_proj_text = ' '.join([
         ' '.join([f"{e.get('title', '')} {e.get('company', '')} {' '.join(e.get('bullets', []))}" for e in extraction.get('experience', [])]),
         ' '.join([f"{p.get('title', '')} {p.get('description', '')} {' '.join(p.get('bullets', []))}" for p in extraction.get('projects', [])])
     ]).lower()
+    skills_text = ' '.join(extraction.get('skills', {}).get('allSkills', [])).lower()
+    all_text = f"{extraction.get('headline', '')} {extraction.get('summary', '')} {skills_text} {exp_proj_text}".lower()
 
     # 1. Skills (30 pts)
-    has_gabi = 'gabi' in all_text
-    has_simapro = 'simapro' in all_text
-    has_openlca = 'openlca' in all_text or 'open lca' in all_text
+    # 1.1 GaBi or SimaPro hands-on (15 pts)
+    gabi_in_exp = 'gabi' in exp_proj_text
+    simapro_in_exp = 'simapro' in exp_proj_text or 'sima pro' in exp_proj_text
+    openlca_in_exp = 'openlca' in exp_proj_text or 'open lca' in exp_proj_text
 
-    if has_gabi or has_simapro:
+    gabi_in_skills = 'gabi' in skills_text
+    simapro_in_skills = 'simapro' in skills_text or 'sima pro' in skills_text
+    openlca_in_skills = 'openlca' in skills_text or 'open lca' in skills_text
+
+    has_gabi = gabi_in_exp or gabi_in_skills
+    has_simapro = simapro_in_exp or simapro_in_skills
+    has_openlca = openlca_in_exp or openlca_in_skills
+
+    if gabi_in_exp or simapro_in_exp:
         gabi_pts = 15.0
+    elif gabi_in_skills or simapro_in_skills:
+        gabi_pts = 12.0
     elif has_openlca:
         gabi_pts = 5.0
     else:
         gabi_pts = 0.0
 
+    # 1.2 ISO 14040 / 14044 (8 pts)
     has_iso_explicit = any(k in all_text for k in ['iso 14040', 'iso 14044', 'iso14040', 'iso14044', 'iso 14040/44', 'iso 14040/14044'])
     has_iso_generic = (any(k in all_text for k in ['iso standard', 'iso standards', 'iso compliant lca', 'iso-compliant lca', 'iso methodology']) and
                        ('lca' in all_text or 'life cycle' in all_text))
-    # Anonymized / masked token gets 0 pts in remediated rubric pending human unmasking
+
     if has_iso_explicit:
         iso_pts = 8.0
     elif has_iso_generic:
@@ -64,15 +75,26 @@ def layer_a_score_lca(extraction, raw_cosine=0.0):
     else:
         iso_pts = 0.0
 
+    # 1.3 LCI Data Collection & LCA Modelling (7 pts)
     has_lci = 'lci' in all_text or 'life cycle inventory' in all_text
-    has_modelling = 'lca modelling' in all_text or 'modelling' in all_text or 'modeling' in all_text
+    has_lca_modelling = ('lca modelling' in all_text or 'lca modeling' in all_text or
+                         'inventory modelling' in all_text or 'inventory modeling' in all_text or
+                         'lci modelling' in all_text or 'lci modeling' in all_text or
+                         'carbon modelling' in all_text or 'carbon modeling' in all_text or
+                         'emission modelling' in all_text or 'emission modeling' in all_text or
+                         'mrio modelling' in all_text or 'mrio modeling' in all_text or
+                         'environmental modelling' in all_text or 'environmental modeling' in all_text or
+                         (('modelling' in all_text or 'modeling' in all_text) and
+                          ('life cycle' in all_text or 'gabi' in all_text or 'simapro' in all_text or 'openlca' in all_text or 'ecoinvent' in all_text)))
     has_epd = 'epd' in all_text or 'environmental product declaration' in all_text
     completed_projects = extraction.get('completedLcaProjectsCount', 0)
 
-    if has_lci and has_modelling:
+    if has_lci and has_lca_modelling:
         lci_pts = 7.0
-    elif has_lci or has_modelling or has_epd or completed_projects > 0:
+    elif has_lci or (has_epd and has_lca_modelling) or completed_projects > 0:
         lci_pts = 5.0
+    elif has_epd or has_lca_modelling:
+        lci_pts = 3.0
     else:
         lci_pts = 0.0
 
@@ -133,22 +155,32 @@ def layer_a_score_uiux(extraction, raw_cosine=0.0):
             'total': 0.0, 'classification': 'neither_or_uncertain'
         }
 
-    all_text = ' '.join([
-        extraction.get('headline', ''),
-        extraction.get('summary', ''),
-        ' '.join(extraction.get('skills', {}).get('allSkills', [])),
+    exp_proj_text = ' '.join([
         ' '.join([f"{e.get('title', '')} {e.get('company', '')} {' '.join(e.get('bullets', []))}" for e in extraction.get('experience', [])]),
         ' '.join([f"{p.get('title', '')} {p.get('description', '')} {' '.join(p.get('bullets', []))}" for p in extraction.get('projects', [])])
     ]).lower()
+    skills_text = ' '.join(extraction.get('skills', {}).get('allSkills', [])).lower()
+    all_text = f"{extraction.get('headline', '')} {extraction.get('summary', '')} {skills_text} {exp_proj_text}".lower()
 
     # 1. Skills (30 pts)
-    has_figma = 'figma' in all_text
-    has_prototyping = any(w in all_text for w in ['prototyp', 'wirefram', 'mockup'])
-    if has_figma and has_prototyping:
+    # 1.1 Figma & Prototyping (15 pts)
+    figma_in_exp = 'figma' in exp_proj_text
+    figma_in_skills = 'figma' in skills_text
+    proto_in_exp = any(w in exp_proj_text for w in ['prototyp', 'wirefram', 'mockup'])
+    proto_in_skills = any(w in skills_text for w in ['prototyp', 'wirefram', 'mockup'])
+
+    has_figma = figma_in_exp or figma_in_skills
+    has_proto = proto_in_exp or proto_in_skills
+
+    if figma_in_exp and proto_in_exp:
         figma_pts = 15.0
-    elif has_figma:
+    elif figma_in_exp:
+        figma_pts = 13.0
+    elif figma_in_skills and has_proto:
         figma_pts = 12.0
-    elif has_prototyping:
+    elif figma_in_skills:
+        figma_pts = 10.0
+    elif has_proto:
         figma_pts = 6.0
     else:
         figma_pts = 0.0
@@ -183,20 +215,18 @@ def layer_a_score_uiux(extraction, raw_cosine=0.0):
         exp_pts = 0.0
 
     # 3. Projects (30 pts)
-    design_projects_count = len([p for p in extraction.get('projects', []) if p.get('isDesignProject', False)])
-    if has_design_portfolio and design_projects_count >= 2:
+    design_projects = [p for p in extraction.get('projects', []) if p.get('isDesignProject', False)]
+    has_portfolio_or_case_studies = extraction.get('hasDesignPortfolioOrCaseStudies', False) or len(design_projects) > 0
+    if has_portfolio_or_case_studies and len(design_projects) >= 2:
         portfolio_pts = 20.0
-    elif has_design_portfolio or design_projects_count >= 1:
+    elif has_portfolio_or_case_studies:
         portfolio_pts = 14.0
     else:
         portfolio_pts = 0.0
 
-    has_research_evidence = (
-        extraction.get('hasUserResearchEvidence', False) or
-        any(w in all_text for w in ['user interview', 'survey', 'persona'])
-    )
-    research_evidence_pts = 10.0 if has_research_evidence else 0.0
-    proj_score = portfolio_pts + research_evidence_pts
+    has_research_evidence = extraction.get('hasUserResearchEvidence', False) or any(w in all_text for w in ['user interview', 'survey', 'persona'])
+    research_pts = 10.0 if has_research_evidence else 0.0
+    proj_pts = portfolio_pts + research_pts
 
     # 4. Semantic (20 pts)
     norm_cos = normalize_cosine_similarity(raw_cosine)
@@ -215,20 +245,21 @@ def layer_a_score_uiux(extraction, raw_cosine=0.0):
     else:
         edu_pts = 0.0
 
-    total_score = min(100.0, round((skills_score + exp_pts + proj_score + sem_pts + edu_pts) * 10.0) / 10.0)
+    total_score = min(100.0, round((skills_score + exp_pts + proj_pts + sem_pts + edu_pts) * 10.0) / 10.0)
     return {
         'skills': skills_score,
         'experience': exp_pts,
-        'projects': proj_score,
+        'projects': proj_pts,
         'semantic': sem_pts,
         'education': edu_pts,
         'total': total_score
     }
 
 # ==============================================================================
-# LAYER B: SOURCE-EVIDENCE AUDIT ORACLE
-# Audits raw DOCX resumes directly to test whether the production attributes
-# faithfully reflect the original source evidence or have discrepancies.
+# LAYER B: GENUINE SOURCE-EVIDENCE PARSER & AUDIT ENGINE
+# Reads raw DOCX XML directly, indexes every paragraph with line location,
+# finds verbatim quotes, evaluates software/standards/experience/projects directly,
+# and derives an independent Layer B score WITHOUT copying production outputs.
 # ==============================================================================
 def audit_source_evidence(filepath):
     filename = os.path.basename(filepath)
@@ -248,37 +279,259 @@ def audit_source_evidence(filepath):
                     paras.append(t)
 
     if not paras:
-        return {'candidate_id': candidate_id, 'is_empty': True, 'raw_text': ''}
+        return {
+            'candidate_id': candidate_id,
+            'is_empty': True,
+            'paragraphs': [],
+            'sha256': sha256,
+            'quotes': {},
+            'confidence': 'HIGH_EMPTY',
+            'flags': ['Empty document: 0 text nodes']
+        }
 
-    raw_text = '\n'.join(paras)
-    full_lower = raw_text.lower()
+    indexed_paras = [(i + 1, p) for i, p in enumerate(paras)]
+    full_lower = '\n'.join(paras).lower()
 
-    # Independent checks
-    has_explicit_iso = bool(re.search(r'\biso\s*(?:14040|14044)\b', full_lower))
-    has_anonymized_iso = bool(re.search(r'\biso\s*(?:/|:2006|lca|s\b)', full_lower) and any(w in full_lower for w in ['lca', 'life cycle', 'footprint', 'pcf', 'epd']))
-    has_gabi = 'gabi' in full_lower
-    has_simapro = 'simapro' in full_lower
-    has_openlca = 'openlca' in full_lower or 'open lca' in full_lower
-    has_figma = 'figma' in full_lower
-    has_prototyping = any(w in full_lower for w in ['prototype', 'wireframe', 'mockup', 'prototyping'])
-    has_user_research = any(w in full_lower for w in ['user research', 'user interview', 'usability testing', 'user testing', 'persona'])
+    quotes = {}
+    flags = []
+
+    # 1. Search GaBi, SimaPro, OpenLCA quotes & locations
+    gabi_quotes = [(idx, p) for idx, p in indexed_paras if 'gabi' in p.lower()]
+    simapro_quotes = [(idx, p) for idx, p in indexed_paras if 'simapro' in p.lower() or 'sima pro' in p.lower()]
+    openlca_quotes = [(idx, p) for idx, p in indexed_paras if 'openlca' in p.lower() or 'open lca' in p.lower()]
+
+    quotes['gabi'] = [{'line': idx, 'quote': p[:100]} for idx, p in gabi_quotes]
+    quotes['simapro'] = [{'line': idx, 'quote': p[:100]} for idx, p in simapro_quotes]
+    quotes['openlca'] = [{'line': idx, 'quote': p[:100]} for idx, p in openlca_quotes]
+
+    has_gabi = len(gabi_quotes) > 0
+    has_simapro = len(simapro_quotes) > 0
+    has_openlca = len(openlca_quotes) > 0
+
+    # Determine if GaBi/SimaPro is in experience/projects or just skills
+    # Simple section heuristic: find 'experience' / 'projects' section boundaries
+    exp_start = next((idx for idx, p in indexed_paras if re.match(r'^(?:work\s+)?experience\b', p, re.I)), -1)
+    skills_start = next((idx for idx, p in indexed_paras if re.match(r'^(?:technical\s+)?skills\b', p, re.I)), -1)
+
+    gabi_in_exp = any(idx > exp_start and (skills_start == -1 or idx < skills_start) for idx, p in gabi_quotes) if exp_start != -1 else has_gabi
+    simapro_in_exp = any(idx > exp_start and (skills_start == -1 or idx < skills_start) for idx, p in simapro_quotes) if exp_start != -1 else has_simapro
+
+    # 2. ISO standards quotes & locations
+    explicit_iso_quotes = [(idx, p) for idx, p in indexed_paras if re.search(r'\biso\s*(?:14040|14044)\b', p.lower())]
+    anonymized_iso_quotes = [(idx, p) for idx, p in indexed_paras if re.search(r'\biso\s*(?:/|:2006|lca|s\b)', p.lower()) and any(w in p.lower() for w in ['lca', 'life cycle', 'footprint', 'pcf', 'epd'])]
+    generic_iso_quotes = [(idx, p) for idx, p in indexed_paras if any(k in p.lower() for k in ['iso standard', 'iso compliant lca', 'iso methodology'])]
+
+    quotes['iso_explicit'] = [{'line': idx, 'quote': p[:100]} for idx, p in explicit_iso_quotes]
+    quotes['iso_anonymized'] = [{'line': idx, 'quote': p[:100]} for idx, p in anonymized_iso_quotes]
+    quotes['iso_generic'] = [{'line': idx, 'quote': p[:100]} for idx, p in generic_iso_quotes]
+
+    has_explicit_iso = len(explicit_iso_quotes) > 0
+    has_anonymized_iso = len(anonymized_iso_quotes) > 0 and not has_explicit_iso
+    has_generic_iso = len(generic_iso_quotes) > 0 and not has_explicit_iso
+
+    if has_anonymized_iso:
+        flags.append("Anonymized ISO token requires human unmasking")
+
+    # 3. LCI and LCA modeling
+    lci_quotes = [(idx, p) for idx, p in indexed_paras if 'lci' in p.lower() or 'life cycle inventory' in p.lower()]
+    lca_model_quotes = [(idx, p) for idx, p in indexed_paras if ('lca modelling' in p.lower() or 'lca modeling' in p.lower() or 'inventory model' in p.lower() or (('modelling' in p.lower() or 'modeling' in p.lower()) and ('life cycle' in p.lower() or 'gabi' in p.lower() or 'simapro' in p.lower())))]
+    quotes['lci'] = [{'line': idx, 'quote': p[:100]} for idx, p in lci_quotes]
+    quotes['lca_modelling'] = [{'line': idx, 'quote': p[:100]} for idx, p in lca_model_quotes]
+
+    # 4. Figma & Prototyping
+    figma_quotes = [(idx, p) for idx, p in indexed_paras if 'figma' in p.lower()]
+    proto_quotes = [(idx, p) for idx, p in indexed_paras if any(w in p.lower() for w in ['prototype', 'wireframe', 'mockup', 'prototyping'])]
+    quotes['figma'] = [{'line': idx, 'quote': p[:100]} for idx, p in figma_quotes]
+    quotes['prototyping'] = [{'line': idx, 'quote': p[:100]} for idx, p in proto_quotes]
+
+    has_figma = len(figma_quotes) > 0
+    figma_in_exp = any(idx > exp_start and (skills_start == -1 or idx < skills_start) for idx, p in figma_quotes) if exp_start != -1 else has_figma
+
+    # 5. User Research
+    research_quotes = [(idx, p) for idx, p in indexed_paras if any(w in p.lower() for w in ['user research', 'user interview', 'usability testing', 'user testing', 'persona'])]
+    quotes['user_research'] = [{'line': idx, 'quote': p[:100]} for idx, p in research_quotes]
+
+    # 6. Education
+    edu_quotes = [(idx, p) for idx, p in indexed_paras if re.search(r'\b(?:bachelor|master|b\.?tech|m\.?tech|b\.?des|m\.?des|b\.?sc|m\.?sc|b\.?e\b|mba|diploma)\b', p.lower())]
+    quotes['education'] = [{'line': idx, 'quote': p[:100]} for idx, p in edu_quotes]
+
+    # Overall source confidence
+    confidence = "HIGH"
+    if has_anonymized_iso:
+        confidence = "REVIEW_REQUIRED"
+    elif has_openlca and not (has_gabi or has_simapro):
+        confidence = "MEDIUM_OPENLCA"
 
     return {
         'candidate_id': candidate_id,
         'is_empty': False,
-        'raw_text': raw_text,
-        'has_explicit_iso': has_explicit_iso,
-        'has_anonymized_iso': has_anonymized_iso,
+        'sha256': sha256,
         'has_gabi': has_gabi,
         'has_simapro': has_simapro,
         'has_openlca': has_openlca,
+        'gabi_in_exp': gabi_in_exp,
+        'simapro_in_exp': simapro_in_exp,
+        'has_explicit_iso': has_explicit_iso,
+        'has_anonymized_iso': has_anonymized_iso,
+        'has_generic_iso': has_generic_iso,
+        'has_lci': len(lci_quotes) > 0,
+        'has_lca_modelling': len(lca_model_quotes) > 0,
         'has_figma': has_figma,
-        'has_prototyping': has_prototyping,
-        'has_user_research': has_user_research
+        'figma_in_exp': figma_in_exp,
+        'has_prototyping': len(proto_quotes) > 0,
+        'has_user_research': len(research_quotes) > 0,
+        'has_design_edu': any(any(w in q['quote'].lower() for w in ['design', 'hci', 'interaction', 'multimedia', 'animation']) for q in quotes['education']),
+        'has_allied_edu': any(any(w in q['quote'].lower() for w in ['engineering', 'computer', 'technology', 'mechanical', 'civil']) for q in quotes['education']),
+        'has_env_edu': any(any(w in q['quote'].lower() for w in ['environmental', 'sustainability', 'energy', 'renewable']) for q in quotes['education']),
+        'quotes': quotes,
+        'confidence': confidence,
+        'flags': flags
+    }
+
+def layer_b_score_from_source(source_audit, extraction, raw_lca_cos=0.0, raw_uiux_cos=0.0):
+    """
+    Computes Layer B score purely from the independent source audit and verified raw attributes.
+    Does not copy or touch production score objects.
+    """
+    if source_audit.get('is_empty'):
+        return {
+            'lca_total': 0.0,
+            'uiux_total': 0.0,
+            'lca_breakdown': {'skills': 0.0, 'experience': 0.0, 'projects': 0.0, 'semantic': 0.0, 'education': 0.0},
+            'uiux_breakdown': {'skills': 0.0, 'experience': 0.0, 'projects': 0.0, 'semantic': 0.0, 'education': 0.0}
+        }
+
+    # LCA Software
+    if source_audit.get('gabi_in_exp') or source_audit.get('simapro_in_exp'):
+        gabi_pts = 15.0
+    elif source_audit.get('has_gabi') or source_audit.get('has_simapro'):
+        gabi_pts = 12.0
+    elif source_audit.get('has_openlca'):
+        gabi_pts = 5.0
+    else:
+        gabi_pts = 0.0
+
+    # ISO Standards
+    if source_audit.get('has_explicit_iso'):
+        iso_pts = 8.0
+    elif source_audit.get('has_generic_iso'):
+        iso_pts = 4.0
+    else:
+        iso_pts = 0.0
+
+    # LCI & Modelling
+    completed_lca_projects = extraction.get('completedLcaProjectsCount', 0)
+    has_lci = source_audit.get('has_lci', False)
+    has_modelling = source_audit.get('has_lca_modelling', False)
+    if has_lci and has_modelling:
+        lci_pts = 7.0
+    elif has_lci or has_modelling or completed_lca_projects > 0:
+        lci_pts = 5.0
+    else:
+        lci_pts = 0.0
+
+    lca_skills = gabi_pts + iso_pts + lci_pts
+
+    # Experience
+    lca_months = extraction.get('independentLcaExperienceMonths', 0)
+    if lca_months >= 36:
+        lca_exp = 30.0
+    elif lca_months >= 24:
+        lca_exp = 28.0
+    elif lca_months >= 12:
+        lca_exp = 18.0
+    elif lca_months > 0:
+        lca_exp = 10.0
+    else:
+        lca_exp = 0.0
+
+    # Projects
+    if completed_lca_projects >= 3:
+        lca_proj = 20.0
+    elif completed_lca_projects == 2:
+        lca_proj = 14.0
+    elif completed_lca_projects == 1:
+        lca_proj = 8.0
+    else:
+        lca_proj = 0.0
+
+    # Semantic
+    lca_sem = round(normalize_cosine_similarity(raw_lca_cos) * 15.0 * 10.0) / 10.0
+
+    # Education
+    if source_audit.get('has_env_edu'):
+        lca_edu = 5.0
+    elif source_audit.get('has_allied_edu'):
+        lca_edu = 3.0
+    else:
+        lca_edu = 0.0
+
+    lca_total = min(100.0, round((lca_skills + lca_exp + lca_proj + lca_sem + lca_edu) * 10.0) / 10.0)
+
+    # UI/UX Evaluation
+    has_figma = source_audit.get('has_figma', False)
+    figma_in_exp = source_audit.get('figma_in_exp', False)
+    has_proto = source_audit.get('has_prototyping', False)
+
+    if figma_in_exp and has_proto:
+        uiux_figma = 15.0
+    elif figma_in_exp:
+        uiux_figma = 13.0
+    elif has_figma and has_proto:
+        uiux_figma = 12.0
+    elif has_figma:
+        uiux_figma = 10.0
+    elif has_proto:
+        uiux_figma = 6.0
+    else:
+        uiux_figma = 0.0
+
+    # UI/UX Design Principles
+    uiux_principles = 7.0 if (has_proto or has_figma) else 0.0
+    uiux_research = 5.0 if source_audit.get('has_user_research') else 0.0
+    uiux_skills = uiux_figma + uiux_principles + uiux_research
+
+    # Experience
+    design_months = extraction.get('designExperienceMonths', 0)
+    has_portfolio = extraction.get('hasDesignPortfolioOrCaseStudies', False)
+    if design_months > 0:
+        uiux_exp = 10.0
+    elif has_portfolio:
+        uiux_exp = 8.0
+    else:
+        uiux_exp = 0.0
+
+    # Projects
+    if has_portfolio:
+        uiux_proj = 20.0
+    elif has_proto:
+        uiux_proj = 10.0
+    else:
+        uiux_proj = 0.0
+
+    # Semantic
+    uiux_sem = round(normalize_cosine_similarity(raw_uiux_cos) * 20.0 * 10.0) / 10.0
+
+    # Education
+    if source_audit.get('has_design_edu'):
+        uiux_edu = 10.0
+    elif source_audit.get('has_allied_edu'):
+        uiux_edu = 7.0
+    elif len(source_audit.get('quotes', {}).get('education', [])) > 0 or len(extraction.get('education', [])) > 0:
+        uiux_edu = 4.0
+    else:
+        uiux_edu = 0.0
+
+    uiux_total = min(100.0, round((uiux_skills + uiux_exp + uiux_proj + uiux_sem + uiux_edu) * 10.0) / 10.0)
+
+    return {
+        'lca_total': lca_total,
+        'uiux_total': uiux_total,
+        'lca_breakdown': {'skills': lca_skills, 'experience': lca_exp, 'projects': lca_proj, 'semantic': lca_sem, 'education': lca_edu},
+        'uiux_breakdown': {'skills': uiux_skills, 'experience': uiux_exp, 'projects': uiux_proj, 'semantic': uiux_sem, 'education': uiux_edu}
     }
 
 def main():
-    import csv, math
     os.makedirs('reports', exist_ok=True)
 
     with open('data/baseline.json', 'r') as f:
@@ -288,11 +541,13 @@ def main():
     print(f"Loaded {len(candidates)} candidates from data/baseline.json")
 
     reconciliation_rows = []
-    extraction_discrepancies = []
+    source_audits = {}
     manual_review_queue = []
 
     layer_a_lca_matches = 0
     layer_a_uiux_matches = 0
+    layer_b_lca_matches = 0
+    layer_b_uiux_matches = 0
     total_audited = len(candidates)
 
     for c in candidates:
@@ -306,7 +561,7 @@ def main():
         raw_lca_cos = scores['lca'].get('semanticRawCosine', 0.0)
         raw_uiux_cos = scores['uiux'].get('semanticRawCosine', 0.0)
 
-        # 1. LAYER A: Arithmetic Verification
+        # 1. LAYER A: Arithmetic Verification (Independent Python Oracle vs Production TS)
         oracle_a_lca = layer_a_score_lca(ext, raw_lca_cos)
         oracle_a_uiux = layer_a_score_uiux(ext, raw_uiux_cos)
 
@@ -321,11 +576,19 @@ def main():
         if status_a_uiux == "MATCH":
             layer_a_uiux_matches += 1
 
-        # 2. LAYER B: Source-Evidence Verification
+        # 2. LAYER B: Source-Evidence Verification (Direct DOCX Paragraph Inspection)
         source_fp = os.path.join('Software Development Assignment Resumes', f"{cid}.docx")
         source_audit = audit_source_evidence(source_fp) if os.path.exists(source_fp) else {'is_empty': True}
+        source_audits[cid] = source_audit
 
-        # Check for any source-level nuances
+        # Compute independent Layer B score from raw document facts
+        oracle_b = layer_b_score_from_source(source_audit, ext, raw_lca_cos, raw_uiux_cos)
+        layer_b_lca = oracle_b['lca_total']
+        layer_b_uiux = oracle_b['uiux_total']
+
+        delta_b_lca = abs(prod_lca - layer_b_lca)
+        delta_b_uiux = abs(prod_uiux - layer_b_uiux)
+
         lca_discrepancy = "None - fully verified"
         lca_resolution = "Production score accepted"
         uiux_discrepancy = "None - fully verified"
@@ -369,11 +632,13 @@ def main():
                 'potentialScoreIfConfirmed': prod_uiux
             })
 
-        # Layer B scores match production when rubric matches evidence exactly
-        layer_b_lca = prod_lca
-        layer_b_uiux = prod_uiux
-        status_b_lca = "VERIFIED_MATCH" if lca_discrepancy == "None - fully verified" else "RECONCILED"
-        status_b_uiux = "VERIFIED_MATCH" if uiux_discrepancy == "None - fully verified" else "RECONCILED"
+        status_b_lca = "SOURCE_VERIFIED_MATCH" if delta_b_lca < 1.0 else f"RECONCILED_DELTA_{delta_b_lca:.1f}"
+        status_b_uiux = "SOURCE_VERIFIED_MATCH" if delta_b_uiux < 1.0 else f"RECONCILED_DELTA_{delta_b_uiux:.1f}"
+
+        if delta_b_lca < 1.0:
+            layer_b_lca_matches += 1
+        if delta_b_uiux < 1.0:
+            layer_b_uiux_matches += 1
 
         reconciliation_rows.append({
             'candidate_id': cid,
@@ -414,13 +679,27 @@ def main():
         writer.writeheader()
         writer.writerows(manual_review_queue)
 
-    print("\n=== Scoring Reconciliation Summary ===")
-    print(f"Total Candidates Audited: {total_audited}")
-    print(f"Layer A LCA Arithmetic Agreement: {layer_a_lca_matches}/{total_audited} ({(layer_a_lca_matches/total_audited)*100:.1f}%)")
-    print(f"Layer A UI/UX Arithmetic Agreement: {layer_a_uiux_matches}/{total_audited} ({(layer_a_uiux_matches/total_audited)*100:.1f}%)")
-    print(f"Manual Review Queue Items: {len(manual_review_queue)}")
-    print(f"Saved {reconciliation_csv_path}")
-    print(f"Saved {review_csv_path}")
+    # Export source_evidence_audit.json
+    with open('reports/source_evidence_audit.json', 'w') as f:
+        json.dump(source_audits, f, indent=2)
+
+    print("\n=== LAYER A (ARITHMETIC ORACLE) RESULTS ===")
+    print(f"LCA Arithmetic Matches: {layer_a_lca_matches}/{total_audited} ({layer_a_lca_matches/total_audited*100:.1f}%)")
+    print(f"UI/UX Arithmetic Matches: {layer_a_uiux_matches}/{total_audited} ({layer_a_uiux_matches/total_audited*100:.1f}%)")
+
+    print("\n=== LAYER B (SOURCE-EVIDENCE ORACLE) RESULTS ===")
+    print(f"LCA Source Evidence Matches: {layer_b_lca_matches}/{total_audited} ({layer_b_lca_matches/total_audited*100:.1f}%)")
+    print(f"UI/UX Source Evidence Matches: {layer_b_uiux_matches}/{total_audited} ({layer_b_uiux_matches/total_audited*100:.1f}%)")
+
+    iso_reviews = [r for r in manual_review_queue if 'ISO' in r['reason']]
+    relo_reviews = [r for r in manual_review_queue if 'relocation' in r['reason']]
+    uiux_reviews = [r for r in manual_review_queue if 'UI/UX' in r['reason']]
+    print("\n=== MANUAL REVIEW QUEUE BREAKDOWN ===")
+    print(f"Total Review Actions: {len(manual_review_queue)}")
+    print(f"  - ISO Token Unmasking Reviews: {len(iso_reviews)}")
+    print(f"  - Chennai Relocation Reviews: {len(relo_reviews)}")
+    print(f"  - UI/UX Portfolio Craft Reviews: {len(uiux_reviews)}")
+    print(f"Exported: {reconciliation_csv_path}, {review_csv_path}, reports/source_evidence_audit.json")
 
 if __name__ == '__main__':
     main()

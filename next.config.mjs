@@ -1,8 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // Allow server components to handle large uploads if needed
   experimental: {
+    serverComponentsExternalPackages: [
+      "@xenova/transformers",
+      "onnxruntime-node",
+      "sharp",
+    ],
     serverActions: {
       bodySizeLimit: "6mb",
     },

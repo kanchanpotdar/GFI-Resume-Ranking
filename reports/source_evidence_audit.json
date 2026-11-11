@@ -1,0 +1,3047 @@
+{
+  "anonymized_AA_1793682784144": {
+    "candidate_id": "anonymized_AA_1793682784144",
+    "is_empty": false,
+    "sha256": "e612c6642550394306e23b740e9c0bc2b40aee0086240c373bd4f34dedefc60f",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": true,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": false,
+    "figma_in_exp": false,
+    "has_prototyping": false,
+    "has_user_research": false,
+    "has_design_edu": false,
+    "has_allied_edu": true,
+    "has_env_edu": true,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [
+        {
+          "line": 37,
+          "quote": "Platforms: OpenLCA, Power BI, Aspen Plus, PVsyst"
+        }
+      ],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [],
+      "prototyping": [],
+      "user_research": [],
+      "education": [
+        {
+          "line": 24,
+          "quote": "M.Tech. in Energy and Environmental Engineering"
+        },
+        {
+          "line": 27,
+          "quote": "B.Tech. in Energy and Environmental Engineering"
+        }
+      ]
+    },
+    "confidence": "MEDIUM_OPENLCA",
+    "flags": []
+  },
+  "anonymized_AA_1793685080195": {
+    "candidate_id": "anonymized_AA_1793685080195",
+    "is_empty": false,
+    "sha256": "8bb0e6457ae6d7d151112a53c9f8e483acb8e3f308b74b401944242f689e69c4",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": true,
+    "figma_in_exp": true,
+    "has_prototyping": true,
+    "has_user_research": true,
+    "has_design_edu": true,
+    "has_allied_edu": false,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [
+        {
+          "line": 18,
+          "quote": "Platforms: Figma, Illustrator, Photoshop, After Effects, Premiere Pro"
+        }
+      ],
+      "prototyping": [
+        {
+          "line": 7,
+          "quote": "\u2022 Created information architecture, wireframes, user flows, and mockups according to WCAG AA accessi"
+        },
+        {
+          "line": 19,
+          "quote": "Methods: User flows, User Research-to-insight, Wireframing, Mockups, Information architecture, Inter"
+        }
+      ],
+      "user_research": [
+        {
+          "line": 5,
+          "quote": "\u2022 Addressed gaps in diabetic care in self-monitoring blood glucose (SMBG) by combining user research"
+        },
+        {
+          "line": 19,
+          "quote": "Methods: User flows, User Research-to-insight, Wireframing, Mockups, Information architecture, Inter"
+        }
+      ],
+      "education": [
+        {
+          "line": 15,
+          "quote": "B.Des in Communication Design"
+        }
+      ]
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_AA_1793685080402": {
+    "candidate_id": "anonymized_AA_1793685080402",
+    "is_empty": false,
+    "sha256": "ebd937830541a557e313c5a2aeb0639d455682f70f02486c81809b983b53d5df",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": true,
+    "figma_in_exp": true,
+    "has_prototyping": true,
+    "has_user_research": true,
+    "has_design_edu": false,
+    "has_allied_edu": true,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [
+        {
+          "line": 32,
+          "quote": "Graphic Designer specializing in social media creatives, brand identity, and marketing visuals. Skil"
+        },
+        {
+          "line": 34,
+          "quote": "Platforms: Figma, Canva, React.js, Next.js"
+        }
+      ],
+      "prototyping": [
+        {
+          "line": 8,
+          "quote": "\u2022 Designed wireframes, high-fidelity UI screens and interactive prototypes for real product interfac"
+        },
+        {
+          "line": 18,
+          "quote": "Created high-fidelity landing page prototype focusing on branding, typography and user engagement."
+        }
+      ],
+      "user_research": [
+        {
+          "line": 35,
+          "quote": "Methods: User Research, Personas, Journey Mapping, Usability Testing"
+        }
+      ],
+      "education": [
+        {
+          "line": 27,
+          "quote": "B.Tech Computer Science"
+        }
+      ]
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_AK_1793682784184": {
+    "candidate_id": "anonymized_AK_1793682784184",
+    "is_empty": false,
+    "sha256": "166c6059e5303aa57b9f784c763be4d9790515e9bc549129f4ce17a8da056e30",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": true,
+    "has_figma": false,
+    "figma_in_exp": false,
+    "has_prototyping": false,
+    "has_user_research": true,
+    "has_design_edu": false,
+    "has_allied_edu": false,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [
+        {
+          "line": 53,
+          "quote": "Methods: Life Cycle Assessment (LCA), AERMOD, Air Quality Modeling, Environmental Compliance"
+        }
+      ],
+      "figma": [],
+      "prototyping": [],
+      "user_research": [
+        {
+          "line": 13,
+          "quote": "\u2022 Developed a responsive personal portfolio website using HTML, CSS, and JavaScript."
+        }
+      ],
+      "education": []
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_AL_1793685080183": {
+    "candidate_id": "anonymized_AL_1793685080183",
+    "is_empty": false,
+    "sha256": "48c1c39623dfde33d7950cd3fb2ed9fc128c41feb9322975b92ca52a0b595f10",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": true,
+    "figma_in_exp": true,
+    "has_prototyping": true,
+    "has_user_research": true,
+    "has_design_edu": false,
+    "has_allied_edu": true,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [
+        {
+          "line": 5,
+          "quote": "\u2022 Identified fragmented navigation and poor information hierarchy in the existing interface, designe"
+        },
+        {
+          "line": 29,
+          "quote": "Platforms: Figma, Framer, Adobe XD, Photoshop"
+        }
+      ],
+      "prototyping": [
+        {
+          "line": 5,
+          "quote": "\u2022 Identified fragmented navigation and poor information hierarchy in the existing interface, designe"
+        },
+        {
+          "line": 8,
+          "quote": "\u2022 Designed interactive prototypes and iterated based on feedback, improving usability and delivering"
+        },
+        {
+          "line": 27,
+          "quote": "Aspiring UI/UX designer passionate about understanding users and crafting intuitive solutions. Skill"
+        },
+        {
+          "line": 30,
+          "quote": "Methods: Design Thinking, Wireframing, Prototyping, Usability Testing"
+        }
+      ],
+      "user_research": [
+        {
+          "line": 30,
+          "quote": "Methods: Design Thinking, Wireframing, Prototyping, Usability Testing"
+        }
+      ],
+      "education": [
+        {
+          "line": 22,
+          "quote": "B.Tech in Computer Science"
+        }
+      ]
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_AN_1793685080356": {
+    "candidate_id": "anonymized_AN_1793685080356",
+    "is_empty": false,
+    "sha256": "5d5d42f7c97cf8918f589cc0cf3f6384877a8148c2d5bc88e6c3adac9a91ab8c",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": true,
+    "figma_in_exp": true,
+    "has_prototyping": true,
+    "has_user_research": false,
+    "has_design_edu": false,
+    "has_allied_edu": true,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [
+        {
+          "line": 29,
+          "quote": "UI/UX Designer and Frontend Developer with hands-on experience designing and building user-centric w"
+        },
+        {
+          "line": 31,
+          "quote": "Platforms: Figma, React, HTML, CSS, JavaScript"
+        }
+      ],
+      "prototyping": [
+        {
+          "line": 5,
+          "quote": "\u2022 Designed UI screens and user flows for web applications and created wireframes and prototypes usin"
+        },
+        {
+          "line": 29,
+          "quote": "UI/UX Designer and Frontend Developer with hands-on experience designing and building user-centric w"
+        },
+        {
+          "line": 32,
+          "quote": "Methods: Wireframing, Prototyping, User Flows, Interaction Design, Responsive Design, Usability Prin"
+        }
+      ],
+      "user_research": [],
+      "education": [
+        {
+          "line": 22,
+          "quote": "Bachelor of Engineering (B.E) in Information Science and Engineering"
+        }
+      ]
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_APS_1793685080222": {
+    "candidate_id": "anonymized_APS_1793685080222",
+    "is_empty": false,
+    "sha256": "2b4c269c0ed1e6e202ca7a186bc2c2725b844c3d9c9c321f4aa81b6764511343",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": true,
+    "figma_in_exp": true,
+    "has_prototyping": true,
+    "has_user_research": true,
+    "has_design_edu": true,
+    "has_allied_edu": false,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [
+        {
+          "line": 9,
+          "quote": "\u2022 Designed responsive websites, mobile app interfaces, and high-fidelity wireframes using Figma and "
+        },
+        {
+          "line": 29,
+          "quote": "\u2022 Used Figma for structure and Photoshop for visual detailing and mockup presentation."
+        },
+        {
+          "line": 38,
+          "quote": "Platforms: Figma, Adobe XD, Adobe After Effects, Premiere Pro, Adobe Illustrator, Photoshop"
+        },
+        {
+          "line": 42,
+          "quote": "Figma, Adobe XD, Adobe After Effects, Premiere Pro, Adobe Illustrator, Photoshop, MS Excel, SPSS"
+        }
+      ],
+      "prototyping": [
+        {
+          "line": 9,
+          "quote": "\u2022 Designed responsive websites, mobile app interfaces, and high-fidelity wireframes using Figma and "
+        },
+        {
+          "line": 20,
+          "quote": "\u2022 Integrated user research, interaction design, and high-fidelity prototyping."
+        },
+        {
+          "line": 27,
+          "quote": "Website Landing Page Mockup"
+        },
+        {
+          "line": 28,
+          "quote": "Designed a modern and responsive website landing page mockup emphasizing clean layout and brand cohe"
+        },
+        {
+          "line": 29,
+          "quote": "\u2022 Used Figma for structure and Photoshop for visual detailing and mockup presentation."
+        },
+        {
+          "line": 39,
+          "quote": "Methods: Wireframing, Prototyping, User Flow Mapping, Design Research, Visual Hierarchy, Interaction"
+        }
+      ],
+      "user_research": [
+        {
+          "line": 20,
+          "quote": "\u2022 Integrated user research, interaction design, and high-fidelity prototyping."
+        }
+      ],
+      "education": [
+        {
+          "line": 31,
+          "quote": "Master of Design"
+        },
+        {
+          "line": 33,
+          "quote": "Bachelor of Arts in Journalism and Mass Communication"
+        }
+      ]
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_AR_1793685080207": {
+    "candidate_id": "anonymized_AR_1793685080207",
+    "is_empty": false,
+    "sha256": "e963f1d59138357ddf1054b6604d0d3ffa99a4b1b4ba921574f0ee797a215831",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": true,
+    "figma_in_exp": true,
+    "has_prototyping": true,
+    "has_user_research": true,
+    "has_design_edu": false,
+    "has_allied_edu": true,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [
+        {
+          "line": 7,
+          "quote": "\u2022 Designed landing page layouts and interface concepts in Figma."
+        },
+        {
+          "line": 19,
+          "quote": "\u2022 Designed user flows and high-fidelity mobile interfaces in Figma while maintaining Spotify's exist"
+        },
+        {
+          "line": 27,
+          "quote": "Platforms: Figma, Framer (Basic), Notion, Canva"
+        }
+      ],
+      "prototyping": [
+        {
+          "line": 28,
+          "quote": "Methods: UI Design, Visual Design, Branding, Wireframing, Prototyping, Responsive Design, Typography"
+        }
+      ],
+      "user_research": [
+        {
+          "line": 18,
+          "quote": "\u2022 Conceptualized Quick Start, a feature that surfaces personalized starting tracks to help users beg"
+        }
+      ],
+      "education": [
+        {
+          "line": 22,
+          "quote": "Bachelor of Technology (B.Tech) in Computer Science & Information Technology"
+        }
+      ]
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_AS_1793685080379": {
+    "candidate_id": "anonymized_AS_1793685080379",
+    "is_empty": false,
+    "sha256": "4e7ea27d18275eb68c2602df1d7d26350bb5f240b392c270228f0e2f4416477e",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": true,
+    "figma_in_exp": true,
+    "has_prototyping": false,
+    "has_user_research": true,
+    "has_design_edu": false,
+    "has_allied_edu": false,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [
+        {
+          "line": 38,
+          "quote": "Platforms: Figma, Framer, Rive, Spline, FigJam, Jitter, Adobe Creative Suite"
+        }
+      ],
+      "prototyping": [],
+      "user_research": [
+        {
+          "line": 41,
+          "quote": "Soft Skills: User Research, Information Architecture, Accessibility, Interaction Design"
+        }
+      ],
+      "education": [
+        {
+          "line": 29,
+          "quote": "Bachelor\u2019s Degree"
+        }
+      ]
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_AY_1793685080440": {
+    "candidate_id": "anonymized_AY_1793685080440",
+    "is_empty": false,
+    "sha256": "4a7be1714f6f32ed4379d46f223dccd1a59347eede6869d84faedbdbc9e2db95",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": true,
+    "figma_in_exp": true,
+    "has_prototyping": true,
+    "has_user_research": true,
+    "has_design_edu": true,
+    "has_allied_edu": false,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [
+        {
+          "line": 8,
+          "quote": "\u2022 Created wireframes, high-fidelity UI, and prototypes in Figma."
+        },
+        {
+          "line": 34,
+          "quote": "Platforms: Figma, Motiff, Uizard, Maze, Miro, FigJam"
+        },
+        {
+          "line": 39,
+          "quote": "Figma, Motiff, Uizard, Maze, Miro, FigJam"
+        }
+      ],
+      "prototyping": [
+        {
+          "line": 8,
+          "quote": "\u2022 Created wireframes, high-fidelity UI, and prototypes in Figma."
+        }
+      ],
+      "user_research": [
+        {
+          "line": 5,
+          "quote": "\u2022 Conducted user research for users aged 28\u201380."
+        },
+        {
+          "line": 14,
+          "quote": "End-to-end hiring platform with research, IA, personas, usability testing, and UI system."
+        },
+        {
+          "line": 32,
+          "quote": "Creative and user-focused UX/UI Designer with hands-on experience designing digital products through"
+        },
+        {
+          "line": 35,
+          "quote": "Methods: User Research, Interviews, Personas, Journey Mapping, IA, Card Sorting, Usability Testing, "
+        }
+      ],
+      "education": [
+        {
+          "line": 18,
+          "quote": "Bachelor of Design"
+        }
+      ]
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_BA_1793682784206": {
+    "candidate_id": "anonymized_BA_1793682784206",
+    "is_empty": false,
+    "sha256": "4b92fdc1eebd4e5e065d6b1a081b80819260dbeb0fc5d4f3d631c1efa077431a",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": false,
+    "figma_in_exp": false,
+    "has_prototyping": false,
+    "has_user_research": false,
+    "has_design_edu": false,
+    "has_allied_edu": false,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [],
+      "prototyping": [],
+      "user_research": [],
+      "education": [
+        {
+          "line": 14,
+          "quote": "\u2022 Leverage SAP to verify material BOM structures and vendor master records."
+        },
+        {
+          "line": 17,
+          "quote": "Master of Business Administration (MBA)"
+        },
+        {
+          "line": 19,
+          "quote": "Bachelor of Science in Chemistry"
+        }
+      ]
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_BS_1793685080461": {
+    "candidate_id": "anonymized_BS_1793685080461",
+    "is_empty": false,
+    "sha256": "9fc43494954be21bbb60103cee00c74b2de0ba71215ab480e030fd03768a887f",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": true,
+    "figma_in_exp": true,
+    "has_prototyping": true,
+    "has_user_research": true,
+    "has_design_edu": true,
+    "has_allied_edu": false,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [
+        {
+          "line": 18,
+          "quote": "Platforms: Figma, HTML, CSS, Blender, Spline, Midjourney, RunwayML, Meshy, Adobe Creative Suite, DaV"
+        }
+      ],
+      "prototyping": [
+        {
+          "line": 19,
+          "quote": "Methods: UI/UX & Prototyping, User Research & Testing, Design Systems, Wireframing"
+        }
+      ],
+      "user_research": [
+        {
+          "line": 19,
+          "quote": "Methods: UI/UX & Prototyping, User Research & Testing, Design Systems, Wireframing"
+        }
+      ],
+      "education": [
+        {
+          "line": 15,
+          "quote": "Bachelor of Design, Specializing in UI / UX"
+        }
+      ]
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_CG_1793685080278": {
+    "candidate_id": "anonymized_CG_1793685080278",
+    "is_empty": false,
+    "sha256": "c7563ccc0107dfe74ba84d8f0561f9ee224bdce1f0aa4b39161d7198e9ea6714",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": true,
+    "figma_in_exp": true,
+    "has_prototyping": true,
+    "has_user_research": true,
+    "has_design_edu": false,
+    "has_allied_edu": true,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [
+        {
+          "line": 13,
+          "quote": "Led design of a mobile-first healthcare app using Figma to prototype and validate flows."
+        },
+        {
+          "line": 23,
+          "quote": "Produced user flows, information architecture, and interactive prototypes in Figma for citizen servi"
+        },
+        {
+          "line": 32,
+          "quote": "\u2022 Figma UI/UX Design Certification (Udemy)"
+        },
+        {
+          "line": 36,
+          "quote": "Platforms: Figma, FigJam, Miro, Jira, Notion, Adobe Photoshop"
+        },
+        {
+          "line": 41,
+          "quote": "Figma, FigJam, Miro, Jira, Notion, Adobe Photoshop"
+        }
+      ],
+      "prototyping": [
+        {
+          "line": 6,
+          "quote": "\u2022 Created user flows, wireframes, and interactive prototypes to validate journeys and reduce rework "
+        },
+        {
+          "line": 13,
+          "quote": "Led design of a mobile-first healthcare app using Figma to prototype and validate flows."
+        },
+        {
+          "line": 16,
+          "quote": "\u2022 Delivered interactive prototypes and accessible UI patterns aligned to Accessibility (WCAG)."
+        },
+        {
+          "line": 18,
+          "quote": "Designed user flows, wireframes, and high-fidelity prototypes to validate discovery journeys."
+        },
+        {
+          "line": 23,
+          "quote": "Produced user flows, information architecture, and interactive prototypes in Figma for citizen servi"
+        },
+        {
+          "line": 34,
+          "quote": "UI/UX Designer with hands-on internship experience designing user-centered digital products. Profici"
+        },
+        {
+          "line": 37,
+          "quote": "Methods: User Research, Wireframing, Prototyping, Usability Testing, Information Architecture, Inter"
+        }
+      ],
+      "user_research": [
+        {
+          "line": 8,
+          "quote": "\u2022 Conducted usability testing and heuristic evaluations to identify friction, and iterated designs t"
+        },
+        {
+          "line": 20,
+          "quote": "\u2022 Conducted iterative usability testing to refine booking micro-interactions and reduce drop-off."
+        },
+        {
+          "line": 34,
+          "quote": "UI/UX Designer with hands-on internship experience designing user-centered digital products. Profici"
+        },
+        {
+          "line": 37,
+          "quote": "Methods: User Research, Wireframing, Prototyping, Usability Testing, Information Architecture, Inter"
+        }
+      ],
+      "education": [
+        {
+          "line": 28,
+          "quote": "B.Tech in Electronics Communication Engineering"
+        }
+      ]
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_CM_1793685080412": {
+    "candidate_id": "anonymized_CM_1793685080412",
+    "is_empty": false,
+    "sha256": "a0b3d3008d18ed11aa08843874622f273920466f93b45cd96741ba956b139349",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": true,
+    "figma_in_exp": true,
+    "has_prototyping": true,
+    "has_user_research": false,
+    "has_design_edu": false,
+    "has_allied_edu": true,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [
+        {
+          "line": 7,
+          "quote": "\u2022 Built a reusable, component-based design system in Figma to keep the interface clear and consisten"
+        },
+        {
+          "line": 26,
+          "quote": "Platforms: Figma"
+        },
+        {
+          "line": 31,
+          "quote": "Figma"
+        }
+      ],
+      "prototyping": [
+        {
+          "line": 27,
+          "quote": "Methods: Wireframing, Prototyping, User-Centered Design Thinking"
+        }
+      ],
+      "user_research": [],
+      "education": [
+        {
+          "line": 20,
+          "quote": "Bachelor of Technology (B.Tech)"
+        }
+      ]
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_DP_1793685080247": {
+    "candidate_id": "anonymized_DP_1793685080247",
+    "is_empty": false,
+    "sha256": "dbc85485716822f2f1989f6b640410b722dd8d52d8ec78fddadd56ade12ef2c9",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": true,
+    "figma_in_exp": true,
+    "has_prototyping": true,
+    "has_user_research": false,
+    "has_design_edu": false,
+    "has_allied_edu": true,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [
+        {
+          "line": 10,
+          "quote": "\u2022 Built a scalable Figma design system and style guide with reusable components, ensuring consistenc"
+        },
+        {
+          "line": 18,
+          "quote": "\u2022 Documented interaction flows and design rationale in a structured Figma file, enabling the develop"
+        },
+        {
+          "line": 29,
+          "quote": "Platforms: Figma, Sketch, Adobe Creative Cloud"
+        }
+      ],
+      "prototyping": [
+        {
+          "line": 5,
+          "quote": "\u2022 Manage design projects independently, integrating AI tools (Claude Code, Cursor) across research s"
+        },
+        {
+          "line": 6,
+          "quote": "\u2022 Build speculative case studies covering wireframes, user flows, and high-fidelity designs, sharpen"
+        },
+        {
+          "line": 13,
+          "quote": "\u2022 Designed a HIPAA compliant 13-screen mobile interface from wireframes through high-fidelity, worki"
+        },
+        {
+          "line": 30,
+          "quote": "Methods: Wireframing, Prototyping, User-Centred Design, Agile Workflows"
+        }
+      ],
+      "user_research": [],
+      "education": [
+        {
+          "line": 23,
+          "quote": "B.Tech Computer Science"
+        }
+      ]
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_DS_1793685080257": {
+    "candidate_id": "anonymized_DS_1793685080257",
+    "is_empty": false,
+    "sha256": "67774dbe7e259491d68a2280c9ace78ad46d04c0d10fbb90b147f1d68e2f63ae",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": true,
+    "figma_in_exp": true,
+    "has_prototyping": true,
+    "has_user_research": true,
+    "has_design_edu": true,
+    "has_allied_edu": false,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [
+        {
+          "line": 29,
+          "quote": "Platforms: Figma, Framer, Photoshop, Illustrator"
+        },
+        {
+          "line": 33,
+          "quote": "Claude, Figma Make, Google Stitch"
+        }
+      ],
+      "prototyping": [
+        {
+          "line": 27,
+          "quote": "UI/UX Designer with hands-on internship experience and a strong portfolio of 10+ academic projects. "
+        },
+        {
+          "line": 30,
+          "quote": "Methods: Wireframing, Prototyping, User Interviews, Usability Testing, Design Systems"
+        }
+      ],
+      "user_research": [
+        {
+          "line": 14,
+          "quote": "Designed 20+ mobile screens for NEET aspirants, combining personalized study plans, progress trackin"
+        },
+        {
+          "line": 30,
+          "quote": "Methods: Wireframing, Prototyping, User Interviews, Usability Testing, Design Systems"
+        }
+      ],
+      "education": [
+        {
+          "line": 20,
+          "quote": "Master of Design"
+        },
+        {
+          "line": 22,
+          "quote": "Bachelor of Arts in Multimedia and Mass Communication"
+        }
+      ]
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_DVJ_1793685080268": {
+    "candidate_id": "anonymized_DVJ_1793685080268",
+    "is_empty": false,
+    "sha256": "a9d2946cb771625ce1ad708144e3e8e4c541fe81ddc4f6f4acce71926f67dad3",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": true,
+    "figma_in_exp": true,
+    "has_prototyping": true,
+    "has_user_research": true,
+    "has_design_edu": true,
+    "has_allied_edu": true,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [
+        {
+          "line": 7,
+          "quote": "\u2022 Created responsive UI designs, design systems, and interactive prototypes using Figma."
+        },
+        {
+          "line": 12,
+          "quote": "\u2022 Created high-fidelity, responsive interfaces in Figma with reusable components, design systems, an"
+        },
+        {
+          "line": 32,
+          "quote": "Platforms: Figma, Canva"
+        }
+      ],
+      "prototyping": [
+        {
+          "line": 6,
+          "quote": "\u2022 Conducted user research and developed wireframes, user flows, and high-fidelity prototypes for web"
+        },
+        {
+          "line": 7,
+          "quote": "\u2022 Created responsive UI designs, design systems, and interactive prototypes using Figma."
+        },
+        {
+          "line": 16,
+          "quote": "Designed a mobile-first event booking platform from research to high-fidelity prototype."
+        },
+        {
+          "line": 17,
+          "quote": "\u2022 Created end-to-end user flows, wireframes, and high-fidelity prototypes that improved booking task"
+        },
+        {
+          "line": 21,
+          "quote": "\u2022 Developed user flows, interactive prototypes, and a scalable design system to enhance usability an"
+        },
+        {
+          "line": 22,
+          "quote": "\u2022 Designed the company website through user research, wireframing, and high-fidelity prototyping."
+        },
+        {
+          "line": 30,
+          "quote": "Aspiring UI/UX Designer with hands-on experience in user research, wireframing, prototyping, user fl"
+        },
+        {
+          "line": 33,
+          "quote": "Methods: Wireframing, Prototyping, Usability Testing, Information Architecture"
+        },
+        {
+          "line": 35,
+          "quote": "Auto Layout, Interactive Prototyping, Design Systems, Data Visualization, Micro-interactions, User F"
+        }
+      ],
+      "user_research": [
+        {
+          "line": 6,
+          "quote": "\u2022 Conducted user research and developed wireframes, user flows, and high-fidelity prototypes for web"
+        },
+        {
+          "line": 18,
+          "quote": "\u2022 Conducted usability testing and improved navigation, accessibility, and booking experience."
+        },
+        {
+          "line": 22,
+          "quote": "\u2022 Designed the company website through user research, wireframing, and high-fidelity prototyping."
+        },
+        {
+          "line": 30,
+          "quote": "Aspiring UI/UX Designer with hands-on experience in user research, wireframing, prototyping, user fl"
+        },
+        {
+          "line": 33,
+          "quote": "Methods: Wireframing, Prototyping, Usability Testing, Information Architecture"
+        }
+      ],
+      "education": [
+        {
+          "line": 24,
+          "quote": "Bachelor of Engineering in Computer Science and Design"
+        }
+      ]
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_FK_1793685080451": {
+    "candidate_id": "anonymized_FK_1793685080451",
+    "is_empty": false,
+    "sha256": "05b6002ce2490c74ef0e711cbc0b636f69665ad09fede8c584e0fc65045cefe3",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": true,
+    "figma_in_exp": true,
+    "has_prototyping": true,
+    "has_user_research": true,
+    "has_design_edu": false,
+    "has_allied_edu": false,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [
+        {
+          "line": 10,
+          "quote": "\u2022 Conducted user journey mapping and wireframing to define product flows before moving into high-fid"
+        },
+        {
+          "line": 18,
+          "quote": "UI/UX and Graphic Designer with 1+ year of experience delivering user-centered digital interfaces an"
+        },
+        {
+          "line": 20,
+          "quote": "Platforms: Figma, Adobe Photoshop, Illustrator, Canva, CorelDraw (Basic), Framer (Basic)"
+        }
+      ],
+      "prototyping": [
+        {
+          "line": 10,
+          "quote": "\u2022 Conducted user journey mapping and wireframing to define product flows before moving into high-fid"
+        },
+        {
+          "line": 18,
+          "quote": "UI/UX and Graphic Designer with 1+ year of experience delivering user-centered digital interfaces an"
+        }
+      ],
+      "user_research": [
+        {
+          "line": 21,
+          "quote": "Methods: UX Research, User Testing, User Journey Mapping, Information Architecture, A/B Testing"
+        }
+      ],
+      "education": [
+        {
+          "line": 15,
+          "quote": "Bachelor\u2019s in Business Administration"
+        }
+      ]
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_FT_1793685080301": {
+    "candidate_id": "anonymized_FT_1793685080301",
+    "is_empty": false,
+    "sha256": "61b36a6476a05d97bd9630428d9bc870fcf8277aeadb408c1258eed80185670b",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": true,
+    "figma_in_exp": true,
+    "has_prototyping": true,
+    "has_user_research": false,
+    "has_design_edu": false,
+    "has_allied_edu": false,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [
+        {
+          "line": 31,
+          "quote": "Platforms: Figma, Next.js, React, TypeScript, Tailwind CSS, Git, GitHub, shadcn/ui"
+        }
+      ],
+      "prototyping": [
+        {
+          "line": 32,
+          "quote": "Methods: Information Architecture, User Flows, Interaction Design, Wireframing, Prototyping, Design "
+        }
+      ],
+      "user_research": [],
+      "education": [
+        {
+          "line": 26,
+          "quote": "B.Tech in Artificial Intelligence & Machine Learning"
+        }
+      ]
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_HD_1793682784275": {
+    "candidate_id": "anonymized_HD_1793682784275",
+    "is_empty": false,
+    "sha256": "02dc80c3f8ee6427fd3216f2ffb861cea906cc67414741679b5182d454f5d206",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": false,
+    "figma_in_exp": false,
+    "has_prototyping": false,
+    "has_user_research": false,
+    "has_design_edu": false,
+    "has_allied_edu": true,
+    "has_env_edu": true,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [],
+      "prototyping": [],
+      "user_research": [],
+      "education": [
+        {
+          "line": 28,
+          "quote": "B.E. \u2013 Environmental Engineering"
+        },
+        {
+          "line": 38,
+          "quote": "\u2022 Diploma In Project Management"
+        },
+        {
+          "line": 46,
+          "quote": "\u2022 Diploma in Environmental Quality Monitoring and Analysis"
+        },
+        {
+          "line": 47,
+          "quote": "\u2022 Advance Diploma in Wastewater Treatment and Recycling"
+        }
+      ]
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_HM_1793682784257": {
+    "candidate_id": "anonymized_HM_1793682784257",
+    "is_empty": false,
+    "sha256": "5c1cbadcb12fd37e5f82b8c61fef2e09150cb222843787c08bef349716fd8643",
+    "has_gabi": false,
+    "has_simapro": true,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": true,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": true,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": false,
+    "figma_in_exp": false,
+    "has_prototyping": false,
+    "has_user_research": false,
+    "has_design_edu": false,
+    "has_allied_edu": false,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [],
+      "simapro": [
+        {
+          "line": 45,
+          "quote": "Platforms: EIME, SimaPro, SolidWorks, Creo Parametric, MS Office"
+        }
+      ],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [
+        {
+          "line": 5,
+          "quote": "\u2022 Conducted Life Cycle Assessments (LCA) to evaluate Scope s ensuring compliance with ISO /s."
+        },
+        {
+          "line": 11,
+          "quote": "\u2022 Published Product Environmental Profile (PEP) and generated Life Cycle Assessment (LCA) Reports in"
+        },
+        {
+          "line": 43,
+          "quote": "LCA Analyst with 3+ years of strong expertise in Life Cycle Assessment (LCA) methodologies in accord"
+        }
+      ],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [],
+      "prototyping": [],
+      "user_research": [],
+      "education": []
+    },
+    "confidence": "REVIEW_REQUIRED",
+    "flags": [
+      "Anonymized ISO token requires human unmasking"
+    ]
+  },
+  "anonymized_KA_1793682784307": {
+    "candidate_id": "anonymized_KA_1793682784307",
+    "is_empty": false,
+    "sha256": "35709dec8a27c5223891a83148394f6c334c193d0757ea0ed8e1efa873a93b02",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": false,
+    "figma_in_exp": false,
+    "has_prototyping": false,
+    "has_user_research": true,
+    "has_design_edu": false,
+    "has_allied_edu": true,
+    "has_env_edu": true,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [],
+      "prototyping": [],
+      "user_research": [
+        {
+          "line": 24,
+          "quote": "\u2022 Regulatory Compliance Training Program - Personal Care"
+        }
+      ],
+      "education": [
+        {
+          "line": 17,
+          "quote": "M.Tech in Environmental Science and Technology"
+        },
+        {
+          "line": 20,
+          "quote": "B.Tech in Chemical Engineering"
+        },
+        {
+          "line": 26,
+          "quote": "\u2022 Diploma in Chemical Process Safety"
+        },
+        {
+          "line": 30,
+          "quote": "Chemical Engineering graduate with an M.Tech in Environmental Science, currently working as a Resear"
+        }
+      ]
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_KN_1793685080310": {
+    "candidate_id": "anonymized_KN_1793685080310",
+    "is_empty": false,
+    "sha256": "a8f27d64187e64e60013e94bf24197434f7eb8f12a2e9c8dbeac1ba1d25d068b",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": true,
+    "figma_in_exp": true,
+    "has_prototyping": true,
+    "has_user_research": false,
+    "has_design_edu": false,
+    "has_allied_edu": false,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [
+        {
+          "line": 13,
+          "quote": "UI/UX Designer with strong foundational knowledge in user-centered design and hands-on experience in"
+        },
+        {
+          "line": 15,
+          "quote": "Platforms: Figma, Canva"
+        }
+      ],
+      "prototyping": [
+        {
+          "line": 16,
+          "quote": "Methods: Wireframing, Prototyping, UX Research"
+        }
+      ],
+      "user_research": [],
+      "education": [
+        {
+          "line": 6,
+          "quote": "Bachelor of Arts"
+        }
+      ]
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_MI_1793685080235": {
+    "candidate_id": "anonymized_MI_1793685080235",
+    "is_empty": false,
+    "sha256": "04a971f0d8387ab1a649688b8dfa83d2b79d6a6a1b2240ed5dabf7a34aa729e2",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": true,
+    "figma_in_exp": true,
+    "has_prototyping": true,
+    "has_user_research": true,
+    "has_design_edu": false,
+    "has_allied_edu": false,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [
+        {
+          "line": 6,
+          "quote": "\u2022 Owned end-to-end product design across both tools, from flows and wireframes to final Figma handof"
+        },
+        {
+          "line": 16,
+          "quote": "\u2022 Designed end-to-end in Figma, prototyped using Claude as a coding partner to ship production-grade"
+        },
+        {
+          "line": 34,
+          "quote": "Platforms: Figma, Claude Code, JavaScript, React, HTML, CSS"
+        }
+      ],
+      "prototyping": [
+        {
+          "line": 6,
+          "quote": "\u2022 Owned end-to-end product design across both tools, from flows and wireframes to final Figma handof"
+        },
+        {
+          "line": 16,
+          "quote": "\u2022 Designed end-to-end in Figma, prototyped using Claude as a coding partner to ship production-grade"
+        },
+        {
+          "line": 24,
+          "quote": "\u2022 Strengthened visual design, interaction, and prototyping skills."
+        }
+      ],
+      "user_research": [
+        {
+          "line": 20,
+          "quote": "\u2022 Designed 25+ screens with personalized onboarding."
+        },
+        {
+          "line": 35,
+          "quote": "Methods: Usability Testing, Wireframing, User Flows, Information Architecture, Journey Mapping, Heur"
+        }
+      ],
+      "education": []
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_MM_1793685080338": {
+    "candidate_id": "anonymized_MM_1793685080338",
+    "is_empty": false,
+    "sha256": "481de7ba5cfdb26d0559d2e0e70143db517377727eded72eac87f6effb5e5346",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": true,
+    "figma_in_exp": true,
+    "has_prototyping": true,
+    "has_user_research": true,
+    "has_design_edu": false,
+    "has_allied_edu": true,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [
+        {
+          "line": 6,
+          "quote": "\u2022 Created interactive Figma prototypes to visualize user flows and design concepts."
+        },
+        {
+          "line": 33,
+          "quote": "Platforms: Figma, Canva, Miro, Affinity, Microsoft Office, Google Workspace, Notion"
+        }
+      ],
+      "prototyping": [
+        {
+          "line": 6,
+          "quote": "\u2022 Created interactive Figma prototypes to visualize user flows and design concepts."
+        },
+        {
+          "line": 14,
+          "quote": "\u2022 Designed user flows, information architecture, wireframes, and high-fidelity mobile prototypes foc"
+        },
+        {
+          "line": 21,
+          "quote": "\u2022 Created wireframes and high-fidelity web UI with strong typography and spacing."
+        },
+        {
+          "line": 31,
+          "quote": "UI/UX Designer with frontend development experience and a strong foundation in user-centered design."
+        },
+        {
+          "line": 34,
+          "quote": "Methods: Wireframing, Prototyping, Visual Design, Design Systems, User Flows, Microinteractions, Acc"
+        }
+      ],
+      "user_research": [
+        {
+          "line": 13,
+          "quote": "\u2022 Conducted user research, competitor analysis, and problem definition to redesign the railway assis"
+        },
+        {
+          "line": 31,
+          "quote": "UI/UX Designer with frontend development experience and a strong foundation in user-centered design."
+        }
+      ],
+      "education": [
+        {
+          "line": 25,
+          "quote": "Bachelor of Engineering in Information Technology"
+        }
+      ]
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_MS_1793682784442": {
+    "candidate_id": "anonymized_MS_1793682784442",
+    "is_empty": false,
+    "sha256": "429dfd7aeab2a5cf7e4a4d876b28d0f47e7e0afe60c470d66d79e074df40feab",
+    "has_gabi": false,
+    "has_simapro": true,
+    "has_openlca": true,
+    "gabi_in_exp": false,
+    "simapro_in_exp": true,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": true,
+    "has_generic_iso": false,
+    "has_lci": true,
+    "has_lca_modelling": true,
+    "has_figma": false,
+    "figma_in_exp": false,
+    "has_prototyping": false,
+    "has_user_research": false,
+    "has_design_edu": false,
+    "has_allied_edu": true,
+    "has_env_edu": true,
+    "quotes": {
+      "gabi": [],
+      "simapro": [
+        {
+          "line": 23,
+          "quote": "Conducted comprehensive product LCAs using SimaPro and Umberto."
+        },
+        {
+          "line": 41,
+          "quote": "Platforms: SAP ERP, Advanced MS Office, Power BI, SimaPro, openLCA, Python"
+        }
+      ],
+      "openlca": [
+        {
+          "line": 28,
+          "quote": "Eco-Design LCA Modeling (openLCA Project)"
+        },
+        {
+          "line": 29,
+          "quote": "Engineered an end-to-end LCA model using openLCA and ReCiPe 2016 methodology to evaluate and compare"
+        },
+        {
+          "line": 39,
+          "quote": "LCA Consultant with a Master's degree and over 2.s and managing complex environmental datasets. High"
+        },
+        {
+          "line": 41,
+          "quote": "Platforms: SAP ERP, Advanced MS Office, Power BI, SimaPro, openLCA, Python"
+        }
+      ],
+      "iso_explicit": [],
+      "iso_anonymized": [
+        {
+          "line": 22,
+          "quote": "ISO / LCA & MFCA"
+        },
+        {
+          "line": 39,
+          "quote": "LCA Consultant with a Master's degree and over 2.s and managing complex environmental datasets. High"
+        },
+        {
+          "line": 42,
+          "quote": "Methods: Product Carbon Footprint (PCF), ISO / (LCA), Scope 1, 2, & 3 Emissions Accounting, GHG Prot"
+        }
+      ],
+      "iso_generic": [],
+      "lci": [
+        {
+          "line": 39,
+          "quote": "LCA Consultant with a Master's degree and over 2.s and managing complex environmental datasets. High"
+        }
+      ],
+      "lca_modelling": [
+        {
+          "line": 28,
+          "quote": "Eco-Design LCA Modeling (openLCA Project)"
+        }
+      ],
+      "figma": [],
+      "prototyping": [],
+      "user_research": [],
+      "education": [
+        {
+          "line": 19,
+          "quote": "Master Thesis (Decarbonization Pathways)"
+        },
+        {
+          "line": 32,
+          "quote": "Master's in Advanced Manufacturing"
+        },
+        {
+          "line": 35,
+          "quote": "Bachelor's in Automobile Engineering"
+        },
+        {
+          "line": 39,
+          "quote": "LCA Consultant with a Master's degree and over 2.s and managing complex environmental datasets. High"
+        }
+      ]
+    },
+    "confidence": "REVIEW_REQUIRED",
+    "flags": [
+      "Anonymized ISO token requires human unmasking"
+    ]
+  },
+  "anonymized_NA_1793682784346": {
+    "candidate_id": "anonymized_NA_1793682784346",
+    "is_empty": false,
+    "sha256": "944b651edd15b77ee0c6070daccf8d57b4db9c622f5146e57c74b979b92dfeea",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": false,
+    "figma_in_exp": false,
+    "has_prototyping": false,
+    "has_user_research": false,
+    "has_design_edu": false,
+    "has_allied_edu": false,
+    "has_env_edu": true,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [],
+      "prototyping": [],
+      "user_research": [],
+      "education": [
+        {
+          "line": 25,
+          "quote": "M.Sc. in Environmental Science"
+        },
+        {
+          "line": 28,
+          "quote": "B.Sc. in Chemistry-Botany-Zoology"
+        }
+      ]
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_NF_1793685080347": {
+    "candidate_id": "anonymized_NF_1793685080347",
+    "is_empty": false,
+    "sha256": "afe1e99e84680eda27683005c6c3d4c0148257e9cf29dcf7cd5c00b0d103a4f9",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": true,
+    "figma_in_exp": true,
+    "has_prototyping": true,
+    "has_user_research": true,
+    "has_design_edu": false,
+    "has_allied_edu": true,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [
+        {
+          "line": 24,
+          "quote": "Platforms: Figma, HTML"
+        }
+      ],
+      "prototyping": [
+        {
+          "line": 7,
+          "quote": "\u2022 Improved the overall user flow by conducting wireframing and prototyping, ensuring smooth interact"
+        },
+        {
+          "line": 12,
+          "quote": "\u2022 Designed and iterated wireframes, prototypes, and intuitive user interfaces using personas, journe"
+        },
+        {
+          "line": 22,
+          "quote": "UI/UX Designer with internship experience in wireframing and prototyping, focused on user-centered d"
+        },
+        {
+          "line": 26,
+          "quote": "Domain Knowledge: UI Design, Interaction Design, Information Architecture, Wireframing, Prototyping"
+        }
+      ],
+      "user_research": [
+        {
+          "line": 11,
+          "quote": "\u2022 Conducted user research to identify the needs of both passengers and drivers, ensuring the app add"
+        },
+        {
+          "line": 12,
+          "quote": "\u2022 Designed and iterated wireframes, prototypes, and intuitive user interfaces using personas, journe"
+        },
+        {
+          "line": 25,
+          "quote": "Methods: UX Research, User interviews, Surveys, Personas creation, Journey maps, Usability Test, Tas"
+        }
+      ],
+      "education": [
+        {
+          "line": 14,
+          "quote": "Bachelor of Computer Applications (BCA)"
+        }
+      ]
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_NP_1793682784325": {
+    "candidate_id": "anonymized_NP_1793682784325",
+    "is_empty": false,
+    "sha256": "4e2df9bad32cb608c9e6df2b54b1640b4faadc49e68199f10ff1d7292ac3ea48",
+    "has_gabi": true,
+    "has_simapro": true,
+    "has_openlca": true,
+    "gabi_in_exp": true,
+    "simapro_in_exp": true,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": true,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": true,
+    "has_figma": false,
+    "figma_in_exp": false,
+    "has_prototyping": false,
+    "has_user_research": false,
+    "has_design_edu": false,
+    "has_allied_edu": true,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [
+        {
+          "line": 27,
+          "quote": "Platforms: OpenLCA, SimaPro, GaBi, One Click LCA, Autodesk Inventor, AutoCAD, Microsoft Dynamics 365"
+        }
+      ],
+      "simapro": [
+        {
+          "line": 27,
+          "quote": "Platforms: OpenLCA, SimaPro, GaBi, One Click LCA, Autodesk Inventor, AutoCAD, Microsoft Dynamics 365"
+        }
+      ],
+      "openlca": [
+        {
+          "line": 5,
+          "quote": "\u2022 Conducted LCA of Titan SRD Class B & C using OpenLCA and ecoinvent, optimizing the product design "
+        },
+        {
+          "line": 25,
+          "quote": "Sustainability and LCA professional with a track record of driving double-digit carbon and material "
+        },
+        {
+          "line": 27,
+          "quote": "Platforms: OpenLCA, SimaPro, GaBi, One Click LCA, Autodesk Inventor, AutoCAD, Microsoft Dynamics 365"
+        }
+      ],
+      "iso_explicit": [],
+      "iso_anonymized": [
+        {
+          "line": 22,
+          "quote": "\u2022 Integrated LCA and PCF \u2013 ISO :2006, ISO :2006 and ISO :2018, T\u00dcV S\u00dcD South Asia \u2013 April 2026"
+        }
+      ],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [
+        {
+          "line": 6,
+          "quote": "\u2022 Led data collection and validation for the EPD of Steelage Magna Class C Safe, covering raw materi"
+        }
+      ],
+      "figma": [],
+      "prototyping": [],
+      "user_research": [],
+      "education": [
+        {
+          "line": 15,
+          "quote": "Master of Engineering, Thermal Science Engineering"
+        },
+        {
+          "line": 18,
+          "quote": "Bachelor of Engineering, Mechanical Engineering"
+        }
+      ]
+    },
+    "confidence": "REVIEW_REQUIRED",
+    "flags": [
+      "Anonymized ISO token requires human unmasking"
+    ]
+  },
+  "anonymized_N_1793685080389": {
+    "candidate_id": "anonymized_N_1793685080389",
+    "is_empty": false,
+    "sha256": "8ecb6dfed65bcde55d641be674f1c6b94ccad7cc1bb7f5f8fa955c793014d4b1",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": true,
+    "figma_in_exp": true,
+    "has_prototyping": true,
+    "has_user_research": false,
+    "has_design_edu": false,
+    "has_allied_edu": true,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [
+        {
+          "line": 30,
+          "quote": "Platforms: Figma, Canva, React.js, Next.js, JavaScript, TypeScript, Tailwind CSS, Node.js"
+        }
+      ],
+      "prototyping": [
+        {
+          "line": 7,
+          "quote": "\u2022 Working on user flows, wireframes, high-fidelity designs, and prototypes."
+        },
+        {
+          "line": 31,
+          "quote": "Methods: UI Design, UX Design, Wireframing, Prototyping, User flows, Responsive Design"
+        }
+      ],
+      "user_research": [],
+      "education": [
+        {
+          "line": 25,
+          "quote": "Bachelor of Computer Applications"
+        }
+      ]
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_PD_1793682784400": {
+    "candidate_id": "anonymized_PD_1793682784400",
+    "is_empty": false,
+    "sha256": "ff7ab549607a6512530f66e34cdf28ff85f889ef6a6a04f3cdec28a78351b50e",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": false,
+    "figma_in_exp": false,
+    "has_prototyping": false,
+    "has_user_research": false,
+    "has_design_edu": false,
+    "has_allied_edu": false,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [],
+      "prototyping": [],
+      "user_research": [],
+      "education": []
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_PKG_1793682784369": {
+    "candidate_id": "anonymized_PKG_1793682784369",
+    "is_empty": false,
+    "sha256": "13d624a63817d7c64450c500ca9eeecda8a4dee0f873b09ed12f13ba6bde84c7",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": false,
+    "figma_in_exp": false,
+    "has_prototyping": false,
+    "has_user_research": false,
+    "has_design_edu": false,
+    "has_allied_edu": true,
+    "has_env_edu": true,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [],
+      "prototyping": [],
+      "user_research": [],
+      "education": [
+        {
+          "line": 21,
+          "quote": "Master of Technology in Environmental Science and Engineering"
+        },
+        {
+          "line": 24,
+          "quote": "Bachelor of Engineering in Civil Engineering"
+        }
+      ]
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_PL_1793685080319": {
+    "candidate_id": "anonymized_PL_1793685080319",
+    "is_empty": false,
+    "sha256": "5901432955e54abfd030e78b3ef391a6b063c17fb56a31a0b129f3b531b1ba79",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": true,
+    "figma_in_exp": true,
+    "has_prototyping": true,
+    "has_user_research": true,
+    "has_design_edu": false,
+    "has_allied_edu": true,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [
+        {
+          "line": 31,
+          "quote": "Platforms: Figma, Adobe XD, Sketch, FigJam, Miro, Jira, Notion, Google AI Studio"
+        }
+      ],
+      "prototyping": [
+        {
+          "line": 5,
+          "quote": "\u2022 Designed user flows, wireframes, and high-fidelity interfaces for AllChargeX, simplifying navigati"
+        }
+      ],
+      "user_research": [
+        {
+          "line": 6,
+          "quote": "\u2022 Conducted user research, competitor analysis, and persona development for ONIX Import Export, tran"
+        }
+      ],
+      "education": [
+        {
+          "line": 19,
+          "quote": "B.E. in Computer Science"
+        }
+      ]
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_PS_1793682784387": {
+    "candidate_id": "anonymized_PS_1793682784387",
+    "is_empty": false,
+    "sha256": "335c8738b7e21ab6892d3aa47d23e30de7ff60c4dc205fff1978f8ad221c8fec",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": false,
+    "figma_in_exp": false,
+    "has_prototyping": false,
+    "has_user_research": false,
+    "has_design_edu": false,
+    "has_allied_edu": false,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [],
+      "prototyping": [],
+      "user_research": [],
+      "education": [
+        {
+          "line": 23,
+          "quote": "MBA"
+        },
+        {
+          "line": 26,
+          "quote": "B.Sc. (Physics Hons.)"
+        }
+      ]
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_PV_1793685080171": {
+    "candidate_id": "anonymized_PV_1793685080171",
+    "is_empty": false,
+    "sha256": "794b3dc94693e866538c887156dd4e2f4070ca888f5be15960dcc542ecd137a9",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": true,
+    "figma_in_exp": true,
+    "has_prototyping": true,
+    "has_user_research": true,
+    "has_design_edu": true,
+    "has_allied_edu": false,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [
+        {
+          "line": 21,
+          "quote": "Platforms: Figma, Adobe Photoshop, Adobe Illustrator, Adobe After Effects"
+        },
+        {
+          "line": 24,
+          "quote": "Figma, Adobe Photoshop, Adobe Illustrator, Adobe After Effects"
+        }
+      ],
+      "prototyping": [
+        {
+          "line": 22,
+          "quote": "Methods: UX Design, UI Design, User Research, Product Design & Strategy, Prototyping & Wireframing, "
+        }
+      ],
+      "user_research": [
+        {
+          "line": 22,
+          "quote": "Methods: UX Design, UI Design, User Research, Product Design & Strategy, Prototyping & Wireframing, "
+        }
+      ],
+      "education": [
+        {
+          "line": 16,
+          "quote": "B.Des in Communication Design"
+        }
+      ]
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_PW_1793682784228": {
+    "candidate_id": "anonymized_PW_1793682784228",
+    "is_empty": false,
+    "sha256": "16298da6d3e0dcf5927c97f9ce699d80181c6a6527f5b6e16284124030b85582",
+    "has_gabi": true,
+    "has_simapro": false,
+    "has_openlca": true,
+    "gabi_in_exp": true,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": true,
+    "has_generic_iso": false,
+    "has_lci": true,
+    "has_lca_modelling": false,
+    "has_figma": false,
+    "figma_in_exp": false,
+    "has_prototyping": false,
+    "has_user_research": false,
+    "has_design_edu": false,
+    "has_allied_edu": true,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [
+        {
+          "line": 9,
+          "quote": "\u2022 Performed comparative LCA of commercial fish feed vs Microalgae Biomass, using literature research"
+        },
+        {
+          "line": 12,
+          "quote": "\u2022 Prepared life cycle inventory for various chemicals, Zarrouk Salt Medium, using proxy data and GaB"
+        },
+        {
+          "line": 13,
+          "quote": "\u2022 Performed comparative LCA of Nitric Acid and Ammonium Nitrate using GaBi, complying with ISO / in "
+        },
+        {
+          "line": 46,
+          "quote": "Platforms: GaBi, OpenLCA, Aspen HYSYS, ArcGIS, Python, Microsoft Excel, Microsoft Word, Microsoft Po"
+        },
+        {
+          "line": 51,
+          "quote": "Python, Microsoft Excel, Microsoft Word, Microsoft PowerPoint, Aspen HYSYS, GaBi, OpenLCA, ArcGIS"
+        }
+      ],
+      "simapro": [],
+      "openlca": [
+        {
+          "line": 11,
+          "quote": "\u2022 Performed Life Cycle Assessments (LCA) of PET bottles, using the ELCD database in OpenLCA."
+        },
+        {
+          "line": 46,
+          "quote": "Platforms: GaBi, OpenLCA, Aspen HYSYS, ArcGIS, Python, Microsoft Excel, Microsoft Word, Microsoft Po"
+        },
+        {
+          "line": 51,
+          "quote": "Python, Microsoft Excel, Microsoft Word, Microsoft PowerPoint, Aspen HYSYS, GaBi, OpenLCA, ArcGIS"
+        }
+      ],
+      "iso_explicit": [],
+      "iso_anonymized": [
+        {
+          "line": 13,
+          "quote": "\u2022 Performed comparative LCA of Nitric Acid and Ammonium Nitrate using GaBi, complying with ISO / in "
+        }
+      ],
+      "iso_generic": [],
+      "lci": [
+        {
+          "line": 12,
+          "quote": "\u2022 Prepared life cycle inventory for various chemicals, Zarrouk Salt Medium, using proxy data and GaB"
+        }
+      ],
+      "lca_modelling": [],
+      "figma": [],
+      "prototyping": [],
+      "user_research": [],
+      "education": [
+        {
+          "line": 34,
+          "quote": "B.E. in Chemical Engineering"
+        }
+      ]
+    },
+    "confidence": "REVIEW_REQUIRED",
+    "flags": [
+      "Anonymized ISO token requires human unmasking"
+    ]
+  },
+  "anonymized_PW_1793685080367": {
+    "candidate_id": "anonymized_PW_1793685080367",
+    "is_empty": false,
+    "sha256": "81871670d7b6adbdbe36daccb6d1e0495ae908a6f321bc4d43b245d1805eeb09",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": true,
+    "figma_in_exp": true,
+    "has_prototyping": true,
+    "has_user_research": false,
+    "has_design_edu": false,
+    "has_allied_edu": true,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [
+        {
+          "line": 5,
+          "quote": "\u2022 Designed 50+ responsive web and mobile screens for client and internal digital products using Figm"
+        },
+        {
+          "line": 25,
+          "quote": "\u2022 Complete UI/UX Design Course 2025: Figma + AI + Real Project \u2014 Udemy"
+        },
+        {
+          "line": 29,
+          "quote": "Platforms: Figma, Adobe XD, Notion, Canva"
+        },
+        {
+          "line": 34,
+          "quote": "Figma, FigJam, Adobe XD"
+        }
+      ],
+      "prototyping": [
+        {
+          "line": 6,
+          "quote": "\u2022 Created 30+ wireframes and 15+ interactive prototypes to streamline user flows and validate design"
+        },
+        {
+          "line": 15,
+          "quote": "\u2022 Created user flows, wireframes, high-fidelity interfaces, and reusable components to simplify comp"
+        },
+        {
+          "line": 20,
+          "quote": "\u2022 Created user flows, wireframes, and high-fidelity UI designs to simplify the overall coffee-orderi"
+        }
+      ],
+      "user_research": [],
+      "education": [
+        {
+          "line": 22,
+          "quote": "Bachelor of Technology (B. Tech) in Information Technology"
+        }
+      ]
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_RR_1793682784428": {
+    "candidate_id": "anonymized_RR_1793682784428",
+    "is_empty": false,
+    "sha256": "16559fa16866ea6d2a2cee865733d6745600ed198081bd67d93517b75b1cab0a",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": true,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": true,
+    "has_lca_modelling": true,
+    "has_figma": false,
+    "figma_in_exp": false,
+    "has_prototyping": false,
+    "has_user_research": false,
+    "has_design_edu": false,
+    "has_allied_edu": true,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [
+        {
+          "line": 7,
+          "quote": "\u2022 Conducted cradle - to - gate Life Cycle Assessments (LCA) using openLCA for automotive components,"
+        },
+        {
+          "line": 8,
+          "quote": "\u2022 Designed and executed validation test cases, cross - verifying PCF application outputs against ope"
+        },
+        {
+          "line": 25,
+          "quote": "\u2022 Product Life Cycle Assessment \u2014 GreenDelta (openLCA Recognized)"
+        },
+        {
+          "line": 30,
+          "quote": "Platforms: openLCA, Microsoft Excel, Power BI, PowerPoint, Word"
+        }
+      ],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [
+        {
+          "line": 7,
+          "quote": "\u2022 Conducted cradle - to - gate Life Cycle Assessments (LCA) using openLCA for automotive components,"
+        }
+      ],
+      "lca_modelling": [
+        {
+          "line": 7,
+          "quote": "\u2022 Conducted cradle - to - gate Life Cycle Assessments (LCA) using openLCA for automotive components,"
+        }
+      ],
+      "figma": [],
+      "prototyping": [],
+      "user_research": [],
+      "education": [
+        {
+          "line": 19,
+          "quote": "B.Tech, Biotechnology (Honours)"
+        }
+      ]
+    },
+    "confidence": "MEDIUM_OPENLCA",
+    "flags": []
+  },
+  "anonymized_RS_1793682784414": {
+    "candidate_id": "anonymized_RS_1793682784414",
+    "is_empty": false,
+    "sha256": "ad6ec20596b64cda61cc6ad59c21c28d3095224b426419cfc70f0c42180b56b3",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": false,
+    "figma_in_exp": false,
+    "has_prototyping": false,
+    "has_user_research": false,
+    "has_design_edu": false,
+    "has_allied_edu": true,
+    "has_env_edu": true,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [],
+      "prototyping": [],
+      "user_research": [],
+      "education": [
+        {
+          "line": 21,
+          "quote": "MBA / PGDSM \u2013 Sustainability Management"
+        },
+        {
+          "line": 24,
+          "quote": "M.Tech \u2013 Thermal Engineering"
+        },
+        {
+          "line": 27,
+          "quote": "B.Tech \u2013 Mechanical Engineering"
+        }
+      ]
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_SRK_1793682784455": {
+    "candidate_id": "anonymized_SRK_1793682784455",
+    "is_empty": false,
+    "sha256": "4a53b72ffe5597628a4275b253c96961c50bcb17ef2b7d98bf66b01fdcdcb8c1",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": true,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": true,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": false,
+    "figma_in_exp": false,
+    "has_prototyping": false,
+    "has_user_research": false,
+    "has_design_edu": false,
+    "has_allied_edu": false,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [
+        {
+          "line": 9,
+          "quote": "\u2022 Drive continuous improvement through technology enablement by integrating manual LCA processes wit"
+        },
+        {
+          "line": 30,
+          "quote": "Platforms: OpenLCA, MS Excel, MS PowerPoint, MS Word, PowerBI, Python (Beginner)"
+        },
+        {
+          "line": 35,
+          "quote": "OpenLCA, MS Excel, PowerBI"
+        }
+      ],
+      "iso_explicit": [],
+      "iso_anonymized": [
+        {
+          "line": 6,
+          "quote": "\u2022 Manage the complete LCA workflow \u2014 data collection, supplier engagement, secondary database resear"
+        }
+      ],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [],
+      "prototyping": [],
+      "user_research": [],
+      "education": []
+    },
+    "confidence": "REVIEW_REQUIRED",
+    "flags": [
+      "Anonymized ISO token requires human unmasking"
+    ]
+  },
+  "anonymized_SS_1793682784470": {
+    "candidate_id": "anonymized_SS_1793682784470",
+    "is_empty": false,
+    "sha256": "3da42a1f59bc76280d29cfa6d4da62a3143089e76d626cb5681e1503dda2f71d",
+    "has_gabi": true,
+    "has_simapro": true,
+    "has_openlca": true,
+    "gabi_in_exp": true,
+    "simapro_in_exp": true,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": true,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": false,
+    "figma_in_exp": false,
+    "has_prototyping": false,
+    "has_user_research": false,
+    "has_design_edu": false,
+    "has_allied_edu": true,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [
+        {
+          "line": 34,
+          "quote": "Platforms: SimaPro, OpenLCA, Gabi, Ecoinvent Database, ReCiPe, One Click LCA, Power BI, MS Excel, SQ"
+        }
+      ],
+      "simapro": [
+        {
+          "line": 5,
+          "quote": "\u2022 Executed ISO /-compliant cradle-to-gate LCA studies for cement, pharmaceutical, animal healthcare,"
+        },
+        {
+          "line": 34,
+          "quote": "Platforms: SimaPro, OpenLCA, Gabi, Ecoinvent Database, ReCiPe, One Click LCA, Power BI, MS Excel, SQ"
+        }
+      ],
+      "openlca": [
+        {
+          "line": 34,
+          "quote": "Platforms: SimaPro, OpenLCA, Gabi, Ecoinvent Database, ReCiPe, One Click LCA, Power BI, MS Excel, SQ"
+        }
+      ],
+      "iso_explicit": [],
+      "iso_anonymized": [
+        {
+          "line": 5,
+          "quote": "\u2022 Executed ISO /-compliant cradle-to-gate LCA studies for cement, pharmaceutical, animal healthcare,"
+        }
+      ],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [],
+      "prototyping": [],
+      "user_research": [],
+      "education": [
+        {
+          "line": 20,
+          "quote": "M.Tech in Sustainable Engineering"
+        },
+        {
+          "line": 23,
+          "quote": "B.Tech in Mechanical Engineering"
+        }
+      ]
+    },
+    "confidence": "REVIEW_REQUIRED",
+    "flags": [
+      "Anonymized ISO token requires human unmasking"
+    ]
+  },
+  "anonymized_SS_1793682784484": {
+    "candidate_id": "anonymized_SS_1793682784484",
+    "is_empty": false,
+    "sha256": "f5464b39bbd9a72dedc58a765bb628977c822c26730a51b5c39d122c75b1b7f7",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": true,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": false,
+    "figma_in_exp": false,
+    "has_prototyping": false,
+    "has_user_research": false,
+    "has_design_edu": false,
+    "has_allied_edu": true,
+    "has_env_edu": true,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [
+        {
+          "line": 16,
+          "quote": "\u2022 Executed a full Life Cycle Assessment (LCA) of cotton gloves using OpenLCA, identifying material s"
+        },
+        {
+          "line": 32,
+          "quote": "Platforms: Open LCA, AutoCAD, CATIA, SolidWorks"
+        }
+      ],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [],
+      "prototyping": [],
+      "user_research": [],
+      "education": [
+        {
+          "line": 23,
+          "quote": "Master of Business Management in Sustainability Management"
+        },
+        {
+          "line": 26,
+          "quote": "Bachelor of Engineering in Automobile Engineering"
+        }
+      ]
+    },
+    "confidence": "MEDIUM_OPENLCA",
+    "flags": []
+  },
+  "anonymized_TM_1793682784495": {
+    "candidate_id": "anonymized_TM_1793682784495",
+    "is_empty": false,
+    "sha256": "1ecb6da35c2deb5f8f7fac81a1bf575d3b13df58a3c601e1d8e1092f9988d15d",
+    "has_gabi": false,
+    "has_simapro": true,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": true,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": true,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": false,
+    "figma_in_exp": false,
+    "has_prototyping": false,
+    "has_user_research": false,
+    "has_design_edu": false,
+    "has_allied_edu": true,
+    "has_env_edu": false,
+    "quotes": {
+      "gabi": [],
+      "simapro": [
+        {
+          "line": 5,
+          "quote": "\u2022 Performed Life Cycle Assessment using SimaPro for EV and ICE platforms, supporting material select"
+        },
+        {
+          "line": 9,
+          "quote": "Performed Life Cycle Assessment of vehicle instrument panel assemblies using SimaPro with a cradle-t"
+        },
+        {
+          "line": 14,
+          "quote": "Conducted cradle-to-gate carbon footprint assessment of ICE exhaust assemblies using SimaPro."
+        },
+        {
+          "line": 36,
+          "quote": "Platforms: SimaPro, Siemens NX, MATLAB/Simulink, MS Excel, PowerPoint, Word"
+        },
+        {
+          "line": 41,
+          "quote": "SimaPro, Siemens NX, MATLAB/Simulink, MS Excel"
+        }
+      ],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [
+        {
+          "line": 37,
+          "quote": "Methods: Life Cycle Assessment (LCA), ISO /, ISO, Carbon footprinting, Impact assessment"
+        }
+      ],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [],
+      "prototyping": [],
+      "user_research": [],
+      "education": [
+        {
+          "line": 24,
+          "quote": "M.Tech in Automotive Engineering"
+        },
+        {
+          "line": 27,
+          "quote": "B.Tech in Mechanical Engineering"
+        }
+      ]
+    },
+    "confidence": "REVIEW_REQUIRED",
+    "flags": [
+      "Anonymized ISO token requires human unmasking"
+    ]
+  },
+  "anonymized_UI_1793682784506": {
+    "candidate_id": "anonymized_UI_1793682784506",
+    "is_empty": false,
+    "sha256": "2afda325357849b5ee062fda9706ab8e45761f28bca7985f1106c26a0c20dbfd",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": false,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": false,
+    "figma_in_exp": false,
+    "has_prototyping": false,
+    "has_user_research": false,
+    "has_design_edu": false,
+    "has_allied_edu": false,
+    "has_env_edu": true,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [],
+      "prototyping": [],
+      "user_research": [],
+      "education": [
+        {
+          "line": 27,
+          "quote": "Master of Science in Environmental Sciences"
+        },
+        {
+          "line": 29,
+          "quote": "Bachelor of Science in Zoology"
+        }
+      ]
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_VG_1793682784531": {
+    "candidate_id": "anonymized_VG_1793682784531",
+    "is_empty": false,
+    "sha256": "30f788cc0be64363f1f1a5b3be9012e7ea703889cd8fbdf333c18b5332389712",
+    "has_gabi": false,
+    "has_simapro": false,
+    "has_openlca": true,
+    "gabi_in_exp": false,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": false,
+    "figma_in_exp": false,
+    "has_prototyping": false,
+    "has_user_research": false,
+    "has_design_edu": false,
+    "has_allied_edu": false,
+    "has_env_edu": true,
+    "quotes": {
+      "gabi": [],
+      "simapro": [],
+      "openlca": [
+        {
+          "line": 41,
+          "quote": "Platforms: Power BI, Excel (Data Analysis), OpenLCA, AI Tools, MS Project, Canva, SBTi Target Tool"
+        }
+      ],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [],
+      "prototyping": [],
+      "user_research": [],
+      "education": [
+        {
+          "line": 27,
+          "quote": "Bachelor of Management Studies (Finance)"
+        },
+        {
+          "line": 29,
+          "quote": "MBA (Sustainability Management)"
+        }
+      ]
+    },
+    "confidence": "MEDIUM_OPENLCA",
+    "flags": []
+  },
+  "anonymized_VM_1793682784520": {
+    "candidate_id": "anonymized_VM_1793682784520",
+    "is_empty": false,
+    "sha256": "70cb1862f6119c200e74cab58309173a02ba71e0263e108aeb9c998649f51f30",
+    "has_gabi": true,
+    "has_simapro": false,
+    "has_openlca": true,
+    "gabi_in_exp": true,
+    "simapro_in_exp": false,
+    "has_explicit_iso": false,
+    "has_anonymized_iso": false,
+    "has_generic_iso": false,
+    "has_lci": false,
+    "has_lca_modelling": false,
+    "has_figma": false,
+    "figma_in_exp": false,
+    "has_prototyping": false,
+    "has_user_research": false,
+    "has_design_edu": false,
+    "has_allied_edu": true,
+    "has_env_edu": true,
+    "quotes": {
+      "gabi": [
+        {
+          "line": 33,
+          "quote": "Platforms: GaBi, OpenLCA, Power BI, Jira, Salesforce, Confluence"
+        }
+      ],
+      "simapro": [],
+      "openlca": [
+        {
+          "line": 33,
+          "quote": "Platforms: GaBi, OpenLCA, Power BI, Jira, Salesforce, Confluence"
+        }
+      ],
+      "iso_explicit": [],
+      "iso_anonymized": [],
+      "iso_generic": [],
+      "lci": [],
+      "lca_modelling": [],
+      "figma": [],
+      "prototyping": [],
+      "user_research": [],
+      "education": [
+        {
+          "line": 21,
+          "quote": "Dual M.Sc. \u2014 Renewable Energy, Energy Efficiency & Sustainability"
+        },
+        {
+          "line": 23,
+          "quote": "B.Sc. \u2014 Mechanical Engineering"
+        }
+      ]
+    },
+    "confidence": "HIGH",
+    "flags": []
+  },
+  "anonymized_resume_1793685080327": {
+    "candidate_id": "anonymized_resume_1793685080327",
+    "is_empty": true,
+    "paragraphs": [],
+    "sha256": "e31226339c646e345c64bda9148f97afff79510a26cfc88e8d5016585fff73a1",
+    "quotes": {},
+    "confidence": "HIGH_EMPTY",
+    "flags": [
+      "Empty document: 0 text nodes"
+    ]
+  }
+}

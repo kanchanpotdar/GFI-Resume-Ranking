@@ -67,9 +67,10 @@ LCA_METHODOLOGY_TERMS = [
 
 STRICT_LCA_EXP_TERMS = [
     r'\blca\b', r'life cycle assessment', r'life-cycle assessment',
-    r'simapro\b', r'gabi\b', r'openlca\b', r'iso\s*(?:14040|14044|/|:2006)',
+    r'simapro\b', r'gabi\b', r'openlca\b', r'one click lca\b',
     r'cradle[\s-]+to[\s-]+gate', r'cradle[\s-]+to[\s-]+grave',
-    r'\blci\b', r'life cycle inventory', r'\bepd\b'
+    r'\blci modelling\b', r'\blci modeling\b', r'life cycle inventory modelling',
+    r'environmental product declaration (?:modelling|study|calculation|authoring|verification)'
 ]
 
 ACTION_VERB_PREFIXES = (
@@ -86,10 +87,12 @@ def parse_robust_date_span(date_str, eval_ref_year=EVAL_REF_YEAR, eval_ref_month
     """
     Parses date strings into calendar interval (start_idx, end_idx), duration in months,
     and current employment flag. Does not invent dates for unknown spans.
+    Clamps all date intervals so they never exceed eval_ref_year * 12 + eval_ref_month (Nov 2026).
     """
     if not date_str:
         return None, 0, False
 
+    max_ref_idx = eval_ref_year * 12 + eval_ref_month
     s_norm = date_str.lower().replace('—', '-').replace('–', '-').replace('’', '20').replace("'", "20").strip()
     is_current = any(w in s_norm for w in ['present', 'current', 'ongoing'])
 
@@ -104,14 +107,18 @@ def parse_robust_date_span(date_str, eval_ref_year=EVAL_REF_YEAR, eval_ref_month
     if m_slash:
         sm, sy, em, ey = int(m_slash.group(1)), int(m_slash.group(2)), int(m_slash.group(3)), int(m_slash.group(4))
         start_idx = sy * 12 + sm
-        end_idx = ey * 12 + em
+        end_idx = min(ey * 12 + em, max_ref_idx)
+        if start_idx > max_ref_idx:
+            return None, 0, False
         return (start_idx, end_idx), max(1, end_idx - start_idx + 1), False
 
     m_slash_curr = re.search(r'(\d{1,2})/(\d{4})\s*-\s*(?:present|current|ongoing)', s_norm)
     if m_slash_curr:
         sm, sy = int(m_slash_curr.group(1)), int(m_slash_curr.group(2))
         start_idx = sy * 12 + sm
-        end_idx = eval_ref_year * 12 + eval_ref_month
+        end_idx = max_ref_idx
+        if start_idx > max_ref_idx:
+            return None, 0, True
         return (start_idx, end_idx), max(1, end_idx - start_idx + 1), True
 
     # Check Month YYYY - Month YYYY / Present
@@ -121,11 +128,13 @@ def parse_robust_date_span(date_str, eval_ref_year=EVAL_REF_YEAR, eval_ref_month
         sy = int(m_full.group(2))
         start_idx = sy * 12 + sm
         if is_current:
-            em, ey = eval_ref_month, eval_ref_year
+            end_idx = max_ref_idx
         else:
             em = MONTH_MAP.get(m_full.group(4).lower(), 12) if m_full.group(4) else 12
             ey = int(m_full.group(5)) if m_full.group(5) else sy
-        end_idx = ey * 12 + em
+            end_idx = min(ey * 12 + em, max_ref_idx)
+        if start_idx > max_ref_idx:
+            return None, 0, is_current
         return (start_idx, end_idx), max(1, end_idx - start_idx + 1), is_current
 
     # Check Month - Month YYYY (e.g. 'Jun - Jul 2024')
@@ -135,16 +144,24 @@ def parse_robust_date_span(date_str, eval_ref_year=EVAL_REF_YEAR, eval_ref_month
         em = MONTH_MAP.get(m_single_year.group(2).lower(), 12)
         ey = int(m_single_year.group(3))
         start_idx = ey * 12 + sm
-        end_idx = ey * 12 + em
+        end_idx = min(ey * 12 + em, max_ref_idx)
+        if start_idx > max_ref_idx:
+            return None, 0, False
         return (start_idx, end_idx), max(1, end_idx - start_idx + 1), False
 
     # Check YYYY - YYYY / Present
     m_year = re.search(r'(\d{4})\s*-\s*(\d{4}|present|current|ongoing)', s_norm)
     if m_year:
         sy = int(m_year.group(1))
-        ey = eval_ref_year if is_current else int(m_year.group(2))
+        if is_current:
+            ey = eval_ref_year
+            end_idx = max_ref_idx
+        else:
+            ey = int(m_year.group(2))
+            end_idx = min(ey * 12 + (eval_ref_month if ey == eval_ref_year else 12), max_ref_idx)
         start_idx = sy * 12 + 1
-        end_idx = ey * 12 + 12
+        if start_idx > max_ref_idx:
+            return None, 0, is_current
         return (start_idx, end_idx), max(1, end_idx - start_idx + 1), is_current
 
     return None, 0, is_current
