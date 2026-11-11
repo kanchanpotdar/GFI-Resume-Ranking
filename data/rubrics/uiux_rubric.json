@@ -1,0 +1,76 @@
+{
+  "role_id": "uiux",
+  "role_title": "UI/UX Designer Intern",
+  "version": "1.0.0",
+  "total_points": 100,
+  "experience_policy": {
+    "open_to": "0-1 year experience, recent graduates, or career switchers",
+    "stipend": "₹10,000 - ₹15,000 per month (metadata only, not scored)",
+    "operational_rule": "Candidates with 0-1 year or proven portfolio receive full experience points; excess experience is not penalized."
+  },
+  "weights": {
+    "skills": 30,
+    "experience": 10,
+    "projects": 30,
+    "semantic": 20,
+    "education": 10
+  },
+  "skills_breakdown": [
+    {
+      "key": "figma_prototyping",
+      "name": "Figma & Interactive Prototyping proficiency",
+      "points": 15,
+      "essential": true,
+      "keywords": ["figma", "prototyping", "wireframing", "high-fidelity prototypes"]
+    },
+    {
+      "key": "ui_ux_methodologies",
+      "name": "UI/UX Design principles & Human-Centered Design",
+      "points": 10,
+      "essential": true,
+      "keywords": ["human-centered design", "design system", "responsive design", "interaction design", "visual hierarchy", "accessibility"]
+    },
+    {
+      "key": "user_research",
+      "name": "User research & user psychology understanding",
+      "points": 5,
+      "essential": false,
+      "keywords": ["user research", "user interviews", "usability testing", "user psychology", "personas", "journey maps"]
+    }
+  ],
+  "experience_breakdown": {
+    "relevant_design_experience": {
+      "has_internship_or_freelance_or_direct_design_work": 10,
+      "academic_projects_or_career_switcher": 8,
+      "no_design_experience": 0
+    }
+  },
+  "projects_breakdown": {
+    "portfolio_and_case_studies": {
+      "demonstrated_case_studies_or_figma_links_or_app_redesign": 20,
+      "single_project_or_academic_coursework": 12,
+      "no_design_projects": 0
+    },
+    "user_research_evidence": {
+      "demonstrated_user_interviews_or_testing_evidence": 10,
+      "basic_user_flows_only": 5,
+      "no_user_research_evidence": 0
+    }
+  },
+  "education_breakdown": {
+    "design_hci_cs_media": 10,
+    "allied_degree_with_design_bootcamp_cert": 7,
+    "general_degree": 4,
+    "none": 0
+  },
+  "semantic_config": {
+    "max_points": 20,
+    "model": "BAAI/bge-small-en-v1.5",
+    "norm_min": 0.50,
+    "norm_max": 0.85
+  },
+  "contextual_flags": [
+    "subjective_aesthetics_requires_human_review",
+    "creativity_and_curiosity_requires_interview"
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "role_id": "lca",
+  "role_title": "LifeCycle Assessment (LCA) Consultant",
+  "version": "1.0.0",
+  "total_points": 100,
+  "experience_policy": {
+    "adr_reference": "ADR-S01",
+    "detailed_jd_years": "2-3 years running LCA projects independently",
+    "overview_years": "4-6 years",
+    "operational_rule": "Score against 2-3 years independent LCA experience provisionally; flag conflict for recruiter review."
+  },
+  "weights": {
+    "skills": 30,
+    "experience": 30,
+    "projects": 20,
+    "semantic": 15,
+    "education": 5
+  },
+  "skills_breakdown": [
+    {
+      "key": "lca_software",
+      "name": "Hands-on GaBi or SimaPro expertise",
+      "points": 15,
+      "essential": true,
+      "keywords": ["gabi", "simapro"]
+    },
+    {
+      "key": "standards",
+      "name": "ISO 14040 / ISO 14044 compliance",
+      "points": 8,
+      "essential": true,
+      "keywords": ["iso 14040", "iso 14044", "iso14040", "iso14044", "iso-14040", "iso-14044"]
+    },
+    {
+      "key": "lci_methodology",
+      "name": "LCI data collection, validation & LCA modelling",
+      "points": 7,
+      "essential": true,
+      "keywords": ["lci", "life cycle inventory", "lca modelling", "data collection", "data validation", "traceability"]
+    }
+  ],
+  "experience_breakdown": {
+    "independent_lca_years": {
+      "3_or_more_years": 30,
+      "2_to_3_years": 28,
+      "1_to_2_years": 18,
+      "less_than_1_year": 10,
+      "none": 0
+    }
+  },
+  "projects_breakdown": {
+    "completed_lca_projects_count": {
+      "3_or_more_projects": 20,
+      "2_projects": 14,
+      "1_project": 8,
+      "0_projects": 0
+    }
+  },
+  "education_breakdown": {
+    "environmental_degree": 5,
+    "allied_engineering_science": 3,
+    "other": 0
+  },
+  "semantic_config": {
+    "max_points": 15,
+    "model": "BAAI/bge-small-en-v1.5",
+    "norm_min": 0.50,
+    "norm_max": 0.85
+  },
+  "contextual_flags": [
+    "willingness_to_relocate_chennai",
+    "willingness_to_travel_extensively",
+    "minimum_1_year_commitment"
+  ]
+}
