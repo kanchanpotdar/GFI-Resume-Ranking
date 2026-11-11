@@ -39,3 +39,4 @@ Software Development Assignment Resumes.zip
 *.docx
 !data/fixtures/*.docx
 data/fixtures/oversized_file.pdf
+.vercel

@@ -38,14 +38,14 @@ export function computeCosineSimilarity(
   return isFinite(sim) ? Math.max(-1, Math.min(1, sim)) : 0;
 }
 
-function chunkText(text: string, maxLen = MAX_CHUNK_CHARS, overlap = CHUNK_OVERLAP_CHARS): string[] {
+export function chunkText(text: string, maxLen = MAX_CHUNK_CHARS, overlap = CHUNK_OVERLAP_CHARS): string[] {
   if (text.length <= maxLen) return [text];
   const chunks: string[] = [];
   let start = 0;
   while (start < text.length) {
     let end = start + maxLen;
     if (end < text.length) {
-      // Look for a whitespace or period boundary near end
+      // Look for a whitespace boundary near end
       const lastSpace = text.lastIndexOf(" ", end);
       if (lastSpace > start + maxLen * 0.7) {
         end = lastSpace;
@@ -62,38 +62,72 @@ function chunkText(text: string, maxLen = MAX_CHUNK_CHARS, overlap = CHUNK_OVERL
 }
 
 /**
- * Generates canonical 384-dimensional BGE-small-en-v1.5 embeddings using local ONNX inference.
- * For empty text or unpopulated resumes, returns null (unscorable state).
- * For long texts exceeding model context, segments into chunks and mean-pools vectors.
+ * Parses, validates, and unit-normalizes raw Hugging Face feature-extraction API responses.
+ * Handles 1D pooled vectors [384], 2D single-sequence vectors [[384]], and token-level 2D matrices [seq_len, 384].
  */
-export async function generateEmbedding(text: string): Promise<number[] | null> {
-  const cleanText = (text || "").trim();
-  if (!cleanText) {
-    return null;
-  }
+export function parseAndNormalizeHFResponse(rawData: any): number[] {
+  let vec: number[];
 
-  const extractor = await getEmbeddingPipeline();
-  const chunks = chunkText(cleanText);
-
-  if (chunks.length === 1) {
-    const output = await extractor(chunks[0], { pooling: "mean", normalize: true });
-    return Array.from(output.data);
-  }
-
-  // Multi-chunk pooling
-  const pooled = new Float64Array(EMBEDDING_DIMENSIONS);
-  for (const chunk of chunks) {
-    const output = await extractor(chunk, { pooling: "mean", normalize: true });
-    const data = output.data as Float32Array;
-    for (let i = 0; i < EMBEDDING_DIMENSIONS; i++) {
-      pooled[i] += data[i];
+  if (Array.isArray(rawData)) {
+    if (typeof rawData[0] === "number" && rawData.length === EMBEDDING_DIMENSIONS) {
+      vec = rawData as number[];
+    } else if (Array.isArray(rawData[0])) {
+      if (typeof rawData[0][0] === "number" && rawData[0].length === EMBEDDING_DIMENSIONS && rawData.length === 1) {
+        vec = rawData[0] as number[];
+      } else if (typeof rawData[0][0] === "number" && rawData[0].length === EMBEDDING_DIMENSIONS) {
+        // Token embeddings [seq_len, 384] -> mean pool across token axis
+        const seqLen = rawData.length;
+        const meanPooled = new Float64Array(EMBEDDING_DIMENSIONS);
+        for (let t = 0; t < seqLen; t++) {
+          const tok = rawData[t] as number[];
+          for (let d = 0; d < EMBEDDING_DIMENSIONS; d++) {
+            meanPooled[d] += tok[d];
+          }
+        }
+        vec = Array.from(meanPooled).map((v) => v / seqLen);
+      } else {
+        throw new Error(`Unexpected Hugging Face response dimension: array shape [${rawData.length}, ${rawData[0]?.length}]`);
+      }
+    } else {
+      throw new Error(`Invalid data type in Hugging Face embedding array`);
     }
+  } else {
+    throw new Error(`Invalid response format from Hugging Face: expected array`);
   }
 
-  // Mean-pool and re-normalize to unit L2 norm
+  // Strict unit L2 normalization
   let sumSq = 0;
   for (let i = 0; i < EMBEDDING_DIMENSIONS; i++) {
-    pooled[i] /= chunks.length;
+    sumSq += vec[i] * vec[i];
+  }
+  const norm = Math.sqrt(sumSq);
+  if (norm === 0 || !isFinite(norm)) {
+    throw new Error("Zero or non-finite norm from Hugging Face embedding vector");
+  }
+
+  const result = new Array(EMBEDDING_DIMENSIONS);
+  for (let i = 0; i < EMBEDDING_DIMENSIONS; i++) {
+    result[i] = vec[i] / norm;
+  }
+  return result;
+}
+
+/**
+ * Mean-pools multiple 384-dimensional chunk vectors and re-normalizes to unit L2 length.
+ */
+export function poolAndNormalizeVectors(chunkVectors: number[][]): number[] {
+  if (chunkVectors.length === 1) {
+    return chunkVectors[0];
+  }
+  const pooled = new Float64Array(EMBEDDING_DIMENSIONS);
+  for (const vec of chunkVectors) {
+    for (let i = 0; i < EMBEDDING_DIMENSIONS; i++) {
+      pooled[i] += vec[i];
+    }
+  }
+  let sumSq = 0;
+  for (let i = 0; i < EMBEDDING_DIMENSIONS; i++) {
+    pooled[i] /= chunkVectors.length;
     sumSq += pooled[i] * pooled[i];
   }
   const norm = Math.sqrt(sumSq);
@@ -102,4 +136,85 @@ export async function generateEmbedding(text: string): Promise<number[] | null> 
     result[i] = norm > 0 ? pooled[i] / norm : 0;
   }
   return result;
+}
+
+/**
+ * Calls hosted Hugging Face Inference API for BAAI/bge-small-en-v1.5.
+ */
+export async function generateEmbeddingHF(text: string, apiKey: string): Promise<number[]> {
+  const url = process.env.HUGGINGFACE_API_URL || "https://api-inference.huggingface.co/pipeline/feature-extraction/BAAI/bge-small-en-v1.5";
+  
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+      "x-use-cache": "true",
+      "x-wait-for-model": "true"
+    },
+    body: JSON.stringify({
+      inputs: text,
+      parameters: {
+        pooling: "mean",
+        normalize: true
+      }
+    }),
+    signal: AbortSignal.timeout(15000)
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`Hugging Face API error (${response.status}): ${errorText.slice(0, 200)}`);
+  }
+
+  const rawData = await response.json();
+  return parseAndNormalizeHFResponse(rawData);
+}
+
+/**
+ * Local ONNX inference pipeline using @xenova/transformers.
+ */
+async function generateEmbeddingLocal(chunks: string[]): Promise<number[]> {
+  const extractor = await getEmbeddingPipeline();
+  const chunkVectors: number[][] = [];
+
+  for (const chunk of chunks) {
+    const output = await extractor(chunk, { pooling: "mean", normalize: true });
+    chunkVectors.push(Array.from(output.data));
+  }
+
+  return poolAndNormalizeVectors(chunkVectors);
+}
+
+/**
+ * Generates canonical 384-dimensional BGE-small-en-v1.5 embeddings.
+ * Multi-tier execution strategy:
+ * 1. If HUGGINGFACE_API_KEY is present, calls hosted Hugging Face Inference API.
+ * 2. If hosted call fails or key is omitted, executes local ONNX inference via @xenova/transformers.
+ * 3. Never fabricates vectors on missing text (returns null for empty documents).
+ */
+export async function generateEmbedding(text: string): Promise<number[] | null> {
+  const cleanText = (text || "").trim();
+  if (!cleanText) {
+    return null;
+  }
+
+  const chunks = chunkText(cleanText);
+  const hfKey = process.env.HUGGINGFACE_API_KEY;
+
+  if (hfKey) {
+    try {
+      const chunkVectors: number[][] = [];
+      for (const chunk of chunks) {
+        const vec = await generateEmbeddingHF(chunk, hfKey);
+        chunkVectors.push(vec);
+      }
+      return poolAndNormalizeVectors(chunkVectors);
+    } catch (hfErr: any) {
+      console.warn("Hosted Hugging Face inference failed, falling back to local ONNX:", hfErr.message);
+    }
+  }
+
+  // Local ONNX inference
+  return generateEmbeddingLocal(chunks);
 }

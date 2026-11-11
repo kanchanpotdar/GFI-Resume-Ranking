@@ -62,14 +62,21 @@ export function validateAndMigrateRecord(record: StoredCandidateRecord): StoredC
   const currentSchema = SYSTEM_VERSIONS.schemaVersion;
   const currentRubric = SYSTEM_VERSIONS.rubricVersion;
   const currentModel = SYSTEM_VERSIONS.embeddingModel;
+  const currentRevision = SYSTEM_VERSIONS.embeddingRevision;
+  const currentChunking = SYSTEM_VERSIONS.chunkingVersion;
 
   const schemaMatch = record.schemaVersion === currentSchema;
   const lcaRubricMatch = record.scores?.lca?.rubricVersion === currentRubric;
   const uiuxRubricMatch = record.scores?.uiux?.rubricVersion === currentRubric;
+  
+  // Strict embedding provenance verification
   const modelMatch = record.embeddings?.model === currentModel;
+  const revisionMatch = Boolean(record.embeddings?.modelRevision && record.embeddings?.modelRevision === currentRevision);
+  const chunkingMatch = Boolean(record.embeddings?.chunkingVersion && record.embeddings?.chunkingVersion === currentChunking);
+  const embeddingCompatible = modelMatch && revisionMatch && chunkingMatch;
 
-  // Fully current
-  if (schemaMatch && lcaRubricMatch && uiuxRubricMatch && modelMatch) {
+  // Fully current across all dimensions
+  if (schemaMatch && lcaRubricMatch && uiuxRubricMatch && embeddingCompatible) {
     return {
       ...record,
       requiresReprocessing: false,
@@ -77,7 +84,31 @@ export function validateAndMigrateRecord(record: StoredCandidateRecord): StoredC
     };
   }
 
-  // Attempt safe recomputation if extraction and cosine scores are present
+  // If embedding configuration is incompatible, we MUST NOT reuse old semantic cosine scores!
+  // Preserve the record but flag for reprocessing so user can re-upload resume.
+  if (!embeddingCompatible) {
+    const safeExtraction = record.extraction || {
+      name: record.candidateId || "Outdated Candidate",
+      headline: "Legacy record requiring reprocessing",
+      totalExperienceMonths: 0,
+      independentLcaExperienceMonths: 0,
+      designExperienceMonths: 0,
+      skills: { platforms: [], methods: [], allSkills: [] },
+      education: [],
+      projects: [],
+      experienceHistory: [],
+      extractionStatus: "error"
+    };
+
+    return {
+      ...record,
+      extraction: safeExtraction,
+      requiresReprocessing: true,
+      reprocessingReason: `Embedding configuration mismatch: stored (${record.embeddings?.model || "unknown"}, rev: ${record.embeddings?.modelRevision || "legacy"}, chunk: ${record.embeddings?.chunkingVersion || "legacy"}) vs current (${currentModel}, rev: ${currentRevision}, chunk: ${currentChunking}). Stored semantic similarities cannot be safely reused. Please re-upload resume.`
+    };
+  }
+
+  // If embedding configuration IS compatible, but rubric is outdated, attempt safe score recalculation
   if (record.extraction && typeof record.scores?.lca?.semanticRawCosine === "number" && typeof record.scores?.uiux?.semanticRawCosine === "number") {
     try {
       const newLca = scoreLCARole(record.extraction, record.scores.lca.semanticRawCosine);

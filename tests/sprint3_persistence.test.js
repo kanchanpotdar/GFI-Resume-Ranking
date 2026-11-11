@@ -128,10 +128,15 @@ test("Sprint 3.5 Gate 6: Version migration detects outdated rubric and recalcula
   const sample = baselineData.candidates.find((c) => c.classification === "lca");
   assert.ok(sample, "Sample candidate should exist");
 
-  // Create record with outdated rubric version
+  // Create record with outdated rubric version but compatible embedding provenance
   const outdatedRecord = {
     ...sample,
     schemaVersion: "1.0.0",
+    embeddings: {
+      ...sample.embeddings,
+      modelRevision: "v1.5",
+      chunkingVersion: "1.0.0"
+    },
     scores: {
       ...sample.scores,
       lca: {
@@ -226,5 +231,84 @@ test("Sprint 3.5 Gate 9: ZIP decompression security rejects oversized uncompress
   }
 
   assert.equal(isSafe, false, "Must reject ZIP container exceeding 25MB uncompressed limit");
+});
+
+test("Sprint 4 Gate 1: validateAndMigrateRecord rejects reuse of old semantic similarities when embedding revision or chunking version is incompatible", () => {
+  const { validateAndMigrateRecord } = require("../lib/db.ts");
+  const baselineData = JSON.parse(fs.readFileSync(path.join(ROOT, "data/baseline.json"), "utf8"));
+  const sample = baselineData.candidates.find((c) => c.classification === "lca");
+
+  // Create a record where rubric is outdated BUT embedding revision is also incompatible
+  const incompatibleEmbeddingRecord = {
+    ...sample,
+    schemaVersion: "1.0.0",
+    embeddings: {
+      model: "BAAI/bge-small-en-v1.5",
+      dimensions: 384,
+      modelRevision: "v1.0-incompatible", // Incompatible revision!
+      chunkingVersion: "1.0.0"
+    },
+    scores: {
+      lca: {
+        ...sample.scores.lca,
+        rubricVersion: "0.9.0-outdated",
+        semanticRawCosine: 0.999 // Must NOT be reused!
+      },
+      uiux: {
+        ...sample.scores.uiux,
+        rubricVersion: "0.9.0-outdated",
+        semanticRawCosine: 0.999
+      }
+    },
+    uploadedAt: new Date().toISOString()
+  };
+
+  const migrated = validateAndMigrateRecord(incompatibleEmbeddingRecord);
+  assert.equal(migrated.requiresReprocessing, true, "Must flag record as requiring reprocessing when embedding revision is incompatible");
+  assert.ok(migrated.reprocessingReason.includes("Embedding configuration mismatch"), "Reason must specify embedding mismatch");
+  assert.equal(migrated.scores.lca.semanticRawCosine, 0.999, "Original record values must be preserved intact for recruiter review");
+});
+
+test("Sprint 4 Gate 2: parseAndNormalizeHFResponse correctly validates and unit-normalizes 1D, 2D, and token-matrix responses to 384 dimensions", () => {
+  const { parseAndNormalizeHFResponse } = require("../lib/embeddings.ts");
+
+  // 1. Test 1D array of 384 numbers
+  const dummy1D = new Array(384).fill(0.1);
+  const parsed1D = parseAndNormalizeHFResponse(dummy1D);
+  assert.equal(parsed1D.length, 384);
+  const norm1D = Math.sqrt(parsed1D.reduce((sum, x) => sum + x * x, 0));
+  assert.ok(Math.abs(norm1D - 1.0) < 1e-5, "Vector must have unit L2 norm");
+
+  // 2. Test 2D array [1, 384]
+  const dummy2D = [new Array(384).fill(0.5)];
+  const parsed2D = parseAndNormalizeHFResponse(dummy2D);
+  assert.equal(parsed2D.length, 384);
+  const norm2D = Math.sqrt(parsed2D.reduce((sum, x) => sum + x * x, 0));
+  assert.ok(Math.abs(norm2D - 1.0) < 1e-5, "Vector must have unit L2 norm");
+
+  // 3. Test token-matrix [seq_len = 3, 384]
+  const dummyTokenMatrix = [
+    new Array(384).fill(0.2),
+    new Array(384).fill(0.4),
+    new Array(384).fill(0.6)
+  ];
+  const parsedTokens = parseAndNormalizeHFResponse(dummyTokenMatrix);
+  assert.equal(parsedTokens.length, 384);
+  const normTokens = Math.sqrt(parsedTokens.reduce((sum, x) => sum + x * x, 0));
+  assert.ok(Math.abs(normTokens - 1.0) < 1e-5, "Token mean-pooled vector must have unit L2 norm");
+});
+
+test("Sprint 4 Gate 3: poolAndNormalizeVectors accurately aggregates multi-chunk embeddings with unit L2 length", () => {
+  const { poolAndNormalizeVectors } = require("../lib/embeddings.ts");
+
+  const v1 = new Array(384).fill(0).map((_, i) => (i === 0 ? 1 : 0));
+  const v2 = new Array(384).fill(0).map((_, i) => (i === 1 ? 1 : 0));
+
+  const pooled = poolAndNormalizeVectors([v1, v2]);
+  assert.equal(pooled.length, 384);
+  const norm = Math.sqrt(pooled.reduce((sum, x) => sum + x * x, 0));
+  assert.ok(Math.abs(norm - 1.0) < 1e-5, "Pooled vector must be strictly unit L2 normalized");
+  assert.ok(Math.abs(pooled[0] - Math.SQRT1_2) < 1e-5);
+  assert.ok(Math.abs(pooled[1] - Math.SQRT1_2) < 1e-5);
 });
 

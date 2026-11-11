@@ -4,9 +4,10 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6-blue?logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38bdf8?logo=tailwindcss)](https://tailwindcss.com/)
 [![ONNX Runtime](https://img.shields.io/badge/Embeddings-BAAI%2Fbge--small--en--v1.5-brightgreen)](https://huggingface.co/BAAI/bge-small-en-v1.5)
-[![Build & Tests](https://img.shields.io/badge/Tests-30%2F30%20Passing-success)](#evaluation--testing)
+[![Build & Tests](https://img.shields.io/badge/Tests-33%2F33%20Passing-success)](#evaluation--testing)
 [![Playwright E2E](https://img.shields.io/badge/Playwright-14%2F14%20Passing-brightgreen)](tests/e2e/dashboard.spec.ts)
-[![Validation](https://img.shields.io/badge/Sprint%201.5%20%26%202%20%26%203%20%26%203.5-PASS-emerald)](#sprint-15-independent-validation-verdict)
+[![HTTP Suite](https://img.shields.io/badge/HTTP%20Endpoints-9%2F9%20Passing-brightgreen)](scripts/verify_sprint2_http.py)
+[![Status](https://img.shields.io/badge/Status-CONDITIONALLY%20READY-yellow)](reports/final_submission_audit.md)
 
 A decision-support web application designed for non-technical hiring teams at **Growth For Impact** to ingest, extract, semantically compare, rank, and classify candidate resumes against two specialized job profiles:
 1. **LifeCycle Assessment (LCA) Consultant** (Onsite, Chennai)
@@ -82,10 +83,10 @@ flowchart TD
 - **Framework:** Next.js 14.2 (App Router, Server Actions)
 - **Language:** TypeScript 5.6 (Strict Mode)
 - **Styling:** Tailwind CSS 3.4
-- **Vector Embeddings:** `@xenova/transformers` running `Xenova/bge-small-en-v1.5` via ONNX Runtime (384 dimensions)
-- **Document Parsers:** `mammoth`, `pdf-parse`, custom OOXML AST extractor
-- **Client Persistence:** Browser IndexedDB via `idb`
-- **Testing:** Node.js native test runner (`node:test`)
+- **Vector Embeddings (Dual-Tier):** Hosted Hugging Face Inference API (`BAAI/bge-small-en-v1.5`, 384 dimensions) with automatic offline fallback to local ONNX Runtime (`@xenova/transformers`) with identical multi-chunk mean-pooling and unit L2 normalization
+- **Document Parsers:** `mammoth` (DOCX OpenXML AST), `pdf-parse` (PDF binary extraction)
+- **Client Persistence:** Browser IndexedDB via `idb` (`gfi_resume_ranking_db`) with version migration & graceful quota degradation
+- **Testing:** Node.js native test runner (`node:test`, 33 tests), Python HTTP verification (9 tests), Playwright E2E browser automation (14 test specs across 20 user journeys)
 
 ---
 
@@ -230,7 +231,7 @@ cp .env.example .env.local
 
 ### Running Tests & Verification
 ```bash
-# Run full automated unit and integration test suite (30 tests)
+# Run full automated unit and integration test suite (33 tests)
 npm test
 
 # Run HTTP endpoint verification suite (9 tests)
@@ -260,4 +261,4 @@ npm run dev
 - [x] **Sprint 2:** Interactive tabbed dashboard, evidence inspection drawer, dynamic PDF/DOCX live upload with content magic-byte verification.
 - [x] **Sprint 3:** Browser IndexedDB persistence (`idb`), candidate deletion, clear-all reset controls, dual-role scope ranking, privacy audit (26 passing tests).
 - [x] **Sprint 3.5:** Final Quality Remediation & Mandatory Verification Gate: multi-surface SHA-256 deduplication, zip bomb defense, race-condition elimination, version migration, and 14-scenario Playwright E2E browser test suite (30 unit tests + 14 E2E tests passing).
-- [ ] **Sprint 4:** Public production deployment, executive summary slide deck/pitch, and submission walkthrough.
+- [x] **Sprint 4:** Submission Readiness: Hugging Face hosted inference API integration with multi-chunk pooling parity, strict IndexedDB version migration regression tests (33 unit tests + 9 HTTP tests + 14 Playwright E2E tests), comprehensive submission audit report, and Vercel serverless deployment preparation.
