@@ -7,7 +7,7 @@ import { CandidateRecord } from "@/lib/types";
 interface ResumeUploadModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onCandidateUploaded: (candidate: CandidateRecord) => void;
+  onCandidateUploaded: (candidate: CandidateRecord, file?: File | null) => void;
   onViewCandidate: (candidate: CandidateRecord) => void;
 }
 
@@ -103,7 +103,7 @@ export function ResumeUploadModal({
       if (data.success && data.candidate) {
         setUploadStatus("Successfully processed and ranked!");
         setTimeout(() => {
-          onCandidateUploaded(data.candidate);
+          onCandidateUploaded(data.candidate, file);
           setIsUploading(false);
           setFile(null);
           onClose();

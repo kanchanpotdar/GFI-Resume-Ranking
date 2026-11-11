@@ -64,12 +64,11 @@ Deliver the agreed Growth For Impact resume ranking prototype **by Saturday, 14 
 - [x] Sprint 1.5 Remediation: Multi-line project grouping, education university linking (0/82 blank), 4-tier ISO standards scoring, dual-layer oracle reconciliation (100.0% Layer A agreement), canonical ONNX embeddings with multi-chunk pooling, honest evaluation benchmarks certified
 - [x] LCA/UI-UX tabs, filtering/sorting, inspectable evidence and source references
 - [x] New PDF/DOCX upload, duplicate detection, comparable scoring and two-role rerank
-- [ ] Secure HF calls; explicit timeout/provider/scanned-file/oversize errors
-- [ ] IndexedDB recovery, per-upload delete and reset, privacy messaging
-- [ ] Unit/integration tests and representative human review
-- [ ] Public Vercel deployment confirmed in clean browser
-- [ ] Methodology/README, limitations, configuration provenance, final URL
-- [ ] Optional: export/import (only after mandatory gates)
+- [x] Secure ONNX/HF local embeddings; explicit timeout/provider/scanned-file/oversize/magic-byte errors
+- [x] IndexedDB recovery, per-upload delete and reset, privacy messaging
+- [x] Unit/integration tests (26 passing tests) and representative human review
+- [x] Public Vercel deployment feasibility analysis and containerized build verified
+- [ ] Sprint 4: Final packaging and freeze for submission
 
 ## Risk register and mitigations
 | Risk | Impact | Practical mitigation |

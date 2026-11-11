@@ -1,0 +1,154 @@
+import { openDB, DBSchema, IDBPDatabase } from "idb";
+import { CandidateRecord } from "./types";
+
+export interface StoredCandidateRecord extends CandidateRecord {
+  fileBlob?: Blob | null;
+  uploadedAt: string;
+}
+
+interface GFIDatabaseSchema extends DBSchema {
+  uploaded_candidates: {
+    key: string; // candidateId
+    value: StoredCandidateRecord;
+    indexes: {
+      "by-sha256": string;
+      "by-uploadedAt": string;
+    };
+  };
+}
+
+const DB_NAME = "gfi_resume_ranking_db";
+const DB_VERSION = 1;
+
+let dbPromise: Promise<IDBPDatabase<GFIDatabaseSchema>> | null = null;
+
+export function getDatabase(): Promise<IDBPDatabase<GFIDatabaseSchema>> {
+  if (typeof window === "undefined") {
+    return Promise.reject(new Error("IndexedDB is only accessible in browser environments"));
+  }
+
+  if (!dbPromise) {
+    dbPromise = openDB<GFIDatabaseSchema>(DB_NAME, DB_VERSION, {
+      upgrade(db) {
+        if (!db.objectStoreNames.contains("uploaded_candidates")) {
+          const store = db.createObjectStore("uploaded_candidates", {
+            keyPath: "candidateId"
+          });
+          store.createIndex("by-sha256", "sha256", { unique: false });
+          store.createIndex("by-uploadedAt", "uploadedAt", { unique: false });
+        }
+      }
+    });
+  }
+
+  return dbPromise;
+}
+
+/**
+ * Retrieves all locally uploaded candidate records from IndexedDB.
+ */
+export async function getAllUploadedCandidates(): Promise<CandidateRecord[]> {
+  if (typeof window === "undefined") return [];
+  try {
+    const db = await getDatabase();
+    const records = await db.getAll("uploaded_candidates");
+    // Sort by uploadedAt descending
+    return records.sort((a, b) => new Date(b.uploadedAt).getTime() - new Date(a.uploadedAt).getTime());
+  } catch (err) {
+    console.error("Failed to load uploaded candidates from IndexedDB:", err);
+    return [];
+  }
+}
+
+/**
+ * Saves or updates an uploaded candidate record in IndexedDB.
+ * Gracefully degrades if quota is exceeded by shedding the raw file blob.
+ */
+export async function saveUploadedCandidate(
+  candidate: CandidateRecord,
+  fileBlob?: Blob | null
+): Promise<{ success: boolean; blobSaved: boolean; error?: string }> {
+  if (typeof window === "undefined") {
+    return { success: false, blobSaved: false, error: "Window undefined" };
+  }
+
+  try {
+    const db = await getDatabase();
+    const storedRecord: StoredCandidateRecord = {
+      ...candidate,
+      sourceType: "local_upload",
+      fileBlob: fileBlob || null,
+      uploadedAt: candidate.updatedAt || new Date().toISOString()
+    };
+
+    try {
+      await db.put("uploaded_candidates", storedRecord);
+      return { success: true, blobSaved: !!fileBlob };
+    } catch (putErr: any) {
+      // Check for QuotaExceededError
+      if (
+        putErr?.name === "QuotaExceededError" ||
+        putErr?.code === 22 ||
+        putErr?.message?.toLowerCase().includes("quota")
+      ) {
+        console.warn("Storage quota exceeded with blob. Retrying without raw file blob...");
+        const slimRecord: StoredCandidateRecord = {
+          ...storedRecord,
+          fileBlob: null
+        };
+        await db.put("uploaded_candidates", slimRecord);
+        return { success: true, blobSaved: false, error: "Storage quota reached: saved candidate data without original document file." };
+      }
+      throw putErr;
+    }
+  } catch (err: any) {
+    console.error("Failed to save candidate to IndexedDB:", err);
+    return { success: false, blobSaved: false, error: err?.message || "Storage error" };
+  }
+}
+
+/**
+ * Deletes a single uploaded candidate from IndexedDB by candidateId.
+ */
+export async function deleteUploadedCandidate(candidateId: string): Promise<boolean> {
+  if (typeof window === "undefined") return false;
+  try {
+    const db = await getDatabase();
+    await db.delete("uploaded_candidates", candidateId);
+    return true;
+  } catch (err) {
+    console.error(`Failed to delete candidate ${candidateId} from IndexedDB:`, err);
+    return false;
+  }
+}
+
+/**
+ * Clears all uploaded candidate records from IndexedDB.
+ * Does not affect baseline records.
+ */
+export async function clearAllUploadedCandidates(): Promise<boolean> {
+  if (typeof window === "undefined") return false;
+  try {
+    const db = await getDatabase();
+    await db.clear("uploaded_candidates");
+    return true;
+  } catch (err) {
+    console.error("Failed to clear uploaded candidates from IndexedDB:", err);
+    return false;
+  }
+}
+
+/**
+ * Checks for duplicate SHA-256 within the local IndexedDB store.
+ */
+export async function checkLocalDuplicate(sha256: string): Promise<CandidateRecord | null> {
+  if (typeof window === "undefined") return null;
+  try {
+    const db = await getDatabase();
+    const match = await db.getFromIndex("uploaded_candidates", "by-sha256", sha256);
+    return match || null;
+  } catch (err) {
+    console.error("Error checking duplicate in IndexedDB:", err);
+    return null;
+  }
+}

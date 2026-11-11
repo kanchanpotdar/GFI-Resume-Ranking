@@ -62,27 +62,53 @@ export async function POST(req: NextRequest) {
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
 
+    // 0-byte check
+    if (buffer.length === 0) {
+      return NextResponse.json(
+        { error: "Uploaded file is empty (0 bytes)." },
+        { status: 400 }
+      );
+    }
+
+    // Validate actual file content (magic bytes)
+    const isPdfMagic = buffer.length >= 4 && buffer[0] === 0x25 && buffer[1] === 0x50 && buffer[2] === 0x44 && buffer[3] === 0x46; // %PDF
+    const isDocxMagic = buffer.length >= 4 && buffer[0] === 0x50 && buffer[1] === 0x4b && buffer[2] === 0x03 && buffer[3] === 0x04; // PK.. (ZIP container)
+
+    if (ext === ".pdf" && !isPdfMagic) {
+      return NextResponse.json(
+        { error: "File content does not match a valid PDF binary signature." },
+        { status: 400 }
+      );
+    }
+
+    if (ext === ".docx" && !isDocxMagic) {
+      return NextResponse.json(
+        { error: "File content does not match a valid DOCX (OpenXML) binary signature." },
+        { status: 400 }
+      );
+    }
+
     // Compute SHA-256
     const sha256 = crypto.createHash("sha256").update(buffer).digest("hex");
 
-    // Check duplicate in baseline dataset
+    // Check exact duplicate in baseline dataset strictly by SHA-256
     try {
       const baselinePath = path.join(process.cwd(), "data/baseline.json");
       if (fs.existsSync(baselinePath)) {
         const baselineData = JSON.parse(fs.readFileSync(baselinePath, "utf8"));
         const existing = baselineData.candidates.find(
-          (c: CandidateRecord) => c.sha256 === sha256 || c.sourceFilename === filename
+          (c: CandidateRecord) => c.sha256 === sha256
         );
         if (existing) {
           return NextResponse.json({
             isDuplicate: true,
             candidate: existing,
-            message: `Resume '${filename}' already exists in the system (Candidate ID: ${existing.candidateId}).`
+            message: `Resume with SHA-256 (${sha256.slice(0, 12)}...) already exists as Candidate ${existing.candidateId}.`
           });
         }
       }
     } catch (e) {
-      console.warn("Baseline check warning:", e);
+      console.warn("Baseline duplicate check warning:", e);
     }
 
     // Extract text paragraphs
@@ -150,9 +176,9 @@ export async function POST(req: NextRequest) {
       candidate: record
     });
   } catch (err: any) {
-    console.error("Upload error:", err);
+    console.error("Internal resume processing failure:", err);
     return NextResponse.json(
-      { error: `Internal server error during resume processing: ${err?.message || "Unknown error"}` },
+      { error: "An error occurred while parsing and processing the resume. Please ensure the document is a valid, uncorrupted PDF or DOCX file." },
       { status: 500 }
     );
   }

@@ -1,11 +1,17 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import {
   CandidateRecord,
   RoleType,
   EligibilityStatus
 } from "@/lib/types";
+import {
+  getAllUploadedCandidates,
+  saveUploadedCandidate,
+  deleteUploadedCandidate,
+  clearAllUploadedCandidates
+} from "@/lib/db";
 import { CandidateDetailModal } from "@/components/CandidateDetailModal";
 import { ResumeUploadModal } from "@/components/ResumeUploadModal";
 import {
@@ -22,7 +28,11 @@ import {
   Filter,
   Sparkles,
   Building,
-  RotateCcw
+  RotateCcw,
+  Trash2,
+  HardDrive,
+  Lock,
+  X
 } from "lucide-react";
 
 interface DashboardClientProps {
@@ -39,28 +49,61 @@ export function DashboardClient({ initialCandidates }: DashboardClientProps) {
   const [eligibilityFilter, setEligibilityFilter] = useState<string>("all");
   const [reviewFilter, setReviewFilter] = useState<string>("all");
   const [sourceFilter, setSourceFilter] = useState<string>("all");
+  const [rankingScope, setRankingScope] = useState<"qualified_only" | "all_resumes">("qualified_only");
 
   const [inspectCandidate, setInspectCandidate] = useState<CandidateRecord | null>(null);
   const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
+  const [candidateToDelete, setCandidateToDelete] = useState<CandidateRecord | null>(null);
+  const [isClearAllModalOpen, setIsClearAllModalOpen] = useState(false);
+  const [storageNotification, setStorageNotification] = useState<string | null>(null);
 
-  // Filter candidates by tab
+  // Load persisted uploads from IndexedDB on initial mount
+  useEffect(() => {
+    async function hydrateFromIndexedDB() {
+      try {
+        const stored = await getAllUploadedCandidates();
+        if (stored && stored.length > 0) {
+          setCandidates((prev) => {
+            const existingIds = new Set(prev.map((c) => c.candidateId));
+            const freshStored = stored.filter((c) => !existingIds.has(c.candidateId));
+            return [...freshStored, ...prev];
+          });
+        }
+      } catch (err) {
+        console.error("Error hydrating from IndexedDB:", err);
+      }
+    }
+    hydrateFromIndexedDB();
+  }, []);
+
+  // Filter candidates by tab and ranking scope
   const tabCandidates = useMemo(() => {
     return candidates.filter((c) => {
-      if (activeTab === "lca") return c.classification === "lca" || c.classification === "both";
-      if (activeTab === "uiux") return c.classification === "uiux" || c.classification === "both";
+      if (activeTab === "lca") {
+        if (rankingScope === "all_resumes") return true;
+        return c.classification === "lca" || c.classification === "both";
+      }
+      if (activeTab === "uiux") {
+        if (rankingScope === "all_resumes") return true;
+        return c.classification === "uiux" || c.classification === "both";
+      }
       return c.classification === "neither_or_uncertain";
     });
-  }, [candidates, activeTab]);
+  }, [candidates, activeTab, rankingScope]);
 
-  // Counts for tabs
-  const tabCounts = useMemo(() => {
-    let lca = 0, uiux = 0, neither = 0;
+  // Counts for tabs & source breakdown
+  const { tabCounts, uploadedCount } = useMemo(() => {
+    let lca = 0, uiux = 0, neither = 0, uploaded = 0;
     for (const c of candidates) {
       if (c.classification === "lca" || c.classification === "both") lca++;
       if (c.classification === "uiux" || c.classification === "both") uiux++;
       if (c.classification === "neither_or_uncertain") neither++;
+      if (c.sourceType === "local_upload") uploaded++;
     }
-    return { lca, uiux, neither };
+    return {
+      tabCounts: { lca, uiux, neither },
+      uploadedCount: uploaded
+    };
   }, [candidates]);
 
   // Filter & Sort candidates within the active tab
@@ -114,26 +157,43 @@ export function DashboardClient({ initialCandidates }: DashboardClientProps) {
       return true;
     });
 
-    // Sort
+    // Sort with strict 3-tier deterministic tie-breaking
     filtered.sort((a, b) => {
       const aScore = a.scores[roleKey];
       const bScore = b.scores[roleKey];
 
-      switch (sortBy) {
-        case "experience":
-          const aExp = activeTab === "uiux" ? a.extraction.designExperienceMonths : a.extraction.independentLcaExperienceMonths;
-          const bExp = activeTab === "uiux" ? b.extraction.designExperienceMonths : b.extraction.independentLcaExperienceMonths;
-          return bExp - aExp;
-        case "skills":
+      const aExp = activeTab === "uiux" ? a.extraction.designExperienceMonths : a.extraction.independentLcaExperienceMonths;
+      const bExp = activeTab === "uiux" ? b.extraction.designExperienceMonths : b.extraction.independentLcaExperienceMonths;
+
+      // 1. Explicit user sort criteria
+      if (sortBy === "experience") {
+        if (bExp !== aExp) return bExp - aExp;
+      } else if (sortBy === "skills") {
+        if (bScore.subScores.skills !== aScore.subScores.skills) {
           return bScore.subScores.skills - aScore.subScores.skills;
-        case "projects":
+        }
+      } else if (sortBy === "projects") {
+        if (bScore.subScores.projects !== aScore.subScores.projects) {
           return bScore.subScores.projects - aScore.subScores.projects;
-        case "semantic":
+        }
+      } else if (sortBy === "semantic") {
+        if (bScore.subScores.semantic !== aScore.subScores.semantic) {
           return bScore.subScores.semantic - aScore.subScores.semantic;
-        case "score":
-        default:
-          return bScore.totalScore - aScore.totalScore;
+        }
       }
+
+      // 2. Primary fallback: Total score desc
+      if (bScore.totalScore !== aScore.totalScore) {
+        return bScore.totalScore - aScore.totalScore;
+      }
+
+      // 3. Secondary fallback: Experience duration desc
+      if (bExp !== aExp) {
+        return bExp - aExp;
+      }
+
+      // 4. Deterministic final tie-breaker: Candidate ID asc
+      return a.candidateId.localeCompare(b.candidateId);
     });
 
     return filtered;
@@ -157,9 +217,22 @@ export function DashboardClient({ initialCandidates }: DashboardClientProps) {
     };
   }, [tabCandidates, activeTab]);
 
-  const handleCandidateUploaded = (newCandidate: CandidateRecord) => {
-    setCandidates((prev) => [newCandidate, ...prev]);
-    // Switch to the tab where the candidate belongs
+  const handleCandidateUploaded = async (newCandidate: CandidateRecord, file?: File | null) => {
+    // 1. Save to IndexedDB
+    const saveRes = await saveUploadedCandidate(newCandidate, file);
+    if (!saveRes.success && saveRes.error) {
+      setStorageNotification(`Storage note: ${saveRes.error}`);
+    } else if (!saveRes.blobSaved) {
+      setStorageNotification("Resume data saved (storage quota reached: original binary file was omitted).");
+    }
+
+    // 2. Insert into React state
+    setCandidates((prev) => [
+      newCandidate,
+      ...prev.filter((c) => c.candidateId !== newCandidate.candidateId)
+    ]);
+
+    // 3. Navigate to relevant tab
     if (newCandidate.classification === "uiux") {
       setActiveTab("uiux");
     } else if (newCandidate.classification === "lca") {
@@ -167,8 +240,23 @@ export function DashboardClient({ initialCandidates }: DashboardClientProps) {
     } else {
       setActiveTab("neither");
     }
-    // Automatically inspect new candidate
+
+    // 4. Automatically open candidate details inspector
     setInspectCandidate(newCandidate);
+  };
+
+  const handleConfirmDelete = async () => {
+    if (!candidateToDelete) return;
+    const cid = candidateToDelete.candidateId;
+    await deleteUploadedCandidate(cid);
+    setCandidates((prev) => prev.filter((c) => c.candidateId !== cid));
+    setCandidateToDelete(null);
+  };
+
+  const handleConfirmClearAll = async () => {
+    await clearAllUploadedCandidates();
+    setCandidates(initialCandidates);
+    setIsClearAllModalOpen(false);
   };
 
   const getScoreBadge = (score: number) => {
@@ -197,7 +285,18 @@ export function DashboardClient({ initialCandidates }: DashboardClientProps) {
               </h1>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2.5">
+              {uploadedCount > 0 && (
+                <button
+                  onClick={() => setIsClearAllModalOpen(true)}
+                  className="inline-flex items-center gap-1.5 px-3 py-2 bg-slate-100 hover:bg-rose-50 text-slate-700 hover:text-rose-700 text-xs font-medium rounded-xl border border-slate-200 hover:border-rose-200 transition-colors"
+                  title="Remove all locally uploaded resumes"
+                >
+                  <RotateCcw className="w-3.5 h-3.5" />
+                  <span>Reset Uploads ({uploadedCount})</span>
+                </button>
+              )}
+
               <button
                 onClick={() => setIsUploadModalOpen(true)}
                 className="inline-flex items-center gap-2 px-4 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold rounded-xl shadow-xs transition-colors"
@@ -264,6 +363,31 @@ export function DashboardClient({ initialCandidates }: DashboardClientProps) {
       {/* Main Container */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
         
+        {/* Storage Persistence Notice Banner */}
+        <div className="bg-slate-100/80 border border-slate-200 rounded-xl px-4 py-2.5 mb-5 flex items-center justify-between gap-3 text-xs text-slate-600">
+          <div className="flex items-center gap-2">
+            <HardDrive className="w-4 h-4 text-slate-500 shrink-0" />
+            <span>
+              <strong>Local IndexedDB Active:</strong> Uploaded resumes persist locally in your browser. The 47 baseline reference candidates are read-only.
+            </span>
+          </div>
+          {uploadedCount > 0 && (
+            <span className="font-semibold text-emerald-700 shrink-0">
+              {uploadedCount} local resume{uploadedCount > 1 ? "s" : ""} stored
+            </span>
+          )}
+        </div>
+
+        {/* Temporary Storage Notification */}
+        {storageNotification && (
+          <div className="bg-amber-50 border border-amber-200 rounded-xl px-4 py-2 mb-4 text-xs text-amber-800 flex items-center justify-between">
+            <span>{storageNotification}</span>
+            <button onClick={() => setStorageNotification(null)} className="text-amber-600 hover:text-amber-900">
+              <X className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        )}
+
         {/* Role Overview Notice Card */}
         {activeTab === "lca" && (
           <div className="bg-emerald-50/60 border border-emerald-200 rounded-xl p-4 mb-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-xs text-emerald-950">
@@ -353,6 +477,25 @@ export function DashboardClient({ initialCandidates }: DashboardClientProps) {
               />
             </div>
 
+            {/* Ranking Scope (All Resumes vs Role Qualified Only) */}
+            {activeTab !== "neither" && (
+              <div className="flex items-center gap-2">
+                <span className="text-xs text-slate-500 font-medium whitespace-nowrap">Scope:</span>
+                <select
+                  value={rankingScope}
+                  onChange={(e) => setRankingScope(e.target.value as any)}
+                  className="border border-slate-200 rounded-lg px-2.5 py-2 text-xs bg-white text-slate-700 focus:outline-hidden"
+                >
+                  <option value="qualified_only">
+                    {activeTab === "lca" ? "Qualified LCA Only" : "Qualified UI/UX Only"}
+                  </option>
+                  <option value="all_resumes">
+                    {activeTab === "lca" ? "All Resumes Ranked for LCA" : "All Resumes Ranked for UI/UX"}
+                  </option>
+                </select>
+              </div>
+            )}
+
             {/* Sorting Dropdown */}
             <div className="flex items-center gap-2">
               <span className="text-xs text-slate-500 font-medium whitespace-nowrap flex items-center gap-1">
@@ -415,13 +558,14 @@ export function DashboardClient({ initialCandidates }: DashboardClientProps) {
             </select>
 
             {/* Reset Filters button */}
-            {(searchQuery || eligibilityFilter !== "all" || reviewFilter !== "all" || sourceFilter !== "all") && (
+            {(searchQuery || eligibilityFilter !== "all" || reviewFilter !== "all" || sourceFilter !== "all" || rankingScope !== "qualified_only") && (
               <button
                 onClick={() => {
                   setSearchQuery("");
                   setEligibilityFilter("all");
                   setReviewFilter("all");
                   setSourceFilter("all");
+                  setRankingScope("qualified_only");
                 }}
                 className="text-xs text-rose-600 hover:text-rose-800 font-medium inline-flex items-center gap-1 ml-auto"
               >
@@ -445,6 +589,7 @@ export function DashboardClient({ initialCandidates }: DashboardClientProps) {
               const score = candidate.scores[roleKey];
               const isEligible = score.eligibilityFlags.eligibilityStatus === "eligible";
               const isConditional = score.eligibilityFlags.eligibilityStatus === "conditionally_eligible";
+              const isUploaded = candidate.sourceType === "local_upload";
 
               return (
                 <div
@@ -465,10 +610,18 @@ export function DashboardClient({ initialCandidates }: DashboardClientProps) {
                         <span className="font-mono text-xs text-slate-400">
                           ({candidate.candidateId})
                         </span>
-                        <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${
-                          candidate.sourceType === "baseline" ? "bg-slate-100 text-slate-600" : "bg-purple-100 text-purple-800"
+                        <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${
+                          isUploaded ? "bg-purple-100 text-purple-800" : "bg-slate-100 text-slate-600"
                         }`}>
-                          {candidate.sourceType === "baseline" ? "Baseline" : "Uploaded"}
+                          {isUploaded ? (
+                            <>
+                              <HardDrive className="w-3 h-3" /> Uploaded
+                            </>
+                          ) : (
+                            <>
+                              <Lock className="w-3 h-3 text-slate-400" /> Baseline
+                            </>
+                          )}
                         </span>
                       </div>
 
@@ -526,13 +679,25 @@ export function DashboardClient({ initialCandidates }: DashboardClientProps) {
                       </div>
                     </div>
 
-                    {/* Action Button */}
-                    <button
-                      onClick={() => setInspectCandidate(candidate)}
-                      className="w-full md:w-auto px-4 py-2.5 bg-slate-800 hover:bg-slate-900 text-white font-medium text-xs rounded-xl transition-colors flex items-center justify-center gap-1.5 shadow-2xs"
-                    >
-                      <Eye className="w-3.5 h-3.5" /> Inspect
-                    </button>
+                    {/* Action Buttons */}
+                    <div className="flex items-center gap-2 w-full md:w-auto">
+                      <button
+                        onClick={() => setInspectCandidate(candidate)}
+                        className="flex-1 md:flex-initial px-4 py-2.5 bg-slate-800 hover:bg-slate-900 text-white font-medium text-xs rounded-xl transition-colors flex items-center justify-center gap-1.5 shadow-2xs"
+                      >
+                        <Eye className="w-3.5 h-3.5" /> Inspect
+                      </button>
+
+                      {isUploaded && (
+                        <button
+                          onClick={() => setCandidateToDelete(candidate)}
+                          className="p-2.5 bg-slate-100 hover:bg-rose-100 text-slate-500 hover:text-rose-700 rounded-xl transition-colors"
+                          title="Delete uploaded resume from browser storage"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </div>
               );
@@ -558,6 +723,70 @@ export function DashboardClient({ initialCandidates }: DashboardClientProps) {
         onCandidateUploaded={handleCandidateUploaded}
         onViewCandidate={(c) => setInspectCandidate(c)}
       />
+
+      {/* Per-Candidate Delete Confirmation Modal */}
+      {candidateToDelete && (
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 border border-slate-200">
+            <div className="flex items-center gap-3 text-rose-600 mb-3">
+              <div className="w-10 h-10 rounded-full bg-rose-100 flex items-center justify-center shrink-0">
+                <Trash2 className="w-5 h-5 text-rose-600" />
+              </div>
+              <h3 className="text-base font-bold text-slate-900">Delete Uploaded Resume?</h3>
+            </div>
+            <p className="text-xs text-slate-600 mb-4 leading-relaxed">
+              Are you sure you want to delete candidate <strong>{candidateToDelete.extraction.name}</strong> ({candidateToDelete.candidateId})?
+              This will remove the candidate record and vector embeddings from your browser&apos;s IndexedDB storage.
+            </p>
+            <div className="flex items-center justify-end gap-2.5">
+              <button
+                onClick={() => setCandidateToDelete(null)}
+                className="px-4 py-2 border border-slate-200 hover:bg-slate-100 text-slate-700 text-xs font-semibold rounded-xl transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleConfirmDelete}
+                className="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white text-xs font-semibold rounded-xl transition-colors"
+              >
+                Confirm Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Reset / Clear All Uploads Confirmation Modal */}
+      {isClearAllModalOpen && (
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 border border-slate-200">
+            <div className="flex items-center gap-3 text-amber-600 mb-3">
+              <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center shrink-0">
+                <AlertTriangle className="w-5 h-5 text-amber-600" />
+              </div>
+              <h3 className="text-base font-bold text-slate-900">Reset All Uploaded Resumes?</h3>
+            </div>
+            <p className="text-xs text-slate-600 mb-4 leading-relaxed">
+              This will remove all <strong>{uploadedCount}</strong> user-uploaded resume records from your browser&apos;s local IndexedDB.
+              The 47 permanent baseline candidates will remain completely intact.
+            </p>
+            <div className="flex items-center justify-end gap-2.5">
+              <button
+                onClick={() => setIsClearAllModalOpen(false)}
+                className="px-4 py-2 border border-slate-200 hover:bg-slate-100 text-slate-700 text-xs font-semibold rounded-xl transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleConfirmClearAll}
+                className="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white text-xs font-semibold rounded-xl transition-colors"
+              >
+                Clear All Uploads
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
     </div>
   );

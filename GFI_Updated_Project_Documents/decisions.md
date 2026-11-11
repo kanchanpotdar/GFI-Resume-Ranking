@@ -141,4 +141,20 @@ For any post-approval change, append:
   *Decision:* Standardize exclusively on local ONNX `Xenova/bge-small-en-v1.5` inference. Multi-chunk long texts (>1500 chars) with mean-pooling and unit L2 normalization. Represent empty documents as `null` vector rather than zero-filled arrays.  
   *Impact:* Deterministic, offline-reproducible 384-dimensional embeddings across baseline and runtime uploads without provider drift.
 
+### Recorded Sprint 2 & Sprint 3 Architecture Decisions
+- **ADR-S11 | 2026-11-11 | Accepted | Runtime Upload Pipeline with Content Magic-Byte Verification and SHA-256 Deduplication**  
+  *Context:* Relying on file extensions alone allows renamed corrupt or plaintext files to crash binary parsers. Moreover, checking duplicates by filename causes collisions when different users upload distinct resumes with generic names (e.g., `resume.pdf`).  
+  *Decision:* Validate file magic bytes (`%PDF` for PDF, `PK\x03\x04` for DOCX). Enforce exact deduplication strictly by SHA-256 hash. Enforce 5MB size limit and 0-byte rejection. Provide sanitized client-facing error envelopes without exposing internal call stacks, system paths, or exception details.  
+  *Impact:* Robust, abuse-resistant upload endpoint tested and verified across real DOCX and PDF fixtures.
+
+- **ADR-S12 | 2026-11-11 | Accepted | Client-Side IndexedDB Storage (`idb`) with Graceful Quota Fallback and Dual-Role Ranking Scope**  
+  *Context:* Runtime uploads must persist across browser refreshes without requiring an external cloud database or violating candidate privacy. However, storing large multi-megabyte document blobs can trigger browser `QuotaExceededError`.  
+  *Decision:* Implement IndexedDB persistence using `idb` (`gfi_resume_ranking_db`). Store candidate structured records, vector embeddings, subscores, and timestamps. If quota limits are reached, gracefully drop the raw file binary while preserving the essential candidate metadata and scores. Provide per-candidate deletion and confirmation-gated reset controls. Keep 47 baseline reference resumes strictly immutable and read-only.  
+  *Impact:* Zero cloud storage costs, 100% client privacy, instant reload on refresh, and clear UX distinctions between read-only baseline records and user uploads.
+
+- **ADR-S13 | 2026-11-11 | Accepted | Independent Dual-Role Ranking Scope & 3-Tier Deterministic Tie-Breaking**  
+  *Context:* Reviewers need the flexibility to see how non-specialist or uncertain candidates rank on specific roles without altering their formal qualification classification. Furthermore, tie-breaks must never jitter across renders or refreshes.  
+  *Decision:* Add ranking scope control to role tabs ("Qualified Resumes Only" vs "All Resumes Ranked for Role"). Implement a 3-tier deterministic sorting comparator: (1) Total Score descending, (2) Relevant Experience Months descending, (3) Candidate ID ascending (`localeCompare`).  
+  *Impact:* Consistent, reproducible candidate ordering across both roles, supporting comprehensive HR screening and exploration.
+
 Keep `agent.md`, `sprintplan.md`, and this file aligned. Do not reinterpret unresolved verification tasks as permission to change approved decisions.

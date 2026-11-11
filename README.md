@@ -4,8 +4,8 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6-blue?logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38bdf8?logo=tailwindcss)](https://tailwindcss.com/)
 [![ONNX Runtime](https://img.shields.io/badge/Embeddings-BAAI%2Fbge--small--en--v1.5-brightgreen)](https://huggingface.co/BAAI/bge-small-en-v1.5)
-[![Build & Tests](https://img.shields.io/badge/Tests-15%2F15%20Passing-success)](#evaluation--testing)
-[![Validation](https://img.shields.io/badge/Sprint%201.5-PASS-emerald)](#sprint-15-independent-validation-verdict)
+[![Build & Tests](https://img.shields.io/badge/Tests-26%2F26%20Passing-success)](#evaluation--testing)
+[![Validation](https://img.shields.io/badge/Sprint%201.5%20%26%202%20%26%203-PASS-emerald)](#sprint-15-independent-validation-verdict)
 
 A decision-support web application designed for non-technical hiring teams at **Growth For Impact** to ingest, extract, semantically compare, rank, and classify candidate resumes against two specialized job profiles:
 1. **LifeCycle Assessment (LCA) Consultant** (Onsite, Chennai)
@@ -250,6 +250,6 @@ npm run dev
 - [x] **Sprint 0:** Repository skeleton, input audit, verbatim JDs, rubric definitions.
 - [x] **Sprint 1:** Baseline structured extraction, BGE-small embeddings, scoring engine.
 - [x] **Sprint 1.5:** Independent quality validation, date/ISO parser corrections, evaluation metrics.
-- [ ] **Sprint 2:** Interactive tabbed dashboard, evidence inspection drawer, dynamic PDF/DOCX live upload.
-- [ ] **Sprint 3:** Browser IndexedDB persistence, candidate deletion, data privacy controls.
+- [x] **Sprint 2:** Interactive tabbed dashboard, evidence inspection drawer, dynamic PDF/DOCX live upload with content magic-byte verification.
+- [x] **Sprint 3:** Browser IndexedDB persistence (`idb`), candidate deletion, clear-all reset controls, dual-role scope ranking, privacy audit (26 passing tests).
 - [ ] **Sprint 4:** Public Vercel production deployment and submission walkthrough.
