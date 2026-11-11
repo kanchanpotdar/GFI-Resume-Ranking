@@ -12,7 +12,7 @@
       {
         "title": "Graduate Engineer Trainee (GET) \u2013 Environment",
         "company": "The Ramco Cements Limited",
-        "rawDates": "July 2025 \u2013 Present",
+        "rawDates": "The Ramco Cements Limited   July 2025 \u2013 Present",
         "durationMonths": 17,
         "isCurrent": true,
         "bullets": [
@@ -32,7 +32,7 @@
       {
         "title": "GRACC Intern",
         "company": "Inspire Clean Energy Pvt. Ltd.",
-        "rawDates": "April 2023 \u2013 July 2023",
+        "rawDates": "Inspire Clean Energy Pvt. Ltd.   April 2023 \u2013 July 2023",
         "durationMonths": 4,
         "isCurrent": false,
         "bullets": [
@@ -82,26 +82,26 @@
     "education": [
       {
         "degree": "M.Tech. in Energy and Environmental Engineering",
-        "institution": "National Institute of Technology, Rourkela, August 2023 \u2013 May 2025",
-        "year": "2023",
+        "institution": "",
+        "year": null,
         "domain": "environmental"
       },
       {
-        "degree": "CGPA: 9.42 / 10.00",
+        "degree": "National Institute of Technology, Rourkela, August 2023 \u2013 May 2025",
         "institution": "",
-        "year": null,
-        "domain": "general"
+        "year": "2023",
+        "domain": "allied_technical"
       },
       {
         "degree": "B.Tech. in Energy and Environmental Engineering",
-        "institution": "AEC&RI, Tamil Nadu Agricultural University, Coimbatore, August 2019 \u2013 July 2023",
-        "year": "2019",
+        "institution": "",
+        "year": null,
         "domain": "environmental"
       },
       {
-        "degree": "CGPA: 8.67 / 10.00",
+        "degree": "AEC&RI, Tamil Nadu Agricultural University, Coimbatore, August 2019 \u2013 July 2023",
         "institution": "",
-        "year": null,
+        "year": "2019",
         "domain": "general"
       }
     ],
@@ -204,9 +204,9 @@
     "experience": [
       {
         "title": "Product design & UI/UX",
-        "company": "Gluco   December 2025 \u2014 January 2026",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Gluco",
+        "rawDates": "Gluco   December 2025 \u2014 January 2026",
+        "durationMonths": 2,
         "isCurrent": false,
         "bullets": [
           "\u2022 Addressed gaps in diabetic care in self-monitoring blood glucose (SMBG) by combining user research and clinical studies.",
@@ -218,9 +218,9 @@
       },
       {
         "title": "Graphic design & Social media marketing",
-        "company": "Brrandom   December 2024 \u2014 January 2025",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Brrandom",
+        "rawDates": "Brrandom   December 2024 \u2014 January 2025",
+        "durationMonths": 2,
         "isCurrent": false,
         "bullets": [
           "\u2022 Created digital marketing assets for various brands and adapted designs to digital platforms and physical banners and posters.",
@@ -231,9 +231,9 @@
       },
       {
         "title": "Brand Repositioning & Visual Direction",
-        "company": "Big Basket   September 2025 \u2014 November 2025",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Big Basket",
+        "rawDates": "Big Basket   September 2025 \u2014 November 2025",
+        "durationMonths": 3,
         "isCurrent": false,
         "bullets": [
           "\u2022 Repositioned a Q-commerce brand to resonate with Gen-Z audiences while retaining older audiences by defining the creative platform and campaign narrative.",
@@ -247,7 +247,13 @@
     "education": [
       {
         "degree": "B.Des in Communication Design",
-        "institution": "National Institute of Design, 2023 - 2027",
+        "institution": "",
+        "year": null,
+        "domain": "design"
+      },
+      {
+        "degree": "National Institute of Design, 2023 - 2027",
+        "institution": "",
         "year": "2023",
         "domain": "design"
       }
@@ -302,12 +308,12 @@
         "UI animation"
       ]
     },
-    "totalExperienceMonths": 0,
+    "totalExperienceMonths": 7,
     "independentLcaExperienceMonths": 0,
-    "designExperienceMonths": 0,
+    "designExperienceMonths": 2,
     "completedLcaProjectsCount": 0,
     "hasDesignPortfolioOrCaseStudies": false,
-    "hasUserResearchEvidence": false,
+    "hasUserResearchEvidence": true,
     "contextualFlags": {
       "relocationMentioned": false,
       "travelWillingnessMentioned": false,
@@ -317,7 +323,7 @@
     "rawTextLength": 1725,
     "warnings": [],
     "lcaChunk": "Product Designer Skills: Figma, Illustrator, Photoshop, After Effects, Premiere Pro, User flows, User Research-to-insight, Wireframing, Mockups, Information architecture, Interface design, Experience design, Graphic design, Data visualization, Brand Positioning, Creative Strategy, Illustration, Motion Graphics, UI animation",
-    "uiuxChunk": "Product Designer Product design & UI/UX at Gluco   December 2025 \u2014 January 2026: \u2022 Addressed gaps in diabetic care in self-monitoring blood glucose (SMBG) by combining user research and clinical studies. \u2022 Developed a digital product concept that records SMBG tests, conducts AI-driven analysis, and provides insights to increase testing frequency and retention in SMBG users by a projection of ~53%. \u2022 Created information architecture, wireframes, user flows, and mockups according to WCAG AA accessibility. Graphic design & Social media marketing at Brrandom   December 2024 \u2014 January 2025: \u2022 Created digital marketing assets for various brands and adapted designs to digital platforms and physical banners and posters. \u2022 Built core competencies in graphic design, typography, layout, and visual hierarchy that meet project requirements while retaining aesthetic coherence across outputs. Skills: Figma, Illustrator, Photoshop, After Effects, Premiere Pro, User flows, User Research-to-insight, Wireframing, Mockups, Information architecture, Interface design, Experience design, Graphic design, Data visualization, Brand Positioning, Creative Strategy, Illustration, Motion Graphics, UI animation"
+    "uiuxChunk": "Product Designer Product design & UI/UX at Gluco: \u2022 Addressed gaps in diabetic care in self-monitoring blood glucose (SMBG) by combining user research and clinical studies. \u2022 Developed a digital product concept that records SMBG tests, conducts AI-driven analysis, and provides insights to increase testing frequency and retention in SMBG users by a projection of ~53%. \u2022 Created information architecture, wireframes, user flows, and mockups according to WCAG AA accessibility. Graphic design & Social media marketing at Brrandom: \u2022 Created digital marketing assets for various brands and adapted designs to digital platforms and physical banners and posters. \u2022 Built core competencies in graphic design, typography, layout, and visual hierarchy that meet project requirements while retaining aesthetic coherence across outputs. Skills: Figma, Illustrator, Photoshop, After Effects, Premiere Pro, User flows, User Research-to-insight, Wireframing, Mockups, Information architecture, Interface design, Experience design, Graphic design, Data visualization, Brand Positioning, Creative Strategy, Illustration, Motion Graphics, UI animation"
   },
   {
     "candidateId": "anonymized_AA_1793685080402",
@@ -332,7 +338,7 @@
       {
         "title": "Graphic Designer",
         "company": "Global Dream Connect",
-        "rawDates": "Jan 2026 \u2013 Present",
+        "rawDates": "Global Dream Connect   Jan 2026 \u2013 Present",
         "durationMonths": 11,
         "isCurrent": true,
         "bullets": [
@@ -345,7 +351,7 @@
       {
         "title": "UI/UX Design Intern",
         "company": "Xellara",
-        "rawDates": "Aug 2025 \u2013 Jan 2026",
+        "rawDates": "Xellara   Aug 2025 \u2013 Jan 2026",
         "durationMonths": 6,
         "isCurrent": false,
         "bullets": [
@@ -357,8 +363,8 @@
       },
       {
         "title": "App Developer Intern",
-        "company": "OctaNet Services Pvt. Ltd.   Jun \u2013 Jul 2024",
-        "rawDates": "",
+        "company": "OctaNet Services Pvt. Ltd.   Jun \u2013",
+        "rawDates": "OctaNet Services Pvt. Ltd.   Jun \u2013 Jul 2024",
         "durationMonths": 0,
         "isCurrent": false,
         "bullets": [
@@ -446,13 +452,25 @@
     "education": [
       {
         "degree": "B.Tech Computer Science",
-        "institution": "Jaypee University of Engineering and Technology, 2021\u20132025",
+        "institution": "",
+        "year": null,
+        "domain": "allied_technical"
+      },
+      {
+        "degree": "Jaypee University of Engineering and Technology, 2021\u20132025",
+        "institution": "",
         "year": "2021",
         "domain": "allied_technical"
       },
       {
         "degree": "Class XII PCM",
-        "institution": "Maheshwari Academy, 2020\u20132021",
+        "institution": "",
+        "year": null,
+        "domain": "general"
+      },
+      {
+        "degree": "Maheshwari Academy, 2020\u20132021",
+        "institution": "",
         "year": "2020",
         "domain": "general"
       }
@@ -509,12 +527,12 @@
         "VS Code"
       ]
     },
-    "totalExperienceMonths": 17,
+    "totalExperienceMonths": 16,
     "independentLcaExperienceMonths": 0,
     "designExperienceMonths": 6,
     "completedLcaProjectsCount": 0,
     "hasDesignPortfolioOrCaseStudies": true,
-    "hasUserResearchEvidence": false,
+    "hasUserResearchEvidence": true,
     "contextualFlags": {
       "relocationMentioned": false,
       "travelWillingnessMentioned": false,
@@ -539,7 +557,7 @@
       {
         "title": "Executive \u2013 Environmental Health and Safety",
         "company": "Zigma Global Enviro Solutions Pvt. Ltd.",
-        "rawDates": "Oct 2025 \u2013 Present",
+        "rawDates": "Zigma Global Enviro Solutions Pvt. Ltd.   Oct 2025 \u2013 Present",
         "durationMonths": 14,
         "isCurrent": true,
         "bullets": [
@@ -556,7 +574,7 @@
       {
         "title": "System Engineer Trainee",
         "company": "Infosys Ltd",
-        "rawDates": "Mar 2025 \u2013 Jul 2025",
+        "rawDates": "Infosys Ltd   Mar 2025 \u2013 Jul 2025",
         "durationMonths": 5,
         "isCurrent": false,
         "bullets": [
@@ -570,7 +588,7 @@
       {
         "title": "Project Associate (UNDP",
         "company": "supported) \u2014 IIT Tirupati",
-        "rawDates": "Dec 2023 \u2013 Mar 2025",
+        "rawDates": "supported) \u2014 IIT Tirupati   Dec 2023 \u2013 Mar 2025",
         "durationMonths": 16,
         "isCurrent": false,
         "bullets": [
@@ -584,7 +602,7 @@
       {
         "title": "Research Fellow",
         "company": "IIT Tirupati",
-        "rawDates": "Dec 2022 \u2013 Dec 2023",
+        "rawDates": "IIT Tirupati   Dec 2022 \u2013 Dec 2023",
         "durationMonths": 13,
         "isCurrent": false,
         "bullets": [
@@ -600,7 +618,7 @@
       {
         "title": "Junior Executive",
         "company": "IIT Tirupati",
-        "rawDates": "Dec 2022 \u2013 Dec 2023",
+        "rawDates": "IIT Tirupati   Dec 2022 \u2013 Dec 2023",
         "durationMonths": 13,
         "isCurrent": false,
         "bullets": [
@@ -615,7 +633,7 @@
       {
         "title": "Dissertation Intern",
         "company": "CSIR \u2014 NEERI, Hyderabad",
-        "rawDates": "Feb 2021 \u2013 Sep 2021",
+        "rawDates": "CSIR \u2014 NEERI, Hyderabad   Feb 2021 \u2013 Sep 2021",
         "durationMonths": 8,
         "isCurrent": false,
         "bullets": [
@@ -632,27 +650,27 @@
     "education": [
       {
         "degree": "M. Tech - Environmental Engineering",
-        "institution": "JNTUA College of Engineering, Anantapur, 2019 - 2022",
-        "year": "2019",
+        "institution": "",
+        "year": null,
         "domain": "environmental"
       },
       {
-        "degree": "CGPA: 8.27",
+        "degree": "JNTUA College of Engineering, Anantapur, 2019 - 2022",
         "institution": "",
-        "year": null,
-        "domain": "general"
-      },
-      {
-        "degree": "B. Tech - Civil Engineering",
-        "institution": "KMM Institute of Technology and Science, Tirupati, 2015 - 2019",
-        "year": "2015",
+        "year": "2019",
         "domain": "allied_technical"
       },
       {
-        "degree": "CGPA: 7.19",
+        "degree": "B. Tech - Civil Engineering",
         "institution": "",
         "year": null,
-        "domain": "general"
+        "domain": "allied_technical"
+      },
+      {
+        "degree": "KMM Institute of Technology and Science, Tirupati, 2015 - 2019",
+        "institution": "",
+        "year": "2015",
+        "domain": "allied_technical"
       }
     ],
     "certifications": [
@@ -702,12 +720,12 @@
         "EHS Management"
       ]
     },
-    "totalExperienceMonths": 69,
+    "totalExperienceMonths": 54,
     "independentLcaExperienceMonths": 0,
     "designExperienceMonths": 0,
     "completedLcaProjectsCount": 0,
     "hasDesignPortfolioOrCaseStudies": false,
-    "hasUserResearchEvidence": false,
+    "hasUserResearchEvidence": true,
     "contextualFlags": {
       "relocationMentioned": false,
       "travelWillingnessMentioned": false,
@@ -731,9 +749,9 @@
     "experience": [
       {
         "title": "UI/UX Designer for Technical Event",
-        "company": "TANTRA Design, FISAT, Ernakulam   Dec 2025 \u2014 Feb 2026",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "TANTRA Design, FISAT, Ernakulam",
+        "rawDates": "TANTRA Design, FISAT, Ernakulam   Dec 2025 \u2014 Feb 2026",
+        "durationMonths": 3,
         "isCurrent": false,
         "bullets": [
           "\u2022 Identified fragmented navigation and poor information hierarchy in the existing interface, designed structured user flows and wireframes in Figma, resulting in improved content discoverability and reduced user confusion.",
@@ -746,10 +764,10 @@
       },
       {
         "title": "Graphic Designer",
-        "company": "Freelance   Oct 2021 \u2014 Present",
-        "rawDates": "",
-        "durationMonths": 0,
-        "isCurrent": false,
+        "company": "Freelance",
+        "rawDates": "Freelance   Oct 2021 \u2014 Present",
+        "durationMonths": 62,
+        "isCurrent": true,
         "bullets": [
           "\u2022 Designed user-centric visual interfaces including social media creatives, banners, and invoices by applying layout principles and visual hierarchy.",
           "\u2022 Collaborated with clients to identify usability gaps and brand inconsistencies and translated requirements into intuitive design solutions.",
@@ -801,15 +819,27 @@
     "education": [
       {
         "degree": "B.Tech in Computer Science",
-        "institution": "KTU, 2022-2026",
-        "year": "2022",
+        "institution": "",
+        "year": null,
         "domain": "allied_technical"
       },
       {
+        "degree": "KTU, 2022-2026",
+        "institution": "",
+        "year": "2022",
+        "domain": "general"
+      },
+      {
         "degree": "Google UX Design Professional Certificate",
-        "institution": "Coursera, 2025",
-        "year": "2025",
+        "institution": "",
+        "year": null,
         "domain": "design"
+      },
+      {
+        "degree": "Coursera, 2025",
+        "institution": "",
+        "year": "2025",
+        "domain": "general"
       }
     ],
     "certifications": [],
@@ -846,12 +876,12 @@
         "User Flow"
       ]
     },
-    "totalExperienceMonths": 0,
+    "totalExperienceMonths": 62,
     "independentLcaExperienceMonths": 0,
-    "designExperienceMonths": 0,
+    "designExperienceMonths": 62,
     "completedLcaProjectsCount": 0,
     "hasDesignPortfolioOrCaseStudies": true,
-    "hasUserResearchEvidence": false,
+    "hasUserResearchEvidence": true,
     "contextualFlags": {
       "relocationMentioned": false,
       "travelWillingnessMentioned": false,
@@ -861,7 +891,7 @@
     "rawTextLength": 2502,
     "warnings": [],
     "lcaChunk": "UI/UX Designer Aspiring UI/UX designer passionate about understanding users and crafting intuitive solutions. Skilled in wireframing, prototyping and research, ready to bring fresh perspectives and creativity to your team. Skills: Figma, Framer, Adobe XD, Photoshop, Design Thinking, Wireframing, Prototyping, Usability Testing, UI/UX Design, Interaction Design, User Flow",
-    "uiuxChunk": "UI/UX Designer Aspiring UI/UX designer passionate about understanding users and crafting intuitive solutions. Skilled in wireframing, prototyping and research, ready to bring fresh perspectives and creativity to your team. UI/UX Designer for Technical Event at TANTRA Design, FISAT, Ernakulam   Dec 2025 \u2014 Feb 2026: \u2022 Identified fragmented navigation and poor information hierarchy in the existing interface, designed structured user flows and wireframes in Figma, resulting in improved content discoverability and reduced user confusion. \u2022 Analysed user pain points in event registration and schedule access, implemented intuitive UI layouts with clear CTAs and visual hierarchy, leading to faster task completion and smoother user journeys. \u2022 Initiated usability improvements by redesigning cluttered screens into clean, minimal interfaces using grid systems, spacing, and alignment, enhancing readability and user engagement. \u2022 Designed interactive prototypes and iterated based on feedback, improving usability and delivering a seamless, responsive experience across devices. Graphic Designer at Freelance   Oct 2021 \u2014 Present: \u2022 Designed user-centric visual interfaces including social media creatives, banners, and invoices by applying layout principles and visual hierarchy. \u2022 Collaborated with clients to identify usability gaps and brand inconsistencies and translated requirements into intuitive design solutions. \u2022 Initiated structured design approaches by incorporating typography systems, colour theory, and spacing guidelines; enhanced readability and user experience across digital assets. \u2022 Delivered 17+ client projects under tight deadlines by managing multiple orders simultaneously, demonstrating effective time management while maintaining design quality and UX consistency acros"
+    "uiuxChunk": "UI/UX Designer Aspiring UI/UX designer passionate about understanding users and crafting intuitive solutions. Skilled in wireframing, prototyping and research, ready to bring fresh perspectives and creativity to your team. UI/UX Designer for Technical Event at TANTRA Design, FISAT, Ernakulam: \u2022 Identified fragmented navigation and poor information hierarchy in the existing interface, designed structured user flows and wireframes in Figma, resulting in improved content discoverability and reduced user confusion. \u2022 Analysed user pain points in event registration and schedule access, implemented intuitive UI layouts with clear CTAs and visual hierarchy, leading to faster task completion and smoother user journeys. \u2022 Initiated usability improvements by redesigning cluttered screens into clean, minimal interfaces using grid systems, spacing, and alignment, enhancing readability and user engagement. \u2022 Designed interactive prototypes and iterated based on feedback, improving usability and delivering a seamless, responsive experience across devices. Graphic Designer at Freelance: \u2022 Designed user-centric visual interfaces including social media creatives, banners, and invoices by applying layout principles and visual hierarchy. \u2022 Collaborated with clients to identify usability gaps and brand inconsistencies and translated requirements into intuitive design solutions. \u2022 Initiated structured design approaches by incorporating typography systems, colour theory, and spacing guidelines; enhanced readability and user experience across digital assets. \u2022 Delivered 17+ client projects under tight deadlines by managing multiple orders simultaneously, demonstrating effective time management while maintaining design quality and UX consistency across projects. Project: Participated in GENESI"
   },
   {
     "candidateId": "anonymized_AN_1793685080356",
@@ -876,7 +906,7 @@
       {
         "title": "UI/UX Designer and Frontend Developer",
         "company": "Dvika NextGen Tech Solutions",
-        "rawDates": "March 2026 \u2013 Present",
+        "rawDates": "Dvika NextGen Tech Solutions   March 2026 \u2013 Present",
         "durationMonths": 9,
         "isCurrent": true,
         "bullets": [
@@ -935,19 +965,25 @@
     "education": [
       {
         "degree": "Bachelor of Engineering (B.E) in Information Science and Engineering",
-        "institution": "Poojya Doddappa Appa College of Engineering, 2022 \u2013 Present",
+        "institution": "",
+        "year": null,
+        "domain": "allied_technical"
+      },
+      {
+        "degree": "Poojya Doddappa Appa College of Engineering, 2022 \u2013 Present",
+        "institution": "",
         "year": "2022",
         "domain": "allied_technical"
       },
       {
-        "degree": "CGPA: 8.05",
-        "institution": "Science Stream (Pre-University)",
+        "degree": "Science Stream (Pre-University)",
+        "institution": "",
         "year": null,
         "domain": "general"
       },
       {
         "degree": "Shree Guru Independent PU College, 2020 \u2013 2021",
-        "institution": "Percentage: 86.5%",
+        "institution": "",
         "year": "2020",
         "domain": "general"
       }
@@ -1036,7 +1072,7 @@
       {
         "title": "Product Design Intern",
         "company": "Growth Operator.AI",
-        "rawDates": "June 2025 \u2013 August 2025",
+        "rawDates": "Growth Operator.AI   June 2025 \u2013 August 2025",
         "durationMonths": 3,
         "isCurrent": false,
         "bullets": [
@@ -1050,7 +1086,7 @@
       {
         "title": "UI Designer & Graphic Designer",
         "company": "Brandygold Tech Private Limited",
-        "rawDates": "July 2022 \u2013 July 2024",
+        "rawDates": "Brandygold Tech Private Limited   July 2022 \u2013 July 2024",
         "durationMonths": 25,
         "isCurrent": false,
         "bullets": [
@@ -1064,7 +1100,7 @@
       {
         "title": "Graphic Designer",
         "company": "ScarBluu",
-        "rawDates": "April 2022 \u2013 July 2022",
+        "rawDates": "ScarBluu   April 2022 \u2013 July 2022",
         "durationMonths": 4,
         "isCurrent": false,
         "bullets": [
@@ -1077,7 +1113,7 @@
       {
         "title": "Graphic Designer & Video Editor",
         "company": "Hum Ek Madhyam",
-        "rawDates": "July 2021 \u2013 September 2021",
+        "rawDates": "Hum Ek Madhyam   July 2021 \u2013 September 2021",
         "durationMonths": 3,
         "isCurrent": false,
         "bullets": [
@@ -1164,13 +1200,25 @@
     "education": [
       {
         "degree": "Master of Design",
-        "institution": "National Institute of Fashion Technology, Panchkula",
+        "institution": "",
         "year": null,
         "domain": "design"
       },
       {
+        "degree": "National Institute of Fashion Technology, Panchkula",
+        "institution": "",
+        "year": null,
+        "domain": "allied_technical"
+      },
+      {
         "degree": "Bachelor of Arts in Journalism and Mass Communication",
-        "institution": "Amity University, Lucknow",
+        "institution": "",
+        "year": null,
+        "domain": "general"
+      },
+      {
+        "degree": "Amity University, Lucknow",
+        "institution": "",
         "year": null,
         "domain": "general"
       }
@@ -1230,7 +1278,7 @@
         "SPSS"
       ]
     },
-    "totalExperienceMonths": 35,
+    "totalExperienceMonths": 34,
     "independentLcaExperienceMonths": 0,
     "designExperienceMonths": 28,
     "completedLcaProjectsCount": 0,
@@ -1260,7 +1308,7 @@
       {
         "title": "UI/UX Design Collaboration",
         "company": "Nyx UI   null",
-        "rawDates": "",
+        "rawDates": "Nyx UI   null",
         "durationMonths": 0,
         "isCurrent": false,
         "bullets": [
@@ -1319,9 +1367,15 @@
     "education": [
       {
         "degree": "Bachelor of Technology (B.Tech) in Computer Science & Information Technology",
-        "institution": "Chameli Devi Group of Institutions (CDGI), 2022 \u2013 2026",
-        "year": "2022",
+        "institution": "",
+        "year": null,
         "domain": "allied_technical"
+      },
+      {
+        "degree": "Chameli Devi Group of Institutions (CDGI), 2022 \u2013 2026",
+        "institution": "",
+        "year": "2022",
+        "domain": "general"
       }
     ],
     "certifications": [],
@@ -1382,7 +1436,7 @@
     "designExperienceMonths": 0,
     "completedLcaProjectsCount": 0,
     "hasDesignPortfolioOrCaseStudies": true,
-    "hasUserResearchEvidence": false,
+    "hasUserResearchEvidence": true,
     "contextualFlags": {
       "relocationMentioned": false,
       "travelWillingnessMentioned": false,
@@ -1407,8 +1461,8 @@
       {
         "title": "Product Designer",
         "company": "Lemmino   Sep \u201925 \u2013 Dec \u201925",
-        "rawDates": "",
-        "durationMonths": 0,
+        "rawDates": "Lemmino   Sep \u201925 \u2013 Dec \u201925",
+        "durationMonths": 4,
         "isCurrent": false,
         "bullets": [
           "\u2022 Owned end-to-end UX strategy and shipped production designs for an AI-native simulation engine, transforming complex LLM outputs into structured analytics for real-world users.",
@@ -1422,8 +1476,8 @@
       {
         "title": "Product Design Intern",
         "company": "Zaalima   Apr \u201925 \u2013 Jul \u201925",
-        "rawDates": "",
-        "durationMonths": 0,
+        "rawDates": "Zaalima   Apr \u201925 \u2013 Jul \u201925",
+        "durationMonths": 4,
         "isCurrent": false,
         "bullets": [
           "\u2022 Led UX strategy for Aeron, architecting a first-of-its-kind AR 'Virtual Try-On' feature; solved complex spatial logic for garment mapping and body tracking to reduce purchase friction.",
@@ -1437,8 +1491,8 @@
       {
         "title": "UI/UX Design Intern",
         "company": "Internship Studio   Apr \u201925 \u2013 Jun \u201925",
-        "rawDates": "",
-        "durationMonths": 0,
+        "rawDates": "Internship Studio   Apr \u201925 \u2013 Jun \u201925",
+        "durationMonths": 3,
         "isCurrent": false,
         "bullets": [
           "\u2022 Conducted heuristic evaluation of Expedia, identifying usability issues & recommending improvements using UX principles.",
@@ -1450,8 +1504,8 @@
       {
         "title": "Project Management Intern",
         "company": "Excelerate   Mar \u201925 \u2013 Apr \u201925",
-        "rawDates": "",
-        "durationMonths": 0,
+        "rawDates": "Excelerate   Mar \u201925 \u2013 Apr \u201925",
+        "durationMonths": 2,
         "isCurrent": false,
         "bullets": [
           "\u2022 Led a global cross-functional team of 6+ members (US, Africa, Asia) to execute a high-stakes virtual event, ensuring 100% timeline adherence via Agile sprint planning and Gantt charts."
@@ -1529,21 +1583,39 @@
     "education": [
       {
         "degree": "Bachelor\u2019s Degree",
-        "institution": "University of Calcutta, 2024 \u2013 2027",
+        "institution": "",
+        "year": null,
+        "domain": "general"
+      },
+      {
+        "degree": "University of Calcutta, 2024 \u2013 2027",
+        "institution": "",
         "year": "2024",
         "domain": "general"
       },
       {
         "degree": "Specialization: Finance & Taxation; Coursework: Statistics, Business Math",
-        "institution": "Higher Secondary",
+        "institution": "",
+        "year": null,
+        "domain": "general"
+      },
+      {
+        "degree": "Higher Secondary",
+        "institution": "",
         "year": null,
         "domain": "general"
       },
       {
         "degree": "M.P. Birla Foundation School, 2013 \u2013 2024",
-        "institution": "Specialization: Computer Science; Foundations: Java, SQL, Database Management",
+        "institution": "",
         "year": "2013",
         "domain": "general"
+      },
+      {
+        "degree": "Specialization: Computer Science; Foundations: Java, SQL, Database Management",
+        "institution": "",
+        "year": null,
+        "domain": "allied_technical"
       }
     ],
     "certifications": [],
@@ -1595,12 +1667,12 @@
         "\u2022 All India Rank 37 \u2014 CIT 2025"
       ]
     },
-    "totalExperienceMonths": 0,
+    "totalExperienceMonths": 9,
     "independentLcaExperienceMonths": 0,
-    "designExperienceMonths": 0,
+    "designExperienceMonths": 8,
     "completedLcaProjectsCount": 0,
     "hasDesignPortfolioOrCaseStudies": true,
-    "hasUserResearchEvidence": false,
+    "hasUserResearchEvidence": true,
     "contextualFlags": {
       "relocationMentioned": false,
       "travelWillingnessMentioned": false,
@@ -1625,8 +1697,8 @@
       {
         "title": "UX Design Intern",
         "company": "Habitat Developers & Consultants   8 Months",
-        "rawDates": "",
-        "durationMonths": 0,
+        "rawDates": "Habitat Developers & Consultants   8 Months",
+        "durationMonths": 8,
         "isCurrent": false,
         "bullets": [
           "\u2022 Conducted user research for users aged 28\u201380.",
@@ -1692,19 +1764,25 @@
     "education": [
       {
         "degree": "Bachelor of Design",
-        "institution": "MIT-WPU, 2022\u20132026",
-        "year": "2022",
+        "institution": "",
+        "year": null,
         "domain": "design"
       },
       {
-        "degree": "CGPA 8.5/10",
+        "degree": "MIT-WPU, 2022\u20132026",
+        "institution": "",
+        "year": "2022",
+        "domain": "general"
+      },
+      {
+        "degree": "Class XII",
         "institution": "",
         "year": null,
         "domain": "general"
       },
       {
-        "degree": "Class XII",
-        "institution": "Carmel Convent Senior Secondary School, 2021",
+        "degree": "Carmel Convent Senior Secondary School, 2021",
+        "institution": "",
         "year": "2021",
         "domain": "general"
       },
@@ -1716,7 +1794,13 @@
       },
       {
         "degree": "Class X",
-        "institution": "St. Thomas School, 2019",
+        "institution": "",
+        "year": null,
+        "domain": "general"
+      },
+      {
+        "degree": "St. Thomas School, 2019",
+        "institution": "",
         "year": "2019",
         "domain": "general"
       },
@@ -1798,9 +1882,9 @@
         "\u2022 Volunteer \u2013 Run for a Cause"
       ]
     },
-    "totalExperienceMonths": 0,
+    "totalExperienceMonths": 8,
     "independentLcaExperienceMonths": 0,
-    "designExperienceMonths": 0,
+    "designExperienceMonths": 8,
     "completedLcaProjectsCount": 0,
     "hasDesignPortfolioOrCaseStudies": false,
     "hasUserResearchEvidence": true,
@@ -1828,7 +1912,7 @@
       {
         "title": "Product Compliance Engineer",
         "company": "Tata Consultancy Services (TCS)",
-        "rawDates": "Aug 2024 \u2013 Present",
+        "rawDates": "Tata Consultancy Services (TCS)   Aug 2024 \u2013 Present",
         "durationMonths": 28,
         "isCurrent": true,
         "bullets": [
@@ -1852,25 +1936,49 @@
     "education": [
       {
         "degree": "Master of Business Administration (MBA)",
-        "institution": "Kalasalingam Academy of Research and Education, 2025 \u2013 2027",
+        "institution": "",
+        "year": null,
+        "domain": "general"
+      },
+      {
+        "degree": "Kalasalingam Academy of Research and Education, 2025 \u2013 2027",
+        "institution": "",
         "year": "2025",
         "domain": "general"
       },
       {
         "degree": "Bachelor of Science in Chemistry",
-        "institution": "Muthayammal College of Arts and Science, 2021 \u2013 2024",
+        "institution": "",
+        "year": null,
+        "domain": "general"
+      },
+      {
+        "degree": "Muthayammal College of Arts and Science, 2021 \u2013 2024",
+        "institution": "",
         "year": "2021",
         "domain": "general"
       },
       {
         "degree": "Higher Secondary Education (12th Standard)",
-        "institution": "Govt. Higher Secondary School, Elachipalayam, 2021",
+        "institution": "",
+        "year": null,
+        "domain": "general"
+      },
+      {
+        "degree": "Govt. Higher Secondary School, Elachipalayam, 2021",
+        "institution": "",
         "year": "2021",
         "domain": "general"
       },
       {
         "degree": "SSLC (10th Standard)",
-        "institution": "Govt. Higher Secondary School, Elachipalayam, 2019",
+        "institution": "",
+        "year": null,
+        "domain": "general"
+      },
+      {
+        "degree": "Govt. Higher Secondary School, Elachipalayam, 2019",
+        "institution": "",
         "year": "2019",
         "domain": "general"
       }
@@ -1973,19 +2081,19 @@
     "experience": [
       {
         "title": "AI-First Product Designer",
-        "company": "TechUp Labs   Jun 2026 \u2014 Present",
-        "rawDates": "",
-        "durationMonths": 0,
-        "isCurrent": false,
+        "company": "TechUp Labs",
+        "rawDates": "TechUp Labs   Jun 2026 \u2014 Present",
+        "durationMonths": 6,
+        "isCurrent": true,
         "bullets": [],
         "isIndependentLCA": false,
         "isDesignRole": true
       },
       {
         "title": "Founder & Product Design Consultant",
-        "company": "Better Human Experience   Jun 2023 \u2014 May 2026",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Better Human Experience",
+        "rawDates": "Better Human Experience   Jun 2023 \u2014 May 2026",
+        "durationMonths": 36,
         "isCurrent": false,
         "bullets": [
           "\u2022 Managed product design for 25+ brands (including Wacom and Armatrix) delivering scalable solutions representing over \u20b92,50,000+ in project value.",
@@ -1996,9 +2104,9 @@
       },
       {
         "title": "UI/UX Design Intern",
-        "company": "Beeyond Tech   Jan 2026 \u2014 Apr 2026",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Beeyond Tech",
+        "rawDates": "Beeyond Tech   Jan 2026 \u2014 Apr 2026",
+        "durationMonths": 4,
         "isCurrent": false,
         "bullets": [
           "\u2022 Led end-to-end UX design for the Orbit Living property management app, optimizing platform navigation for 15,000+ users.",
@@ -2009,9 +2117,9 @@
       },
       {
         "title": "Product Design Intern",
-        "company": "Techlanz   Jun 2025 \u2014 Jul 2025",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Techlanz",
+        "rawDates": "Techlanz   Jun 2025 \u2014 Jul 2025",
+        "durationMonths": 2,
         "isCurrent": false,
         "bullets": [
           "\u2022 Designed and implemented 20+ core web interfaces across the primary Techlanz corporate website and a newly launched educational platform module.",
@@ -2025,7 +2133,13 @@
     "education": [
       {
         "degree": "Bachelor of Design, Specializing in UI / UX",
-        "institution": "Symbiosis Institute of Design, July 2022 - May 2026",
+        "institution": "",
+        "year": null,
+        "domain": "design"
+      },
+      {
+        "degree": "Symbiosis Institute of Design, July 2022 - May 2026",
+        "institution": "",
         "year": "2022",
         "domain": "design"
       }
@@ -2088,12 +2202,12 @@
         "\u2022 People\u2019s Choice Award in Vertical Design Studio 2025"
       ]
     },
-    "totalExperienceMonths": 0,
+    "totalExperienceMonths": 42,
     "independentLcaExperienceMonths": 0,
-    "designExperienceMonths": 0,
+    "designExperienceMonths": 42,
     "completedLcaProjectsCount": 0,
     "hasDesignPortfolioOrCaseStudies": false,
-    "hasUserResearchEvidence": false,
+    "hasUserResearchEvidence": true,
     "contextualFlags": {
       "relocationMentioned": false,
       "travelWillingnessMentioned": false,
@@ -2103,7 +2217,7 @@
     "rawTextLength": 1735,
     "warnings": [],
     "lcaChunk": "AI-First Product Designer Skills: Figma, HTML, CSS, Blender, Spline, Midjourney, RunwayML, Meshy, Adobe Creative Suite, DaVinci Resolve, Framer, Stable Diffusion, UI/UX & Prototyping, User Research & Testing, Design Systems, Wireframing, 3D Modeling & Texturing, Product Animation, Motion Graphics & VFX, AI Assisted Development, Awards / Honors, \u2022 Best Innovative Product in SSPAD Shark Tank 2025, \u2022 People\u2019s Choice Award in Vertical Design Studio 2025",
-    "uiuxChunk": "AI-First Product Designer AI-First Product Designer at TechUp Labs   Jun 2026 \u2014 Present:  Founder & Product Design Consultant at Better Human Experience   Jun 2023 \u2014 May 2026: \u2022 Managed product design for 25+ brands (including Wacom and Armatrix) delivering scalable solutions representing over \u20b92,50,000+ in project value. \u2022 Designed high-fidelity 3D motion graphics (Blender, Spline) and AI generated UGC, driving user engagement through dynamic product animations. UI/UX Design Intern at Beeyond Tech   Jan 2026 \u2014 Apr 2026: \u2022 Led end-to-end UX design for the Orbit Living property management app, optimizing platform navigation for 15,000+ users. \u2022 Streamlined administrative workflows and data visualization for 15,000+ users, identifying and resolving 8+ core friction points to improve task efficiency. Product Design Intern at Techlanz   Jun 2025 \u2014 Jul 2025: \u2022 Designed and implemented 20+ core web interfaces across the primary Techlanz corporate website and a newly launched educational platform module. \u2022 Developed 3D product animations to visually translate complex mobility engineering concepts, reducing user onboarding friction across  features. Skills: Figma, HTML, CSS, Blender, Spline, Midjourney, RunwayML, Meshy, Adobe Creative Suite, DaVinci Resolve, Framer, Stable Diffusion, UI/UX & Prototyping, User Research & Testing, Design Systems, Wireframing, 3D Modeling & Texturing, Product Animation, Motion Graphics & VFX, AI Assisted Development, Awards / Honors, \u2022 Best Innovative Product in SSPAD Shark Tank 2025, \u2022 People\u2019s Choice Award in Vertical Design Studio 2025"
+    "uiuxChunk": "AI-First Product Designer AI-First Product Designer at TechUp Labs:  Founder & Product Design Consultant at Better Human Experience: \u2022 Managed product design for 25+ brands (including Wacom and Armatrix) delivering scalable solutions representing over \u20b92,50,000+ in project value. \u2022 Designed high-fidelity 3D motion graphics (Blender, Spline) and AI generated UGC, driving user engagement through dynamic product animations. UI/UX Design Intern at Beeyond Tech: \u2022 Led end-to-end UX design for the Orbit Living property management app, optimizing platform navigation for 15,000+ users. \u2022 Streamlined administrative workflows and data visualization for 15,000+ users, identifying and resolving 8+ core friction points to improve task efficiency. Product Design Intern at Techlanz: \u2022 Designed and implemented 20+ core web interfaces across the primary Techlanz corporate website and a newly launched educational platform module. \u2022 Developed 3D product animations to visually translate complex mobility engineering concepts, reducing user onboarding friction across  features. Skills: Figma, HTML, CSS, Blender, Spline, Midjourney, RunwayML, Meshy, Adobe Creative Suite, DaVinci Resolve, Framer, Stable Diffusion, UI/UX & Prototyping, User Research & Testing, Design Systems, Wireframing, 3D Modeling & Texturing, Product Animation, Motion Graphics & VFX, AI Assisted Development, Awards / Honors, \u2022 Best Innovative Product in SSPAD Shark Tank 2025, \u2022 People\u2019s Choice Award in Vertical Design Studio 2025"
   },
   {
     "candidateId": "anonymized_CG_1793685080278",
@@ -2118,7 +2232,7 @@
       {
         "title": "UI/UX Design Intern",
         "company": "Sponzo",
-        "rawDates": "Mar 2026 \u2013 Jun 2026",
+        "rawDates": "Sponzo   Mar 2026 \u2013 Jun 2026",
         "durationMonths": 4,
         "isCurrent": false,
         "bullets": [
@@ -2198,7 +2312,13 @@
     "education": [
       {
         "degree": "B.Tech in Electronics Communication Engineering",
-        "institution": "Indian Institute of Information Technology Ranchi, 2025",
+        "institution": "",
+        "year": null,
+        "domain": "allied_technical"
+      },
+      {
+        "degree": "Indian Institute of Information Technology Ranchi, 2025",
+        "institution": "",
         "year": "2025",
         "domain": "allied_technical"
       },
@@ -2370,15 +2490,15 @@
     "education": [
       {
         "degree": "Bachelor of Technology (B.Tech)",
-        "institution": "Annamacharya Institute of Technology & Science, 2022 \u2013 2026",
-        "year": "2022",
+        "institution": "",
+        "year": null,
         "domain": "allied_technical"
       },
       {
-        "degree": "CGPA: 8.12",
+        "degree": "Annamacharya Institute of Technology & Science, 2022 \u2013 2026",
         "institution": "",
-        "year": null,
-        "domain": "general"
+        "year": "2022",
+        "domain": "allied_technical"
       }
     ],
     "certifications": [],
@@ -2445,7 +2565,7 @@
       {
         "title": "Product Designer",
         "company": "Self-directed design practice",
-        "rawDates": "Oct 2025 \u2013 Present",
+        "rawDates": "Self-directed design practice   Oct 2025 \u2013 Present",
         "durationMonths": 14,
         "isCurrent": true,
         "bullets": [
@@ -2458,7 +2578,7 @@
       {
         "title": "Product Designer",
         "company": "Rebecca Everlene Trust",
-        "rawDates": "Oct 2024 \u2013 Aug 2025",
+        "rawDates": "Rebecca Everlene Trust   Oct 2024 \u2013 Aug 2025",
         "durationMonths": 11,
         "isCurrent": false,
         "bullets": [
@@ -2473,7 +2593,7 @@
       {
         "title": "UX Designer",
         "company": "Culture Care Collective",
-        "rawDates": "Apr 2024 \u2013 Jul 2024",
+        "rawDates": "Culture Care Collective   Apr 2024 \u2013 Jul 2024",
         "durationMonths": 4,
         "isCurrent": false,
         "bullets": [
@@ -2487,7 +2607,7 @@
       {
         "title": "UX Designer",
         "company": "Cambridge Local First",
-        "rawDates": "Jan 2023 \u2013 Apr 2023",
+        "rawDates": "Cambridge Local First   Jan 2023 \u2013 Apr 2023",
         "durationMonths": 4,
         "isCurrent": false,
         "bullets": [
@@ -2502,9 +2622,15 @@
     "education": [
       {
         "degree": "M.S. Digital Media & Communications, Interactive Design (UX)",
-        "institution": "Northeastern University",
+        "institution": "",
         "year": null,
         "domain": "design"
+      },
+      {
+        "degree": "Northeastern University",
+        "institution": "",
+        "year": null,
+        "domain": "general"
       },
       {
         "degree": "GPA: 3.92",
@@ -2514,9 +2640,15 @@
       },
       {
         "degree": "B.Tech Computer Science",
-        "institution": "Nirma University",
+        "institution": "",
         "year": null,
         "domain": "allied_technical"
+      },
+      {
+        "degree": "Nirma University",
+        "institution": "",
+        "year": null,
+        "domain": "general"
       },
       {
         "degree": "GPA: 3.48",
@@ -2601,9 +2733,9 @@
     "experience": [
       {
         "title": "UI/UX Design Intern",
-        "company": "Go3D Innovation LLP   Dec 2025 \u2014 April 2026",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Go3D Innovation LLP",
+        "rawDates": "Go3D Innovation LLP   Dec 2025 \u2014 April 2026",
+        "durationMonths": 5,
         "isCurrent": false,
         "bullets": [
           "\u2022 Designed a desktop software interface for robotic additive manufacturing, simplifying workflows through intuitive navigation and clear data visualization to improve clarity."
@@ -2613,9 +2745,9 @@
       },
       {
         "title": "UI/UX Design Intern",
-        "company": "Skilled Sapiens   Jun 2025 \u2014 Jul 2025",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Skilled Sapiens",
+        "rawDates": "Skilled Sapiens   Jun 2025 \u2014 Jul 2025",
+        "durationMonths": 2,
         "isCurrent": false,
         "bullets": [
           "\u2022 Designed an AI-assisted NEET preparation app, brand identities, and eBooks, contributing across UI/UX design, branding, and digital content design."
@@ -2625,9 +2757,9 @@
       },
       {
         "title": "Junior Graphic Designer",
-        "company": "BLC K B V RD   Sep 2023 \u2014 Jun 2024",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "BLC K B V RD",
+        "rawDates": "BLC K B V RD   Sep 2023 \u2014 Jun 2024",
+        "durationMonths": 10,
         "isCurrent": false,
         "bullets": [
           "\u2022 Designed social media creatives, packaging, and digital assets for 3+ brands, maintaining consistent visual communication across print and digital platforms."
@@ -2705,19 +2837,37 @@
     "education": [
       {
         "degree": "Master of Design",
-        "institution": "National Institute of Fashion Technology, Gandhinagar, Jul 2024 - May 2026",
-        "year": "2024",
+        "institution": "",
+        "year": null,
         "domain": "design"
+      },
+      {
+        "degree": "National Institute of Fashion Technology, Gandhinagar, Jul 2024 - May 2026",
+        "institution": "",
+        "year": "2024",
+        "domain": "allied_technical"
       },
       {
         "degree": "Bachelor of Arts in Multimedia and Mass Communication",
-        "institution": "University of Mumbai, Jul 2020 - Jun 2023",
-        "year": "2020",
+        "institution": "",
+        "year": null,
         "domain": "design"
       },
       {
+        "degree": "University of Mumbai, Jul 2020 - Jun 2023",
+        "institution": "",
+        "year": "2020",
+        "domain": "general"
+      },
+      {
         "degree": "HSC in Arts",
-        "institution": "ICLES' Motilal Jhunjhunwala College, Mar 2018 - Feb 2020",
+        "institution": "",
+        "year": null,
+        "domain": "general"
+      },
+      {
+        "degree": "ICLES' Motilal Jhunjhunwala College, Mar 2018 - Feb 2020",
+        "institution": "",
         "year": "2018",
         "domain": "general"
       }
@@ -2762,12 +2912,12 @@
         "Google Stitch"
       ]
     },
-    "totalExperienceMonths": 0,
+    "totalExperienceMonths": 17,
     "independentLcaExperienceMonths": 0,
-    "designExperienceMonths": 0,
+    "designExperienceMonths": 7,
     "completedLcaProjectsCount": 0,
     "hasDesignPortfolioOrCaseStudies": false,
-    "hasUserResearchEvidence": false,
+    "hasUserResearchEvidence": true,
     "contextualFlags": {
       "relocationMentioned": false,
       "travelWillingnessMentioned": false,
@@ -2777,7 +2927,7 @@
     "rawTextLength": 2376,
     "warnings": [],
     "lcaChunk": "UI/UX Designer UI/UX Designer with hands-on internship experience and a strong portfolio of 10+ academic projects. Experienced in UX research, interaction design, user flows, wireframing, prototyping, and interface design. Dedicated to designing seamless and engaging digital experiences. Skills: Figma, Framer, Photoshop, Illustrator, Wireframing, Prototyping, User Interviews, Usability Testing, Design Systems, UI/UX Design, Tools / Technologies, Claude, Figma Make, Google Stitch",
-    "uiuxChunk": "UI/UX Designer UI/UX Designer with hands-on internship experience and a strong portfolio of 10+ academic projects. Experienced in UX research, interaction design, user flows, wireframing, prototyping, and interface design. Dedicated to designing seamless and engaging digital experiences. UI/UX Design Intern at Go3D Innovation LLP   Dec 2025 \u2014 April 2026: \u2022 Designed a desktop software interface for robotic additive manufacturing, simplifying workflows through intuitive navigation and clear data visualization to improve clarity. UI/UX Design Intern at Skilled Sapiens   Jun 2025 \u2014 Jul 2025: \u2022 Designed an AI-assisted NEET preparation app, brand identities, and eBooks, contributing across UI/UX design, branding, and digital content design. Junior Graphic Designer at BLC K B V RD   Sep 2023 \u2014 Jun 2024: \u2022 Designed social media creatives, packaging, and digital assets for 3+ brands, maintaining consistent visual communication across print and digital platforms. Skills: Figma, Framer, Photoshop, Illustrator, Wireframing, Prototyping, User Interviews, Usability Testing, Design Systems, UI/UX Design, Tools / Technologies, Claude, Figma Make, Google Stitch"
+    "uiuxChunk": "UI/UX Designer UI/UX Designer with hands-on internship experience and a strong portfolio of 10+ academic projects. Experienced in UX research, interaction design, user flows, wireframing, prototyping, and interface design. Dedicated to designing seamless and engaging digital experiences. UI/UX Design Intern at Go3D Innovation LLP: \u2022 Designed a desktop software interface for robotic additive manufacturing, simplifying workflows through intuitive navigation and clear data visualization to improve clarity. UI/UX Design Intern at Skilled Sapiens: \u2022 Designed an AI-assisted NEET preparation app, brand identities, and eBooks, contributing across UI/UX design, branding, and digital content design. Junior Graphic Designer at BLC K B V RD: \u2022 Designed social media creatives, packaging, and digital assets for 3+ brands, maintaining consistent visual communication across print and digital platforms. Skills: Figma, Framer, Photoshop, Illustrator, Wireframing, Prototyping, User Interviews, Usability Testing, Design Systems, UI/UX Design, Tools / Technologies, Claude, Figma Make, Google Stitch"
   },
   {
     "candidateId": "anonymized_DVJ_1793685080268",
@@ -2791,9 +2941,9 @@
     "experience": [
       {
         "title": "UI/UX Design Intern",
-        "company": "Adobe Krutantics   Jun 2026 \u2014 Sep 2026",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Adobe Krutantics",
+        "rawDates": "Adobe Krutantics   Jun 2026 \u2014 Sep 2026",
+        "durationMonths": 4,
         "isCurrent": false,
         "bullets": [],
         "isIndependentLCA": false,
@@ -2801,9 +2951,9 @@
       },
       {
         "title": "Frontend UI/UX Designer",
-        "company": "Rooman Technology Pvt. Ltd   Feb 2026 \u2014 May 2026",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Rooman Technology Pvt. Ltd",
+        "rawDates": "Rooman Technology Pvt. Ltd   Feb 2026 \u2014 May 2026",
+        "durationMonths": 4,
         "isCurrent": false,
         "bullets": [
           "\u2022 Conducted user research and developed wireframes, user flows, and high-fidelity prototypes for web and mobile applications.",
@@ -2884,9 +3034,15 @@
     "education": [
       {
         "degree": "Bachelor of Engineering in Computer Science and Design",
-        "institution": "Bapuji Institute of Engineering and Technology, 2022-2026",
-        "year": "2022",
+        "institution": "",
+        "year": null,
         "domain": "design"
+      },
+      {
+        "degree": "Bapuji Institute of Engineering and Technology, 2022-2026",
+        "institution": "",
+        "year": "2022",
+        "domain": "allied_technical"
       },
       {
         "degree": "GPA: 8.56",
@@ -2938,9 +3094,9 @@
         "CSS"
       ]
     },
-    "totalExperienceMonths": 0,
+    "totalExperienceMonths": 8,
     "independentLcaExperienceMonths": 0,
-    "designExperienceMonths": 0,
+    "designExperienceMonths": 8,
     "completedLcaProjectsCount": 0,
     "hasDesignPortfolioOrCaseStudies": true,
     "hasUserResearchEvidence": true,
@@ -2953,7 +3109,7 @@
     "rawTextLength": 2368,
     "warnings": [],
     "lcaChunk": "UI/UX Designer Aspiring UI/UX Designer with hands-on experience in user research, wireframing, prototyping, user flows, and design systems for web and mobile applications. Passionate about creating intuitive, user-centered digital experiences. Skills: Figma, Canva, Wireframing, Prototyping, Usability Testing, Information Architecture, Tools / Technologies, Auto Layout, Interactive Prototyping, Design Systems, Data Visualization, Micro-interactions, User Flows, HTML, CSS",
-    "uiuxChunk": "UI/UX Designer Aspiring UI/UX Designer with hands-on experience in user research, wireframing, prototyping, user flows, and design systems for web and mobile applications. Passionate about creating intuitive, user-centered digital experiences. UI/UX Design Intern at Adobe Krutantics   Jun 2026 \u2014 Sep 2026:  Frontend UI/UX Designer at Rooman Technology Pvt. Ltd   Feb 2026 \u2014 May 2026: \u2022 Conducted user research and developed wireframes, user flows, and high-fidelity prototypes for web and mobile applications. \u2022 Created responsive UI designs, design systems, and interactive prototypes using Figma. \u2022 Applied UX principles, accessibility standards, and usability heuristics to improve digital experiences. Project: Frontend UI/UX -  Project: Designed a modern AI-powered SaaS dashboard featuring reports, analytics, AI agents, and workflow management. - \u2022 Created high-fidelity, responsive interfaces in Figma with reusable components, design systems, and micro-interactions. \u2022 Developed intuitive reporting experiences using KPI cards, data visualizations, and streamlined information architecture. Project: Event Booking Platform UI/UX Design -  Project: Designed a mobile-first event booking platform from research to high-fidelity prototype. - \u2022 Created end-to-end user flows, wireframes, and high-fidelity prototypes that improved booking task completion and navigation efficiency. \u2022 Conducted usability testing and improved navigation, accessibility, and booking experience. Project: Designed an end-to-end booking experience enabling users to discover, compare, and book mehendi artists seamlessly. - \u2022 Developed user flows, interactive prototypes, and a scalable design system to enhance usability and engagement. \u2022 Designed the company website through user research, wireframing, and high-f"
+    "uiuxChunk": "UI/UX Designer Aspiring UI/UX Designer with hands-on experience in user research, wireframing, prototyping, user flows, and design systems for web and mobile applications. Passionate about creating intuitive, user-centered digital experiences. UI/UX Design Intern at Adobe Krutantics:  Frontend UI/UX Designer at Rooman Technology Pvt. Ltd: \u2022 Conducted user research and developed wireframes, user flows, and high-fidelity prototypes for web and mobile applications. \u2022 Created responsive UI designs, design systems, and interactive prototypes using Figma. \u2022 Applied UX principles, accessibility standards, and usability heuristics to improve digital experiences. Project: Frontend UI/UX -  Project: Designed a modern AI-powered SaaS dashboard featuring reports, analytics, AI agents, and workflow management. - \u2022 Created high-fidelity, responsive interfaces in Figma with reusable components, design systems, and micro-interactions. \u2022 Developed intuitive reporting experiences using KPI cards, data visualizations, and streamlined information architecture. Project: Event Booking Platform UI/UX Design -  Project: Designed a mobile-first event booking platform from research to high-fidelity prototype. - \u2022 Created end-to-end user flows, wireframes, and high-fidelity prototypes that improved booking task completion and navigation efficiency. \u2022 Conducted usability testing and improved navigation, accessibility, and booking experience. Project: Designed an end-to-end booking experience enabling users to discover, compare, and book mehendi artists seamlessly. - \u2022 Developed user flows, interactive prototypes, and a scalable design system to enhance usability and engagement. \u2022 Designed the company website through user research, wireframing, and high-fidelity prototyping. Skills: Figma, Canva, W"
   },
   {
     "candidateId": "anonymized_FK_1793685080451",
@@ -2967,10 +3123,10 @@
     "experience": [
       {
         "title": "Graphic/UI Designer",
-        "company": "DB Vertex Technology   Dec 2025 \u2014 Present",
-        "rawDates": "",
-        "durationMonths": 0,
-        "isCurrent": false,
+        "company": "DB Vertex Technology",
+        "rawDates": "DB Vertex Technology   Dec 2025 \u2014 Present",
+        "durationMonths": 12,
+        "isCurrent": true,
         "bullets": [
           "\u2022 Designed website and mobile app UI for multiple client projects, focusing on usability, clean layouts, and modern design standards.",
           "\u2022 Developed branding and marketing materials including logos, packaging, brochures, and flyers that aligned with each client's visual identity.",
@@ -2981,9 +3137,9 @@
       },
       {
         "title": "UI/UX Designer (Internships)",
-        "company": "Engineer Sahab   Jun 2025 \u2014 Dec 2026",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Engineer Sahab",
+        "rawDates": "Engineer Sahab   Jun 2025 \u2014 Dec 2026",
+        "durationMonths": 19,
         "isCurrent": false,
         "bullets": [
           "\u2022 Designed end-to-end user experience for financial products across mobile and web platforms, focusing on intuitive navigation and clean UI.",
@@ -2995,7 +3151,7 @@
       {
         "title": "Graphic Designer",
         "company": "Infomystique Technology",
-        "rawDates": "Sep 2023 \u2013 Oct 2024",
+        "rawDates": "Infomystique Technology   Sep 2023 \u2013 Oct 2024",
         "durationMonths": 14,
         "isCurrent": false,
         "bullets": [
@@ -3010,7 +3166,13 @@
     "education": [
       {
         "degree": "Bachelor\u2019s in Business Administration",
-        "institution": "Lakshmi Narain College of Professional Studies, July 2022 \u2013 July 2024",
+        "institution": "",
+        "year": null,
+        "domain": "general"
+      },
+      {
+        "degree": "Lakshmi Narain College of Professional Studies, July 2022 \u2013 July 2024",
+        "institution": "",
         "year": "2022",
         "domain": "general"
       }
@@ -3069,12 +3231,12 @@
         "English (Conversational)"
       ]
     },
-    "totalExperienceMonths": 14,
+    "totalExperienceMonths": 33,
     "independentLcaExperienceMonths": 0,
-    "designExperienceMonths": 0,
+    "designExperienceMonths": 19,
     "completedLcaProjectsCount": 0,
     "hasDesignPortfolioOrCaseStudies": false,
-    "hasUserResearchEvidence": false,
+    "hasUserResearchEvidence": true,
     "contextualFlags": {
       "relocationMentioned": false,
       "travelWillingnessMentioned": false,
@@ -3084,7 +3246,7 @@
     "rawTextLength": 1848,
     "warnings": [],
     "lcaChunk": "UI/UX Designer UI/UX and Graphic Designer with 1+ year of experience delivering user-centered digital interfaces and compelling visual branding. Proficient in Figma, wireframing, prototyping, UX research, and design systems. Skills: Figma, Adobe Photoshop, Illustrator, Canva, CorelDraw (Basic), Framer (Basic), UX Research, User Testing, User Journey Mapping, Information Architecture, A/B Testing, UI Design, Interaction Design, Design System, Illustration, Tools / Technologies, HTML, CSS, Languages, Hindi (Native), English (Conversational)",
-    "uiuxChunk": "UI/UX Designer UI/UX and Graphic Designer with 1+ year of experience delivering user-centered digital interfaces and compelling visual branding. Proficient in Figma, wireframing, prototyping, UX research, and design systems. Graphic/UI Designer at DB Vertex Technology   Dec 2025 \u2014 Present: \u2022 Designed website and mobile app UI for multiple client projects, focusing on usability, clean layouts, and modern design standards. \u2022 Developed branding and marketing materials including logos, packaging, brochures, and flyers that aligned with each client's visual identity. \u2022 Created social media creatives and digital assets while maintaining consistent brand guidelines across all platforms. UI/UX Designer (Internships) at Engineer Sahab   Jun 2025 \u2014 Dec 2026: \u2022 Designed end-to-end user experience for financial products across mobile and web platforms, focusing on intuitive navigation and clean UI. \u2022 Conducted user journey mapping and wireframing to define product flows before moving into high-fidelity prototypes in Figma. Graphic Designer at Infomystique Technology: \u2022 Produced 300+ visual assets including logos, banners, brochures, and social media creatives for diverse client campaigns. \u2022 Partnered with the marketing team to ensure all design output aligned with brand identity guidelines and campaign objectives. Skills: Figma, Adobe Photoshop, Illustrator, Canva, CorelDraw (Basic), Framer (Basic), UX Research, User Testing, User Journey Mapping, Information Architecture, A/B Testing, UI Design, Interaction Design, Design System, Illustration, Tools / Technologies, HTML, CSS, Languages, Hindi (Native), English (Conversational)"
+    "uiuxChunk": "UI/UX Designer UI/UX and Graphic Designer with 1+ year of experience delivering user-centered digital interfaces and compelling visual branding. Proficient in Figma, wireframing, prototyping, UX research, and design systems. Graphic/UI Designer at DB Vertex Technology: \u2022 Designed website and mobile app UI for multiple client projects, focusing on usability, clean layouts, and modern design standards. \u2022 Developed branding and marketing materials including logos, packaging, brochures, and flyers that aligned with each client's visual identity. \u2022 Created social media creatives and digital assets while maintaining consistent brand guidelines across all platforms. UI/UX Designer (Internships) at Engineer Sahab: \u2022 Designed end-to-end user experience for financial products across mobile and web platforms, focusing on intuitive navigation and clean UI. \u2022 Conducted user journey mapping and wireframing to define product flows before moving into high-fidelity prototypes in Figma. Graphic Designer at Infomystique Technology: \u2022 Produced 300+ visual assets including logos, banners, brochures, and social media creatives for diverse client campaigns. \u2022 Partnered with the marketing team to ensure all design output aligned with brand identity guidelines and campaign objectives. Skills: Figma, Adobe Photoshop, Illustrator, Canva, CorelDraw (Basic), Framer (Basic), UX Research, User Testing, User Journey Mapping, Information Architecture, A/B Testing, UI Design, Interaction Design, Design System, Illustration, Tools / Technologies, HTML, CSS, Languages, Hindi (Native), English (Conversational)"
   },
   {
     "candidateId": "anonymized_FT_1793685080301",
@@ -3098,9 +3260,9 @@
     "experience": [
       {
         "title": "UX Audit Consultant",
-        "company": "Flow   Dec 2025 \u2014 May 2026",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Flow",
+        "rawDates": "Flow   Dec 2025 \u2014 May 2026",
+        "durationMonths": 6,
         "isCurrent": false,
         "bullets": [
           "\u2022 Conducted UX audits for SaaS products to identify usability issues and friction across onboarding and user journeys.",
@@ -3113,7 +3275,7 @@
       {
         "title": "Creator \u2022 Product Designer \u2022 Design Engineer",
         "company": "Taro Warehouse Simulation   Not specified",
-        "rawDates": "",
+        "rawDates": "Taro Warehouse Simulation   Not specified",
         "durationMonths": 0,
         "isCurrent": false,
         "bullets": [
@@ -3128,7 +3290,7 @@
       {
         "title": "Independent Product Case Study",
         "company": "CTO.new   Not specified",
-        "rawDates": "",
+        "rawDates": "CTO.new   Not specified",
         "durationMonths": 0,
         "isCurrent": false,
         "bullets": [
@@ -3142,7 +3304,7 @@
       {
         "title": "Independent Product Case Study",
         "company": "Mojar   Not specified",
-        "rawDates": "",
+        "rawDates": "Mojar   Not specified",
         "durationMonths": 0,
         "isCurrent": false,
         "bullets": [
@@ -3156,7 +3318,7 @@
       {
         "title": "Independent Product Case Study",
         "company": "Chalo   Not specified",
-        "rawDates": "",
+        "rawDates": "Chalo   Not specified",
         "durationMonths": 0,
         "isCurrent": false,
         "bullets": [
@@ -3233,7 +3395,7 @@
         "AI-Assisted Development"
       ]
     },
-    "totalExperienceMonths": 0,
+    "totalExperienceMonths": 6,
     "independentLcaExperienceMonths": 0,
     "designExperienceMonths": 0,
     "completedLcaProjectsCount": 0,
@@ -3248,7 +3410,7 @@
     "rawTextLength": 2828,
     "warnings": [],
     "lcaChunk": "Product Designer & Design Engineer Product Designer & Design Engineer who combines product thinking, UX, and frontend engineering to design intuitive SaaS experiences. Skills: Figma, Next.js, React, TypeScript, Tailwind CSS, Git, GitHub, shadcn/ui, Information Architecture, User Flows, Interaction Design, Wireframing, Prototyping, Design Systems, Onboarding Design, Product Design, UX Design, Tools / Technologies, AI-Assisted Development",
-    "uiuxChunk": "Product Designer & Design Engineer Product Designer & Design Engineer who combines product thinking, UX, and frontend engineering to design intuitive SaaS experiences. UX Audit Consultant at Flow   Dec 2025 \u2014 May 2026: \u2022 Conducted UX audits for SaaS products to identify usability issues and friction across onboarding and user journeys. \u2022 Delivered product recommendations focused on activation, navigation, and workflow clarity. \u2022 Worked on real client products through structured product analysis and design recommendations. Creator \u2022 Product Designer \u2022 Design Engineer at Taro Warehouse Simulation   Not specified: \u2022 Designed and built a simulation-first platform that helps warehouse teams compare picking strategies before implementation. \u2022 Combined product design and engineering using Next.js, React, TypeScript, and AI-assisted development. \u2022 Maintaining an actively developed codebase with 150+ commits and 120+ completed pull requests. \u2022 Designed interaction flows and simulation experiences for complex operational workflows. Independent Product Case Study at CTO.new   Not specified: \u2022 Identified friction in feature discovery within an AI coding platform's achievement and progression system. \u2022 Redesigned the behavioral feedback loop using lightweight notifications, persistent UI states, and curiosity-driven interactions to improve feature awareness without interrupting developer workflows. \u2022 Established a consistent interaction language for progression, exploration, and achievement feedback through systems thinking. Independent Product Case Study at Mojar   Not specified: \u2022 Redesigned the onboarding and activation flow for an AI agent platform to improve first-time user clarity and momentum. \u2022 Reorganized the experience around user goals, knowledge upload, preview, and shar"
+    "uiuxChunk": "Product Designer & Design Engineer Product Designer & Design Engineer who combines product thinking, UX, and frontend engineering to design intuitive SaaS experiences. UX Audit Consultant at Flow: \u2022 Conducted UX audits for SaaS products to identify usability issues and friction across onboarding and user journeys. \u2022 Delivered product recommendations focused on activation, navigation, and workflow clarity. \u2022 Worked on real client products through structured product analysis and design recommendations. Creator \u2022 Product Designer \u2022 Design Engineer at Taro Warehouse Simulation   Not specified: \u2022 Designed and built a simulation-first platform that helps warehouse teams compare picking strategies before implementation. \u2022 Combined product design and engineering using Next.js, React, TypeScript, and AI-assisted development. \u2022 Maintaining an actively developed codebase with 150+ commits and 120+ completed pull requests. \u2022 Designed interaction flows and simulation experiences for complex operational workflows. Independent Product Case Study at CTO.new   Not specified: \u2022 Identified friction in feature discovery within an AI coding platform's achievement and progression system. \u2022 Redesigned the behavioral feedback loop using lightweight notifications, persistent UI states, and curiosity-driven interactions to improve feature awareness without interrupting developer workflows. \u2022 Established a consistent interaction language for progression, exploration, and achievement feedback through systems thinking. Independent Product Case Study at Mojar   Not specified: \u2022 Redesigned the onboarding and activation flow for an AI agent platform to improve first-time user clarity and momentum. \u2022 Reorganized the experience around user goals, knowledge upload, preview, and sharing to help users reac"
   },
   {
     "candidateId": "anonymized_HD_1793682784275",
@@ -3263,44 +3425,15 @@
       {
         "title": "Project Coordinator \u2013 ESG Advisory",
         "company": "NEPRA Environmental Solutions and Technologies Pvt.Ltd.",
-        "rawDates": "Mar 2025 \u2013 Present",
+        "rawDates": "NEPRA Environmental Solutions and Technologies Pvt.Ltd.   Mar 2025 \u2013 Present",
         "durationMonths": 21,
         "isCurrent": true,
-        "bullets": [],
-        "isIndependentLCA": false,
-        "isDesignRole": false
-      },
-      {
-        "title": "\u2022 Coordinated end-to-end delivery of advisory projects for enterprise clients",
-        "company": "managing timelines, stakeholder communications and quality control documentation throughout the project lifecycle.",
-        "rawDates": "",
-        "durationMonths": 0,
-        "isCurrent": false,
         "bullets": [
-          "\u2022 Sourced, validated, and consolidated GHG activity data across Scope 1, 2, and 3 categories; performed emission factor mapping and calculation validation to ensure accuracy and completeness across reporting periods."
-        ],
-        "isIndependentLCA": false,
-        "isDesignRole": false
-      },
-      {
-        "title": "\u2022 Led the build of a CBAM reporting module within the in-house SaaS ESG platform",
-        "company": "covering requirement gathering, embedded emission calculation logic, validation workflows, and dashboard development.",
-        "rawDates": "",
-        "durationMonths": 0,
-        "isCurrent": false,
-        "bullets": [
-          "\u2022 Assisted enterprise clients with CBAM compliance filings under the EU regulatory framework, including embedded emission calculations, supplier data validation, and documentation review."
-        ],
-        "isIndependentLCA": false,
-        "isDesignRole": false
-      },
-      {
-        "title": "\u2022 Provided functional support in the development and optimisation of ESG Konnect",
-        "company": "validating data logic, testing automated carbon calculation pipelines, and coordinating UAT with clients.",
-        "rawDates": "",
-        "durationMonths": 0,
-        "isCurrent": false,
-        "bullets": [
+          "\u2022 Coordinated end-to-end delivery of advisory projects for enterprise clients \u2014 managing timelines, stakeholder communications and quality control documentation throughout the project lifecycle.",
+          "\u2022 Sourced, validated, and consolidated GHG activity data across Scope 1, 2, and 3 categories; performed emission factor mapping and calculation validation to ensure accuracy and completeness across reporting periods.",
+          "\u2022 Led the build of a CBAM reporting module within the in-house SaaS ESG platform \u2014 covering requirement gathering, embedded emission calculation logic, validation workflows, and dashboard development.",
+          "\u2022 Assisted enterprise clients with CBAM compliance filings under the EU regulatory framework, including embedded emission calculations, supplier data validation, and documentation review.",
+          "\u2022 Provided functional support in the development and optimisation of ESG Konnect \u2014 validating data logic, testing automated carbon calculation pipelines, and coordinating UAT with clients.",
           "\u2022 Prepared evidence documentation, mapped emission data to reporting standards, and coordinated with third-party assurance teams for pre-audit and verification support.",
           "\u2022 Supported the preparation of science-based and regulatory-aligned carbon reduction strategies for clients across manufacturing and industrial sectors."
         ],
@@ -3310,7 +3443,7 @@
       {
         "title": "Environmental Engineer",
         "company": "Madhu Silica Pvt. Ltd.",
-        "rawDates": "Jun 2024 \u2013 Feb 2025",
+        "rawDates": "Madhu Silica Pvt. Ltd.   Jun 2024 \u2013 Feb 2025",
         "durationMonths": 9,
         "isCurrent": false,
         "bullets": [
@@ -3327,7 +3460,7 @@
       {
         "title": "Trainee \u2013 Business Development & Technical Support",
         "company": "Organica Biotech Pvt. Ltd.",
-        "rawDates": "Feb 2023 \u2013 Mar 2024",
+        "rawDates": "Organica Biotech Pvt. Ltd.   Feb 2023 \u2013 Mar 2024",
         "durationMonths": 14,
         "isCurrent": false,
         "bullets": [
@@ -3361,32 +3494,44 @@
     "education": [
       {
         "degree": "B.E. \u2013 Environmental Engineering",
-        "institution": "Dr. S. & S.S. Gandhi College of Engineering, Surat, 2019 - 2023",
-        "year": "2019",
+        "institution": "",
+        "year": null,
         "domain": "environmental"
       },
       {
+        "degree": "Dr. S. & S.S. Gandhi College of Engineering, Surat, 2019 - 2023",
+        "institution": "",
+        "year": "2019",
+        "domain": "allied_technical"
+      },
+      {
         "degree": "GPA: 8.50",
-        "institution": "HSE",
+        "institution": "",
+        "year": null,
+        "domain": "general"
+      },
+      {
+        "degree": "HSE",
+        "institution": "",
         "year": null,
         "domain": "general"
       },
       {
         "degree": "Shree Swaminarayan Gurukul School, Bhavnagar, 2018 - 2019",
-        "institution": "Percentage: 66%",
+        "institution": "",
         "year": "2018",
         "domain": "general"
       },
       {
         "degree": "SSE",
-        "institution": "St. Xavier's High School, Bhavnagar, 2016 - 2027",
-        "year": "2016",
+        "institution": "",
+        "year": null,
         "domain": "general"
       },
       {
-        "degree": "Percentage: 81%",
+        "degree": "St. Xavier's High School, Bhavnagar, 2016 - 2027",
         "institution": "",
-        "year": null,
+        "year": "2016",
         "domain": "general"
       }
     ],
@@ -3472,7 +3617,7 @@
     "rawTextLength": 5001,
     "warnings": [],
     "lcaChunk": "Project Coordinator \u2013 ESG Advisory Environmental Engineer with 3+ years of experience in ESG reporting, GHG inventory management, CBAM compliance, LCA, and sustainability strategy. Skilled in QA/QC workflows, audit-ready documentation, and cross-functional stakeholder engagement. Environmental Engineer at Madhu Silica Pvt. Ltd.: \u2022 Gathered and analysed operational data to calculate Scope 1, Scope 2, and Scope 3 GHG emissions; developed and implemented Science-Based Targets (SBTi) strategies to drive measurable reduction outcomes. \u2022 Compiled comprehensive data for a Sodium Silicate Dioxide LCA, conducting cradle-to-gate analysis aligned with sustainability reporting requirements. \u2022 Managed the CDP data dashboard and EcoVadis sustainability documentation, implementing targeted improvement strategies that enhanced scores across both platforms. \u2022 Represented the company during Gujarat Pollution Control Board (GPCB) inspections; maintained ISO and client audit documentation to ensure continuous regulatory compliance. \u2022 Conducted internal seminars and awareness sessions on sustainability practices and workplace safety, fostering a culture of environmental stewardship. \u2022 Supervised operation and maintenance of Effluent Treatment Plants (ETP), HRSCC clarifiers, Ultrafiltration (UF), and Reverse Osmosis (RO) systems; maintained detailed operational logbooks for management reporting. Project: Designed and evaluated dust collection mechanisms to address particulate matter emissions from quartz crushing operations, contributing to occupational health and environmental compliance improvements. -  Skills: ESG SaaS (ESG Konnect), Microsoft Office, AutoCAD, Power BI, GHG Inventory, CBAM Compliance, ESG Reporting, Materiality Assessment, Audit Support, Environmental Compliance, Sustaina",
-    "uiuxChunk": "Project Coordinator \u2013 ESG Advisory Environmental Engineer with 3+ years of experience in ESG reporting, GHG inventory management, CBAM compliance, LCA, and sustainability strategy. Skilled in QA/QC workflows, audit-ready documentation, and cross-functional stakeholder engagement. \u2022 Led the build of a CBAM reporting module within the in-house SaaS ESG platform at covering requirement gathering, embedded emission calculation logic, validation workflows, and dashboard development.: \u2022 Assisted enterprise clients with CBAM compliance filings under the EU regulatory framework, including embedded emission calculations, supplier data validation, and documentation review. Skills: ESG SaaS (ESG Konnect), Microsoft Office, AutoCAD, Power BI, GHG Inventory, CBAM Compliance, ESG Reporting, Materiality Assessment, Audit Support, Environmental Compliance, Sustainability, Wastewater Management, Stakeholder Collaboration, Communication, Leadership, Tools / Technologies, Languages, English, Hindi, Gujarati"
+    "uiuxChunk": "Project Coordinator \u2013 ESG Advisory Environmental Engineer with 3+ years of experience in ESG reporting, GHG inventory management, CBAM compliance, LCA, and sustainability strategy. Skilled in QA/QC workflows, audit-ready documentation, and cross-functional stakeholder engagement. Skills: ESG SaaS (ESG Konnect), Microsoft Office, AutoCAD, Power BI, GHG Inventory, CBAM Compliance, ESG Reporting, Materiality Assessment, Audit Support, Environmental Compliance, Sustainability, Wastewater Management, Stakeholder Collaboration, Communication, Leadership, Tools / Technologies, Languages, English, Hindi, Gujarati"
   },
   {
     "candidateId": "anonymized_HM_1793682784257",
@@ -3487,7 +3632,7 @@
       {
         "title": "LCA Analyst",
         "company": "L&T Technology Services",
-        "rawDates": "Dec 2022 \u2013 Present",
+        "rawDates": "L&T Technology Services   Dec 2022 \u2013 Present",
         "durationMonths": 48,
         "isCurrent": true,
         "bullets": [
@@ -3572,32 +3717,38 @@
     "education": [
       {
         "degree": "B. Tech Mechanical Engineering",
-        "institution": "Lovely Professional University, 2018 - 2022",
-        "year": "2018",
+        "institution": "",
+        "year": null,
         "domain": "allied_technical"
       },
       {
-        "degree": "CGPA: 7.6/10",
-        "institution": "Intermediate",
+        "degree": "Lovely Professional University, 2018 - 2022",
+        "institution": "",
+        "year": "2018",
+        "domain": "general"
+      },
+      {
+        "degree": "Intermediate",
+        "institution": "",
         "year": null,
         "domain": "general"
       },
       {
         "degree": "Narayana Junior College, 2016 \u2013 2018",
-        "institution": "Percentage: 91.2%",
+        "institution": "",
         "year": "2016",
         "domain": "general"
       },
       {
         "degree": "SSC",
-        "institution": "Montessori Public School, 2015 \u2013 2016",
-        "year": "2015",
+        "institution": "",
+        "year": null,
         "domain": "general"
       },
       {
-        "degree": "CGPA: 8.3/10",
+        "degree": "Montessori Public School, 2015 \u2013 2016",
         "institution": "",
-        "year": null,
+        "year": "2015",
         "domain": "general"
       }
     ],
@@ -3685,10 +3836,10 @@
     "experience": [
       {
         "title": "Research Executive",
-        "company": "L\u2019Or\u00e9al Research & Innovation   Nov 2024 \u2014 Present",
-        "rawDates": "",
-        "durationMonths": 0,
-        "isCurrent": false,
+        "company": "L\u2019Or\u00e9al Research & Innovation",
+        "rawDates": "L\u2019Or\u00e9al Research & Innovation   Nov 2024 \u2014 Present",
+        "durationMonths": 25,
+        "isCurrent": true,
         "bullets": [
           "\u2022 Facilitated Halal compliance program within the Regulatory Affairs team, ensuring innovative products adhere to rigorous religious and safety standards from concept through to launch."
         ],
@@ -3697,9 +3848,9 @@
       },
       {
         "title": "Trainee Proposal Engineer (Intern)",
-        "company": "Aqua Matrix System Pvt. Ltd.   Dec 2023 \u2014 May 2024",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Aqua Matrix System Pvt. Ltd.",
+        "rawDates": "Aqua Matrix System Pvt. Ltd.   Dec 2023 \u2014 May 2024",
+        "durationMonths": 6,
         "isCurrent": false,
         "bullets": [
           "\u2022 Formulated techno-commercial proposals for RO, UF, and ZLD plants (0.5\u20135 MLD)."
@@ -3709,9 +3860,9 @@
       },
       {
         "title": "Intern",
-        "company": "L&T Water Treatment Center   Jul 2023 \u2014 Aug 2023",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "L&T Water Treatment Center",
+        "rawDates": "L&T Water Treatment Center   Jul 2023 \u2014 Aug 2023",
+        "durationMonths": 2,
         "isCurrent": false,
         "bullets": [],
         "isIndependentLCA": false,
@@ -3719,9 +3870,9 @@
       },
       {
         "title": "Intern",
-        "company": "Hindustan Coca-Cola Beverages Pvt. Ltd.   Jul 2023 \u2014 Aug 2023",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Hindustan Coca-Cola Beverages Pvt. Ltd.",
+        "rawDates": "Hindustan Coca-Cola Beverages Pvt. Ltd.   Jul 2023 \u2014 Aug 2023",
+        "durationMonths": 2,
         "isCurrent": false,
         "bullets": [],
         "isIndependentLCA": false,
@@ -3729,9 +3880,9 @@
       },
       {
         "title": "Intern",
-        "company": "Aavin \u2014 Tamil Nadu Cooperative Milk Producers Federation Limited   Feb 2020 \u2014 Feb 2020",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Aavin \u2014 Tamil Nadu Cooperative Milk Producers Federation Limited",
+        "rawDates": "Aavin \u2014 Tamil Nadu Cooperative Milk Producers Federation Limited   Feb 2020 \u2014 Feb 2020",
+        "durationMonths": 1,
         "isCurrent": false,
         "bullets": [],
         "isIndependentLCA": false,
@@ -3775,9 +3926,15 @@
     "education": [
       {
         "degree": "M.Tech in Environmental Science and Technology",
-        "institution": "SSN College of Engineering, Jun 2022 - Jun 2024",
-        "year": "2022",
+        "institution": "",
+        "year": null,
         "domain": "environmental"
+      },
+      {
+        "degree": "SSN College of Engineering, Jun 2022 - Jun 2024",
+        "institution": "",
+        "year": "2022",
+        "domain": "allied_technical"
       },
       {
         "degree": "GPA: 9.27",
@@ -3793,8 +3950,14 @@
       },
       {
         "degree": "Dr. M.G.R. Educational and Research Institute, Jun 2018 - Jun 2022",
-        "institution": "GPA: 8.89",
+        "institution": "",
         "year": "2018",
+        "domain": "general"
+      },
+      {
+        "degree": "GPA: 8.89",
+        "institution": "",
+        "year": null,
         "domain": "general"
       }
     ],
@@ -3847,12 +4010,12 @@
         "English"
       ]
     },
-    "totalExperienceMonths": 0,
+    "totalExperienceMonths": 34,
     "independentLcaExperienceMonths": 0,
     "designExperienceMonths": 0,
     "completedLcaProjectsCount": 1,
     "hasDesignPortfolioOrCaseStudies": false,
-    "hasUserResearchEvidence": false,
+    "hasUserResearchEvidence": true,
     "contextualFlags": {
       "relocationMentioned": false,
       "travelWillingnessMentioned": false,
@@ -3878,26 +4041,26 @@
     "education": [
       {
         "degree": "Post Graduate in UI UX Design",
-        "institution": "IIIT Bangalore, Expected in 2026-03",
-        "year": "2026",
+        "institution": "",
+        "year": null,
         "domain": "design"
       },
       {
         "degree": "Bachelor of Arts",
-        "institution": "University of Calcutta, Completed in 2024",
-        "year": "2024",
+        "institution": "",
+        "year": null,
         "domain": "general"
       },
       {
         "degree": "Higher Secondary",
-        "institution": "WBCHSE, Completed in 2019",
-        "year": "2019",
+        "institution": "",
+        "year": null,
         "domain": "general"
       },
       {
         "degree": "Madhymik",
-        "institution": "WBBSC, Completed in 2017",
-        "year": "2017",
+        "institution": "",
+        "year": null,
         "domain": "general"
       }
     ],
@@ -3960,7 +4123,7 @@
       {
         "title": "UI/UX Intern",
         "company": "Cryptographic Solutions   Jan 26 \u2014 April 26",
-        "rawDates": "",
+        "rawDates": "Cryptographic Solutions   Jan 26 \u2014 April 26",
         "durationMonths": 0,
         "isCurrent": false,
         "bullets": [
@@ -3974,7 +4137,7 @@
       {
         "title": "Founder & Creative Head",
         "company": "Clo Thrifts   Dates not provided",
-        "rawDates": "",
+        "rawDates": "Clo Thrifts   Dates not provided",
         "durationMonths": 0,
         "isCurrent": false,
         "bullets": [
@@ -4049,13 +4212,25 @@
     "education": [
       {
         "degree": "Bachelors in Technology",
-        "institution": "University of Delhi, 2023 - 2027",
-        "year": "2023",
+        "institution": "",
+        "year": null,
         "domain": "allied_technical"
       },
       {
+        "degree": "University of Delhi, 2023 - 2027",
+        "institution": "",
+        "year": "2023",
+        "domain": "general"
+      },
+      {
         "degree": "CBSE",
-        "institution": "Salwan Public School, 2011 - 2023",
+        "institution": "",
+        "year": null,
+        "domain": "general"
+      },
+      {
+        "degree": "Salwan Public School, 2011 - 2023",
+        "institution": "",
         "year": "2011",
         "domain": "general"
       }
@@ -4108,7 +4283,7 @@
     "designExperienceMonths": 0,
     "completedLcaProjectsCount": 0,
     "hasDesignPortfolioOrCaseStudies": true,
-    "hasUserResearchEvidence": false,
+    "hasUserResearchEvidence": true,
     "contextualFlags": {
       "relocationMentioned": false,
       "travelWillingnessMentioned": false,
@@ -4133,7 +4308,7 @@
       {
         "title": "UI/UX Design Intern",
         "company": "TopAi24",
-        "rawDates": "July 2025 \u2013 August 2025",
+        "rawDates": "TopAi24   July 2025 \u2013 August 2025",
         "durationMonths": 2,
         "isCurrent": false,
         "bullets": [
@@ -4195,7 +4370,13 @@
     "education": [
       {
         "degree": "Bachelor of Engineering in Information Technology",
-        "institution": "K.C. College of Engineering, May 2024",
+        "institution": "",
+        "year": null,
+        "domain": "allied_technical"
+      },
+      {
+        "degree": "K.C. College of Engineering, May 2024",
+        "institution": "",
         "year": "2024",
         "domain": "allied_technical"
       },
@@ -4299,9 +4480,9 @@
     "experience": [
       {
         "title": "Sustainability & Compliance Consultant",
-        "company": "Accurec GmbH   11/2025 \u2013 01/2026",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Accurec GmbH   11/",
+        "rawDates": "Accurec GmbH   11/2025 \u2013 01/2026",
+        "durationMonths": 3,
         "isCurrent": false,
         "bullets": [
           "\u2022 Solely responsible for conducting Product Carbon Footprint (PCF) calculations in accordance with European Commission Innovation Fund.",
@@ -4313,9 +4494,9 @@
       },
       {
         "title": "GHG & Environmental Data Analyst",
-        "company": "Uniper   10/2024 \u2013 03/2025",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Uniper   10/",
+        "rawDates": "Uniper   10/2024 \u2013 03/2025",
+        "durationMonths": 6,
         "isCurrent": false,
         "bullets": [
           "\u2022 Managed day-to-day data flow and validated Scope 1 & 2 carbon footprints across 15+ international operational assets.",
@@ -4327,9 +4508,9 @@
       },
       {
         "title": "Process Optimization & Sustainability Intern",
-        "company": "Freudenberg CO. &K   10/2023 \u2013 01/2024",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Freudenberg CO. &K   10/",
+        "rawDates": "Freudenberg CO. &K   10/2023 \u2013 01/2024",
+        "durationMonths": 4,
         "isCurrent": false,
         "bullets": [
           "\u2022 Designed automated Excel tools (VBA/Macros) to standardize environmental reporting and trace raw material data compliance from global business segments.",
@@ -4340,9 +4521,9 @@
       },
       {
         "title": "LCA & ESG Reporting Intern",
-        "company": "Daimler Truck AG   03/2023 \u2013 08/2023",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Daimler Truck AG   03/",
+        "rawDates": "Daimler Truck AG   03/2023 \u2013 08/2023",
+        "durationMonths": 6,
         "isCurrent": false,
         "bullets": [
           "\u2022 Managed, cleansed, and validated chemical, structural, and material compositions within the International Material Data System (IMDS) across a database of 30,000+ entries used for performing product LCA.",
@@ -4429,7 +4610,13 @@
     "education": [
       {
         "degree": "Master's in Advanced Manufacturing",
-        "institution": "Technical University of Chemnitz, 10/2021 \u2013 03/2025",
+        "institution": "",
+        "year": null,
+        "domain": "general"
+      },
+      {
+        "degree": "Technical University of Chemnitz, 10/2021 \u2013 03/2025",
+        "institution": "",
         "year": "2021",
         "domain": "general"
       },
@@ -4441,9 +4628,15 @@
       },
       {
         "degree": "Bachelor's in Automobile Engineering",
-        "institution": "Gujarat Technological University, 09/2017 \u2013 04/2021",
-        "year": "2017",
+        "institution": "",
+        "year": null,
         "domain": "allied_technical"
+      },
+      {
+        "degree": "Gujarat Technological University, 09/2017 \u2013 04/2021",
+        "institution": "",
+        "year": "2017",
+        "domain": "general"
       },
       {
         "degree": "Score: 9.07 (out of 10.0)",
@@ -4514,8 +4707,8 @@
         "Deutsch (Goethe A2)"
       ]
     },
-    "totalExperienceMonths": 0,
-    "independentLcaExperienceMonths": 0,
+    "totalExperienceMonths": 19,
+    "independentLcaExperienceMonths": 15,
     "designExperienceMonths": 0,
     "completedLcaProjectsCount": 8,
     "hasDesignPortfolioOrCaseStudies": false,
@@ -4528,7 +4721,7 @@
     },
     "rawTextLength": 4256,
     "warnings": [],
-    "lcaChunk": "Sustainability & Compliance Consultant LCA Consultant with a Master's degree and over 2.s and managing complex environmental datasets. Highly proficient in building Life Cycle Inventory (LCI) models using openLCA in strict accordance with ISO s. Sustainability & Compliance Consultant at Accurec GmbH   11/2025 \u2013 01/2026: \u2022 Solely responsible for conducting Product Carbon Footprint (PCF) calculations in accordance with European Commission Innovation Fund. \u2022 Evaluated material-level and product-level compliance against European RoHS, REACH directives to support ESG requests. \u2022 Managed the systematic data collection of material attributes, calculating the Global Warming Potential (GWP) and circularity indexes of complex material streams. GHG & Environmental Data Analyst at Uniper   10/2024 \u2013 03/2025: \u2022 Managed day-to-day data flow and validated Scope 1 & 2 carbon footprints across 15+ international operational assets. \u2022 Engineered a centralized data tracking system that mapped utility data, material inputs, and emissions to ensure all sustainability disclosures were audit-ready. \u2022 Partnered with procurement, engineering, and finance functions to review data variances and deliver structured environmental reports to global leadership. Process Optimization & Sustainability Intern at Freudenberg CO. &K   10/2023 \u2013 01/2024: \u2022 Designed automated Excel tools (VBA/Macros) to standardize environmental reporting and trace raw material data compliance from global business segments. \u2022 Conducted data tracking audits to align internal product lines with international restriction policies (PFAS and REACH), flagging non-compliant inputs early. LCA & ESG Reporting Intern at Daimler Truck AG   03/2023 \u2013 08/2023: \u2022 Managed, cleansed, and validated chemical, structural, and material compositio",
+    "lcaChunk": "Sustainability & Compliance Consultant LCA Consultant with a Master's degree and over 2.s and managing complex environmental datasets. Highly proficient in building Life Cycle Inventory (LCI) models using openLCA in strict accordance with ISO s. Sustainability & Compliance Consultant at Accurec GmbH   11/: \u2022 Solely responsible for conducting Product Carbon Footprint (PCF) calculations in accordance with European Commission Innovation Fund. \u2022 Evaluated material-level and product-level compliance against European RoHS, REACH directives to support ESG requests. \u2022 Managed the systematic data collection of material attributes, calculating the Global Warming Potential (GWP) and circularity indexes of complex material streams. GHG & Environmental Data Analyst at Uniper   10/: \u2022 Managed day-to-day data flow and validated Scope 1 & 2 carbon footprints across 15+ international operational assets. \u2022 Engineered a centralized data tracking system that mapped utility data, material inputs, and emissions to ensure all sustainability disclosures were audit-ready. \u2022 Partnered with procurement, engineering, and finance functions to review data variances and deliver structured environmental reports to global leadership. Process Optimization & Sustainability Intern at Freudenberg CO. &K   10/: \u2022 Designed automated Excel tools (VBA/Macros) to standardize environmental reporting and trace raw material data compliance from global business segments. \u2022 Conducted data tracking audits to align internal product lines with international restriction policies (PFAS and REACH), flagging non-compliant inputs early. LCA & ESG Reporting Intern at Daimler Truck AG   03/: \u2022 Managed, cleansed, and validated chemical, structural, and material compositions within the International Material Data System (IMDS) ",
     "uiuxChunk": "Sustainability & Compliance Consultant LCA Consultant with a Master's degree and over 2.s and managing complex environmental datasets. Highly proficient in building Life Cycle Inventory (LCI) models using openLCA in strict accordance with ISO s. Skills: SAP ERP, Advanced MS Office, Power BI, SimaPro, openLCA, Python, Product Carbon Footprint (PCF), ISO / (LCA), Scope 1, 2, & 3 Emissions Accounting, GHG Protocol, Sustainability, Environmental Compliance, Automotive Compliance, Tools / Technologies, Excel, VBA, Macros, Power Query, Languages, Gujarati (Mother tongue), Hindi (Mother tongue), English (C1 / IELTS 7.5), Deutsch (Goethe A2)"
   },
   {
@@ -4543,9 +4736,9 @@
     "experience": [
       {
         "title": "Assistant Manager",
-        "company": "Business Development \u2014 Tattva ESG Solutions Private Limited   June 2025 \u2014 Dec 2025",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Business Development \u2014 Tattva ESG Solutions Private Limited",
+        "rawDates": "Business Development \u2014 Tattva ESG Solutions Private Limited   June 2025 \u2014 Dec 2025",
+        "durationMonths": 7,
         "isCurrent": false,
         "bullets": [
           "\u2022 Serve as the primary client partner, leading ESG framework selection, onboarding, and reporting training.",
@@ -4558,9 +4751,9 @@
       },
       {
         "title": "Sustainability Consultant",
-        "company": "Intern \u2014 Tattva ESG Solutions Private Limited   Dec 2023 \u2014 March 2024",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Intern \u2014 Tattva ESG Solutions Private Limited",
+        "rawDates": "Intern \u2014 Tattva ESG Solutions Private Limited   Dec 2023 \u2014 March 2024",
+        "durationMonths": 4,
         "isCurrent": false,
         "bullets": [
           "\u2022 Conducted sustainability research and analysis for private companies across eleven sectors and 163 sub-industries.",
@@ -4573,9 +4766,9 @@
       },
       {
         "title": "Associate",
-        "company": "Sustainability Analyst \u2014 Tattva ESG Solutions Private Limited   May 2024 \u2014 April 2025",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Sustainability Analyst \u2014 Tattva ESG Solutions Private Limited",
+        "rawDates": "Sustainability Analyst \u2014 Tattva ESG Solutions Private Limited   May 2024 \u2014 April 2025",
+        "durationMonths": 12,
         "isCurrent": false,
         "bullets": [
           "\u2022 Developed an Environmental, Social, and Governance (ESG) template with 500 indicators for organizations.",
@@ -4611,37 +4804,49 @@
     "education": [
       {
         "degree": "M.Sc. in Environmental Science",
-        "institution": "University of Mysuru, Dec 2023",
-        "year": "2023",
+        "institution": "",
+        "year": null,
         "domain": "environmental"
       },
       {
-        "degree": "CGPA: 8.3",
+        "degree": "University of Mysuru, Dec 2023",
+        "institution": "",
+        "year": "2023",
+        "domain": "general"
+      },
+      {
+        "degree": "B.Sc. in Chemistry-Botany-Zoology",
         "institution": "",
         "year": null,
         "domain": "general"
       },
       {
-        "degree": "B.Sc. in Chemistry-Botany-Zoology",
-        "institution": "University of Mysuru, Feb 2021",
+        "degree": "University of Mysuru, Feb 2021",
+        "institution": "",
         "year": "2021",
         "domain": "general"
       },
       {
-        "degree": "CGPA: 7.2",
-        "institution": "Pre University College in Physics-Mathematics-Chemistry-Biology",
+        "degree": "Pre University College in Physics-Mathematics-Chemistry-Biology",
+        "institution": "",
         "year": null,
         "domain": "general"
       },
       {
         "degree": "Hari Vidyalaya",
-        "institution": "SSLC-CBSE",
+        "institution": "",
+        "year": null,
+        "domain": "general"
+      },
+      {
+        "degree": "SSLC-CBSE",
+        "institution": "",
         "year": null,
         "domain": "general"
       },
       {
         "degree": "Hari Vidyalaya",
-        "institution": "CGPA: 9.6",
+        "institution": "",
         "year": null,
         "domain": "general"
       }
@@ -4673,7 +4878,7 @@
         "Sustainability"
       ]
     },
-    "totalExperienceMonths": 0,
+    "totalExperienceMonths": 23,
     "independentLcaExperienceMonths": 0,
     "designExperienceMonths": 0,
     "completedLcaProjectsCount": 1,
@@ -4687,7 +4892,7 @@
     },
     "rawTextLength": 2492,
     "warnings": [],
-    "lcaChunk": "Assistant Manager - Business Development Dedicated ESG professional with over one year of experience in ESG Reporting, ESG Research, Data collection, Regulatory compliance, Life Cycle Assessment, and GHG calculations. Sustainability Consultant at Intern \u2014 Tattva ESG Solutions Private Limited   Dec 2023 \u2014 March 2024: \u2022 Conducted sustainability research and analysis for private companies across eleven sectors and 163 sub-industries. \u2022 Compiled ESG data from various company disclosures such as sustainability reports, annual reports, and CSR reports. \u2022 Worked on a regulatory compliance project analyzing ESG laws across 195 countries. \u2022 Engaged in patent analytics, correlating 750,000 patents with the ESG taxonomy. Project: Project aimed at expanding electric vehicle adoption to reduce carbon footprint and air pollution. - \u2022 Created a guide for stakeholders and owners installing Electric Vehicle Chargers. \u2022 Suggested charging locations for public charging stations in Mysuru City. \u2022 Assessed consumer awareness of EV Charging Infrastructure. Skills: ESG Research, Data Collection, Materiality Assessment, ESG Consultation, GHG Calculation, Sustainability Report Writing, ESG Reporting, Sustainability",
+    "lcaChunk": "Assistant Manager - Business Development Dedicated ESG professional with over one year of experience in ESG Reporting, ESG Research, Data collection, Regulatory compliance, Life Cycle Assessment, and GHG calculations. Sustainability Consultant at Intern \u2014 Tattva ESG Solutions Private Limited: \u2022 Conducted sustainability research and analysis for private companies across eleven sectors and 163 sub-industries. \u2022 Compiled ESG data from various company disclosures such as sustainability reports, annual reports, and CSR reports. \u2022 Worked on a regulatory compliance project analyzing ESG laws across 195 countries. \u2022 Engaged in patent analytics, correlating 750,000 patents with the ESG taxonomy. Project: Project aimed at expanding electric vehicle adoption to reduce carbon footprint and air pollution. - \u2022 Created a guide for stakeholders and owners installing Electric Vehicle Chargers. \u2022 Suggested charging locations for public charging stations in Mysuru City. \u2022 Assessed consumer awareness of EV Charging Infrastructure. Skills: ESG Research, Data Collection, Materiality Assessment, ESG Consultation, GHG Calculation, Sustainability Report Writing, ESG Reporting, Sustainability",
     "uiuxChunk": "Assistant Manager - Business Development Dedicated ESG professional with over one year of experience in ESG Reporting, ESG Research, Data collection, Regulatory compliance, Life Cycle Assessment, and GHG calculations. Skills: ESG Research, Data Collection, Materiality Assessment, ESG Consultation, GHG Calculation, Sustainability Report Writing, ESG Reporting, Sustainability"
   },
   {
@@ -4703,7 +4908,7 @@
       {
         "title": "UI/UX Intern",
         "company": "Devifyx",
-        "rawDates": "Aug 2025 \u2013 Nov 2025",
+        "rawDates": "Devifyx   Aug 2025 \u2013 Nov 2025",
         "durationMonths": 4,
         "isCurrent": false,
         "bullets": [
@@ -4739,14 +4944,14 @@
     "education": [
       {
         "degree": "Bachelor of Computer Applications (BCA)",
-        "institution": "NPR Arts & Science College, 2014 - 2017",
-        "year": "2014",
+        "institution": "",
+        "year": null,
         "domain": "general"
       },
       {
-        "degree": "CGPA: 8.46",
+        "degree": "NPR Arts & Science College, 2014 - 2017",
         "institution": "",
-        "year": null,
+        "year": "2014",
         "domain": "general"
       }
     ],
@@ -4835,8 +5040,8 @@
       {
         "title": "Senior Engineer \u2013 R&D",
         "company": "Gunnebo India Pvt. Ltd.   09/",
-        "rawDates": "2024 \u2013 Current",
-        "durationMonths": 24,
+        "rawDates": "Gunnebo India Pvt. Ltd.   09/2024 \u2013 Current",
+        "durationMonths": 36,
         "isCurrent": true,
         "bullets": [
           "\u2022 Conducted LCA of Titan SRD Class B & C using OpenLCA and ecoinvent, optimizing the product design to achieve a 15% reduction in carbon emissions, 19.2% reduction in steel usage, and 16 kWh/unit energy savings, introduced recycled steel fibers for sustainable material optimization.",
@@ -4850,9 +5055,9 @@
       },
       {
         "title": "Upskill Trainee \u2013 R&D",
-        "company": "Gunnebo India Pvt. Ltd.   09/2023 \u2013 09/2024",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Gunnebo India Pvt. Ltd.   09/",
+        "rawDates": "Gunnebo India Pvt. Ltd.   09/2023 \u2013 09/2024",
+        "durationMonths": 13,
         "isCurrent": false,
         "bullets": [
           "\u2022 Selected for Gunnebo's globally competitive Upskill Trainee Program, combining hands-on engineering work with business education from ESCP Business School, London.",
@@ -4867,9 +5072,15 @@
     "education": [
       {
         "degree": "Master of Engineering, Thermal Science Engineering",
-        "institution": "The Maharaja Sayajirao University, 2023",
-        "year": "2023",
+        "institution": "",
+        "year": null,
         "domain": "allied_technical"
+      },
+      {
+        "degree": "The Maharaja Sayajirao University, 2023",
+        "institution": "",
+        "year": "2023",
+        "domain": "general"
       },
       {
         "degree": "63.14%",
@@ -4879,15 +5090,15 @@
       },
       {
         "degree": "Bachelor of Engineering, Mechanical Engineering",
-        "institution": "Atmiya Institute of Technology & Science, 2021",
-        "year": "2021",
+        "institution": "",
+        "year": null,
         "domain": "allied_technical"
       },
       {
-        "degree": "CGPA: 8.56",
+        "degree": "Atmiya Institute of Technology & Science, 2021",
         "institution": "",
-        "year": null,
-        "domain": "general"
+        "year": "2021",
+        "domain": "allied_technical"
       }
     ],
     "certifications": [
@@ -4960,9 +5171,9 @@
         "Gujarati"
       ]
     },
-    "totalExperienceMonths": 24,
-    "independentLcaExperienceMonths": 24,
-    "designExperienceMonths": 24,
+    "totalExperienceMonths": 40,
+    "independentLcaExperienceMonths": 36,
+    "designExperienceMonths": 36,
     "completedLcaProjectsCount": 0,
     "hasDesignPortfolioOrCaseStudies": false,
     "hasUserResearchEvidence": false,
@@ -4989,10 +5200,10 @@
     "experience": [
       {
         "title": "UI/UX Designer",
-        "company": "Freelance Projects   Feb 2026 \u2014 Present",
-        "rawDates": "",
-        "durationMonths": 0,
-        "isCurrent": false,
+        "company": "Freelance Projects",
+        "rawDates": "Freelance Projects   Feb 2026 \u2014 Present",
+        "durationMonths": 10,
+        "isCurrent": true,
         "bullets": [
           "\u2022 Sharpening UI/UX skills through freelance projects and independent design work.",
           "\u2022 Creating professional web interfaces with a focus on usability, visual hierarchy, responsive design, and polished visual experiences.",
@@ -5003,9 +5214,9 @@
       },
       {
         "title": "Full Stack Developer",
-        "company": "Independent Contract   June 2025 \u2014 Jan 2026",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Independent Contract",
+        "rawDates": "Independent Contract   June 2025 \u2014 Jan 2026",
+        "durationMonths": 8,
         "isCurrent": false,
         "bullets": [
           "\u2022 Developed end-to-end client solutions using Next.js, React, Express, and PostgreSQL, handling both frontend UI and backend APIs with secure, scalable architecture.",
@@ -5077,13 +5288,25 @@
     "education": [
       {
         "degree": "Bachelor of Computer Applications",
-        "institution": "CGC, Landran, 2022 - 2025",
+        "institution": "",
+        "year": null,
+        "domain": "general"
+      },
+      {
+        "degree": "CGC, Landran, 2022 - 2025",
+        "institution": "",
         "year": "2022",
         "domain": "general"
       },
       {
         "degree": "High School",
-        "institution": "PKR Jain, Ambala, 2021 - 2022",
+        "institution": "",
+        "year": null,
+        "domain": "general"
+      },
+      {
+        "degree": "PKR Jain, Ambala, 2021 - 2022",
+        "institution": "",
         "year": "2021",
         "domain": "general"
       }
@@ -5127,9 +5350,9 @@
         "Responsive Design"
       ]
     },
-    "totalExperienceMonths": 0,
+    "totalExperienceMonths": 18,
     "independentLcaExperienceMonths": 0,
-    "designExperienceMonths": 0,
+    "designExperienceMonths": 18,
     "completedLcaProjectsCount": 0,
     "hasDesignPortfolioOrCaseStudies": false,
     "hasUserResearchEvidence": false,
@@ -5142,7 +5365,7 @@
     "rawTextLength": 1883,
     "warnings": [],
     "lcaChunk": "UI/UX Designer Skills: Figma, Canva, React.js, Next.js, JavaScript, TypeScript, Tailwind CSS, Node.js, UI Design, UX Design, Wireframing, Prototyping, User flows, Responsive Design",
-    "uiuxChunk": "UI/UX Designer UI/UX Designer at Freelance Projects   Feb 2026 \u2014 Present: \u2022 Sharpening UI/UX skills through freelance projects and independent design work. \u2022 Creating professional web interfaces with a focus on usability, visual hierarchy, responsive design, and polished visual experiences. \u2022 Working on user flows, wireframes, high-fidelity designs, and prototypes. Full Stack Developer at Independent Contract   June 2025 \u2014 Jan 2026: \u2022 Developed end-to-end client solutions using Next.js, React, Express, and PostgreSQL, handling both frontend UI and backend APIs with secure, scalable architecture. \u2022 Built complete full-stack features aligned with business requirements, including database design, application logic, and smooth user experience. Skills: Figma, Canva, React.js, Next.js, JavaScript, TypeScript, Tailwind CSS, Node.js, UI Design, UX Design, Wireframing, Prototyping, User flows, Responsive Design"
+    "uiuxChunk": "UI/UX Designer UI/UX Designer at Freelance Projects: \u2022 Sharpening UI/UX skills through freelance projects and independent design work. \u2022 Creating professional web interfaces with a focus on usability, visual hierarchy, responsive design, and polished visual experiences. \u2022 Working on user flows, wireframes, high-fidelity designs, and prototypes. Full Stack Developer at Independent Contract: \u2022 Developed end-to-end client solutions using Next.js, React, Express, and PostgreSQL, handling both frontend UI and backend APIs with secure, scalable architecture. \u2022 Built complete full-stack features aligned with business requirements, including database design, application logic, and smooth user experience. Skills: Figma, Canva, React.js, Next.js, JavaScript, TypeScript, Tailwind CSS, Node.js, UI Design, UX Design, Wireframing, Prototyping, User flows, Responsive Design"
   },
   {
     "candidateId": "anonymized_PD_1793682784400",
@@ -5157,24 +5380,14 @@
       {
         "title": "Lead Analyst",
         "company": "SustainoMetric Ltd.",
-        "rawDates": "March 2026 \u2013 Present",
+        "rawDates": "SustainoMetric Ltd.   March 2026 \u2013 Present",
         "durationMonths": 9,
         "isCurrent": true,
         "bullets": [
           "\u2022 Lead a team of s overseeing ESG research workflows, quality standards, and delivery across a portfolio of 2,000+ corporate clients.",
           "\u2022 Drive ESG risk assessments focused on climate-related financial risks, translating findings into actionable insights for institutional stakeholders.",
-          "\u2022 Implemented the updated EU Omnibus approach into research frameworks, ensuring regulatory alignment across all client deliverables."
-        ],
-        "isIndependentLCA": false,
-        "isDesignRole": false
-      },
-      {
-        "title": "\u2022 Designed and deployed a Google Chrome extension automating file validation in sustainability reporting workflows",
-        "company": "reducing manual review time by 8% and improving data accuracy.",
-        "rawDates": "",
-        "durationMonths": 0,
-        "isCurrent": false,
-        "bullets": [
+          "\u2022 Implemented the updated EU Omnibus approach into research frameworks, ensuring regulatory alignment across all client deliverables.",
+          "\u2022 Designed and deployed a Google Chrome extension automating file validation in sustainability reporting workflows \u2014 reducing manual review time by 8% and improving data accuracy.",
           "\u2022 Conducted in-depth controversy analyses across the ESG ratings universe, strengthening ratings robustness and defensibility."
         ],
         "isIndependentLCA": false,
@@ -5183,7 +5396,7 @@
       {
         "title": "Senior Business Analyst",
         "company": "SustainoMetric Ltd.",
-        "rawDates": "April 2024 \u2013 February 2026",
+        "rawDates": "SustainoMetric Ltd.   April 2024 \u2013 February 2026",
         "durationMonths": 23,
         "isCurrent": false,
         "bullets": [
@@ -5198,7 +5411,7 @@
       {
         "title": "ESG Data Analyst",
         "company": "ESGBOOK",
-        "rawDates": "June 2022 \u2013 April 2024",
+        "rawDates": "ESGBOOK   June 2022 \u2013 April 2024",
         "durationMonths": 23,
         "isCurrent": false,
         "bullets": [
@@ -5227,7 +5440,13 @@
       },
       {
         "degree": "B.A. (Hons) Economics",
-        "institution": "University of Delhi, 2017 \u2013 2020",
+        "institution": "",
+        "year": null,
+        "domain": "general"
+      },
+      {
+        "degree": "University of Delhi, 2017 \u2013 2020",
+        "institution": "",
         "year": "2017",
         "domain": "general"
       }
@@ -5272,7 +5491,7 @@
         "Stakeholder Management"
       ]
     },
-    "totalExperienceMonths": 55,
+    "totalExperienceMonths": 54,
     "independentLcaExperienceMonths": 0,
     "designExperienceMonths": 0,
     "completedLcaProjectsCount": 0,
@@ -5286,8 +5505,8 @@
     },
     "rawTextLength": 2701,
     "warnings": [],
-    "lcaChunk": "Lead Analyst Results-driven ESG professional with 4+ years supporting global clients across ESG advisory, climate risk assessment, regulatory compliance, and GHG accounting. \u2022 Designed and deployed a Google Chrome extension automating file validation in sustainability reporting workflows at reducing manual review time by 8% and improving data accuracy.: \u2022 Conducted in-depth controversy analyses across the ESG ratings universe, strengthening ratings robustness and defensibility. Skills: ESG Ratings, AI in ESG, ESG Advisory, QA / Assurance, Climate Risk, GHG Accounting, CSRD / BRSR, TCFD / IFRS S2, GRI / SASB, EU Taxonomy, Double Materiality, Stakeholder Management",
-    "uiuxChunk": "Lead Analyst Results-driven ESG professional with 4+ years supporting global clients across ESG advisory, climate risk assessment, regulatory compliance, and GHG accounting. \u2022 Designed and deployed a Google Chrome extension automating file validation in sustainability reporting workflows at reducing manual review time by 8% and improving data accuracy.: \u2022 Conducted in-depth controversy analyses across the ESG ratings universe, strengthening ratings robustness and defensibility. Skills: ESG Ratings, AI in ESG, ESG Advisory, QA / Assurance, Climate Risk, GHG Accounting, CSRD / BRSR, TCFD / IFRS S2, GRI / SASB, EU Taxonomy, Double Materiality, Stakeholder Management"
+    "lcaChunk": "Lead Analyst Results-driven ESG professional with 4+ years supporting global clients across ESG advisory, climate risk assessment, regulatory compliance, and GHG accounting. Skills: ESG Ratings, AI in ESG, ESG Advisory, QA / Assurance, Climate Risk, GHG Accounting, CSRD / BRSR, TCFD / IFRS S2, GRI / SASB, EU Taxonomy, Double Materiality, Stakeholder Management",
+    "uiuxChunk": "Lead Analyst Results-driven ESG professional with 4+ years supporting global clients across ESG advisory, climate risk assessment, regulatory compliance, and GHG accounting. Skills: ESG Ratings, AI in ESG, ESG Advisory, QA / Assurance, Climate Risk, GHG Accounting, CSRD / BRSR, TCFD / IFRS S2, GRI / SASB, EU Taxonomy, Double Materiality, Stakeholder Management"
   },
   {
     "candidateId": "anonymized_PKG_1793682784369",
@@ -5301,8 +5520,8 @@
     "experience": [
       {
         "title": "Teaching Assistant \u2013 Solid Waste Management Laboratory",
-        "company": "IIT Dhanbad   Jan \u2013 April 2026",
-        "rawDates": "",
+        "company": "IIT Dhanbad   Jan \u2013",
+        "rawDates": "IIT Dhanbad   Jan \u2013 April 2026",
         "durationMonths": 0,
         "isCurrent": false,
         "bullets": [],
@@ -5311,8 +5530,8 @@
       },
       {
         "title": "Teaching Assistant \u2013 Soil and Microbiology Laboratory",
-        "company": "IIT Dhanbad   July \u2013 Dec 2025",
-        "rawDates": "",
+        "company": "IIT Dhanbad   July \u2013",
+        "rawDates": "IIT Dhanbad   July \u2013 Dec 2025",
         "durationMonths": 0,
         "isCurrent": false,
         "bullets": [],
@@ -5321,8 +5540,8 @@
       },
       {
         "title": "Intern",
-        "company": "Environment and Ecology Department \u2014 Bureau of Indian Standards (BIS)   May \u2013 July 2025",
-        "rawDates": "",
+        "company": "Environment and Ecology Department \u2014 Bureau of Indian Standards (BIS)   May \u2013",
+        "rawDates": "Environment and Ecology Department \u2014 Bureau of Indian Standards (BIS)   May \u2013 July 2025",
         "durationMonths": 0,
         "isCurrent": false,
         "bullets": [
@@ -5364,27 +5583,27 @@
     "education": [
       {
         "degree": "Master of Technology in Environmental Science and Engineering",
-        "institution": "Indian Institute of Technology, Dhanbad",
+        "institution": "",
         "year": null,
         "domain": "environmental"
       },
       {
-        "degree": "CGPA: 9.43 / 10.00",
+        "degree": "Indian Institute of Technology, Dhanbad",
         "institution": "",
-        "year": null,
-        "domain": "general"
-      },
-      {
-        "degree": "Bachelor of Engineering in Civil Engineering",
-        "institution": "Bapuji Institute of Engineering and Technology",
         "year": null,
         "domain": "allied_technical"
       },
       {
-        "degree": "CGPA: 8.72 / 10.00",
+        "degree": "Bachelor of Engineering in Civil Engineering",
         "institution": "",
         "year": null,
-        "domain": "general"
+        "domain": "allied_technical"
+      },
+      {
+        "degree": "Bapuji Institute of Engineering and Technology",
+        "institution": "",
+        "year": null,
+        "domain": "allied_technical"
       }
     ],
     "certifications": [
@@ -5493,7 +5712,7 @@
       {
         "title": "UI/UX Designer Intern",
         "company": "Syntellite Innovations",
-        "rawDates": "May 2026 \u2013 July 2026",
+        "rawDates": "Syntellite Innovations   May 2026 \u2013 July 2026",
         "durationMonths": 3,
         "isCurrent": false,
         "bullets": [
@@ -5507,7 +5726,7 @@
       {
         "title": "Android App Development using GenAI Intern",
         "company": "Mindmatrix",
-        "rawDates": "Feb 2026 \u2013 Apr 2026",
+        "rawDates": "Mindmatrix   Feb 2026 \u2013 Apr 2026",
         "durationMonths": 3,
         "isCurrent": false,
         "bullets": [
@@ -5559,15 +5778,15 @@
     "education": [
       {
         "degree": "B.E. in Computer Science",
-        "institution": "S J C Institute of Technology, 2022 \u2013 2026",
-        "year": "2022",
+        "institution": "",
+        "year": null,
         "domain": "allied_technical"
       },
       {
-        "degree": "CGPA: 8.89",
+        "degree": "S J C Institute of Technology, 2022 \u2013 2026",
         "institution": "",
-        "year": null,
-        "domain": "general"
+        "year": "2022",
+        "domain": "allied_technical"
       }
     ],
     "certifications": [
@@ -5634,7 +5853,7 @@
     "designExperienceMonths": 3,
     "completedLcaProjectsCount": 0,
     "hasDesignPortfolioOrCaseStudies": false,
-    "hasUserResearchEvidence": false,
+    "hasUserResearchEvidence": true,
     "contextualFlags": {
       "relocationMentioned": false,
       "travelWillingnessMentioned": false,
@@ -5659,7 +5878,7 @@
       {
         "title": "Manager \u2013 Risk Analytics",
         "company": "Axis Bank",
-        "rawDates": "June 2024 \u2013 Present",
+        "rawDates": "Axis Bank   June 2024 \u2013 Present",
         "durationMonths": 30,
         "isCurrent": true,
         "bullets": [
@@ -5674,9 +5893,9 @@
       },
       {
         "title": "Radio Jockey",
-        "company": "Radio Malda 90.4 FM   Sep 2020 \u2014 Aug 2021",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Radio Malda 90.4 FM",
+        "rawDates": "Radio Malda 90.4 FM   Sep 2020 \u2014 Aug 2021",
+        "durationMonths": 12,
         "isCurrent": false,
         "bullets": [
           "\u2022 Hosted daily 3-hour live radio shows for 10,000+ listeners, ensuring high audience engagement and consistent content delivery.",
@@ -5742,37 +5961,61 @@
     "education": [
       {
         "degree": "MBA",
-        "institution": "Indian Institute Of Management, Kashipur, 2022 - 2024",
-        "year": "2022",
-        "domain": "general"
-      },
-      {
-        "degree": "CGPA \u2013 6.35",
         "institution": "",
         "year": null,
         "domain": "general"
       },
       {
+        "degree": "Indian Institute Of Management, Kashipur, 2022 - 2024",
+        "institution": "",
+        "year": "2022",
+        "domain": "general"
+      },
+      {
         "degree": "B.Sc. (Physics Hons.)",
-        "institution": "Malda College, WB, 2018 - 2021",
+        "institution": "",
+        "year": null,
+        "domain": "general"
+      },
+      {
+        "degree": "Malda College, WB, 2018 - 2021",
+        "institution": "",
         "year": "2018",
         "domain": "general"
       },
       {
         "degree": "84%",
-        "institution": "XII",
+        "institution": "",
+        "year": null,
+        "domain": "general"
+      },
+      {
+        "degree": "XII",
+        "institution": "",
         "year": null,
         "domain": "general"
       },
       {
         "degree": "WBCHSC from Acrurmoni Coronation Institution, Malda, 2017",
-        "institution": "81.20%",
+        "institution": "",
         "year": "2017",
         "domain": "general"
       },
       {
+        "degree": "81.20%",
+        "institution": "",
+        "year": null,
+        "domain": "general"
+      },
+      {
         "degree": "X",
-        "institution": "WBBSE from Lalit Mohan Shyam Mohini High School, Malda, 2015",
+        "institution": "",
+        "year": null,
+        "domain": "general"
+      },
+      {
+        "degree": "WBBSE from Lalit Mohan Shyam Mohini High School, Malda, 2015",
+        "institution": "",
         "year": "2015",
         "domain": "general"
       },
@@ -5842,7 +6085,7 @@
         "Bengali"
       ]
     },
-    "totalExperienceMonths": 30,
+    "totalExperienceMonths": 42,
     "independentLcaExperienceMonths": 0,
     "designExperienceMonths": 0,
     "completedLcaProjectsCount": 0,
@@ -5871,9 +6114,9 @@
     "experience": [
       {
         "title": "UX/UI Designer",
-        "company": "Monsoonfish Inc   Jan 2026 \u2014 Mar 2026",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Monsoonfish Inc",
+        "rawDates": "Monsoonfish Inc   Jan 2026 \u2014 Mar 2026",
+        "durationMonths": 3,
         "isCurrent": false,
         "bullets": [
           "\u2022 Designed an efficient security guard system and developed one of the fastest entry access solutions in the market for delivery personnel and frequent visitors using API passcodes."
@@ -5951,7 +6194,13 @@
     "education": [
       {
         "degree": "B.Des in Communication Design",
-        "institution": "World University of Design, 2021-2026",
+        "institution": "",
+        "year": null,
+        "domain": "design"
+      },
+      {
+        "degree": "World University of Design, 2021-2026",
+        "institution": "",
         "year": "2021",
         "domain": "design"
       }
@@ -6005,12 +6254,12 @@
         "English"
       ]
     },
-    "totalExperienceMonths": 0,
+    "totalExperienceMonths": 3,
     "independentLcaExperienceMonths": 0,
-    "designExperienceMonths": 0,
+    "designExperienceMonths": 3,
     "completedLcaProjectsCount": 0,
     "hasDesignPortfolioOrCaseStudies": false,
-    "hasUserResearchEvidence": false,
+    "hasUserResearchEvidence": true,
     "contextualFlags": {
       "relocationMentioned": false,
       "travelWillingnessMentioned": false,
@@ -6020,7 +6269,7 @@
     "rawTextLength": 1476,
     "warnings": [],
     "lcaChunk": "Product Designer A research-driven designer who prioritizes strategy, innovation, and impact over aesthetics. Passionate about unconventional design, problem-solving, and high-revenue potential projects. Skills: Figma, Adobe Photoshop, Adobe Illustrator, Adobe After Effects, UX Design, UI Design, User Research, Product Design & Strategy, Prototyping & Wireframing, Graphic Design, Branding, Packaging, Tools / Technologies, Languages, Telugu, Hindi, English",
-    "uiuxChunk": "Product Designer A research-driven designer who prioritizes strategy, innovation, and impact over aesthetics. Passionate about unconventional design, problem-solving, and high-revenue potential projects. UX/UI Designer at Monsoonfish Inc   Jan 2026 \u2014 Mar 2026: \u2022 Designed an efficient security guard system and developed one of the fastest entry access solutions in the market for delivery personnel and frequent visitors using API passcodes. Skills: Figma, Adobe Photoshop, Adobe Illustrator, Adobe After Effects, UX Design, UI Design, User Research, Product Design & Strategy, Prototyping & Wireframing, Graphic Design, Branding, Packaging, Tools / Technologies, Languages, Telugu, Hindi, English"
+    "uiuxChunk": "Product Designer A research-driven designer who prioritizes strategy, innovation, and impact over aesthetics. Passionate about unconventional design, problem-solving, and high-revenue potential projects. UX/UI Designer at Monsoonfish Inc: \u2022 Designed an efficient security guard system and developed one of the fastest entry access solutions in the market for delivery personnel and frequent visitors using API passcodes. Skills: Figma, Adobe Photoshop, Adobe Illustrator, Adobe After Effects, UX Design, UI Design, User Research, Product Design & Strategy, Prototyping & Wireframing, Graphic Design, Branding, Packaging, Tools / Technologies, Languages, Telugu, Hindi, English"
   },
   {
     "candidateId": "anonymized_PW_1793682784228",
@@ -6035,7 +6284,7 @@
       {
         "title": "Project Associate 1",
         "company": "CSIR NEERI",
-        "rawDates": "June 2024 \u2013 Present",
+        "rawDates": "CSIR NEERI   June 2024 \u2013 Present",
         "durationMonths": 30,
         "isCurrent": true,
         "bullets": [
@@ -6062,9 +6311,9 @@
       },
       {
         "title": "English Content Writer and Small-Scale Digital Entrepreneur",
-        "company": "Freelancer, Remote   Aug 2020 \u2014 Jan 2024",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Freelancer, Remote",
+        "rawDates": "Freelancer, Remote   Aug 2020 \u2014 Jan 2024",
+        "durationMonths": 42,
         "isCurrent": false,
         "bullets": [
           "\u2022 Researched and developed accurate, well-structured technical content.",
@@ -6076,9 +6325,9 @@
       },
       {
         "title": "Graduate Internship Trainee",
-        "company": "Chemcepts.Co   March 2021 \u2014 Feb 2022",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Chemcepts.Co",
+        "rawDates": "Chemcepts.Co   March 2021 \u2014 Feb 2022",
+        "durationMonths": 12,
         "isCurrent": false,
         "bullets": [
           "\u2022 Conducted process simulation and optimisation of Gas to Liquid (GTL) technology using Aspen HYSYS, focusing on improving process efficiency, and applying process modelling skills relevant to evaluating energy and material flows.",
@@ -6089,9 +6338,9 @@
       },
       {
         "title": "Professional Paid Training Program (EQUIP)",
-        "company": "Equinox Software and Services Pvt Ltd   Nov 2019 \u2014 Jan 2020",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Equinox Software and Services Pvt Ltd",
+        "rawDates": "Equinox Software and Services Pvt Ltd   Nov 2019 \u2014 Jan 2020",
+        "durationMonths": 3,
         "isCurrent": false,
         "bullets": [
           "\u2022 Acquired core knowledge of process engineering and system modelling for the hydrocarbon production industry.",
@@ -6106,32 +6355,38 @@
     "education": [
       {
         "degree": "B.E. in Chemical Engineering",
-        "institution": "Maharashtra Institute of Technology, Pune (Savitribai Phule Pune University), Aug 2014 - May 2018",
+        "institution": "",
+        "year": null,
+        "domain": "allied_technical"
+      },
+      {
+        "degree": "Maharashtra Institute of Technology, Pune (Savitribai Phule Pune University), Aug 2014 - May 2018",
+        "institution": "",
         "year": "2014",
         "domain": "allied_technical"
       },
       {
-        "degree": "Percentage: 72.4%",
-        "institution": "HSC",
+        "degree": "HSC",
+        "institution": "",
         "year": null,
         "domain": "general"
       },
       {
         "degree": "SPM Junior College, Wani (Amravati Board), June 2013 - Feb 2014",
-        "institution": "Percentage: 83.64%",
+        "institution": "",
         "year": "2013",
         "domain": "general"
       },
       {
         "degree": "SSC",
-        "institution": "SPM Junior College, Wani (Amravati Board), June 2011 - March 2012",
-        "year": "2011",
+        "institution": "",
+        "year": null,
         "domain": "general"
       },
       {
-        "degree": "Percentage: 90.91%",
+        "degree": "SPM Junior College, Wani (Amravati Board), June 2011 - March 2012",
         "institution": "",
-        "year": null,
+        "year": "2011",
         "domain": "general"
       }
     ],
@@ -6220,7 +6475,7 @@
         "German (A2)"
       ]
     },
-    "totalExperienceMonths": 30,
+    "totalExperienceMonths": 75,
     "independentLcaExperienceMonths": 30,
     "designExperienceMonths": 0,
     "completedLcaProjectsCount": 0,
@@ -6235,7 +6490,7 @@
     "rawTextLength": 5546,
     "warnings": [],
     "lcaChunk": "Project Associate 1 A background in chemical engineering and a sustainability research enthusiast with hands-on experience in environmental modelling and impact assessment, looking for a long-term LCA and Sustainability Consultant role to contribute to sustainable product development through a data-driven approach and continuous improvement strategies. Project Associate 1 at CSIR NEERI: \u2022 Contributed to various environmental sustainability projects under the Department of Environmental Sustainability and Green Economy (ESGE), focusing on Sustainable Environmental Processes (SEP). \u2022 Working on MRIO modelling with hybridisation of LCA for supply chain management. \u2022 Working on Life Cycle Analysis of communication network infrastructure that includes data centre and its cooling, network switch, router, optical transceiver, fibre optic cable, etc., for Large Language Models. \u2022 Working on comparative LCA of query search through LLMs such as ChatGPT and Gemini, and their water footprint. \u2022 Performed comparative LCA of commercial fish feed vs Microalgae Biomass, using literature research and GaBi database to find a sustainable alternative for fish feed. \u2022 Performed LCA of marine microalgae-based COration using seawater and renewable energy integration to reduce the environmental footprint. \u2022 Performed Life Cycle Assessments (LCA) of PET bottles, using the ELCD database in OpenLCA. \u2022 Prepared life cycle inventory for various chemicals, Zarrouk Salt Medium, using proxy data and GaBi software. \u2022 Performed comparative LCA of Nitric Acid and Ammonium Nitrate using GaBi, complying with ISO / in trade-offs to reduce carbon emissions. \u2022 Performed LCA of packaged potato chips. \u2022 Provided technical support and solutions in preparing detailed project reports, proposals, and environmental ",
-    "uiuxChunk": "Project Associate 1 A background in chemical engineering and a sustainability research enthusiast with hands-on experience in environmental modelling and impact assessment, looking for a long-term LCA and Sustainability Consultant role to contribute to sustainable product development through a data-driven approach and continuous improvement strategies. Professional Paid Training Program (EQUIP) at Equinox Software and Services Pvt Ltd   Nov 2019 \u2014 Jan 2020: \u2022 Acquired core knowledge of process engineering and system modelling for the hydrocarbon production industry. \u2022 Simulated steady-state and dynamic processes using Aspen HYSYS to analyse unit operations and energy/material flows. \u2022 Gained exposure to IIoT tools like Aspen Mtell to identify failure in equipment and Operator Training Simulators (OTS) for real-time process analysis. Skills: GaBi, OpenLCA, Aspen HYSYS, ArcGIS, Python, Microsoft Excel, Microsoft Word, Microsoft PowerPoint, Life Cycle Assessment, Environmental Impact Assessment, GHG accounting, Climate change mitigation, Sustainability, Environmental Compliance, Circular Economy, Cross-functional team collaboration, Quick learner, Self-motivated, Excellent written and verbal communication skills, Detail-oriented, Excellent research skills, Innovative, Proactive, Organised, Strong problem-solving and analytical skills, Teamwork abilities, Tools / Technologies, Languages, English, Hindi, Marathi, German (A2)"
+    "uiuxChunk": "Project Associate 1 A background in chemical engineering and a sustainability research enthusiast with hands-on experience in environmental modelling and impact assessment, looking for a long-term LCA and Sustainability Consultant role to contribute to sustainable product development through a data-driven approach and continuous improvement strategies. Professional Paid Training Program (EQUIP) at Equinox Software and Services Pvt Ltd: \u2022 Acquired core knowledge of process engineering and system modelling for the hydrocarbon production industry. \u2022 Simulated steady-state and dynamic processes using Aspen HYSYS to analyse unit operations and energy/material flows. \u2022 Gained exposure to IIoT tools like Aspen Mtell to identify failure in equipment and Operator Training Simulators (OTS) for real-time process analysis. Skills: GaBi, OpenLCA, Aspen HYSYS, ArcGIS, Python, Microsoft Excel, Microsoft Word, Microsoft PowerPoint, Life Cycle Assessment, Environmental Impact Assessment, GHG accounting, Climate change mitigation, Sustainability, Environmental Compliance, Circular Economy, Cross-functional team collaboration, Quick learner, Self-motivated, Excellent written and verbal communication skills, Detail-oriented, Excellent research skills, Innovative, Proactive, Organised, Strong problem-solving and analytical skills, Teamwork abilities, Tools / Technologies, Languages, English, Hindi, Marathi, German (A2)"
   },
   {
     "candidateId": "anonymized_PW_1793685080367",
@@ -6249,10 +6504,10 @@
     "experience": [
       {
         "title": "UI/UX Designer",
-        "company": "S K ILLS AN D TOOLS   Dec 2025 \u2014 Present",
-        "rawDates": "",
-        "durationMonths": 0,
-        "isCurrent": false,
+        "company": "S K ILLS AN D TOOLS",
+        "rawDates": "S K ILLS AN D TOOLS   Dec 2025 \u2014 Present",
+        "durationMonths": 12,
+        "isCurrent": true,
         "bullets": [
           "\u2022 Designed 50+ responsive web and mobile screens for client and internal digital products using Figma.",
           "\u2022 Created 30+ wireframes and 15+ interactive prototypes to streamline user flows and validate design concepts.",
@@ -6263,9 +6518,9 @@
       },
       {
         "title": "UI/UX Designer",
-        "company": "Intern \u2014 Ankhub technology & Services   Jan 2025 \u2014 Mar 2025",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Intern \u2014 Ankhub technology & Services",
+        "rawDates": "Intern \u2014 Ankhub technology & Services   Jan 2025 \u2014 Mar 2025",
+        "durationMonths": 3,
         "isCurrent": false,
         "bullets": [
           "\u2022 Designed 18+ responsive web screens for a travel companion platform that connects users based on destination, interests, and travel preferences.",
@@ -6319,7 +6574,13 @@
     "education": [
       {
         "degree": "Bachelor of Technology (B. Tech) in Information Technology",
-        "institution": "K D K College of Engineering, Nagpur, 2022 - 2026",
+        "institution": "",
+        "year": null,
+        "domain": "allied_technical"
+      },
+      {
+        "degree": "K D K College of Engineering, Nagpur, 2022 - 2026",
+        "institution": "",
         "year": "2022",
         "domain": "allied_technical"
       }
@@ -6369,9 +6630,9 @@
         "FigJam"
       ]
     },
-    "totalExperienceMonths": 0,
+    "totalExperienceMonths": 15,
     "independentLcaExperienceMonths": 0,
-    "designExperienceMonths": 0,
+    "designExperienceMonths": 15,
     "completedLcaProjectsCount": 0,
     "hasDesignPortfolioOrCaseStudies": true,
     "hasUserResearchEvidence": false,
@@ -6384,7 +6645,7 @@
     "rawTextLength": 2166,
     "warnings": [],
     "lcaChunk": "UI/UX Designer UI/UX Designer with hands-on experience designing intuitive web and mobile products, creating user-centered experiences that balance usability, functionality, and visual design. Skills: Figma, Adobe XD, Notion, Canva, Design Thinking, Agile Workflow, E-commerce, Education, Hospitality, Travel, Collaboration, Communication, Tools / Technologies, FigJam",
-    "uiuxChunk": "UI/UX Designer UI/UX Designer with hands-on experience designing intuitive web and mobile products, creating user-centered experiences that balance usability, functionality, and visual design. UI/UX Designer at S K ILLS AN D TOOLS   Dec 2025 \u2014 Present: \u2022 Designed 50+ responsive web and mobile screens for client and internal digital products using Figma. \u2022 Created 30+ wireframes and 15+ interactive prototypes to streamline user flows and validate design concepts. \u2022 Built and maintained 40+ reusable UI components to improve design consistency and collaboration. UI/UX Designer at Intern \u2014 Ankhub technology & Services   Jan 2025 \u2014 Mar 2025: \u2022 Designed 18+ responsive web screens for a travel companion platform that connects users based on destination, interests, and travel preferences. \u2022 Focused on improving usability through intuitive navigation, clear information architecture, and user-centered design principles. Project: Learning Management Admin Dashboard - \u2022 Designed 35+ responsive dashboard screens for an e-learning platform managing courses, content banks, notes, assignments, question banks, and PYQs. \u2022 Created user flows, wireframes, high-fidelity interfaces, and reusable components to simplify complex administrative workflows. \u2022 Improved content organization and navigation, enabling administrators to manage educational resources more efficiently. Project: BrewMate - \u2022 Designed a mobile coffee discovery and ordering experience, focusing on caf\u00e9 discovery, coffee selection, customization, and ordering. \u2022 Created user flows, wireframes, and high-fidelity UI designs to simplify the overall coffee-ordering journey. Skills: Figma, Adobe XD, Notion, Canva, Design Thinking, Agile Workflow, E-commerce, Education, Hospitality, Travel, Collaboration, Communication, Tools / Tec"
+    "uiuxChunk": "UI/UX Designer UI/UX Designer with hands-on experience designing intuitive web and mobile products, creating user-centered experiences that balance usability, functionality, and visual design. UI/UX Designer at S K ILLS AN D TOOLS: \u2022 Designed 50+ responsive web and mobile screens for client and internal digital products using Figma. \u2022 Created 30+ wireframes and 15+ interactive prototypes to streamline user flows and validate design concepts. \u2022 Built and maintained 40+ reusable UI components to improve design consistency and collaboration. UI/UX Designer at Intern \u2014 Ankhub technology & Services: \u2022 Designed 18+ responsive web screens for a travel companion platform that connects users based on destination, interests, and travel preferences. \u2022 Focused on improving usability through intuitive navigation, clear information architecture, and user-centered design principles. Project: Learning Management Admin Dashboard - \u2022 Designed 35+ responsive dashboard screens for an e-learning platform managing courses, content banks, notes, assignments, question banks, and PYQs. \u2022 Created user flows, wireframes, high-fidelity interfaces, and reusable components to simplify complex administrative workflows. \u2022 Improved content organization and navigation, enabling administrators to manage educational resources more efficiently. Project: BrewMate - \u2022 Designed a mobile coffee discovery and ordering experience, focusing on caf\u00e9 discovery, coffee selection, customization, and ordering. \u2022 Created user flows, wireframes, and high-fidelity UI designs to simplify the overall coffee-ordering journey. Skills: Figma, Adobe XD, Notion, Canva, Design Thinking, Agile Workflow, E-commerce, Education, Hospitality, Travel, Collaboration, Communication, Tools / Technologies, FigJam"
   },
   {
     "candidateId": "anonymized_RR_1793682784428",
@@ -6399,7 +6660,7 @@
       {
         "title": "LCA Associate Consultant",
         "company": "Enviguide Techno Solutions Private Limited",
-        "rawDates": "Jun 2026 \u2013 Present",
+        "rawDates": "Enviguide Techno Solutions Private Limited   Jun 2026 \u2013 Present",
         "durationMonths": 6,
         "isCurrent": true,
         "bullets": [
@@ -6455,15 +6716,15 @@
     "education": [
       {
         "degree": "B.Tech, Biotechnology (Honours)",
-        "institution": "Hindustan Institute of Technology and Science, 2022 \u2013 2026",
-        "year": "2022",
+        "institution": "",
+        "year": null,
         "domain": "allied_technical"
       },
       {
-        "degree": "CGPA: 9.6 / 10",
+        "degree": "Hindustan Institute of Technology and Science, 2022 \u2013 2026",
         "institution": "",
-        "year": null,
-        "domain": "general"
+        "year": "2022",
+        "domain": "allied_technical"
       }
     ],
     "certifications": [
@@ -6550,7 +6811,7 @@
       {
         "title": "ESG Analyst",
         "company": "New River Consulting",
-        "rawDates": "Apr 2025 \u2013 Present",
+        "rawDates": "New River Consulting   Apr 2025 \u2013 Present",
         "durationMonths": 20,
         "isCurrent": true,
         "bullets": [
@@ -6567,7 +6828,7 @@
       {
         "title": "Sustainability Trainee",
         "company": "New River Consulting",
-        "rawDates": "Nov 2024 \u2013 Feb 2025",
+        "rawDates": "New River Consulting   Nov 2024 \u2013 Feb 2025",
         "durationMonths": 4,
         "isCurrent": false,
         "bullets": [
@@ -6580,7 +6841,7 @@
       {
         "title": "ESG Intern",
         "company": "Earthood Services Limited",
-        "rawDates": "Mar 2024 \u2013 Jun 2024",
+        "rawDates": "Earthood Services Limited   Mar 2024 \u2013 Jun 2024",
         "durationMonths": 4,
         "isCurrent": false,
         "bullets": [
@@ -6593,7 +6854,7 @@
       {
         "title": "Senior Academic Specialist (Audit)",
         "company": "BYJU'S \u2013 Think and Learn Pvt. Ltd.",
-        "rawDates": "Aug 2020 \u2013 Jun 2023",
+        "rawDates": "BYJU'S \u2013 Think and Learn Pvt. Ltd.   Aug 2020 \u2013 Jun 2023",
         "durationMonths": 35,
         "isCurrent": false,
         "bullets": [
@@ -6608,9 +6869,15 @@
     "education": [
       {
         "degree": "MBA / PGDSM \u2013 Sustainability Management",
-        "institution": "Indian Institute of Forest Management (IIFM), 2025",
-        "year": "2025",
+        "institution": "",
+        "year": null,
         "domain": "environmental"
+      },
+      {
+        "degree": "Indian Institute of Forest Management (IIFM), 2025",
+        "institution": "",
+        "year": "2025",
+        "domain": "general"
       },
       {
         "degree": "OGPA: 3.04/4.33",
@@ -6620,26 +6887,26 @@
       },
       {
         "degree": "M.Tech \u2013 Thermal Engineering",
-        "institution": "Trinity Institute of Research and Technology, 2021",
+        "institution": "",
+        "year": null,
+        "domain": "allied_technical"
+      },
+      {
+        "degree": "Trinity Institute of Research and Technology, 2021",
+        "institution": "",
         "year": "2021",
         "domain": "allied_technical"
       },
       {
-        "degree": "CGPA: 8.60/10",
+        "degree": "B.Tech \u2013 Mechanical Engineering",
         "institution": "",
         "year": null,
-        "domain": "general"
-      },
-      {
-        "degree": "B.Tech \u2013 Mechanical Engineering",
-        "institution": "Samrat Ashok Technological Institute, 2017",
-        "year": "2017",
         "domain": "allied_technical"
       },
       {
-        "degree": "CGPA: 7.53/10",
+        "degree": "Samrat Ashok Technological Institute, 2017",
         "institution": "",
-        "year": null,
+        "year": "2017",
         "domain": "general"
       }
     ],
@@ -6762,23 +7029,13 @@
     "experience": [
       {
         "title": "Associate LCA Consultant",
-        "company": "Mondra Global Ltd   Mar 2022 \u2014 Present",
-        "rawDates": "",
-        "durationMonths": 0,
-        "isCurrent": false,
+        "company": "Mondra Global Ltd",
+        "rawDates": "Mondra Global Ltd   Mar 2022 \u2014 Present",
+        "durationMonths": 57,
+        "isCurrent": true,
         "bullets": [
-          "\u2022 Lead end-to-end Life Cycle Assessment (LCA) and Scope s across food, beverage, and FMCG supply chains, delivering decision-ready insights to major UK and global clients."
-        ],
-        "isIndependentLCA": true,
-        "isDesignRole": false
-      },
-      {
-        "title": "\u2022 Manage the complete LCA workflow",
-        "company": "data collection, supplier engagement, secondary database research, system boundary definition, and allocation methodologies \u2014 ensuring alignment with ISO LCA standards, ESG frameworks, and EU CSRD requirements.",
-        "rawDates": "",
-        "durationMonths": 0,
-        "isCurrent": false,
-        "bullets": [
+          "\u2022 Lead end-to-end Life Cycle Assessment (LCA) and Scope s across food, beverage, and FMCG supply chains, delivering decision-ready insights to major UK and global clients.",
+          "\u2022 Manage the complete LCA workflow \u2014 data collection, supplier engagement, secondary database research, system boundary definition, and allocation methodologies \u2014 ensuring alignment with ISO LCA standards, ESG frameworks, and EU CSRD requirements.",
           "\u2022 Translate complex supply-chain and emissions data into actionable sustainability insights, supporting decarbonisation pathways, internal carbon pricing, and scenario-adjusted KPIs for informed client decision-making.",
           "\u2022 Collaborate with global, cross-functional teams to integrate LCA outputs into climate risk and resilience assessments, contributing to broader ESG reporting initiatives.",
           "\u2022 Drive continuous improvement through technology enablement by integrating manual LCA processes with digital platforms using OpenLCA, improving data accuracy and reporting efficiency."
@@ -6788,9 +7045,9 @@
       },
       {
         "title": "Junior Research Fellow",
-        "company": "IIT Hyderabad   Oct 2021 \u2014 Feb 2022",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "IIT Hyderabad",
+        "rawDates": "IIT Hyderabad   Oct 2021 \u2014 Feb 2022",
+        "durationMonths": 5,
         "isCurrent": false,
         "bullets": [
           "\u2022 Coordinated research on photocatalysis of pesticides in agricultural fields, assessing usage of different types of photocatalysts.",
@@ -6802,9 +7059,9 @@
       },
       {
         "title": "Project Associate",
-        "company": "IIT Madras   Jan 2021 \u2014 Oct 2021",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "IIT Madras",
+        "rawDates": "IIT Madras   Jan 2021 \u2014 Oct 2021",
+        "durationMonths": 10,
         "isCurrent": false,
         "bullets": [
           "\u2022 Collaborated with faculty and industry experts to analyze the nitrate removal process of a bioreactor and optimize its performance.",
@@ -6816,9 +7073,9 @@
       },
       {
         "title": "Graduate Teaching Assistant",
-        "company": "National Institute of Technology   Aug 2019 \u2014 Oct 2020",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "National Institute of Technology",
+        "rawDates": "National Institute of Technology   Aug 2019 \u2014 Oct 2020",
+        "durationMonths": 15,
         "isCurrent": false,
         "bullets": [],
         "isIndependentLCA": false,
@@ -6826,9 +7083,9 @@
       },
       {
         "title": "Trainee Environmental Engineer",
-        "company": "Central Leather Research Institute   May 2019 \u2014 Jul 2019",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Central Leather Research Institute",
+        "rawDates": "Central Leather Research Institute   May 2019 \u2014 Jul 2019",
+        "durationMonths": 3,
         "isCurrent": false,
         "bullets": [],
         "isIndependentLCA": false,
@@ -6839,19 +7096,25 @@
     "education": [
       {
         "degree": "M Tech",
-        "institution": "National Institute of Technology, 2018",
-        "year": "2018",
-        "domain": "general"
-      },
-      {
-        "degree": "8.1 CGPA",
-        "institution": "B E in Civil Engineering",
+        "institution": "",
         "year": null,
         "domain": "general"
       },
       {
+        "degree": "National Institute of Technology, 2018",
+        "institution": "",
+        "year": "2018",
+        "domain": "allied_technical"
+      },
+      {
+        "degree": "B E in Civil Engineering",
+        "institution": "",
+        "year": null,
+        "domain": "allied_technical"
+      },
+      {
         "degree": "Government College of Technology, 2013",
-        "institution": "8.3 CGPA",
+        "institution": "",
         "year": "2013",
         "domain": "allied_technical"
       }
@@ -6914,8 +7177,8 @@
         "Malayalam"
       ]
     },
-    "totalExperienceMonths": 0,
-    "independentLcaExperienceMonths": 0,
+    "totalExperienceMonths": 89,
+    "independentLcaExperienceMonths": 67,
     "designExperienceMonths": 0,
     "completedLcaProjectsCount": 0,
     "hasDesignPortfolioOrCaseStudies": false,
@@ -6928,7 +7191,7 @@
     },
     "rawTextLength": 2879,
     "warnings": [],
-    "lcaChunk": "Associate LCA Consultant Associate LCA Consultant at Mondra Global Ltd   Mar 2022 \u2014 Present: \u2022 Lead end-to-end Life Cycle Assessment (LCA) and Scope s across food, beverage, and FMCG supply chains, delivering decision-ready insights to major UK and global clients. \u2022 Manage the complete LCA workflow at data collection, supplier engagement, secondary database research, system boundary definition, and allocation methodologies \u2014 ensuring alignment with ISO LCA standards, ESG frameworks, and EU CSRD requirements.: \u2022 Translate complex supply-chain and emissions data into actionable sustainability insights, supporting decarbonisation pathways, internal carbon pricing, and scenario-adjusted KPIs for informed client decision-making. \u2022 Collaborate with global, cross-functional teams to integrate LCA outputs into climate risk and resilience assessments, contributing to broader ESG reporting initiatives. \u2022 Drive continuous improvement through technology enablement by integrating manual LCA processes with digital platforms using OpenLCA, improving data accuracy and reporting efficiency. Project Associate at IIT Madras   Jan 2021 \u2014 Oct 2021: \u2022 Collaborated with faculty and industry experts to analyze the nitrate removal process of a bioreactor and optimize its performance. \u2022 Performed Life Cycle Assessments (LCA) to evaluate environmental impacts of waste treatment processes. \u2022 Led environmental risk assessments and developed corrective action plans, ensuring compliance with regulatory requirements. Trainee Environmental Engineer at Central Leather Research Institute   May 2019 \u2014 Jul 2019:  Skills: OpenLCA, MS Excel, MS PowerPoint, MS Word, PowerBI, Python (Beginner), Life Cycle Assessment (LCA), GHG Protocol, Environmental Impact Assessment, Sustainability Reporting, Decarbonisation",
+    "lcaChunk": "Associate LCA Consultant Associate LCA Consultant at Mondra Global Ltd: \u2022 Lead end-to-end Life Cycle Assessment (LCA) and Scope s across food, beverage, and FMCG supply chains, delivering decision-ready insights to major UK and global clients. \u2022 Manage the complete LCA workflow \u2014 data collection, supplier engagement, secondary database research, system boundary definition, and allocation methodologies \u2014 ensuring alignment with ISO LCA standards, ESG frameworks, and EU CSRD requirements. \u2022 Translate complex supply-chain and emissions data into actionable sustainability insights, supporting decarbonisation pathways, internal carbon pricing, and scenario-adjusted KPIs for informed client decision-making. \u2022 Collaborate with global, cross-functional teams to integrate LCA outputs into climate risk and resilience assessments, contributing to broader ESG reporting initiatives. \u2022 Drive continuous improvement through technology enablement by integrating manual LCA processes with digital platforms using OpenLCA, improving data accuracy and reporting efficiency. Project Associate at IIT Madras: \u2022 Collaborated with faculty and industry experts to analyze the nitrate removal process of a bioreactor and optimize its performance. \u2022 Performed Life Cycle Assessments (LCA) to evaluate environmental impacts of waste treatment processes. \u2022 Led environmental risk assessments and developed corrective action plans, ensuring compliance with regulatory requirements. Trainee Environmental Engineer at Central Leather Research Institute:  Skills: OpenLCA, MS Excel, MS PowerPoint, MS Word, PowerBI, Python (Beginner), Life Cycle Assessment (LCA), GHG Protocol, Environmental Impact Assessment, Sustainability Reporting, Decarbonisation Pathways, Climate Risk Analysis, Analytical Skills, Client Engagem",
     "uiuxChunk": "Associate LCA Consultant Skills: OpenLCA, MS Excel, MS PowerPoint, MS Word, PowerBI, Python (Beginner), Life Cycle Assessment (LCA), GHG Protocol, Environmental Impact Assessment, Sustainability Reporting, Decarbonisation Pathways, Climate Risk Analysis, Analytical Skills, Client Engagement, Collaboration, Tools / Technologies, Languages, English, Tamil, Hindi, Malayalam"
   },
   {
@@ -6944,7 +7207,7 @@
       {
         "title": "Engineer, Energy Efficiency & Climate Change",
         "company": "Confederation of Indian Industry (CII) \u2013 Green Business Centre",
-        "rawDates": "July 2025 \u2013 Present",
+        "rawDates": "Confederation of Indian Industry (CII) \u2013 Green Business Centre   July 2025 \u2013 Present",
         "durationMonths": 17,
         "isCurrent": true,
         "bullets": [
@@ -7027,27 +7290,27 @@
     "education": [
       {
         "degree": "M.Tech in Sustainable Engineering",
-        "institution": "Indian Institute of Technology (IIT), Hyderabad, 2023-2025",
+        "institution": "",
+        "year": null,
+        "domain": "allied_technical"
+      },
+      {
+        "degree": "Indian Institute of Technology (IIT), Hyderabad, 2023-2025",
+        "institution": "",
         "year": "2023",
         "domain": "allied_technical"
       },
       {
-        "degree": "CGPA \u2013 9.14",
+        "degree": "B.Tech in Mechanical Engineering",
         "institution": "",
         "year": null,
-        "domain": "general"
-      },
-      {
-        "degree": "B.Tech in Mechanical Engineering",
-        "institution": "Academy of Technology, West Bengal, 2017-2021",
-        "year": "2017",
         "domain": "allied_technical"
       },
       {
-        "degree": "CGPA \u2013 8.44",
+        "degree": "Academy of Technology, West Bengal, 2017-2021",
         "institution": "",
-        "year": null,
-        "domain": "general"
+        "year": "2017",
+        "domain": "allied_technical"
       }
     ],
     "certifications": [
@@ -7161,10 +7424,10 @@
     "experience": [
       {
         "title": "ESG & Sustainability Professional",
-        "company": "PwC   Ongoing",
-        "rawDates": "",
+        "company": "PwC",
+        "rawDates": "PwC   Ongoing",
         "durationMonths": 0,
-        "isCurrent": false,
+        "isCurrent": true,
         "bullets": [
           "\u2022 Supporting GRI and BRSR-aligned ESG reporting, improving data consistency across functions.",
           "\u2022 Conducted ESG data validation and analysis, ensuring accuracy of sustainability disclosures.",
@@ -7175,9 +7438,9 @@
       },
       {
         "title": "Junior Manager",
-        "company": "Eicher Tractors (TMTL)   2016 \u2014 2019",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Eicher Tractors (TMTL)",
+        "rawDates": "Eicher Tractors (TMTL)   2016 \u2014 2019",
+        "durationMonths": 48,
         "isCurrent": false,
         "bullets": [
           "\u2022 Designed and implemented the digital 'Pick-to-List' material-supply system, eliminating paper-based processes and improving kitting efficiency across the assembly line.",
@@ -7191,9 +7454,9 @@
       },
       {
         "title": "Intern",
-        "company": "TATA Motors   June 2025 \u2014 August 2025",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "TATA Motors",
+        "rawDates": "TATA Motors   June 2025 \u2014 August 2025",
+        "durationMonths": 3,
         "isCurrent": false,
         "bullets": [
           "\u2022 Quantified GHG reduction potential through sludge co-processing, generating Scope cular-economy objectives.",
@@ -7227,27 +7490,27 @@
     "education": [
       {
         "degree": "Master of Business Management in Sustainability Management",
-        "institution": "TERI School of Advanced Studies, Delhi, 2024 - 2026",
-        "year": "2024",
+        "institution": "",
+        "year": null,
         "domain": "environmental"
       },
       {
-        "degree": "CGPA: 7.78 (3rd semester)",
+        "degree": "TERI School of Advanced Studies, Delhi, 2024 - 2026",
         "institution": "",
-        "year": null,
+        "year": "2024",
         "domain": "general"
       },
       {
         "degree": "Bachelor of Engineering in Automobile Engineering",
-        "institution": "Oriental Institute of Science and Technology, RGPV, 2012 - 2016",
-        "year": "2012",
+        "institution": "",
+        "year": null,
         "domain": "allied_technical"
       },
       {
-        "degree": "CGPA: 7.7",
+        "degree": "Oriental Institute of Science and Technology, RGPV, 2012 - 2016",
         "institution": "",
-        "year": null,
-        "domain": "general"
+        "year": "2012",
+        "domain": "allied_technical"
       }
     ],
     "certifications": [],
@@ -7292,8 +7555,8 @@
         "Hindi"
       ]
     },
-    "totalExperienceMonths": 0,
-    "independentLcaExperienceMonths": 0,
+    "totalExperienceMonths": 51,
+    "independentLcaExperienceMonths": 3,
     "designExperienceMonths": 0,
     "completedLcaProjectsCount": 0,
     "hasDesignPortfolioOrCaseStudies": false,
@@ -7306,7 +7569,7 @@
     },
     "rawTextLength": 2538,
     "warnings": [],
-    "lcaChunk": "ESG & Sustainability Professional ESG & Sustainability professional with an engineering background and hands-on experience in GHG accounting, Life Cycle Assessment (LCA), and ESG reporting aligned to GRI and BRSR frameworks. ESG & Sustainability Professional at PwC   Ongoing: \u2022 Supporting GRI and BRSR-aligned ESG reporting, improving data consistency across functions. \u2022 Conducted ESG data validation and analysis, ensuring accuracy of sustainability disclosures. \u2022 Coordinated with cross-functional teams to streamline ESG data collection processes. Intern at TATA Motors   June 2025 \u2014 August 2025: \u2022 Quantified GHG reduction potential through sludge co-processing, generating Scope cular-economy objectives. \u2022 Executed a full Life Cycle Assessment (LCA) of cotton gloves using OpenLCA, identifying material substitution and process optimization opportunities to cut embodied emissions. Skills: Open LCA, AutoCAD, CATIA, SolidWorks, GHG Accounting, Materiality Assessment, ESG Benchmarking, ESG Reporting, Sustainability Data Analysis, Awards / Honors, \u2022 Winner, CII Poka-Yoke Competition, Languages, English, Hindi",
+    "lcaChunk": "ESG & Sustainability Professional ESG & Sustainability professional with an engineering background and hands-on experience in GHG accounting, Life Cycle Assessment (LCA), and ESG reporting aligned to GRI and BRSR frameworks. ESG & Sustainability Professional at PwC: \u2022 Supporting GRI and BRSR-aligned ESG reporting, improving data consistency across functions. \u2022 Conducted ESG data validation and analysis, ensuring accuracy of sustainability disclosures. \u2022 Coordinated with cross-functional teams to streamline ESG data collection processes. Intern at TATA Motors: \u2022 Quantified GHG reduction potential through sludge co-processing, generating Scope cular-economy objectives. \u2022 Executed a full Life Cycle Assessment (LCA) of cotton gloves using OpenLCA, identifying material substitution and process optimization opportunities to cut embodied emissions. Skills: Open LCA, AutoCAD, CATIA, SolidWorks, GHG Accounting, Materiality Assessment, ESG Benchmarking, ESG Reporting, Sustainability Data Analysis, Awards / Honors, \u2022 Winner, CII Poka-Yoke Competition, Languages, English, Hindi",
     "uiuxChunk": "ESG & Sustainability Professional ESG & Sustainability professional with an engineering background and hands-on experience in GHG accounting, Life Cycle Assessment (LCA), and ESG reporting aligned to GRI and BRSR frameworks. Skills: Open LCA, AutoCAD, CATIA, SolidWorks, GHG Accounting, Materiality Assessment, ESG Benchmarking, ESG Reporting, Sustainability Data Analysis, Awards / Honors, \u2022 Winner, CII Poka-Yoke Competition, Languages, English, Hindi"
   },
   {
@@ -7322,7 +7585,7 @@
       {
         "title": "Engineer",
         "company": "L&T Technology Services",
-        "rawDates": "March 2023 \u2013 Present",
+        "rawDates": "L&T Technology Services   March 2023 \u2013 Present",
         "durationMonths": 45,
         "isCurrent": true,
         "bullets": [
@@ -7398,9 +7661,15 @@
     "education": [
       {
         "degree": "M.Tech in Automotive Engineering",
-        "institution": "MS Ramaiah University of Applied Science",
+        "institution": "",
         "year": null,
         "domain": "allied_technical"
+      },
+      {
+        "degree": "MS Ramaiah University of Applied Science",
+        "institution": "",
+        "year": null,
+        "domain": "general"
       },
       {
         "degree": "GPA: 7.99",
@@ -7410,7 +7679,13 @@
       },
       {
         "degree": "B.Tech in Mechanical Engineering",
-        "institution": "SRM Institute of Science and Technology",
+        "institution": "",
+        "year": null,
+        "domain": "allied_technical"
+      },
+      {
+        "degree": "SRM Institute of Science and Technology",
+        "institution": "",
         "year": null,
         "domain": "allied_technical"
       },
@@ -7520,10 +7795,10 @@
     "experience": [
       {
         "title": "Sustainability Consultant / Operations In-charge",
-        "company": "VRS CERT FZ LLC   AUG 2025 \u2014 PRESENT",
-        "rawDates": "",
-        "durationMonths": 0,
-        "isCurrent": false,
+        "company": "VRS CERT FZ LLC",
+        "rawDates": "VRS CERT FZ LLC   AUG 2025 \u2014 PRESENT",
+        "durationMonths": 16,
+        "isCurrent": true,
         "bullets": [
           "\u2022 Leading sustainability teams, assigning tasks, tracking progress, and ensuring timely delivery of ESG projects.",
           "\u2022 Serving as the primary client contact, participating in proposal and project kickoff meetings, defining project requirements, and managing communication for GHG, EcoVadis, and EPD projects.",
@@ -7538,9 +7813,9 @@
       },
       {
         "title": "Air Quality Analyst",
-        "company": "Bureau Veritas India Pvt. Ltd   APR 2022 \u2014 MAR 2024",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Bureau Veritas India Pvt. Ltd",
+        "rawDates": "Bureau Veritas India Pvt. Ltd   APR 2022 \u2014 MAR 2024",
+        "durationMonths": 24,
         "isCurrent": false,
         "bullets": [
           "\u2022 Conducted laboratory analysis of ambient air, indoor air, and stack emissions based on Indian Standards, NIOSH & USEPA Methods.",
@@ -7594,13 +7869,25 @@
     "education": [
       {
         "degree": "Master of Science in Environmental Sciences",
-        "institution": "Bharathiar University, JUL 2019 - APR 2021",
-        "year": "2019",
+        "institution": "",
+        "year": null,
         "domain": "environmental"
       },
       {
+        "degree": "Bharathiar University, JUL 2019 - APR 2021",
+        "institution": "",
+        "year": "2019",
+        "domain": "general"
+      },
+      {
         "degree": "Bachelor of Science in Zoology",
-        "institution": "NGM College of Arts and Science, JUL 2016 - APR 2019",
+        "institution": "",
+        "year": null,
+        "domain": "general"
+      },
+      {
+        "degree": "NGM College of Arts and Science, JUL 2016 - APR 2019",
+        "institution": "",
         "year": "2016",
         "domain": "general"
       }
@@ -7649,8 +7936,8 @@
         "English"
       ]
     },
-    "totalExperienceMonths": 0,
-    "independentLcaExperienceMonths": 0,
+    "totalExperienceMonths": 40,
+    "independentLcaExperienceMonths": 16,
     "designExperienceMonths": 0,
     "completedLcaProjectsCount": 0,
     "hasDesignPortfolioOrCaseStudies": false,
@@ -7663,7 +7950,7 @@
     },
     "rawTextLength": 2635,
     "warnings": [],
-    "lcaChunk": "Sustainability Consultant / Operations In-charge Sustainability Consultant with over ainability and carbon accounting. Sustainability Consultant / Operations In-charge at VRS CERT FZ LLC   AUG 2025 \u2014 PRESENT: \u2022 Leading sustainability teams, assigning tasks, tracking progress, and ensuring timely delivery of ESG projects. \u2022 Serving as the primary client contact, participating in proposal and project kickoff meetings, defining project requirements, and managing communication for GHG, EcoVadis, and EPD projects. \u2022 Preparing carbon footprints and GHG inventories and supporting ISO  and ISO  verification. \u2022 Developing comprehensive GHG and ESG reports, including Scope 1, Scope 2, and Scope 3 emissions. \u2022 Managing EcoVadis submissions independently and driving improvements in sustainability ratings. \u2022 Preparing LCA studies and EPDs using Air.e software in compliance with relevant standards. \u2022 Working with developers to enhance ESG software tools and functionalities. Skills: Air.e, Advanced Excel, Carbon Accounting, GHG Reporting, ESG Reporting, Sustainability, Environmental Sciences, Team Leadership, Client Engagement, Tools / Technologies, Canva, Languages, Tamil, English",
+    "lcaChunk": "Sustainability Consultant / Operations In-charge Sustainability Consultant with over ainability and carbon accounting. Sustainability Consultant / Operations In-charge at VRS CERT FZ LLC: \u2022 Leading sustainability teams, assigning tasks, tracking progress, and ensuring timely delivery of ESG projects. \u2022 Serving as the primary client contact, participating in proposal and project kickoff meetings, defining project requirements, and managing communication for GHG, EcoVadis, and EPD projects. \u2022 Preparing carbon footprints and GHG inventories and supporting ISO  and ISO  verification. \u2022 Developing comprehensive GHG and ESG reports, including Scope 1, Scope 2, and Scope 3 emissions. \u2022 Managing EcoVadis submissions independently and driving improvements in sustainability ratings. \u2022 Preparing LCA studies and EPDs using Air.e software in compliance with relevant standards. \u2022 Working with developers to enhance ESG software tools and functionalities. Skills: Air.e, Advanced Excel, Carbon Accounting, GHG Reporting, ESG Reporting, Sustainability, Environmental Sciences, Team Leadership, Client Engagement, Tools / Technologies, Canva, Languages, Tamil, English",
     "uiuxChunk": "Sustainability Consultant / Operations In-charge Sustainability Consultant with over ainability and carbon accounting. Skills: Air.e, Advanced Excel, Carbon Accounting, GHG Reporting, ESG Reporting, Sustainability, Environmental Sciences, Team Leadership, Client Engagement, Tools / Technologies, Canva, Languages, Tamil, English"
   },
   {
@@ -7678,23 +7965,13 @@
     "experience": [
       {
         "title": "Global Field Operations & Impact Assessment Intern",
-        "company": "Quality Council of India   Jan 2026 \u2014 May 2026",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Quality Council of India",
+        "rawDates": "Quality Council of India   Jan 2026 \u2014 May 2026",
+        "durationMonths": 5,
         "isCurrent": false,
         "bullets": [
-          "\u2022 Spearheaded first-of-its-kind socio-economic impact assessment of s worth $500M+ across 14 countries in Africa, Asia, and Latin America."
-        ],
-        "isIndependentLCA": false,
-        "isDesignRole": false
-      },
-      {
-        "title": "\u2022 Led field assessments across Mozambique, Eswatini, and Malawi",
-        "company": "engaging community beneficiaries, principal secretaries, high commissioners, and implementing agencies to capture primary impact evidence informing sovereign development finance decisions.",
-        "rawDates": "",
-        "durationMonths": 0,
-        "isCurrent": false,
-        "bullets": [
+          "\u2022 Spearheaded first-of-its-kind socio-economic impact assessment of s worth $500M+ across 14 countries in Africa, Asia, and Latin America.",
+          "\u2022 Led field assessments across Mozambique, Eswatini, and Malawi - engaging community beneficiaries, principal secretaries, high commissioners, and implementing agencies to capture primary impact evidence informing sovereign development finance decisions.",
           "\u2022 Delivered the complete project lifecycle within 4 months - spanning inception report, field SOPs, knowledge systems,  reports; scripted and directed  videos; with deliverables commended by MEA, India Exim Bank, and QCI leadership."
         ],
         "isIndependentLCA": false,
@@ -7702,9 +7979,9 @@
       },
       {
         "title": "ESG Strategy & Decarbonisation Intern",
-        "company": "JSW MG Motor India   Jun 2025 \u2014 Nov 2025",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "JSW MG Motor India",
+        "rawDates": "JSW MG Motor India   Jun 2025 \u2014 Nov 2025",
+        "durationMonths": 6,
         "isCurrent": false,
         "bullets": [
           "\u2022 Pioneered BRSR-aligned ESG & CSR learning modules institutionalized for C-suite leadership, 2K+ employees, and future hires, earning MD endorsement.",
@@ -7717,9 +7994,9 @@
       },
       {
         "title": "ESG & Sustainability Consulting Intern",
-        "company": "Radiance Renewables   Jun 2025 \u2014 Aug 2025",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "Radiance Renewables",
+        "rawDates": "Radiance Renewables   Jun 2025 \u2014 Aug 2025",
+        "durationMonths": 3,
         "isCurrent": false,
         "bullets": [
           "\u2022 Authored 4 GRI-aligned case studies on solar modules, stormwater management, sustainable procurement, and ground-cover solutions via in-depth stakeholder interviews for the Annual Sustainability Report, elevating ESG disclosure quality & stakeholder confidence.",
@@ -7731,9 +8008,9 @@
       },
       {
         "title": "Sound Editor",
-        "company": "RED Audio   Jun 2018 \u2014 Aug 2024",
-        "rawDates": "",
-        "durationMonths": 0,
+        "company": "RED Audio",
+        "rawDates": "RED Audio   Jun 2018 \u2014 Aug 2024",
+        "durationMonths": 75,
         "isCurrent": false,
         "bullets": [
           "\u2022 Directed audio production at Yash Raj Film Studios & collaborated with National Film Award-winning sound mixing engineers across 15+ national/regional films & TV commercials, overseeing end-to-end execution across simultaneous high-stakes productions.",
@@ -7781,19 +8058,37 @@
     "education": [
       {
         "degree": "Bachelor of Management Studies (Finance)",
-        "institution": "Mumbai University, 2018",
+        "institution": "",
+        "year": null,
+        "domain": "general"
+      },
+      {
+        "degree": "Mumbai University, 2018",
+        "institution": "",
         "year": "2018",
         "domain": "general"
       },
       {
         "degree": "MBA (Sustainability Management)",
-        "institution": "TERI School of Advanced Studies, 2026",
-        "year": "2026",
+        "institution": "",
+        "year": null,
         "domain": "environmental"
       },
       {
+        "degree": "TERI School of Advanced Studies, 2026",
+        "institution": "",
+        "year": "2026",
+        "domain": "general"
+      },
+      {
         "degree": "Class XII (Science)",
-        "institution": "Thakur College of Science and Commerce, 2014",
+        "institution": "",
+        "year": null,
+        "domain": "general"
+      },
+      {
+        "degree": "Thakur College of Science and Commerce, 2014",
+        "institution": "",
         "year": "2014",
         "domain": "general"
       }
@@ -7865,8 +8160,8 @@
         "Marathi"
       ]
     },
-    "totalExperienceMonths": 0,
-    "independentLcaExperienceMonths": 0,
+    "totalExperienceMonths": 86,
+    "independentLcaExperienceMonths": 6,
     "designExperienceMonths": 0,
     "completedLcaProjectsCount": 0,
     "hasDesignPortfolioOrCaseStudies": false,
@@ -7879,7 +8174,7 @@
     },
     "rawTextLength": 4482,
     "warnings": [],
-    "lcaChunk": "Global Field Operations & Impact Assessment Intern Climate-tech and energy-transition strategist combining field execution, systems thinking, and storytelling to drive high-impact sustainable solutions. Global Field Operations & Impact Assessment Intern at Quality Council of India   Jan 2026 \u2014 May 2026: \u2022 Spearheaded first-of-its-kind socio-economic impact assessment of s worth $500M+ across 14 countries in Africa, Asia, and Latin America. ESG Strategy & Decarbonisation Intern at JSW MG Motor India   Jun 2025 \u2014 Nov 2025: \u2022 Pioneered BRSR-aligned ESG & CSR learning modules institutionalized for C-suite leadership, 2K+ employees, and future hires, earning MD endorsement. \u2022 Conceptualised sustainability content published on the official corporate handle (600K+ followers). \u2022 Strategized circularity frameworks for EVs & ESS, conducted Life Cycle Assessments on ICE & EV models, and analyzed  a 10-year decarbonization roadmap focused on EPR compliance, material recovery, and carbon credits. \u2022 Benchmarked 10 AI-enabled carbon accounting platforms for Scope 1-3 emissions tracking, critical to the OEM\u2019s Net Zero strategy. ESG & Sustainability Consulting Intern at Radiance Renewables   Jun 2025 \u2014 Aug 2025: \u2022 Authored 4 GRI-aligned case studies on solar modules, stormwater management, sustainable procurement, and ground-cover solutions via in-depth stakeholder interviews for the Annual Sustainability Report, elevating ESG disclosure quality & stakeholder confidence. \u2022 Conducted ESG compliance audit at 4.1 MWp Solar Park, documenting key findings; trained 20+ personnel on safety, emergency response, compliance and stakeholder protocols; designed community engagement campaign for renewable energy capacity building. \u2022 Recommended CSR interventions and 3-year growth plan for flagship w",
+    "lcaChunk": "Global Field Operations & Impact Assessment Intern Climate-tech and energy-transition strategist combining field execution, systems thinking, and storytelling to drive high-impact sustainable solutions. Global Field Operations & Impact Assessment Intern at Quality Council of India: \u2022 Spearheaded first-of-its-kind socio-economic impact assessment of s worth $500M+ across 14 countries in Africa, Asia, and Latin America. \u2022 Led field assessments across Mozambique, Eswatini, and Malawi - engaging community beneficiaries, principal secretaries, high commissioners, and implementing agencies to capture primary impact evidence informing sovereign development finance decisions. \u2022 Delivered the complete project lifecycle within 4 months - spanning inception report, field SOPs, knowledge systems,  reports; scripted and directed  videos; with deliverables commended by MEA, India Exim Bank, and QCI leadership. ESG Strategy & Decarbonisation Intern at JSW MG Motor India: \u2022 Pioneered BRSR-aligned ESG & CSR learning modules institutionalized for C-suite leadership, 2K+ employees, and future hires, earning MD endorsement. \u2022 Conceptualised sustainability content published on the official corporate handle (600K+ followers). \u2022 Strategized circularity frameworks for EVs & ESS, conducted Life Cycle Assessments on ICE & EV models, and analyzed  a 10-year decarbonization roadmap focused on EPR compliance, material recovery, and carbon credits. \u2022 Benchmarked 10 AI-enabled carbon accounting platforms for Scope 1-3 emissions tracking, critical to the OEM\u2019s Net Zero strategy. ESG & Sustainability Consulting Intern at Radiance Renewables: \u2022 Authored 4 GRI-aligned case studies on solar modules, stormwater management, sustainable procurement, and ground-cover solutions via in-depth stakeholder intervi",
     "uiuxChunk": "Global Field Operations & Impact Assessment Intern Climate-tech and energy-transition strategist combining field execution, systems thinking, and storytelling to drive high-impact sustainable solutions. Skills: Power BI, Excel (Data Analysis), OpenLCA, AI Tools, MS Project, Canva, SBTi Target Tool, Net Zero Strategy, GHG Accounting (Scope 1-3), Circular Economy, Double Materiality, Stakeholder and ESG Risk Management, Green Finance, Carbon Markets, CSR Strategy & SROI, Sustainable Supply Chain, Awards / Honors, The Unsung Warrior, \u2022 Best Sound on Har Har Mahadev, first Marathi film released in five languages, at 60th Maharashtra State Film Awards, Languages, English, Hindi, Gujarati, Marathi"
   },
   {
@@ -7895,7 +8190,7 @@
       {
         "title": "Energy & Sustainability Consultant",
         "company": "AECOM GmbH",
-        "rawDates": "Jun 2023 \u2013 Aug 2025",
+        "rawDates": "AECOM GmbH   Jun 2023 \u2013 Aug 2025",
         "durationMonths": 27,
         "isCurrent": false,
         "bullets": [
@@ -7911,7 +8206,7 @@
       {
         "title": "Senior Consultant",
         "company": "Energy Efficiency & Sustainability \u2014 TA Europe GmbH",
-        "rawDates": "Sept 2021 \u2013 Jun 2023",
+        "rawDates": "Energy Efficiency & Sustainability \u2014 TA Europe GmbH   Sept 2021 \u2013 Jun 2023",
         "durationMonths": 22,
         "isCurrent": false,
         "bullets": [
@@ -7927,7 +8222,7 @@
       {
         "title": "Scientific Research Assistant",
         "company": "Fraunhofer UMSICHT",
-        "rawDates": "Mar 2019 \u2013 Sept 2021",
+        "rawDates": "Fraunhofer UMSICHT   Mar 2019 \u2013 Sept 2021",
         "durationMonths": 31,
         "isCurrent": false,
         "bullets": [
@@ -7943,15 +8238,27 @@
     "education": [
       {
         "degree": "Dual M.Sc. \u2014 Renewable Energy, Energy Efficiency & Sustainability",
-        "institution": "Kassel University (DE), Cairo University (EG), Monastir University (TN), November 2020",
-        "year": "2020",
+        "institution": "",
+        "year": null,
         "domain": "environmental"
       },
       {
+        "degree": "Kassel University (DE), Cairo University (EG), Monastir University (TN), November 2020",
+        "institution": "",
+        "year": "2020",
+        "domain": "general"
+      },
+      {
         "degree": "B.Sc. \u2014 Mechanical Engineering",
-        "institution": "JNTU Hyderabad, India, July 2015",
-        "year": "2015",
+        "institution": "",
+        "year": null,
         "domain": "allied_technical"
+      },
+      {
+        "degree": "JNTU Hyderabad, India, July 2015",
+        "institution": "",
+        "year": "2015",
+        "domain": "general"
       }
     ],
     "certifications": [
@@ -8018,8 +8325,8 @@
         "German (Business Fluent)"
       ]
     },
-    "totalExperienceMonths": 80,
-    "independentLcaExperienceMonths": 49,
+    "totalExperienceMonths": 78,
+    "independentLcaExperienceMonths": 48,
     "designExperienceMonths": 0,
     "completedLcaProjectsCount": 0,
     "hasDesignPortfolioOrCaseStudies": false,
@@ -8069,7 +8376,7 @@
     },
     "rawTextLength": 0,
     "warnings": [
-      "File contains 0 text nodes and 0 drawings in DOCX XML"
+      "File contains 0 text nodes and 0 drawings in DOCX XML. Flagged as unscorable."
     ],
     "lcaChunk": "",
     "uiuxChunk": ""

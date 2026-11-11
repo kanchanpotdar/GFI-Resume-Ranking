@@ -60,6 +60,7 @@ Deliver the agreed Growth For Impact resume ranking prototype **by Saturday, 14 
 - [x] Versioned, validated baseline dataset and cached embeddings
 - [x] Evidence-backed rubric including LCA GaBi/SimaPro, ≥3 projects, ISO requirements and UI/UX Figma/research/portfolio evidence
 - [x] LCA 4–6 vs 2–3 year source conflict documented and shown; thresholds calibrated; four-outcome classification
+- [x] Sprint 1.5 Independent validation audit: extraction discrepancies resolved, test oracle reconciliation, NDCG/Precision evaluated, 6 audit reports created
 - [ ] LCA/UI-UX tabs, filtering/sorting, inspectable evidence and source references
 - [ ] New PDF/DOCX upload, duplicate detection, comparable scoring and two-role rerank
 - [ ] Secure HF calls; explicit timeout/provider/scanned-file/oversize errors

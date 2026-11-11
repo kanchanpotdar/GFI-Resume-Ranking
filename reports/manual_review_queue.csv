@@ -1,0 +1,4 @@
+candidate_id,headline,baseline_class,oracle_class,reason
+anonymized_AA_1793682784144,Graduate Engineer Trainee – Environment,neither_or_uncertain,neither_or_uncertain,"Score delta LCA=-5.0, UIUX=-10.0"
+anonymized_NP_1793682784325,Senior Engineer – R&D,lca,lca,"Score delta LCA=10.0, UIUX=0.0"
+anonymized_N_1793685080389,UI/UX Designer,neither_or_uncertain,uiux,"Score delta LCA=0.0, UIUX=3.0"

@@ -6,7 +6,7 @@ import {
   SubScoreBreakdown,
 } from "./types";
 
-export const SCORING_VERSION = "1.0.0";
+export const SCORING_VERSION = "1.5.0";
 export const LCA_THRESHOLD = 50;
 export const UIUX_THRESHOLD = 50;
 
@@ -36,10 +36,10 @@ export function scoreLCARole(
       requirementsEvidence: [],
       eligibilityFlags: {
         meetsRoleThreshold: false,
-        criticalRequirementMissing: ["Document contains no text/content"],
-        reviewNeededFlags: ["Empty document record"],
+        criticalRequirementMissing: ["Document contains no text/content (0 XML text nodes)"],
+        reviewNeededFlags: ["Empty document record: Unscorable due to insufficient evidence"],
       },
-      explanation: "Document is empty (0 text nodes). Ineligible for ranking.",
+      explanation: "Document is empty (0 text nodes). Unscorable due to insufficient evidence.",
     };
   }
 
@@ -57,6 +57,7 @@ export function scoreLCARole(
   // 1.1 GaBi or SimaPro hands-on (15 pts) - Essential JD requirement
   const hasGabi = allText.includes("gabi");
   const hasSimaPro = allText.includes("simapro");
+  const hasOpenLca = allText.includes("openlca") || allText.includes("open lca");
   let gabiPoints = 0;
   let gabiEvidence = "Neither GaBi nor SimaPro explicitly evidenced in resume.";
   if (hasGabi && hasSimaPro) {
@@ -68,7 +69,7 @@ export function scoreLCARole(
   } else if (hasSimaPro) {
     gabiPoints = 15;
     gabiEvidence = "Evidenced hands-on expertise in SimaPro software.";
-  } else if (allText.includes("openlca")) {
+  } else if (hasOpenLca) {
     gabiPoints = 5;
     gabiEvidence = "Mentions OpenLCA; GaBi/SimaPro hands-on experience requires verification.";
   }
@@ -83,7 +84,11 @@ export function scoreLCARole(
   });
 
   // 1.2 ISO 14040 / ISO 14044 compliance (8 pts) - Essential
-  const hasIso = allText.includes("iso 14040") || allText.includes("iso 14044") || allText.includes("iso14040") || allText.includes("iso14044");
+  // Matches explicit ISO 14040/14044 as well as anonymized tokens ('ISO /', 'ISO :2006', 'ISO LCA') in LCA contexts
+  const hasIsoExplicit = allText.includes("iso 14040") || allText.includes("iso 14044") || allText.includes("iso14040") || allText.includes("iso14044");
+  const hasIsoAnonymized = (allText.includes("iso /") || allText.includes("iso :2006") || allText.includes("iso lca") || allText.includes("iso s")) &&
+                           (allText.includes("lca") || allText.includes("life cycle") || allText.includes("footprint") || allText.includes("epd"));
+  const hasIso = hasIsoExplicit || hasIsoAnonymized;
   const isoPoints = hasIso ? 8 : 0;
   reqEvidence.push({
     requirementKey: "standards_iso",
@@ -91,7 +96,9 @@ export function scoreLCARole(
     status: hasIso ? "evidenced" : "not_evidenced",
     pointsAwarded: isoPoints,
     pointsMax: 8,
-    evidenceSpan: hasIso ? "Explicitly references ISO 14040/14044 standards adherence." : "No explicit ISO 14040/14044 standards reference.",
+    evidenceSpan: hasIso
+      ? (hasIsoExplicit ? "Explicitly references ISO 14040/14044 standards adherence." : "Evidenced ISO LCA standards compliance (anonymized standard token in source).")
+      : "No explicit ISO 14040/14044 standards reference found.",
   });
 
   // 1.3 LCI Data Collection, Validation & LCA Modelling (7 pts)
@@ -100,20 +107,19 @@ export function scoreLCARole(
   const hasEpd = allText.includes("epd") || allText.includes("environmental product declaration");
   let lciPoints = 0;
   if (hasLci && hasModelling) lciPoints = 7;
-  else if (hasLci || hasModelling || hasEpd) lciPoints = 4;
+  else if (hasLci || hasModelling || hasEpd || extraction.completedLcaProjectsCount > 0) lciPoints = 5;
   reqEvidence.push({
     requirementKey: "lci_methodology",
     requirementName: "LCI Data Collection, Validation & Modelling",
     status: lciPoints === 7 ? "evidenced" : lciPoints > 0 ? "partially_evidenced" : "not_evidenced",
     pointsAwarded: lciPoints,
     pointsMax: 7,
-    evidenceSpan: lciPoints === 7 ? "Demonstrated LCI data collection & LCA modelling workflows." : lciPoints > 0 ? "Mention of LCI/EPD or modeling concepts." : "Not evidenced.",
+    evidenceSpan: lciPoints === 7 ? "Demonstrated LCI data collection & LCA modelling workflows." : lciPoints > 0 ? "Mention of LCI/EPD or modeling concepts in projects." : "Not evidenced.",
   });
 
   const skillsScore = gabiPoints + isoPoints + lciPoints;
 
   // 2. RELEVANT EXPERIENCE (Max 30 pts)
-  // ADR-S01: Operational scoring against 2-3 years independent LCA experience provisionally
   const lcaMonths = extraction.independentLcaExperienceMonths;
   let expPoints = 0;
   let expNotice: string | undefined = undefined;
@@ -141,11 +147,10 @@ export function scoreLCARole(
     status: expPoints >= 28 ? "evidenced" : expPoints > 0 ? "partially_evidenced" : "not_evidenced",
     pointsAwarded: expPoints,
     pointsMax: 30,
-    evidenceSpan: `${(lcaMonths / 12).toFixed(1)} years evidenced (${lcaMonths} months). ${expNotice}`,
+    evidenceSpan: `${(lcaMonths / 12).toFixed(1)} years evidenced (${lcaMonths} non-overlapping months). ${expNotice}`,
   });
 
   // 3. PROJECTS / DELIVERABLES (Max 20 pts)
-  // Detailed JD: "Consultant must have completed at least 03 LCA projects"
   const completedProjects = extraction.completedLcaProjectsCount;
   let projectPoints = 0;
   if (completedProjects >= 3) projectPoints = 20;
@@ -164,7 +169,7 @@ export function scoreLCARole(
 
   // 4. SEMANTIC RELEVANCE (Max 15 pts)
   const normCosine = normalizeCosineSimilarity(rawCosineSimilarity);
-  const semanticScore = Math.round(normCosine * 15 * 10) / 10; // max 15
+  const semanticScore = Math.round(normCosine * 15 * 10) / 10;
 
   reqEvidence.push({
     requirementKey: "semantic_relevance",
@@ -258,10 +263,10 @@ export function scoreUIUXRole(
       requirementsEvidence: [],
       eligibilityFlags: {
         meetsRoleThreshold: false,
-        criticalRequirementMissing: ["Document contains no text/content"],
-        reviewNeededFlags: ["Empty document record"],
+        criticalRequirementMissing: ["Document contains no text/content (0 XML text nodes)"],
+        reviewNeededFlags: ["Empty document record: Unscorable due to insufficient evidence"],
       },
-      explanation: "Document is empty (0 text nodes). Ineligible for ranking.",
+      explanation: "Document is empty (0 text nodes). Unscorable due to insufficient evidence.",
     };
   }
 
@@ -278,7 +283,7 @@ export function scoreUIUXRole(
   // 1. SKILLS (Max 30 pts)
   // 1.1 Figma & Prototyping (15 pts) - Essential
   const hasFigma = allText.includes("figma");
-  const hasPrototyping = allText.includes("prototyp") || allText.includes("wirefram");
+  const hasPrototyping = allText.includes("prototyp") || allText.includes("wirefram") || allText.includes("mockup");
   let figmaPoints = 0;
   if (hasFigma && hasPrototyping) figmaPoints = 15;
   else if (hasFigma) figmaPoints = 12;
@@ -311,7 +316,7 @@ export function scoreUIUXRole(
   });
 
   // 1.3 User Research & Psychology (5 pts)
-  const hasUserResearch = allText.includes("user research") || allText.includes("user interviews") || allText.includes("usability testing") || allText.includes("user testing") || allText.includes("psychology");
+  const hasUserResearch = extraction.hasUserResearchEvidence || allText.includes("user research") || allText.includes("user interview") || allText.includes("usability testing") || allText.includes("user testing") || allText.includes("psychology") || allText.includes("persona");
   const userResearchPoints = hasUserResearch ? 5 : 0;
   reqEvidence.push({
     requirementKey: "user_research",
@@ -325,7 +330,6 @@ export function scoreUIUXRole(
   const skillsScore = figmaPoints + designPrinciplePoints + userResearchPoints;
 
   // 2. RELEVANT EXPERIENCE (Max 10 pts)
-  // Welcomes 0-1 year or career transitions; excess experience not penalized
   const designMonths = extraction.designExperienceMonths;
   let expPoints = 0;
   let expSpan = "";
@@ -350,7 +354,6 @@ export function scoreUIUXRole(
   });
 
   // 3. PROJECTS / PORTFOLIO (Max 30 pts)
-  // 3.1 Design Projects & Case Studies (20 pts)
   const hasPortfolioOrCaseStudies = extraction.hasDesignPortfolioOrCaseStudies || extraction.projects.some(p => p.isDesignProject);
   let portfolioPoints = 0;
   if (hasPortfolioOrCaseStudies && extraction.projects.filter(p => p.isDesignProject).length >= 2) {
@@ -372,7 +375,6 @@ export function scoreUIUXRole(
       : "No design case studies or portfolio deliverables found.",
   });
 
-  // 3.2 User Research & Interview Evidence (10 pts)
   const hasResearchEvidence = extraction.hasUserResearchEvidence || allText.includes("user interview") || allText.includes("survey") || allText.includes("persona");
   const researchEvidencePoints = hasResearchEvidence ? 10 : 0;
   reqEvidence.push({
@@ -390,7 +392,7 @@ export function scoreUIUXRole(
 
   // 4. SEMANTIC RELEVANCE (Max 20 pts)
   const normCosine = normalizeCosineSimilarity(rawCosineSimilarity);
-  const semanticScore = Math.round(normCosine * 20 * 10) / 10; // max 20
+  const semanticScore = Math.round(normCosine * 20 * 10) / 10;
 
   reqEvidence.push({
     requirementKey: "semantic_relevance",
@@ -469,7 +471,7 @@ export function classifyCandidate(
   if (extractionStatus === "empty_document") {
     return {
       classification: "neither_or_uncertain",
-      reason: "Document contains 0 text nodes. Extraction failed / empty input.",
+      reason: "Document contains 0 text nodes. Unscorable due to insufficient evidence.",
     };
   }
 

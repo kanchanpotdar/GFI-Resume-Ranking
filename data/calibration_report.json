@@ -1,5 +1,5 @@
 {
-  "reportDate": "2026-11-11T08:35:07.788Z",
+  "reportDate": "2026-11-11T10:52:23.910Z",
   "scoringConfigVersion": "1.0.0",
   "embeddingModel": "BAAI/bge-small-en-v1.5",
   "semanticRefRange": {
@@ -16,22 +16,22 @@
     "emptyCandidates": 1
   },
   "classificationDistribution": {
-    "lca": 8,
-    "uiux": 20,
+    "lca": 9,
+    "uiux": 21,
     "both": 0,
-    "neither_or_uncertain": 19
+    "neither_or_uncertain": 17
   },
   "representativeReviewedSamples": [
     {
       "candidateId": "anonymized_TM_1793682784495",
       "role": "lca",
-      "score": 75.8,
+      "score": 88.8,
       "validation": "Confirmed strong LCA background, ISO compliance, LCI models, and domain education."
     },
     {
       "candidateId": "anonymized_DVJ_1793685080268",
       "role": "uiux",
-      "score": 95.4,
+      "score": 95.5,
       "validation": "Confirmed Figma proficiency, case study projects, and user research evidence."
     },
     {

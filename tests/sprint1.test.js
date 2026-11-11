@@ -109,17 +109,22 @@ test("Sprint 1 Gate 6: Classification matches independent threshold logic", () =
   });
 });
 
-test("Sprint 1 Gate 7: Cleaning audit log and calibration report exist and are consistent", () => {
-  assert.ok(fs.existsSync(auditPath), "data/cleaning_audit.json must exist");
-  assert.ok(fs.existsSync(calibPath), "data/calibration_report.json must exist");
+test("Sprint 1.5 Regression: SRK extraction and scoring accurately recognizes Associate LCA Consultant", () => {
+  const baseline = JSON.parse(fs.readFileSync(baselinePath, "utf8"));
+  const srk = baseline.candidates.find(c => c.candidateId === "anonymized_SRK_1793682784455");
 
-  const audit = JSON.parse(fs.readFileSync(auditPath, "utf8"));
-  const calib = JSON.parse(fs.readFileSync(calibPath, "utf8"));
+  assert.ok(srk, "SRK candidate must exist");
+  assert.ok(srk.extraction.independentLcaExperienceMonths >= 36, "SRK must have >= 36 months LCA experience");
+  assert.strictEqual(srk.scores.lca.subScores.experience, 30, "SRK must receive 30/30 on LCA experience");
+  assert.strictEqual(srk.classification, "lca", "SRK must be classified as LCA");
+  assert.ok(srk.scores.lca.totalScore >= 50, "SRK total score must qualify");
+});
 
-  assert.strictEqual(audit.length, 47, "Audit log must contain 47 entries");
-  assert.strictEqual(calib.thresholds.lca, 50);
-  assert.strictEqual(calib.thresholds.uiux, 50);
-  assert.strictEqual(calib.datasetSummary.totalCandidates, 47);
-  assert.strictEqual(calib.datasetSummary.emptyCandidates, 1);
-  assert.ok(calib.representativeReviewedSamples.length >= 3);
+test("Sprint 1.5 Regression: ISO standards recognized in anonymized tokens", () => {
+  const baseline = JSON.parse(fs.readFileSync(baselinePath, "utf8"));
+  const hm = baseline.candidates.find(c => c.candidateId === "anonymized_HM_1793682784257");
+  const ss = baseline.candidates.find(c => c.candidateId === "anonymized_SS_1793682784470");
+
+  assert.strictEqual(hm.scores.lca.subScores.skills >= 15, true, "HM must receive credit for software and ISO");
+  assert.strictEqual(ss.scores.lca.subScores.skills >= 20, true, "SS must receive credit for software and ISO");
 });

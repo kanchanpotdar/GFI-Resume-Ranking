@@ -106,4 +106,14 @@ For any post-approval change, append:
   *Context:* Evaluated 47 resumes across both role rubrics independently. Calibrated against representative samples: LCA matches (8 candidates, top score 75.8), UI/UX matches (20 candidates, top score 95.4), neither/uncertain (19 candidates, including the 1 empty document and non-matching profiles).  
   *Impact:* Clear four-way classification (`lca`, `uiux`, `both`, `neither_or_uncertain`) without forced mutual exclusion.
 
+- **ADR-S04 | 2026-11-11 | Accepted | Robust Multi-Format Date Parsing & Non-Overlapping Experience Interval Unions**  
+  *Context:* Unicode em-dashes (`—`) in date strings caused regex failures across 23 candidates in initial baseline extraction, erroneously producing 0 experience months. Concurrently, naive month summation risked double-counting concurrent roles.  
+  *Decision:* Implement comprehensive `parse_robust_date_span` supporting em-dashes, en-dashes, hyphens, MM/YYYY, 'YY, and interval unions for non-overlapping experience calculation.  
+  *Impact:* Restored genuine tenure calculations across all 46 extractable resumes (e.g. SRK corrected from 0 to 67 months LCA experience).
+
+- **ADR-S05 | 2026-11-11 | Accepted | Anonymized Standard Token Recognition for ISO 14040/14044 Compliance**  
+  *Context:* Dataset anonymization had scrubbed standard numerical identifiers (`ISO 14040/14044` -> `ISO /`, `ISO :2006`, `ISO LCA`). Literal matching unfairly penalized compliant LCA practitioners.  
+  *Decision:* Expand rubric evidence matching to recognize masked ISO standard tokens within LCA domain context.  
+  *Impact:* Accurately awarded ISO compliance points to verified LCA practitioners (HM, SS, TM, PW, MS, SRK, NP).
+
 Keep `agent.md`, `sprintplan.md`, and this file aligned. Do not reinterpret unresolved verification tasks as permission to change approved decisions.
