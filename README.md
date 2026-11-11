@@ -4,8 +4,9 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6-blue?logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38bdf8?logo=tailwindcss)](https://tailwindcss.com/)
 [![ONNX Runtime](https://img.shields.io/badge/Embeddings-BAAI%2Fbge--small--en--v1.5-brightgreen)](https://huggingface.co/BAAI/bge-small-en-v1.5)
-[![Build & Tests](https://img.shields.io/badge/Tests-26%2F26%20Passing-success)](#evaluation--testing)
-[![Validation](https://img.shields.io/badge/Sprint%201.5%20%26%202%20%26%203-PASS-emerald)](#sprint-15-independent-validation-verdict)
+[![Build & Tests](https://img.shields.io/badge/Tests-30%2F30%20Passing-success)](#evaluation--testing)
+[![Playwright E2E](https://img.shields.io/badge/Playwright-14%2F14%20Passing-brightgreen)](tests/e2e/dashboard.spec.ts)
+[![Validation](https://img.shields.io/badge/Sprint%201.5%20%26%202%20%26%203%20%26%203.5-PASS-emerald)](#sprint-15-independent-validation-verdict)
 
 A decision-support web application designed for non-technical hiring teams at **Growth For Impact** to ingest, extract, semantically compare, rank, and classify candidate resumes against two specialized job profiles:
 1. **LifeCycle Assessment (LCA) Consultant** (Onsite, Chennai)
@@ -229,8 +230,14 @@ cp .env.example .env.local
 
 ### Running Tests & Verification
 ```bash
-# Run full automated test suite
+# Run full automated unit and integration test suite (30 tests)
 npm test
+
+# Run HTTP endpoint verification suite (9 tests)
+python3 scripts/verify_sprint2_http.py
+
+# Run Playwright end-to-end browser tests (14 test specs across 20 interaction scenarios)
+npx playwright test
 
 # Run Next.js production build check
 npm run build
@@ -252,4 +259,5 @@ npm run dev
 - [x] **Sprint 1.5:** Independent quality validation, date/ISO parser corrections, evaluation metrics.
 - [x] **Sprint 2:** Interactive tabbed dashboard, evidence inspection drawer, dynamic PDF/DOCX live upload with content magic-byte verification.
 - [x] **Sprint 3:** Browser IndexedDB persistence (`idb`), candidate deletion, clear-all reset controls, dual-role scope ranking, privacy audit (26 passing tests).
-- [ ] **Sprint 4:** Public Vercel production deployment and submission walkthrough.
+- [x] **Sprint 3.5:** Final Quality Remediation & Mandatory Verification Gate: multi-surface SHA-256 deduplication, zip bomb defense, race-condition elimination, version migration, and 14-scenario Playwright E2E browser test suite (30 unit tests + 14 E2E tests passing).
+- [ ] **Sprint 4:** Public production deployment, executive summary slide deck/pitch, and submission walkthrough.

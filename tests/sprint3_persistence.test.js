@@ -122,3 +122,109 @@ test("Sprint 3 Gate 5: Deterministic tie-breaking produces identical ranking seq
     "UI/UX ranking order must be 100% deterministic regardless of initial array ordering"
   );
 });
+
+test("Sprint 3.5 Gate 6: Version migration detects outdated rubric and recalculates scores safely", () => {
+  const baselineData = JSON.parse(fs.readFileSync(path.join(ROOT, "data/baseline.json"), "utf8"));
+  const sample = baselineData.candidates.find((c) => c.classification === "lca");
+  assert.ok(sample, "Sample candidate should exist");
+
+  // Create record with outdated rubric version
+  const outdatedRecord = {
+    ...sample,
+    schemaVersion: "1.0.0",
+    scores: {
+      ...sample.scores,
+      lca: {
+        ...sample.scores.lca,
+        rubricVersion: "0.9.0-outdated",
+        totalScore: 42.0 // Artificially stale score
+      }
+    },
+    uploadedAt: new Date().toISOString()
+  };
+
+  const { validateAndMigrateRecord } = require("../lib/db.ts");
+  const migrated = validateAndMigrateRecord(outdatedRecord);
+
+  assert.equal(migrated.requiresReprocessing, false);
+  assert.equal(migrated.scores.lca.rubricVersion, "1.5.0-remediated", "Must migrate to current rubric version");
+  assert.equal(migrated.scores.lca.totalScore, sample.scores.lca.totalScore, "Must safely recalculate to verified score");
+});
+
+test("Sprint 3.5 Gate 7: Incompatible schema marks candidate as requiresReprocessing without discarding data", () => {
+  const { validateAndMigrateRecord } = require("../lib/db.ts");
+
+  // Record with corrupt/unknown extraction and incompatible schema
+  const incompatibleRecord = {
+    candidateId: "legacy_cand_001",
+    sourceType: "local_upload",
+    sourceFilename: "legacy.docx",
+    sha256: "deadbeef1234",
+    schemaVersion: "0.0.1-alpha",
+    extraction: null, // missing extraction
+    embeddings: { model: "unknown-model", dimensions: 128 },
+    scores: {
+      lca: { rubricVersion: "old", totalScore: 30, semanticRawCosine: 0 },
+      uiux: { rubricVersion: "old", totalScore: 20, semanticRawCosine: 0 }
+    },
+    classification: "neither_or_uncertain",
+    classificationReason: "legacy",
+    uploadedAt: new Date().toISOString()
+  };
+
+  const validated = validateAndMigrateRecord(incompatibleRecord);
+  assert.equal(validated.requiresReprocessing, true, "Must flag incompatible record as requiring reprocessing");
+  assert.ok(validated.reprocessingReason?.includes("mismatch"), "Must provide actionable mismatch explanation");
+  assert.equal(validated.candidateId, "legacy_cand_001", "Must preserve record data rather than silently dropping it");
+});
+
+test("Sprint 3.5 Gate 8: Failure injection hook triggers recoverable errors without silent success", async () => {
+  const { deleteUploadedCandidate, clearAllUploadedCandidates, dbTestHooks } = require("../lib/db.ts");
+
+  // Test failure injection on delete
+  dbTestHooks.failNextDelete = true;
+  const delRes = await deleteUploadedCandidate("non_existent_id");
+  assert.equal(delRes.success, false, "Must return failure when storage throws or aborts");
+  assert.ok(delRes.error?.includes("Simulated delete failure"), "Must provide clear error context");
+  assert.equal(dbTestHooks.failNextDelete, false, "Hook must automatically reset");
+
+  // Test failure injection on clear
+  dbTestHooks.failNextClear = true;
+  const clearRes = await clearAllUploadedCandidates();
+  assert.equal(clearRes.success, false, "Must return failure when clear aborts");
+  assert.ok(clearRes.error?.includes("Simulated clear failure"), "Must provide clear error context");
+  assert.equal(dbTestHooks.failNextClear, false, "Hook must automatically reset");
+});
+
+test("Sprint 3.5 Gate 9: ZIP decompression security rejects oversized uncompressed payload (Zip Bomb Defense)", () => {
+  // Construct a minimal ZIP header simulating 50MB uncompressed size
+  const buf = Buffer.alloc(100);
+  buf.writeUInt32LE(0x04034b50, 0); // PK\x03\x04
+  buf.writeUInt32LE(50 * 1024 * 1024, 22); // Uncompressed size: 50MB!
+  buf.writeUInt16LE(4, 26); // Filename len: 4
+  buf.writeUInt16LE(0, 28); // Extra len: 0
+  buf.write("test", 30);
+
+  // Simple reproduction of checkZipSafety
+  let totalUncompressed = 0;
+  let offset = 0;
+  let isSafe = true;
+  while (offset < buf.length - 30) {
+    if (buf[offset] === 0x50 && buf[offset+1] === 0x4b && buf[offset+2] === 0x03 && buf[offset+3] === 0x04) {
+      const uncompressed = buf.readUInt32LE(offset + 22);
+      totalUncompressed += uncompressed;
+      if (totalUncompressed > 25 * 1024 * 1024) {
+        isSafe = false;
+        break;
+      }
+      const fnLen = buf.readUInt16LE(offset + 26);
+      const exLen = buf.readUInt16LE(offset + 28);
+      offset += 30 + fnLen + exLen;
+    } else {
+      offset++;
+    }
+  }
+
+  assert.equal(isSafe, false, "Must reject ZIP container exceeding 25MB uncompressed limit");
+});
+

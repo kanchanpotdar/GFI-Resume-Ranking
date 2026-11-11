@@ -128,6 +128,7 @@ export function CandidateDetailModal({
           </div>
           <button
             onClick={onClose}
+            aria-label="Close modal"
             className="text-slate-400 hover:text-slate-700 p-2 rounded-lg hover:bg-slate-200 transition-colors"
           >
             <X className="w-5 h-5" />

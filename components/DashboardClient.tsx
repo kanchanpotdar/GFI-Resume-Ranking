@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect, useRef } from "react";
 import {
   CandidateRecord,
   RoleType,
-  EligibilityStatus
+  EligibilityStatus,
+  SYSTEM_VERSIONS
 } from "@/lib/types";
 import {
   getAllUploadedCandidates,
@@ -32,7 +33,8 @@ import {
   Trash2,
   HardDrive,
   Lock,
-  X
+  X,
+  Loader2
 } from "lucide-react";
 
 interface DashboardClientProps {
@@ -40,9 +42,14 @@ interface DashboardClientProps {
 }
 
 type TabType = "lca" | "uiux" | "neither";
+type HydrationStatus = "loading" | "ready" | "error";
 
 export function DashboardClient({ initialCandidates }: DashboardClientProps) {
   const [candidates, setCandidates] = useState<CandidateRecord[]>(initialCandidates);
+  const [hydrationStatus, setHydrationStatus] = useState<HydrationStatus>("loading");
+  const [isMutating, setIsMutating] = useState(false);
+  const [mutationError, setMutationError] = useState<string | null>(null);
+
   const [activeTab, setActiveTab] = useState<TabType>("lca");
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState<"score" | "experience" | "skills" | "projects" | "semantic">("score");
@@ -57,23 +64,44 @@ export function DashboardClient({ initialCandidates }: DashboardClientProps) {
   const [isClearAllModalOpen, setIsClearAllModalOpen] = useState(false);
   const [storageNotification, setStorageNotification] = useState<string | null>(null);
 
-  // Load persisted uploads from IndexedDB on initial mount
+  const isMountedRef = useRef(true);
+
+  // Load persisted uploads from IndexedDB on initial mount with strict race-protection
   useEffect(() => {
+    isMountedRef.current = true;
+
     async function hydrateFromIndexedDB() {
       try {
+        setHydrationStatus("loading");
         const stored = await getAllUploadedCandidates();
+        if (!isMountedRef.current) return;
+
         if (stored && stored.length > 0) {
           setCandidates((prev) => {
             const existingIds = new Set(prev.map((c) => c.candidateId));
-            const freshStored = stored.filter((c) => !existingIds.has(c.candidateId));
+            const existingShas = new Set(prev.map((c) => c.sha256));
+            const freshStored = stored.filter(
+              (c) => !existingIds.has(c.candidateId) && !existingShas.has(c.sha256)
+            );
             return [...freshStored, ...prev];
           });
         }
-      } catch (err) {
+        setHydrationStatus("ready");
+      } catch (err: any) {
+        if (!isMountedRef.current) return;
         console.error("Error hydrating from IndexedDB:", err);
+        setHydrationStatus("error");
+        setStorageNotification(
+          `Local storage hydration warning: ${err?.message || "Storage unavailable"}. Showing baseline reference dataset.`
+        );
       }
     }
+
     hydrateFromIndexedDB();
+
+    return () => {
+      isMountedRef.current = false;
+    };
   }, []);
 
   // Filter candidates by tab and ranking scope
@@ -92,17 +120,19 @@ export function DashboardClient({ initialCandidates }: DashboardClientProps) {
   }, [candidates, activeTab, rankingScope]);
 
   // Counts for tabs & source breakdown
-  const { tabCounts, uploadedCount } = useMemo(() => {
-    let lca = 0, uiux = 0, neither = 0, uploaded = 0;
+  const { tabCounts, uploadedCount, outdatedCount } = useMemo(() => {
+    let lca = 0, uiux = 0, neither = 0, uploaded = 0, outdated = 0;
     for (const c of candidates) {
       if (c.classification === "lca" || c.classification === "both") lca++;
       if (c.classification === "uiux" || c.classification === "both") uiux++;
       if (c.classification === "neither_or_uncertain") neither++;
       if (c.sourceType === "local_upload") uploaded++;
+      if (c.requiresReprocessing) outdated++;
     }
     return {
       tabCounts: { lca, uiux, neither },
-      uploadedCount: uploaded
+      uploadedCount: uploaded,
+      outdatedCount: outdated
     };
   }, [candidates]);
 
@@ -114,11 +144,11 @@ export function DashboardClient({ initialCandidates }: DashboardClientProps) {
       // 1. Search Query
       if (searchQuery.trim()) {
         const q = searchQuery.toLowerCase();
-        const matchesName = c.extraction.name.toLowerCase().includes(q);
+        const matchesName = (c.extraction?.name || c.candidateId).toLowerCase().includes(q);
         const matchesId = c.candidateId.toLowerCase().includes(q);
-        const matchesHeadline = c.extraction.headline.toLowerCase().includes(q);
-        const matchesSkills = c.extraction.skills.allSkills.some((s) => s.toLowerCase().includes(q));
-        const matchesEdu = c.extraction.education.some((e) =>
+        const matchesHeadline = (c.extraction?.headline || "").toLowerCase().includes(q);
+        const matchesSkills = (c.extraction?.skills?.allSkills || []).some((s) => s.toLowerCase().includes(q));
+        const matchesEdu = (c.extraction?.education || []).some((e) =>
           e.degree.toLowerCase().includes(q) || e.institution.toLowerCase().includes(q)
         );
         if (!matchesName && !matchesId && !matchesHeadline && !matchesSkills && !matchesEdu) {
@@ -162,8 +192,8 @@ export function DashboardClient({ initialCandidates }: DashboardClientProps) {
       const aScore = a.scores[roleKey];
       const bScore = b.scores[roleKey];
 
-      const aExp = activeTab === "uiux" ? a.extraction.designExperienceMonths : a.extraction.independentLcaExperienceMonths;
-      const bExp = activeTab === "uiux" ? b.extraction.designExperienceMonths : b.extraction.independentLcaExperienceMonths;
+      const aExp = activeTab === "uiux" ? (a.extraction?.designExperienceMonths ?? 0) : (a.extraction?.independentLcaExperienceMonths ?? 0);
+      const bExp = activeTab === "uiux" ? (b.extraction?.designExperienceMonths ?? 0) : (b.extraction?.independentLcaExperienceMonths ?? 0);
 
       // 1. Explicit user sort criteria
       if (sortBy === "experience") {
@@ -218,45 +248,98 @@ export function DashboardClient({ initialCandidates }: DashboardClientProps) {
   }, [tabCandidates, activeTab]);
 
   const handleCandidateUploaded = async (newCandidate: CandidateRecord, file?: File | null) => {
-    // 1. Save to IndexedDB
-    const saveRes = await saveUploadedCandidate(newCandidate, file);
-    if (!saveRes.success && saveRes.error) {
-      setStorageNotification(`Storage note: ${saveRes.error}`);
-    } else if (!saveRes.blobSaved) {
-      setStorageNotification("Resume data saved (storage quota reached: original binary file was omitted).");
+    if (isMutating) return;
+    setIsMutating(true);
+    setMutationError(null);
+
+    try {
+      // Check if already in active state
+      const alreadyExists = candidates.some(
+        (c) => c.sha256 === newCandidate.sha256 || c.candidateId === newCandidate.candidateId
+      );
+      if (alreadyExists) {
+        setStorageNotification(`Candidate ${newCandidate.candidateId} is already in the evaluation pool.`);
+        setIsMutating(false);
+        return;
+      }
+
+      // 1. Save to IndexedDB
+      const saveRes = await saveUploadedCandidate(newCandidate, file);
+      if (!saveRes.success) {
+        throw new Error(saveRes.error || "Failed to commit record to browser IndexedDB.");
+      }
+
+      if (!saveRes.blobSaved) {
+        setStorageNotification("Resume data saved (storage quota reached: original binary file was omitted).");
+      } else {
+        setStorageNotification(`Resume ${newCandidate.extraction.name || newCandidate.candidateId} successfully saved to local database.`);
+      }
+
+      // 2. Insert into React state ONLY after storage write succeeds
+      setCandidates((prev) => [
+        newCandidate,
+        ...prev.filter((c) => c.candidateId !== newCandidate.candidateId && c.sha256 !== newCandidate.sha256)
+      ]);
+
+      // 3. Navigate to relevant tab
+      if (newCandidate.classification === "uiux") {
+        setActiveTab("uiux");
+      } else if (newCandidate.classification === "lca") {
+        setActiveTab("lca");
+      } else {
+        setActiveTab("neither");
+      }
+
+      // 4. Automatically open candidate details inspector
+      setInspectCandidate(newCandidate);
+    } catch (err: any) {
+      setMutationError(`Failed to save uploaded candidate: ${err.message}. Record not added.`);
+    } finally {
+      setIsMutating(false);
     }
-
-    // 2. Insert into React state
-    setCandidates((prev) => [
-      newCandidate,
-      ...prev.filter((c) => c.candidateId !== newCandidate.candidateId)
-    ]);
-
-    // 3. Navigate to relevant tab
-    if (newCandidate.classification === "uiux") {
-      setActiveTab("uiux");
-    } else if (newCandidate.classification === "lca") {
-      setActiveTab("lca");
-    } else {
-      setActiveTab("neither");
-    }
-
-    // 4. Automatically open candidate details inspector
-    setInspectCandidate(newCandidate);
   };
 
   const handleConfirmDelete = async () => {
-    if (!candidateToDelete) return;
+    if (!candidateToDelete || isMutating) return;
+    setIsMutating(true);
+    setMutationError(null);
     const cid = candidateToDelete.candidateId;
-    await deleteUploadedCandidate(cid);
-    setCandidates((prev) => prev.filter((c) => c.candidateId !== cid));
-    setCandidateToDelete(null);
+
+    try {
+      const res = await deleteUploadedCandidate(cid);
+      if (!res.success) {
+        throw new Error(res.error || "Failed to delete candidate record from IndexedDB.");
+      }
+      // ONLY update React state after IndexedDB deletion succeeds!
+      setCandidates((prev) => prev.filter((c) => c.candidateId !== cid));
+      setCandidateToDelete(null);
+      setStorageNotification(`Candidate ${cid} successfully deleted from local storage.`);
+    } catch (err: any) {
+      setMutationError(`Deletion failed: ${err.message}. Candidate record was retained in local storage.`);
+    } finally {
+      setIsMutating(false);
+    }
   };
 
   const handleConfirmClearAll = async () => {
-    await clearAllUploadedCandidates();
-    setCandidates(initialCandidates);
-    setIsClearAllModalOpen(false);
+    if (isMutating) return;
+    setIsMutating(true);
+    setMutationError(null);
+
+    try {
+      const res = await clearAllUploadedCandidates();
+      if (!res.success) {
+        throw new Error(res.error || "Failed to clear records from IndexedDB.");
+      }
+      // ONLY reset React state after IndexedDB clear succeeds!
+      setCandidates(initialCandidates);
+      setIsClearAllModalOpen(false);
+      setStorageNotification("All user-uploaded resumes successfully removed. Baseline pool preserved.");
+    } catch (err: any) {
+      setMutationError(`Reset failed: ${err.message}. Existing uploads were retained.`);
+    } finally {
+      setIsMutating(false);
+    }
   };
 
   const getScoreBadge = (score: number) => {
@@ -289,7 +372,8 @@ export function DashboardClient({ initialCandidates }: DashboardClientProps) {
               {uploadedCount > 0 && (
                 <button
                   onClick={() => setIsClearAllModalOpen(true)}
-                  className="inline-flex items-center gap-1.5 px-3 py-2 bg-slate-100 hover:bg-rose-50 text-slate-700 hover:text-rose-700 text-xs font-medium rounded-xl border border-slate-200 hover:border-rose-200 transition-colors"
+                  disabled={isMutating}
+                  className="inline-flex items-center gap-1.5 px-3 py-2 bg-slate-100 hover:bg-rose-50 text-slate-700 hover:text-rose-700 text-xs font-medium rounded-xl border border-slate-200 hover:border-rose-200 transition-colors disabled:opacity-50"
                   title="Remove all locally uploaded resumes"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
@@ -299,7 +383,8 @@ export function DashboardClient({ initialCandidates }: DashboardClientProps) {
 
               <button
                 onClick={() => setIsUploadModalOpen(true)}
-                className="inline-flex items-center gap-2 px-4 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold rounded-xl shadow-xs transition-colors"
+                disabled={isMutating}
+                className="inline-flex items-center gap-2 px-4 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold rounded-xl shadow-xs transition-colors disabled:opacity-50"
               >
                 <Upload className="w-4 h-4" />
                 Upload New Resume
@@ -364,25 +449,50 @@ export function DashboardClient({ initialCandidates }: DashboardClientProps) {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
         
         {/* Storage Persistence Notice Banner */}
-        <div className="bg-slate-100/80 border border-slate-200 rounded-xl px-4 py-2.5 mb-5 flex items-center justify-between gap-3 text-xs text-slate-600">
+        <div className="bg-slate-100/80 border border-slate-200 rounded-xl px-4 py-2.5 mb-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-slate-600">
           <div className="flex items-center gap-2">
             <HardDrive className="w-4 h-4 text-slate-500 shrink-0" />
             <span>
               <strong>Local IndexedDB Active:</strong> Uploaded resumes persist locally in your browser. The 47 baseline reference candidates are read-only.
             </span>
           </div>
-          {uploadedCount > 0 && (
-            <span className="font-semibold text-emerald-700 shrink-0">
-              {uploadedCount} local resume{uploadedCount > 1 ? "s" : ""} stored
-            </span>
-          )}
+          <div className="flex items-center gap-3 shrink-0">
+            {hydrationStatus === "loading" && (
+              <span className="flex items-center gap-1 text-slate-500 font-medium">
+                <Loader2 className="w-3.5 h-3.5 animate-spin" /> Syncing storage...
+              </span>
+            )}
+            {uploadedCount > 0 && (
+              <span className="font-semibold text-emerald-700">
+                {uploadedCount} local resume{uploadedCount > 1 ? "s" : ""} stored
+              </span>
+            )}
+            {outdatedCount > 0 && (
+              <span className="font-semibold text-amber-700 flex items-center gap-1">
+                <AlertTriangle className="w-3.5 h-3.5" /> {outdatedCount} outdated
+              </span>
+            )}
+          </div>
         </div>
+
+        {/* Mutation Error Notification */}
+        {mutationError && (
+          <div className="bg-rose-50 border border-rose-200 rounded-xl px-4 py-3 mb-4 text-xs text-rose-800 flex items-center justify-between shadow-2xs">
+            <div className="flex items-center gap-2">
+              <AlertTriangle className="w-4 h-4 text-rose-600 shrink-0" />
+              <span><strong>Action Failed:</strong> {mutationError}</span>
+            </div>
+            <button onClick={() => setMutationError(null)} className="text-rose-600 hover:text-rose-900">
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+        )}
 
         {/* Temporary Storage Notification */}
         {storageNotification && (
-          <div className="bg-amber-50 border border-amber-200 rounded-xl px-4 py-2 mb-4 text-xs text-amber-800 flex items-center justify-between">
+          <div className="bg-slate-100 border border-slate-300 rounded-xl px-4 py-2 mb-4 text-xs text-slate-800 flex items-center justify-between">
             <span>{storageNotification}</span>
-            <button onClick={() => setStorageNotification(null)} className="text-amber-600 hover:text-amber-900">
+            <button onClick={() => setStorageNotification(null)} className="text-slate-500 hover:text-slate-800">
               <X className="w-3.5 h-3.5" />
             </button>
           </div>
@@ -605,7 +715,7 @@ export function DashboardClient({ initialCandidates }: DashboardClientProps) {
                     <div className="space-y-1">
                       <div className="flex items-center gap-2 flex-wrap">
                         <h3 className="font-bold text-base text-slate-900">
-                          {candidate.extraction.name}
+                          {candidate.extraction?.name || candidate.candidateId}
                         </h3>
                         <span className="font-mono text-xs text-slate-400">
                           ({candidate.candidateId})
@@ -623,20 +733,29 @@ export function DashboardClient({ initialCandidates }: DashboardClientProps) {
                             </>
                           )}
                         </span>
+
+                        {candidate.requiresReprocessing && (
+                          <span
+                            className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-amber-100 text-amber-800 border border-amber-300"
+                            title={candidate.reprocessingReason || "Version configuration mismatch. Please re-upload resume."}
+                          >
+                            <AlertTriangle className="w-3 h-3 text-amber-600" /> Outdated Version
+                          </span>
+                        )}
                       </div>
 
                       <p className="text-xs text-slate-600">
-                        {candidate.extraction.headline || "Candidate Profile"}
+                        {candidate.extraction?.headline || "Candidate Profile"}
                       </p>
 
                       {/* Matched Skills Chips */}
                       <div className="flex flex-wrap gap-1.5 pt-1">
-                        {candidate.extraction.skills.platforms.slice(0, 4).map((p, pIdx) => (
+                        {(candidate.extraction?.skills?.platforms || []).slice(0, 4).map((p, pIdx) => (
                           <span key={pIdx} className="bg-slate-100 text-slate-700 px-2 py-0.5 rounded text-[11px]">
                             {p}
                           </span>
                         ))}
-                        {candidate.extraction.skills.methods.slice(0, 3).map((m, mIdx) => (
+                        {(candidate.extraction?.skills?.methods || []).slice(0, 3).map((m, mIdx) => (
                           <span key={mIdx} className="bg-slate-50 border border-slate-200 text-slate-600 px-2 py-0.5 rounded text-[11px]">
                             {m}
                           </span>
@@ -691,7 +810,8 @@ export function DashboardClient({ initialCandidates }: DashboardClientProps) {
                       {isUploaded && (
                         <button
                           onClick={() => setCandidateToDelete(candidate)}
-                          className="p-2.5 bg-slate-100 hover:bg-rose-100 text-slate-500 hover:text-rose-700 rounded-xl transition-colors"
+                          disabled={isMutating}
+                          className="p-2.5 bg-slate-100 hover:bg-rose-100 text-slate-500 hover:text-rose-700 rounded-xl transition-colors disabled:opacity-50"
                           title="Delete uploaded resume from browser storage"
                         >
                           <Trash2 className="w-4 h-4" />
@@ -722,6 +842,7 @@ export function DashboardClient({ initialCandidates }: DashboardClientProps) {
         onClose={() => setIsUploadModalOpen(false)}
         onCandidateUploaded={handleCandidateUploaded}
         onViewCandidate={(c) => setInspectCandidate(c)}
+        existingCandidates={candidates}
       />
 
       {/* Per-Candidate Delete Confirmation Modal */}
@@ -741,15 +862,18 @@ export function DashboardClient({ initialCandidates }: DashboardClientProps) {
             <div className="flex items-center justify-end gap-2.5">
               <button
                 onClick={() => setCandidateToDelete(null)}
-                className="px-4 py-2 border border-slate-200 hover:bg-slate-100 text-slate-700 text-xs font-semibold rounded-xl transition-colors"
+                disabled={isMutating}
+                className="px-4 py-2 border border-slate-200 hover:bg-slate-100 text-slate-700 text-xs font-semibold rounded-xl transition-colors disabled:opacity-50"
               >
                 Cancel
               </button>
               <button
                 onClick={handleConfirmDelete}
-                className="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white text-xs font-semibold rounded-xl transition-colors"
+                disabled={isMutating}
+                className="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white text-xs font-semibold rounded-xl transition-colors disabled:opacity-50 flex items-center gap-1.5"
               >
-                Confirm Delete
+                {isMutating && <Loader2 className="w-3 h-3 animate-spin" />}
+                <span>Confirm Delete</span>
               </button>
             </div>
           </div>
@@ -773,15 +897,18 @@ export function DashboardClient({ initialCandidates }: DashboardClientProps) {
             <div className="flex items-center justify-end gap-2.5">
               <button
                 onClick={() => setIsClearAllModalOpen(false)}
-                className="px-4 py-2 border border-slate-200 hover:bg-slate-100 text-slate-700 text-xs font-semibold rounded-xl transition-colors"
+                disabled={isMutating}
+                className="px-4 py-2 border border-slate-200 hover:bg-slate-100 text-slate-700 text-xs font-semibold rounded-xl transition-colors disabled:opacity-50"
               >
                 Cancel
               </button>
               <button
                 onClick={handleConfirmClearAll}
-                className="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white text-xs font-semibold rounded-xl transition-colors"
+                disabled={isMutating}
+                className="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white text-xs font-semibold rounded-xl transition-colors disabled:opacity-50 flex items-center gap-1.5"
               >
-                Clear All Uploads
+                {isMutating && <Loader2 className="w-3 h-3 animate-spin" />}
+                <span>Clear All Uploads</span>
               </button>
             </div>
           </div>

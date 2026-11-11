@@ -66,7 +66,8 @@ Deliver the agreed Growth For Impact resume ranking prototype **by Saturday, 14 
 - [x] New PDF/DOCX upload, duplicate detection, comparable scoring and two-role rerank
 - [x] Secure ONNX/HF local embeddings; explicit timeout/provider/scanned-file/oversize/magic-byte errors
 - [x] IndexedDB recovery, per-upload delete and reset, privacy messaging
-- [x] Unit/integration tests (26 passing tests) and representative human review
+- [x] Unit/integration tests (30 passing tests) and representative human review
+- [x] Sprint 3.5 Final Quality Gate: Playwright browser test suite (14/14 passed), multi-surface SHA-256 deduplication, zip-bomb defense, version migration, and race condition elimination
 - [x] Public Vercel deployment feasibility analysis and containerized build verified
 - [ ] Sprint 4: Final packaging and freeze for submission
 

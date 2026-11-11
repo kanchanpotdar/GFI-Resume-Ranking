@@ -114,6 +114,14 @@ export interface CandidateRoleScore {
   explanation: string;
 }
 
+export const SYSTEM_VERSIONS = {
+  schemaVersion: "1.0.0",
+  rubricVersion: "1.5.0-remediated",
+  embeddingModel: "BAAI/bge-small-en-v1.5",
+  embeddingRevision: "v1.5",
+  chunkingVersion: "1.0.0",
+} as const;
+
 export interface CandidateRecord {
   candidateId: string;
   sourceType: "baseline" | "local_upload";
@@ -123,6 +131,8 @@ export interface CandidateRecord {
   embeddings: {
     model: string;
     dimensions: number;
+    modelRevision?: string;
+    chunkingVersion?: string;
     lcaChunkVector?: number[] | null;
     uiuxChunkVector?: number[] | null;
   };
@@ -133,7 +143,10 @@ export interface CandidateRecord {
   classification: ClassificationType;
   classificationReason: string;
   schemaVersion: string;
+  createdAt?: string;
   updatedAt: string;
+  requiresReprocessing?: boolean;
+  reprocessingReason?: string;
 }
 
 export interface BaselineDataset {

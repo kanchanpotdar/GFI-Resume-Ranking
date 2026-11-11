@@ -157,4 +157,15 @@ For any post-approval change, append:
   *Decision:* Add ranking scope control to role tabs ("Qualified Resumes Only" vs "All Resumes Ranked for Role"). Implement a 3-tier deterministic sorting comparator: (1) Total Score descending, (2) Relevant Experience Months descending, (3) Candidate ID ascending (`localeCompare`).  
   *Impact:* Consistent, reproducible candidate ordering across both roles, supporting comprehensive HR screening and exploration.
 
+### Recorded Sprint 3.5 Architecture Decisions
+- **ADR-S14 | 2026-11-11 | Accepted | Multi-Surface Pre-Flight SHA-256 Deduplication & ZIP Decompression Safety**  
+  *Context:* Uploading duplicate resumes under altered filenames wasted server inference and network resources. Additionally, uncompressed OpenXML payloads inside DOCX files could pose ZIP bomb vulnerabilities.  
+  *Decision:* Implement pre-flight SHA-256 hash calculation in the browser via Web Crypto `crypto.subtle.digest("SHA-256", buffer)`. Check in-memory and IndexedDB duplicate caches *prior* to network request dispatch, offering a direct "View Existing Candidate Record" button. On the server, implement `checkZipSafety` header inspection to reject payloads exceeding 25MB uncompressed or compression ratios > 100:1.  
+  *Impact:* Instant zero-latency duplicate detection on client side; robust defense against decompressed memory exhaustion.
+
+- **ADR-S15 | 2026-11-11 | Accepted | IndexedDB State Mutation Serialization & Safe Version Recalculation**  
+  *Context:* Asynchronous hydration raced with mutations, causing deleted records to occasionally reappear, while React state optimistically updated even if storage failed. In addition, changes to rubric versions required safe score updates without losing user-uploaded resumes.  
+  *Decision:* Enforce strict state mutation serialization with `isMutating` locks. Update React state *strictly* after IndexedDB transactions resolve (`res.success === true`). Provide failure injection hooks for verification. Implement `validateAndMigrateRecord` to automatically recalculate scores when rubrics update, or mark incompatible schemas with `requiresReprocessing: true` and an amber UI badge.  
+  *Impact:* 100% synchronization between React state and browser storage; zero data loss during version upgrades.
+
 Keep `agent.md`, `sprintplan.md`, and this file aligned. Do not reinterpret unresolved verification tasks as permission to change approved decisions.

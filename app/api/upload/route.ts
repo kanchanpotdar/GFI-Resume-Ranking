@@ -7,9 +7,37 @@ import pdfParse from "pdf-parse";
 import { extractFromParagraphs } from "@/lib/runtime_extractor";
 import { generateEmbedding, computeCosineSimilarity, EMBEDDING_MODEL, EMBEDDING_DIMENSIONS } from "@/lib/embeddings";
 import { scoreLCARole, scoreUIUXRole, classifyCandidate } from "@/lib/scoring";
-import { CandidateRecord } from "@/lib/types";
+import { CandidateRecord, SYSTEM_VERSIONS } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
+
+/**
+ * Validates that a ZIP archive (DOCX) does not exceed safe uncompressed size thresholds (Zip Bomb Defense).
+ */
+function checkZipSafety(buffer: Buffer, maxUncompressedBytes = 25 * 1024 * 1024): boolean {
+  let totalUncompressed = 0;
+  let offset = 0;
+
+  // Scan local file headers (0x04034b50)
+  while (offset < buffer.length - 30) {
+    if (
+      buffer[offset] === 0x50 &&
+      buffer[offset + 1] === 0x4b &&
+      buffer[offset + 2] === 0x03 &&
+      buffer[offset + 3] === 0x04
+    ) {
+      const uncompressedSize = buffer.readUInt32LE(offset + 22);
+      totalUncompressed += uncompressedSize;
+      if (totalUncompressed > maxUncompressedBytes) return false;
+      const fileNameLen = buffer.readUInt16LE(offset + 26);
+      const extraFieldLen = buffer.readUInt16LE(offset + 28);
+      offset += 30 + fileNameLen + extraFieldLen;
+    } else {
+      offset++;
+    }
+  }
+  return true;
+}
 
 // In-memory cache for JD embeddings
 let cachedLcaJdEmbedding: number[] | null = null;
@@ -81,11 +109,19 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    if (ext === ".docx" && !isDocxMagic) {
-      return NextResponse.json(
-        { error: "File content does not match a valid DOCX (OpenXML) binary signature." },
-        { status: 400 }
-      );
+    if (ext === ".docx") {
+      if (!isDocxMagic) {
+        return NextResponse.json(
+          { error: "File content does not match a valid DOCX (OpenXML) binary signature." },
+          { status: 400 }
+        );
+      }
+      if (!checkZipSafety(buffer)) {
+        return NextResponse.json(
+          { error: "File uncompressed structure exceeds safe limit (possible compression bomb)." },
+          { status: 400 }
+        );
+      }
     }
 
     // Compute SHA-256
@@ -158,6 +194,8 @@ export async function POST(req: NextRequest) {
       embeddings: {
         model: EMBEDDING_MODEL,
         dimensions: EMBEDDING_DIMENSIONS,
+        modelRevision: SYSTEM_VERSIONS.embeddingRevision,
+        chunkingVersion: SYSTEM_VERSIONS.chunkingVersion,
         lcaChunkVector: lcaVector,
         uiuxChunkVector: uiuxVector,
       },
@@ -167,8 +205,10 @@ export async function POST(req: NextRequest) {
       },
       classification,
       classificationReason: reason,
-      schemaVersion: "1.0.0",
+      schemaVersion: SYSTEM_VERSIONS.schemaVersion,
+      createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
+      requiresReprocessing: false,
     };
 
     return NextResponse.json({

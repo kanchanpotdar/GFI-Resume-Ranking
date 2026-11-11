@@ -1,5 +1,6 @@
 import { openDB, DBSchema, IDBPDatabase } from "idb";
-import { CandidateRecord } from "./types";
+import { CandidateRecord, SYSTEM_VERSIONS } from "./types";
+import { scoreLCARole, scoreUIUXRole, classifyCandidate } from "./scoring";
 
 export interface StoredCandidateRecord extends CandidateRecord {
   fileBlob?: Blob | null;
@@ -21,6 +22,14 @@ const DB_NAME = "gfi_resume_ranking_db";
 const DB_VERSION = 1;
 
 let dbPromise: Promise<IDBPDatabase<GFIDatabaseSchema>> | null = null;
+
+// Test hooks for simulated failure injection
+export const dbTestHooks = {
+  failNextDelete: false,
+  failNextClear: false,
+  failNextSave: false,
+  simulateSlowHydrationMs: 0,
+};
 
 export function getDatabase(): Promise<IDBPDatabase<GFIDatabaseSchema>> {
   if (typeof window === "undefined") {
@@ -45,18 +54,97 @@ export function getDatabase(): Promise<IDBPDatabase<GFIDatabaseSchema>> {
 }
 
 /**
+ * Validates stored record against current system versions.
+ * Safely recalculates scores if rubric version is outdated but extraction/embeddings exist.
+ * Otherwise flags record as requiring reprocessing without discarding user data.
+ */
+export function validateAndMigrateRecord(record: StoredCandidateRecord): StoredCandidateRecord {
+  const currentSchema = SYSTEM_VERSIONS.schemaVersion;
+  const currentRubric = SYSTEM_VERSIONS.rubricVersion;
+  const currentModel = SYSTEM_VERSIONS.embeddingModel;
+
+  const schemaMatch = record.schemaVersion === currentSchema;
+  const lcaRubricMatch = record.scores?.lca?.rubricVersion === currentRubric;
+  const uiuxRubricMatch = record.scores?.uiux?.rubricVersion === currentRubric;
+  const modelMatch = record.embeddings?.model === currentModel;
+
+  // Fully current
+  if (schemaMatch && lcaRubricMatch && uiuxRubricMatch && modelMatch) {
+    return {
+      ...record,
+      requiresReprocessing: false,
+      reprocessingReason: undefined
+    };
+  }
+
+  // Attempt safe recomputation if extraction and cosine scores are present
+  if (record.extraction && typeof record.scores?.lca?.semanticRawCosine === "number" && typeof record.scores?.uiux?.semanticRawCosine === "number") {
+    try {
+      const newLca = scoreLCARole(record.extraction, record.scores.lca.semanticRawCosine);
+      const newUiux = scoreUIUXRole(record.extraction, record.scores.uiux.semanticRawCosine);
+      const newClassification = classifyCandidate(newLca, newUiux, record.extraction.extractionStatus);
+
+      return {
+        ...record,
+        schemaVersion: currentSchema,
+        scores: {
+          lca: newLca,
+          uiux: newUiux
+        },
+        classification: newClassification.classification,
+        classificationReason: newClassification.reason,
+        updatedAt: new Date().toISOString(),
+        requiresReprocessing: false,
+        reprocessingReason: undefined
+      };
+    } catch (recalcErr) {
+      console.warn(`Failed to auto-migrate candidate ${record.candidateId}:`, recalcErr);
+    }
+  }
+
+  // If cannot safely recalculate, flag for user notice rather than discarding
+  const safeExtraction = record.extraction || {
+    name: record.candidateId || "Outdated Candidate",
+    headline: "Legacy record requiring reprocessing",
+    totalExperienceMonths: 0,
+    independentLcaExperienceMonths: 0,
+    designExperienceMonths: 0,
+    skills: { platforms: [], methods: [], allSkills: [] },
+    education: [],
+    projects: [],
+    experienceHistory: [],
+    extractionStatus: "error"
+  };
+
+  return {
+    ...record,
+    extraction: safeExtraction,
+    requiresReprocessing: true,
+    reprocessingReason: `Config mismatch: stored rubric (${record.scores?.lca?.rubricVersion || "unknown"}) vs current (${currentRubric}). Please re-upload resume.`
+  };
+}
+
+/**
  * Retrieves all locally uploaded candidate records from IndexedDB.
  */
 export async function getAllUploadedCandidates(): Promise<CandidateRecord[]> {
   if (typeof window === "undefined") return [];
   try {
+    if (dbTestHooks.simulateSlowHydrationMs > 0) {
+      await new Promise((res) => setTimeout(res, dbTestHooks.simulateSlowHydrationMs));
+    }
+
     const db = await getDatabase();
     const records = await db.getAll("uploaded_candidates");
+    
+    // Validate and migrate records
+    const migrated = records.map((r) => validateAndMigrateRecord(r));
+
     // Sort by uploadedAt descending
-    return records.sort((a, b) => new Date(b.uploadedAt).getTime() - new Date(a.uploadedAt).getTime());
+    return migrated.sort((a, b) => new Date(b.uploadedAt).getTime() - new Date(a.uploadedAt).getTime());
   } catch (err) {
     console.error("Failed to load uploaded candidates from IndexedDB:", err);
-    return [];
+    throw err;
   }
 }
 
@@ -68,6 +156,11 @@ export async function saveUploadedCandidate(
   candidate: CandidateRecord,
   fileBlob?: Blob | null
 ): Promise<{ success: boolean; blobSaved: boolean; error?: string }> {
+  if (dbTestHooks.failNextSave) {
+    dbTestHooks.failNextSave = false;
+    return { success: false, blobSaved: false, error: "Simulated save failure" };
+  }
+
   if (typeof window === "undefined") {
     return { success: false, blobSaved: false, error: "Window undefined" };
   }
@@ -110,15 +203,21 @@ export async function saveUploadedCandidate(
 /**
  * Deletes a single uploaded candidate from IndexedDB by candidateId.
  */
-export async function deleteUploadedCandidate(candidateId: string): Promise<boolean> {
-  if (typeof window === "undefined") return false;
+export async function deleteUploadedCandidate(candidateId: string): Promise<{ success: boolean; error?: string }> {
+  if (dbTestHooks.failNextDelete) {
+    dbTestHooks.failNextDelete = false;
+    return { success: false, error: "Simulated delete failure (storage locked or unavailable)" };
+  }
+
+  if (typeof window === "undefined") return { success: false, error: "Window undefined" };
+
   try {
     const db = await getDatabase();
     await db.delete("uploaded_candidates", candidateId);
-    return true;
-  } catch (err) {
+    return { success: true };
+  } catch (err: any) {
     console.error(`Failed to delete candidate ${candidateId} from IndexedDB:`, err);
-    return false;
+    return { success: false, error: err?.message || "Database deletion failed" };
   }
 }
 
@@ -126,15 +225,21 @@ export async function deleteUploadedCandidate(candidateId: string): Promise<bool
  * Clears all uploaded candidate records from IndexedDB.
  * Does not affect baseline records.
  */
-export async function clearAllUploadedCandidates(): Promise<boolean> {
-  if (typeof window === "undefined") return false;
+export async function clearAllUploadedCandidates(): Promise<{ success: boolean; error?: string }> {
+  if (dbTestHooks.failNextClear) {
+    dbTestHooks.failNextClear = false;
+    return { success: false, error: "Simulated clear failure (storage transaction abort)" };
+  }
+
+  if (typeof window === "undefined") return { success: false, error: "Window undefined" };
+
   try {
     const db = await getDatabase();
     await db.clear("uploaded_candidates");
-    return true;
-  } catch (err) {
+    return { success: true };
+  } catch (err: any) {
     console.error("Failed to clear uploaded candidates from IndexedDB:", err);
-    return false;
+    return { success: false, error: err?.message || "Database clear failed" };
   }
 }
 

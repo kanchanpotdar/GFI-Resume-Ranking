@@ -3,12 +3,21 @@
 import React, { useState, useRef } from "react";
 import { UploadCloud, FileText, CheckCircle2, AlertTriangle, Loader2, X } from "lucide-react";
 import { CandidateRecord } from "@/lib/types";
+import { checkLocalDuplicate } from "@/lib/db";
 
 interface ResumeUploadModalProps {
   isOpen: boolean;
   onClose: () => void;
   onCandidateUploaded: (candidate: CandidateRecord, file?: File | null) => void;
   onViewCandidate: (candidate: CandidateRecord) => void;
+  existingCandidates?: CandidateRecord[];
+}
+
+async function computeFileSha256(file: File): Promise<string> {
+  const arrayBuffer = await file.arrayBuffer();
+  const hashBuffer = await crypto.subtle.digest("SHA-256", arrayBuffer);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
 }
 
 export function ResumeUploadModal({
@@ -16,6 +25,7 @@ export function ResumeUploadModal({
   onClose,
   onCandidateUploaded,
   onViewCandidate,
+  existingCandidates = [],
 }: ResumeUploadModalProps) {
   const [file, setFile] = useState<File | null>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -73,9 +83,36 @@ export function ResumeUploadModal({
     setIsUploading(true);
     setError(null);
     setDuplicateInfo(null);
-    setUploadStatus("Uploading & extracting structured resume text...");
+    setUploadStatus("Computing document cryptographic hash...");
 
     try {
+      // 1. Client-side fast SHA-256 duplicate check
+      const clientSha = await computeFileSha256(file);
+
+      // Check active in-memory candidates (baseline + loaded uploads)
+      const inMemoryMatch = existingCandidates.find((c) => c.sha256 === clientSha);
+      if (inMemoryMatch) {
+        setDuplicateInfo({
+          candidate: inMemoryMatch,
+          message: `Exact duplicate detected: Resume content matches Candidate ${inMemoryMatch.candidateId} (${inMemoryMatch.extraction.name || "Candidate"}).`,
+        });
+        setIsUploading(false);
+        return;
+      }
+
+      // Check client IndexedDB database
+      const inDbMatch = await checkLocalDuplicate(clientSha);
+      if (inDbMatch) {
+        setDuplicateInfo({
+          candidate: inDbMatch,
+          message: `Exact duplicate detected: Resume was previously uploaded and stored in browser database as Candidate ${inDbMatch.candidateId}.`,
+        });
+        setIsUploading(false);
+        return;
+      }
+
+      setUploadStatus("Uploading & extracting structured resume text...");
+
       const formData = new FormData();
       formData.append("file", file);
 
@@ -130,6 +167,7 @@ export function ResumeUploadModal({
           <button
             onClick={onClose}
             disabled={isUploading}
+            aria-label="Close upload modal"
             className="text-slate-400 hover:text-slate-600 p-1.5 rounded-lg hover:bg-slate-100 transition-colors"
           >
             <X className="w-5 h-5" />
