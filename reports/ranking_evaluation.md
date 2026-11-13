@@ -20,54 +20,49 @@ To rigorously evaluate classification and ranking accuracy without circular self
 
 ## 2. Classification Performance (Threshold = 50.0 / 100)
 
-### Confusion Matrix (Remediated Baseline)
+### Programmatic Classification Breakdown (Post-`Sept` Parser Remediation)
 
-| Heuristic Benchmark \ Predicted Class | Predicted LCA | Predicted UI/UX | Predicted Neither / Uncertain | Total |
-| :--- | :---: | :---: | :---: | :---: |
-| **Benchmark LCA** | **9** | 0 | 0 | 9 |
-| **Benchmark UI/UX** | 0 | **22** | 0 | 22 |
-| **Benchmark Neither / Uncertain** | 0 | 0 | **16** | 16 |
-| **Total** | 9 | 22 | 16 | 47 |
+Updated counts after resolving `'sept': 9` date parsing and section-boundary parity fixes (`scoringConfigVersion: 1.5.0-remediated`, cutoff = `50.0 / 100`):
 
-### Classification Metrics
-- **LCA Consultant:** Precision: **1.00** (9/9), Recall: **1.00** (9/9), F1-Score: **1.00**
-- **UI/UX Designer:** Precision: **1.00** (22/22), Recall: **1.00** (22/22), F1-Score: **1.00**
-- **Neither / Uncertain:** Precision: **1.00** (16/16), Recall: **1.00** (16/16), F1-Score: **1.00**
-- **Macro-Averaged F1-Score:** **1.00** across all 47 files.
+| Predicted Class | Count | Share (of 47) | Notes |
+| :--- | :---: | :---: | :--- |
+| **LCA (`lca`)** | **8** | 17.0% | Verified LCA specialists scoring $\ge 50.0$ (`51.1`–`84.0`) |
+| **UI/UX (`uiux`)** | **22** | 46.8% | Verified UI/UX applicants scoring $\ge 50.0$ (`57.3`–`96.3`) |
+| **Both (`both`)** | **0** | 0.0% | No applicant met $\ge 50.0$ on both rubrics simultaneously |
+| **Neither / Uncertain (`neither_or_uncertain`)** | **17** | 36.2% | 16 non-qualifying / borderline profiles + 1 empty document (`0.0`) |
+| **Total** | **47** | 100.0% | 46 text-containing resumes + 1 empty DOCX |
+
+> [!NOTE]
+> `anonymized_VM_1793682784520` (`Sept 2021 – Jun 2023`) moved from an inflated **58.9 (`lca`)** (caused by missing `"sept"` token defaulting to 30 months) to an accurate **22 months** and **48.9 (`neither_or_uncertain`)**, placing it in the manual-review borderline band just below the provisional `50.0` threshold.
 
 ---
 
 ## 3. Ranking Quality Metrics
 
 ### LCA Role Ranking
-- **Top 5 Ranked Candidates:**
-  1. `anonymized_TM_1793682784495` (Score: **84.0/100**) — 3 substantiated completed LCA studies, SimaPro, 3.8 yrs experience.
-  2. `anonymized_SS_1793682784470` (Score: **66.2/100**) — 2 completed LCA studies, SimaPro/GaBi, M.Tech Sustainable Engineering.
-  3. `anonymized_PW_1793682784228` (Score: **65.8/100**) — 2.5 yrs LCA experience at CSIR NEERI, GaBi & OpenLCA, ISO compliance.
-  4. `anonymized_HM_1793682784257` (Score: **65.7/100**) — 4.0 yrs LCA Analyst at L&T, SimaPro, PEP report publication.
-  5. `anonymized_MS_1793682784442` (Score: **65.4/100**) — 3 verified LCA studies, SimaPro/OpenLCA, ReCiPe 2016 methodology.
+- **Top 5 Ranked Candidates (Current Baseline):**
+  1. `anonymized_TM_1793682784495` (Score: **84.0/100**)
+  2. `anonymized_SS_1793682784470` (Score: **66.2/100**)
+  3. `anonymized_PW_1793682784228` (Score: **65.8/100**)
+  4. `anonymized_MS_1793682784442` (Score: **65.4/100**)
+  5. `anonymized_HM_1793682784257` (Score: **60.7/100**)
 - **Precision@5:** **1.00** (5 of 5 are proven LCA specialists).
-- **NDCG@5:** **1.0000**
-- **NDCG@10:** **1.0000**
-- **Cutoff Separation:** A substantial score gap separates qualifying LCA candidates (lowest qualifying is `VM_520` at 52.8) from non-qualifying environmental applicants (highest non-qualifying is `HD_275` at 34.2, followed by `VG_531` at 32.6), demonstrating strong discriminative separation.
+- **Cutoff Separation:** Qualifying LCA candidates score between **51.1** (`anonymized_RR_1793682784428`) and **84.0** (`anonymized_TM_1793682784495`). Immediately below the `50.0` cutoff sits borderline `anonymized_VM_1793682784520` (**48.9**), followed by **33.5** (`anonymized_UI_1793682784506`) and **28.5** (`anonymized_VG_1793682784531`), giving a wide **17.6-point margin** separating qualifying candidates from non-borderline profiles.
 
 ### UI/UX Role Ranking
-- **Top 5 Ranked Candidates:**
-  1. `anonymized_AY_1793685080440` (Score: **96.3/100**) — Bachelor of Design, MIT-WPU; Figma, end-to-end design research & IA.
-  2. `anonymized_DVJ_1793685080268` (Score: **95.6/100**) — Computer Science & Design; design systems, dark-mode dashboards, interactive prototypes.
-  3. `anonymized_APS_1793685080222` (Score: **93.5/100**) — Master of Design, NIFT; multi-sensory accessibility prototypes, research-driven workflows.
-  4. `anonymized_CG_1793685080278` (Score: **92.8/100**) — Mobile-first healthcare apps, user flows, accessibility guidelines.
-  5. `anonymized_MM_1793685080338` (Score: **92.1/100**) — In-depth UX case studies (`Rail Madad`), user interviews, information architecture.
+- **Top 5 Ranked Candidates (Current Baseline):**
+  1. `anonymized_AY_1793685080440` (Score: **96.3/100**)
+  2. `anonymized_DVJ_1793685080268` (Score: **95.6/100**)
+  3. `anonymized_APS_1793685080222` (Score: **93.5/100**)
+  4. `anonymized_CG_1793685080278` (Score: **92.8/100**)
+  5. `anonymized_MM_1793685080338` (Score: **92.1/100**)
 - **Precision@5:** **1.00** (5 of 5 have demonstrable Figma portfolios, wireframes, and prototypes).
-- **NDCG@5:** **1.0000**
-- **NDCG@10:** **1.0000**
-- **Cutoff Separation:** Qualifying UI/UX candidates score between 51.1 (`N_389`) and 96.3 (`AY_440`), while non-design profiles score below 35.0.
+- **Cutoff Separation:** Qualifying UI/UX candidates score between **57.3** (`anonymized_AA_1793685080195`) and **96.3** (`anonymized_AY_1793685080440`). Non-qualifying borderline scores reach **48.5** (`anonymized_FT_1793685080301`) and **46.2** (`anonymized_KN_1793685080310`), followed by **34.5** (`anonymized_PKG_1793682784369`).
 
 ---
 
 ## 4. Threshold Calibration & Practical Deployment Justification
 
-The **50.0 / 100 threshold** functions reliably as a provisional recruitment filter:
-1. **Zero False Positives:** Every candidate scoring $\ge 50$ possesses verified hands-on core tool proficiency, relevant degree or transition portfolio, and evidenced project deliverables.
-2. **Zero False Negatives:** Applicants scoring $< 50$ lack mandatory tools (neither GaBi nor SimaPro for LCA; no Figma for UI/UX) or lack completed deliverables.
-3. **Empty Document Integrity:** The empty file (`anonymized_resume_1793685080327.docx`) receives 0.0 points on both rubrics, possesses a `null` embedding vector, and is unequivocally placed into `neither_or_uncertain`.
+The **50.0 / 100 threshold** functions as a provisional recruitment filter pending HR calibration:
+1. **Borderline Transparency:** Profiles scoring in the `[45.0, 50.0)` band (`anonymized_VM_1793682784520` at `48.9` LCA; `anonymized_FT_1793685080301` at `48.5` UI/UX; `anonymized_KN_1793685080310` at `46.2` UI/UX) are surfaced in `neither_or_uncertain` and `reports/manual_review_queue.csv` rather than hidden.
+2. **Empty Document Integrity:** The empty file (`anonymized_resume_1793685080327.docx`) receives `0.0` points on both rubrics, possesses a `null` embedding vector, and is unequivocally placed into `neither_or_uncertain`.

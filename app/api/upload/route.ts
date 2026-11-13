@@ -8,60 +8,64 @@ import { extractFromParagraphs } from "@/lib/runtime_extractor";
 import { generateEmbedding, computeCosineSimilarity, EMBEDDING_MODEL, EMBEDDING_DIMENSIONS } from "@/lib/embeddings";
 import { scoreLCARole, scoreUIUXRole, classifyCandidate } from "@/lib/scoring";
 import { CandidateRecord, SYSTEM_VERSIONS } from "@/lib/types";
+import {
+  MAX_UPLOAD_BYTES,
+  checkUploadRateLimit,
+  checkZipSafety,
+  sanitizeUploadFilename,
+  validateFileMagicBytes
+} from "@/lib/upload_validation";
 
 export const dynamic = "force-dynamic";
 
-/**
- * Validates that a ZIP archive (DOCX) does not exceed safe uncompressed size thresholds (Zip Bomb Defense).
- */
-function checkZipSafety(buffer: Buffer, maxUncompressedBytes = 25 * 1024 * 1024): boolean {
-  let totalUncompressed = 0;
-  let offset = 0;
-
-  // Scan local file headers (0x04034b50)
-  while (offset < buffer.length - 30) {
-    if (
-      buffer[offset] === 0x50 &&
-      buffer[offset + 1] === 0x4b &&
-      buffer[offset + 2] === 0x03 &&
-      buffer[offset + 3] === 0x04
-    ) {
-      const uncompressedSize = buffer.readUInt32LE(offset + 22);
-      totalUncompressed += uncompressedSize;
-      if (totalUncompressed > maxUncompressedBytes) return false;
-      const fileNameLen = buffer.readUInt16LE(offset + 26);
-      const extraFieldLen = buffer.readUInt16LE(offset + 28);
-      offset += 30 + fileNameLen + extraFieldLen;
-    } else {
-      offset++;
-    }
-  }
-  return true;
-}
-
-// In-memory cache for JD embeddings
-let cachedLcaJdEmbedding: number[] | null = null;
-let cachedUiuxJdEmbedding: number[] | null = null;
+// Concurrent-safe promise cache for JD embeddings
+let jdEmbeddingsPromise: Promise<{ lcaEmbedding: number[]; uiuxEmbedding: number[] }> | null = null;
 
 async function getJdEmbeddings(): Promise<{ lcaEmbedding: number[]; uiuxEmbedding: number[] }> {
-  if (cachedLcaJdEmbedding && cachedUiuxJdEmbedding) {
-    return { lcaEmbedding: cachedLcaJdEmbedding, uiuxEmbedding: cachedUiuxJdEmbedding };
+  if (!jdEmbeddingsPromise) {
+    jdEmbeddingsPromise = (async () => {
+      const lcaPath = path.join(process.cwd(), "data/jds/lca.md");
+      const uiuxPath = path.join(process.cwd(), "data/jds/uiux.md");
+
+      const lcaText = fs.readFileSync(lcaPath, "utf8");
+      const uiuxText = fs.readFileSync(uiuxPath, "utf8");
+
+      const [lcaEmbedding, uiuxEmbedding] = await Promise.all([
+        generateEmbedding(lcaText),
+        generateEmbedding(uiuxText)
+      ]);
+
+      if (!lcaEmbedding || !uiuxEmbedding) {
+        throw new Error("Failed to compute canonical JD reference embeddings");
+      }
+
+      return { lcaEmbedding, uiuxEmbedding };
+    })().catch((err) => {
+      jdEmbeddingsPromise = null;
+      throw err;
+    });
   }
 
-  const lcaPath = path.join(process.cwd(), "data/jds/lca.md");
-  const uiuxPath = path.join(process.cwd(), "data/jds/uiux.md");
-
-  const lcaText = fs.readFileSync(lcaPath, "utf8");
-  const uiuxText = fs.readFileSync(uiuxPath, "utf8");
-
-  cachedLcaJdEmbedding = (await generateEmbedding(lcaText)) || [];
-  cachedUiuxJdEmbedding = (await generateEmbedding(uiuxText)) || [];
-
-  return { lcaEmbedding: cachedLcaJdEmbedding, uiuxEmbedding: cachedUiuxJdEmbedding };
+  return jdEmbeddingsPromise;
 }
 
 export async function POST(req: NextRequest) {
   try {
+    const clientIp =
+      req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+      req.headers.get("x-real-ip") ||
+      "local";
+    const rateCheck = checkUploadRateLimit(clientIp);
+    if (!rateCheck.allowed) {
+      return NextResponse.json(
+        { error: `Rate limit exceeded. Please retry after ${rateCheck.retryAfterSeconds} seconds.` },
+        {
+          status: 429,
+          headers: { "Retry-After": String(rateCheck.retryAfterSeconds) }
+        }
+      );
+    }
+
     const formData = await req.formData();
     const file = formData.get("file") as File | null;
 
@@ -69,7 +73,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "No file provided" }, { status: 400 });
     }
 
-    const filename = file.name;
+    const filename = sanitizeUploadFilename(file.name);
     const ext = path.extname(filename).toLowerCase();
 
     if (![".docx", ".pdf"].includes(ext)) {
@@ -80,7 +84,7 @@ export async function POST(req: NextRequest) {
     }
 
     // 5MB limit
-    if (file.size > 5 * 1024 * 1024) {
+    if (file.size > MAX_UPLOAD_BYTES) {
       return NextResponse.json(
         { error: "File exceeds the maximum allowable size of 5MB." },
         { status: 400 }
@@ -90,38 +94,31 @@ export async function POST(req: NextRequest) {
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
 
-    // 0-byte check
+    // 0-byte and byte-length recheck
     if (buffer.length === 0) {
       return NextResponse.json(
         { error: "Uploaded file is empty (0 bytes)." },
         { status: 400 }
       );
     }
-
-    // Validate actual file content (magic bytes)
-    const isPdfMagic = buffer.length >= 4 && buffer[0] === 0x25 && buffer[1] === 0x50 && buffer[2] === 0x44 && buffer[3] === 0x46; // %PDF
-    const isDocxMagic = buffer.length >= 4 && buffer[0] === 0x50 && buffer[1] === 0x4b && buffer[2] === 0x03 && buffer[3] === 0x04; // PK.. (ZIP container)
-
-    if (ext === ".pdf" && !isPdfMagic) {
+    if (buffer.length > MAX_UPLOAD_BYTES) {
       return NextResponse.json(
-        { error: "File content does not match a valid PDF binary signature." },
+        { error: "File exceeds the maximum allowable size of 5MB." },
         { status: 400 }
       );
     }
 
-    if (ext === ".docx") {
-      if (!isDocxMagic) {
-        return NextResponse.json(
-          { error: "File content does not match a valid DOCX (OpenXML) binary signature." },
-          { status: 400 }
-        );
-      }
-      if (!checkZipSafety(buffer)) {
-        return NextResponse.json(
-          { error: "File uncompressed structure exceeds safe limit (possible compression bomb)." },
-          { status: 400 }
-        );
-      }
+    // Validate actual file content (magic bytes + ZIP structure)
+    const magicCheck = validateFileMagicBytes(buffer, ext);
+    if (!magicCheck.valid) {
+      return NextResponse.json({ error: magicCheck.error }, { status: 400 });
+    }
+
+    if (ext === ".docx" && !checkZipSafety(buffer)) {
+      return NextResponse.json(
+        { error: "File uncompressed structure exceeds safe limit or has malformed ZIP headers (possible compression bomb)." },
+        { status: 400 }
+      );
     }
 
     // Compute SHA-256
@@ -147,38 +144,73 @@ export async function POST(req: NextRequest) {
       console.warn("Baseline duplicate check warning:", e);
     }
 
-    // Extract text paragraphs
+    // Extract text paragraphs with explicit parser & scanned-PDF handling
     let paras: string[] = [];
-    if (ext === ".docx") {
-      const mammothResult = await mammoth.extractRawText({ buffer });
-      paras = mammothResult.value
-        .split(/\r?\n/)
-        .map(p => p.trim())
-        .filter(Boolean);
-    } else if (ext === ".pdf") {
-      const pdfData = await pdfParse(buffer);
-      paras = pdfData.text
-        .split(/\r?\n/)
-        .map(p => p.trim())
-        .filter(Boolean);
+    try {
+      if (ext === ".docx") {
+        const mammothResult = await mammoth.extractRawText({ buffer });
+        paras = mammothResult.value
+          .split(/\r?\n/)
+          .map(p => p.trim())
+          .filter(Boolean);
+      } else if (ext === ".pdf") {
+        const pdfData = await pdfParse(buffer);
+        paras = (pdfData.text || "")
+          .split(/\r?\n/)
+          .map(p => p.trim())
+          .filter(Boolean);
+        if (paras.length === 0) {
+          return NextResponse.json(
+            {
+              error:
+                "No extractable text found in PDF (file appears scanned, image-only, or blank). OCR is not enabled; please upload a text-selectable PDF or DOCX."
+            },
+            { status: 422 }
+          );
+        }
+      }
+    } catch (parseErr) {
+      console.warn("Document parser error:", parseErr instanceof Error ? parseErr.message : "Corrupt file");
+      return NextResponse.json(
+        {
+          error:
+            "Unable to extract text from the uploaded document. The file appears corrupted, password-protected, or structurally invalid."
+        },
+        { status: 400 }
+      );
     }
 
     const candidateId = `candidate_${Date.now()}_${crypto.randomBytes(3).toString("hex")}`;
     const extraction = extractFromParagraphs(paras, candidateId, filename, sha256);
 
-    // Embeddings & Scoring
-    const { lcaEmbedding, uiuxEmbedding } = await getJdEmbeddings();
-
+    // Embeddings & Scoring (fail loudly on provider failure — never fabricate scores)
     let lcaVector: number[] | null = null;
     let uiuxVector: number[] | null = null;
     let rawLcaCosine = 0;
     let rawUiuxCosine = 0;
 
     if (extraction.extractionStatus !== "empty_document") {
-      lcaVector = await generateEmbedding(extraction.lcaChunk || "");
-      uiuxVector = await generateEmbedding(extraction.uiuxChunk || "");
-      rawLcaCosine = computeCosineSimilarity(lcaVector, lcaEmbedding);
-      rawUiuxCosine = computeCosineSimilarity(uiuxVector, uiuxEmbedding);
+      try {
+        const { lcaEmbedding, uiuxEmbedding } = await getJdEmbeddings();
+        [lcaVector, uiuxVector] = await Promise.all([
+          generateEmbedding(extraction.lcaChunk || ""),
+          generateEmbedding(extraction.uiuxChunk || "")
+        ]);
+        if (!lcaVector || !uiuxVector) {
+          throw new Error("Embedding service returned empty vector for non-empty resume");
+        }
+        rawLcaCosine = computeCosineSimilarity(lcaVector, lcaEmbedding);
+        rawUiuxCosine = computeCosineSimilarity(uiuxVector, uiuxEmbedding);
+      } catch (embErr) {
+        console.error("Embedding inference failed:", embErr instanceof Error ? embErr.message : "Unknown error");
+        return NextResponse.json(
+          {
+            error:
+              "Semantic embedding service is temporarily unavailable; resume scoring was aborted rather than fabricating scores. Please retry shortly."
+          },
+          { status: 503 }
+        );
+      }
     }
 
     const lcaScore = scoreLCARole(extraction, rawLcaCosine);

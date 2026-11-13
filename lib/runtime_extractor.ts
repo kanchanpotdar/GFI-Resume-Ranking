@@ -218,7 +218,7 @@ export function extractFromParagraphs(
 
   const warnings: string[] = [];
   const name = paras[0].trim();
-  const headline = paras.length > 1 && !/^(?:experience|education|projects|skills)\b/i.test(paras[1].trim())
+  const headline = paras.length > 1 && !/^(?:experience|education|projects|skills|professional\s+summary|core\s+skills|tools\s*[\/&]\s*technologies|certifications)\b/i.test(paras[1].trim())
     ? paras[1].trim()
     : "";
 
@@ -229,7 +229,11 @@ export function extractFromParagraphs(
     "Projects / Deliverables": [],
     "Education": [],
     "Core Skills": [],
+    "Tools / Technologies": [],
     "Certifications": [],
+    "Awards / Honors": [],
+    "Languages": [],
+    "Interests": [],
     "Other": []
   };
 
@@ -238,12 +242,16 @@ export function extractFromParagraphs(
     { key: "Experience", regex: /^(?:work\s+experience|professional\s+experience|experience|employment\s+history|internships?)\b/i },
     { key: "Projects / Deliverables", regex: /^(?:projects\s*\/?\s*deliverables|projects|key\s+projects|academic\s+projects)\b/i },
     { key: "Education", regex: /^(?:education|academic\s+background|qualifications)\b/i },
-    { key: "Core Skills", regex: /^(?:core\s+skills|skills|technical\s+skills|tools\s+&?\s+technologies)\b/i },
-    { key: "Certifications", regex: /^(?:certifications?|courses?|training)\b/i }
+    { key: "Core Skills", regex: /^(?:core\s+skills|skills|technical\s+skills)\b/i },
+    { key: "Tools / Technologies", regex: /^(?:tools\s*[\/&]\s*technologies|technologies|software\s+tools)\b/i },
+    { key: "Certifications", regex: /^(?:certifications?(?:\s*&\s*licenses?)?|courses?|training)\b/i },
+    { key: "Awards / Honors", regex: /^(?:awards\s*[\/&]?\s*honors?|honors|achievements)\b/i },
+    { key: "Languages", regex: /^(?:languages?)\b/i },
+    { key: "Interests", regex: /^(?:interests?|hobbies)\b/i }
   ];
 
   let currentSection = "Other";
-  for (let i = 1; i < paras.length; i++) {
+  for (let i = headline ? 2 : 1; i < paras.length; i++) {
     const line = paras[i].trim();
     if (!line) continue;
 
@@ -260,22 +268,29 @@ export function extractFromParagraphs(
   let currentRole: ExperienceItem | null = null;
 
   for (const line of sections["Experience"]) {
-    const isBullet = /^[•\-*–—]/.test(line);
-    const dateMatch = line.match(/(?:(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\s+\d{4}|\d{1,2}\/\d{4}|\d{4})\s*[-–—]\s*(?:(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\s+\d{4}|\d{1,2}\/\d{4}|\d{4}|present|current|ongoing)/i);
+    const isBullet = /^[•\-*–]/.test(line);
+    const hasSepOrDate =
+      line.includes("—") ||
+      line.includes(" – ") ||
+      line.includes(" - ") ||
+      /\b(?:20\d{2}|19\d{2}|present|current|ongoing|\d+\s*months?)\b/i.test(line);
 
-    if (dateMatch && !isBullet) {
+    if (!isBullet && hasSepOrDate) {
       if (currentRole) expRoles.push(currentRole);
-      const rawDates = dateMatch[0];
-      const titleOrg = line.replace(rawDates, "").replace(/[-–—|]+$/, "").trim();
-      const parts = titleOrg.split(/[-–—|@,]\s+/);
+      const parts = line.split(/\s+[—–-]\s+/);
       const title = parts[0]?.trim() || "Role";
-      const company = parts.length > 1 ? parts.slice(1).join(" - ").trim() : "Organization";
-      const { interval, durationMonths, isCurrent } = parseDateSpan(rawDates);
+      const rest = parts.length > 1 ? parts.slice(1).join(" — ").trim() : "";
+
+      const { interval, durationMonths, isCurrent } = parseDateSpan(rest || line);
+      const companyClean = rest
+        .replace(/([A-Za-z]{3,9}\s+(?:\d{4}|[’']?\d{2})|\d{4}|present|current|ongoing|\d+\s*months?).*/i, "")
+        .replace(/^[ —–\-,]+|[ —–\-,]+$/g, "");
+      const company = companyClean || rest || "Organization";
 
       currentRole = {
         title,
         company,
-        rawDates,
+        rawDates: rest,
         interval,
         durationMonths,
         isCurrent,
@@ -285,7 +300,21 @@ export function extractFromParagraphs(
         evidenceSpan: line
       };
     } else if (currentRole) {
-      currentRole.bullets.push(line.replace(/^[•\-*–—]\s*/, ""));
+      currentRole.bullets.push(line);
+    } else {
+      warnings.push(`Experience entry '${line.slice(0, 40)}' lacks explicit dates; duration set to 0 months.`);
+      currentRole = {
+        title: line,
+        company: "Organization",
+        rawDates: "",
+        interval: null,
+        durationMonths: 0,
+        isCurrent: false,
+        bullets: [],
+        isIndependentLCA: false,
+        isDesignRole: false,
+        evidenceSpan: line
+      };
     }
   }
   if (currentRole) expRoles.push(currentRole);
@@ -470,7 +499,9 @@ export function extractFromParagraphs(
 
   for (const line of sections["Core Skills"]) {
     if (line.includes(":")) {
-      const [cat, rest] = line.split(":", 2);
+      const colonIdx = line.indexOf(":");
+      const cat = line.slice(0, colonIdx);
+      const rest = line.slice(colonIdx + 1);
       const tokens = rest.split(",").map(t => t.trim()).filter(Boolean);
       allSkills.push(...tokens);
       const lowCat = cat.toLowerCase();
@@ -483,11 +514,22 @@ export function extractFromParagraphs(
       for (const t of tokens) {
         allSkills.push(t);
         const tLow = t.toLowerCase();
-        if (KNOWN_PLATFORMS.has(tLow)) platforms.push(t);
-        else if (KNOWN_METHODS.has(tLow)) methods.push(t);
-        else if (KNOWN_SOFT_SKILLS.has(tLow)) softSkills.push(t);
+        if (Array.from(KNOWN_PLATFORMS).some(p => tLow.includes(p))) platforms.push(t);
+        else if (Array.from(KNOWN_METHODS).some(m => tLow.includes(m))) methods.push(t);
+        else if (Array.from(KNOWN_SOFT_SKILLS).some(s => tLow.includes(s))) softSkills.push(t);
         else domainKnowledge.push(t);
       }
+    }
+  }
+
+  for (const line of sections["Tools / Technologies"]) {
+    const tokens = line.split(",").map(t => t.trim()).filter(Boolean);
+    for (const t of tokens) {
+      const tLow = t.toLowerCase();
+      if (Array.from(KNOWN_PLATFORMS).some(p => tLow.includes(p))) {
+        platforms.push(t);
+      }
+      allSkills.push(t);
     }
   }
 
@@ -574,7 +616,7 @@ export function extractFromParagraphs(
     },
     rawTextLength: rawText.length,
     warnings,
-    lcaChunk,
-    uiuxChunk
+    lcaChunk: lcaChunk.slice(0, 1800),
+    uiuxChunk: uiuxChunk.slice(0, 1800)
   };
 }

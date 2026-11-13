@@ -204,8 +204,8 @@
       "rawCharLength": 2310,
       "lcaIndependentMonths": 0,
       "designMonths": 33,
-      "lcaScore": 3.4,
-      "uiuxScore": 58.7,
+      "lcaScore": 3.2,
+      "uiuxScore": 60.6,
       "classification": "uiux"
     }
   },
@@ -554,8 +554,8 @@
       "rawCharLength": 2879,
       "lcaIndependentMonths": 67,
       "designMonths": 0,
-      "lcaScore": 52,
-      "uiuxScore": 11.3,
+      "lcaScore": 52.7,
+      "uiuxScore": 10.5,
       "classification": "lca"
     }
   },
@@ -636,11 +636,11 @@
     "action": "Extracted sections, standardized dates, normalized skills, computed 384-dim embeddings & rubric scores.",
     "auditDetails": {
       "rawCharLength": 2623,
-      "lcaIndependentMonths": 30,
+      "lcaIndependentMonths": 22,
       "designMonths": 0,
-      "lcaScore": 58.9,
+      "lcaScore": 48.9,
       "uiuxScore": 11.9,
-      "classification": "lca"
+      "classification": "neither_or_uncertain"
     }
   },
   {

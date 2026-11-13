@@ -48,13 +48,33 @@ export function CandidateDetailModal({
 
   if (!candidate) return null;
 
-  const scoreData = candidate.scores[activeRole];
-  const { totalScore, subScores, eligibilityFlags, requirementsEvidence } = scoreData;
+  const scoreData = candidate.scores?.[activeRole];
+  const totalScore = typeof scoreData?.totalScore === "number" ? scoreData.totalScore : 0;
+  const subScores = {
+    skills: scoreData?.subScores?.skills ?? 0,
+    experience: scoreData?.subScores?.experience ?? 0,
+    projects: scoreData?.subScores?.projects ?? 0,
+    semantic: scoreData?.subScores?.semantic ?? 0,
+    education: scoreData?.subScores?.education ?? 0
+  };
+  const eligibilityFlags = scoreData?.eligibilityFlags ?? {
+    isEligible: false,
+    eligibilityStatus: "ineligible" as const,
+    meetsMandatoryRequirements: false,
+    meetsRoleThreshold: false,
+    criticalRequirementMissing: [],
+    reviewNeededFlags: []
+  };
+  const requirementsEvidence = Array.isArray(scoreData?.requirementsEvidence)
+    ? scoreData.requirementsEvidence
+    : [];
 
   const copySha = () => {
-    navigator.clipboard.writeText(candidate.sha256);
-    setCopiedSha(true);
-    setTimeout(() => setCopiedSha(false), 2000);
+    if (!navigator.clipboard?.writeText || !candidate.sha256) return;
+    navigator.clipboard.writeText(candidate.sha256).then(() => {
+      setCopiedSha(true);
+      setTimeout(() => setCopiedSha(false), 2000);
+    }).catch(() => {});
   };
 
   const getStatusBadge = (status: string) => {
@@ -105,7 +125,7 @@ export function CandidateDetailModal({
         <div className="px-6 py-5 border-b border-slate-200 flex items-start justify-between bg-slate-50">
           <div>
             <div className="flex items-center gap-2.5 mb-1">
-              <h2 className="text-2xl font-bold text-slate-900">{candidate.extraction.name}</h2>
+              <h2 className="text-2xl font-bold text-slate-900">{candidate.extraction?.name || candidate.candidateId}</h2>
               <span className={`px-2.5 py-0.5 rounded-full text-xs font-medium uppercase tracking-wider ${
                 candidate.sourceType === "baseline" ? "bg-slate-200 text-slate-700" : "bg-purple-100 text-purple-800"
               }`}>
@@ -113,10 +133,10 @@ export function CandidateDetailModal({
               </span>
             </div>
             <p className="text-sm text-slate-600">
-              {candidate.extraction.headline || "Candidate Profile"} &middot; <span className="font-mono text-xs text-slate-500">{candidate.candidateId}</span>
+              {candidate.extraction?.headline || "Candidate Profile"} &middot; <span className="font-mono text-xs text-slate-500">{candidate.candidateId}</span>
             </p>
             <div className="flex items-center gap-2 mt-1 text-xs text-slate-400">
-              <span className="truncate max-w-xs font-mono">SHA256: {candidate.sha256.slice(0, 16)}...</span>
+              <span className="truncate max-w-xs font-mono">SHA256: {(candidate.sha256 || "").slice(0, 16)}...</span>
               <button
                 onClick={copySha}
                 className="hover:text-slate-600 transition-colors p-0.5 rounded"
@@ -147,9 +167,9 @@ export function CandidateDetailModal({
           >
             <span>LCA Consultant Assessment</span>
             <span className={`px-2 py-0.5 rounded-full text-xs ${
-              candidate.scores.lca.totalScore >= 50 ? "bg-emerald-100 text-emerald-800" : "bg-slate-100 text-slate-600"
+              (candidate.scores?.lca?.totalScore ?? 0) >= 50 ? "bg-emerald-100 text-emerald-800" : "bg-slate-100 text-slate-600"
             }`}>
-              {candidate.scores.lca.totalScore}/100
+              {candidate.scores?.lca?.totalScore ?? 0}/100
             </span>
           </button>
 
@@ -163,9 +183,9 @@ export function CandidateDetailModal({
           >
             <span>UI/UX Designer Intern Assessment</span>
             <span className={`px-2 py-0.5 rounded-full text-xs ${
-              candidate.scores.uiux.totalScore >= 50 ? "bg-sky-100 text-sky-800" : "bg-slate-100 text-slate-600"
+              (candidate.scores?.uiux?.totalScore ?? 0) >= 50 ? "bg-sky-100 text-sky-800" : "bg-slate-100 text-slate-600"
             }`}>
-              {candidate.scores.uiux.totalScore}/100
+              {candidate.scores?.uiux?.totalScore ?? 0}/100
             </span>
           </button>
         </div>
@@ -211,7 +231,7 @@ export function CandidateDetailModal({
             <div className="text-right text-xs">
               <span className="text-slate-500">System Classification:</span>
               <div className="font-bold uppercase tracking-wider text-slate-800 text-sm mt-0.5">
-                {candidate.classification.replace("_", " ")}
+                {candidate.classification.replace(/_/g, " ")}
               </div>
             </div>
           </div>
@@ -333,7 +353,7 @@ export function CandidateDetailModal({
                     </div>
                   </div>
                   <p className="text-xs text-slate-600 italic bg-slate-50 p-2 rounded border border-slate-100">
-                    "{req.evidenceSpan}"
+                    &ldquo;{req.evidenceSpan}&rdquo;
                   </p>
                 </div>
               ))}
@@ -360,15 +380,15 @@ export function CandidateDetailModal({
           {/* Work Experience History */}
           <div>
             <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider mb-3 flex items-center gap-1.5">
-              <Briefcase className="w-4 h-4 text-slate-600" /> Work Experience (Total: {candidate.extraction.totalExperienceMonths} mos &middot; Independent LCA: {candidate.extraction.independentLcaExperienceMonths} mos &middot; Design: {candidate.extraction.designExperienceMonths} mos)
+              <Briefcase className="w-4 h-4 text-slate-600" /> Work Experience (Total: {candidate.extraction?.totalExperienceMonths ?? 0} mos &middot; Independent LCA: {candidate.extraction?.independentLcaExperienceMonths ?? 0} mos &middot; Design: {candidate.extraction?.designExperienceMonths ?? 0} mos)
             </h3>
-            {candidate.extraction.experience.length === 0 ? (
+            {(candidate.extraction?.experience?.length ?? 0) === 0 ? (
               <p className="text-xs text-slate-500 italic bg-slate-50 p-3 rounded-lg border border-slate-200">
                 No formal employment roles evidenced in resume.
               </p>
             ) : (
               <div className="space-y-3">
-                {candidate.extraction.experience.map((exp, idx) => (
+                {(candidate.extraction?.experience ?? []).map((exp, idx) => (
                   <div key={idx} className="border border-slate-200 rounded-lg p-3.5 bg-white">
                     <div className="flex items-start justify-between gap-2 mb-1">
                       <div>
@@ -384,9 +404,9 @@ export function CandidateDetailModal({
                         </div>
                       </div>
                     </div>
-                    {exp.bullets.length > 0 && (
+                    {(exp.bullets?.length ?? 0) > 0 && (
                       <ul className="list-disc list-inside space-y-0.5 text-xs text-slate-600 mt-2">
-                        {exp.bullets.map((b, bIdx) => (
+                        {(exp.bullets ?? []).map((b, bIdx) => (
                           <li key={bIdx}>{b}</li>
                         ))}
                       </ul>
@@ -400,15 +420,15 @@ export function CandidateDetailModal({
           {/* Grouped Project Deliverables */}
           <div>
             <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider mb-3 flex items-center gap-1.5">
-              <FolderGit2 className="w-4 h-4 text-slate-600" /> Project Deliverables ({candidate.extraction.projects.length} distinct grouped studies)
+              <FolderGit2 className="w-4 h-4 text-slate-600" /> Project Deliverables ({candidate.extraction?.projects?.length ?? 0} distinct grouped studies)
             </h3>
-            {candidate.extraction.projects.length === 0 ? (
+            {(candidate.extraction?.projects?.length ?? 0) === 0 ? (
               <p className="text-xs text-slate-500 italic bg-slate-50 p-3 rounded-lg border border-slate-200">
                 No distinct project deliverables evidenced in resume.
               </p>
             ) : (
               <div className="space-y-3">
-                {candidate.extraction.projects.map((proj, idx) => (
+                {(candidate.extraction?.projects ?? []).map((proj, idx) => (
                   <div key={idx} className="border border-slate-200 rounded-lg p-3.5 bg-white">
                     <div className="flex items-center justify-between gap-2 mb-1">
                       <h4 className="font-semibold text-xs text-slate-900">{proj.title}</h4>
@@ -428,9 +448,9 @@ export function CandidateDetailModal({
                     {proj.description && (
                       <p className="text-xs text-slate-600 mb-1.5">{proj.description}</p>
                     )}
-                    {proj.bullets.length > 0 && (
+                    {(proj.bullets?.length ?? 0) > 0 && (
                       <ul className="list-disc list-inside space-y-0.5 text-xs text-slate-600">
-                        {proj.bullets.map((b, bIdx) => (
+                        {(proj.bullets ?? []).map((b, bIdx) => (
                           <li key={bIdx}>{b}</li>
                         ))}
                       </ul>
@@ -446,13 +466,13 @@ export function CandidateDetailModal({
             <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider mb-3 flex items-center gap-1.5">
               <GraduationCap className="w-4 h-4 text-slate-600" /> Education & Academic Credentials
             </h3>
-            {candidate.extraction.education.length === 0 ? (
+            {(candidate.extraction?.education?.length ?? 0) === 0 ? (
               <p className="text-xs text-slate-500 italic bg-slate-50 p-3 rounded-lg border border-slate-200">
                 No formal degrees or academic background evidenced.
               </p>
             ) : (
               <div className="space-y-2">
-                {candidate.extraction.education.map((edu, idx) => (
+                {(candidate.extraction?.education ?? []).map((edu, idx) => (
                   <div key={idx} className="border border-slate-200 rounded-lg p-3 bg-white flex items-center justify-between">
                     <div>
                       <h4 className="font-semibold text-xs text-slate-900">{edu.degree}</h4>
@@ -479,9 +499,9 @@ export function CandidateDetailModal({
             <div className="space-y-2">
               <div className="text-xs">
                 <span className="font-semibold text-slate-700">Platforms / Tools: </span>
-                {candidate.extraction.skills.platforms.length > 0 ? (
+                {(candidate.extraction?.skills?.platforms?.length ?? 0) > 0 ? (
                   <div className="inline-flex flex-wrap gap-1 mt-1">
-                    {candidate.extraction.skills.platforms.map((p, i) => (
+                    {(candidate.extraction?.skills?.platforms ?? []).map((p, i) => (
                       <span key={i} className="px-2 py-0.5 bg-slate-100 text-slate-700 rounded text-xs">
                         {p}
                       </span>
@@ -494,9 +514,9 @@ export function CandidateDetailModal({
 
               <div className="text-xs">
                 <span className="font-semibold text-slate-700">Methods / Frameworks: </span>
-                {candidate.extraction.skills.methods.length > 0 ? (
+                {(candidate.extraction?.skills?.methods?.length ?? 0) > 0 ? (
                   <div className="inline-flex flex-wrap gap-1 mt-1">
-                    {candidate.extraction.skills.methods.map((m, i) => (
+                    {(candidate.extraction?.skills?.methods ?? []).map((m, i) => (
                       <span key={i} className="px-2 py-0.5 bg-slate-100 text-slate-700 rounded text-xs">
                         {m}
                       </span>

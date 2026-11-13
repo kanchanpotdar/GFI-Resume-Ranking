@@ -1,6 +1,101 @@
 import { openDB, DBSchema, IDBPDatabase } from "idb";
-import { CandidateRecord, SYSTEM_VERSIONS } from "./types";
+import { CandidateExtraction, CandidateRecord, CandidateRoleScore, RoleType, SYSTEM_VERSIONS } from "./types";
 import { scoreLCARole, scoreUIUXRole, classifyCandidate } from "./scoring";
+
+function createSafeFallbackRoleScore(
+  roleId: RoleType,
+  partial: Partial<CandidateRoleScore> | undefined,
+  reason: string
+): CandidateRoleScore {
+  const existing = (partial && typeof partial === "object" ? partial : {}) as Partial<CandidateRoleScore>;
+  const sub = (existing.subScores && typeof existing.subScores === "object" ? existing.subScores : {}) as Partial<CandidateRoleScore["subScores"]>;
+  const flags = (existing.eligibilityFlags && typeof existing.eligibilityFlags === "object" ? existing.eligibilityFlags : {}) as Partial<CandidateRoleScore["eligibilityFlags"]>;
+  return {
+    roleId,
+    roleTitle: existing.roleTitle || (roleId === "lca" ? "LCA Consultant" : "UI/UX Designer Intern"),
+    rubricVersion: existing.rubricVersion || "unknown",
+    totalScore: typeof existing.totalScore === "number" && Number.isFinite(existing.totalScore) ? existing.totalScore : 0,
+    subScores: {
+      skills: typeof sub.skills === "number" ? sub.skills : 0,
+      experience: typeof sub.experience === "number" ? sub.experience : 0,
+      projects: typeof sub.projects === "number" ? sub.projects : 0,
+      semantic: typeof sub.semantic === "number" ? sub.semantic : 0,
+      education: typeof sub.education === "number" ? sub.education : 0
+    },
+    semanticRawCosine: typeof existing.semanticRawCosine === "number" ? existing.semanticRawCosine : 0,
+    semanticNormalized: typeof existing.semanticNormalized === "number" ? existing.semanticNormalized : 0,
+    requirementsEvidence: Array.isArray(existing.requirementsEvidence) ? existing.requirementsEvidence : [],
+    eligibilityFlags: {
+      isEligible: Boolean(flags.isEligible),
+      eligibilityStatus:
+        flags.eligibilityStatus === "eligible" ||
+        flags.eligibilityStatus === "conditionally_eligible" ||
+        flags.eligibilityStatus === "ineligible"
+          ? flags.eligibilityStatus
+          : "ineligible",
+      meetsMandatoryRequirements: Boolean(flags.meetsMandatoryRequirements),
+      experienceConflictNotice: flags.experienceConflictNotice,
+      meetsRoleThreshold: Boolean(flags.meetsRoleThreshold),
+      criticalRequirementMissing: Array.isArray(flags.criticalRequirementMissing) ? flags.criticalRequirementMissing : [],
+      reviewNeededFlags: Array.isArray(flags.reviewNeededFlags) ? flags.reviewNeededFlags : [reason]
+    },
+    explanation: typeof existing.explanation === "string" && existing.explanation ? existing.explanation : reason
+  };
+}
+
+function createSafeFallbackExtraction(
+  record: StoredCandidateRecord,
+  warningMsg: string
+): CandidateExtraction {
+  const existing = (record.extraction && typeof record.extraction === "object"
+    ? record.extraction
+    : {}) as Partial<CandidateExtraction>;
+
+  return {
+    candidateId: existing.candidateId || record.candidateId || "unknown_candidate",
+    sourceFilename: existing.sourceFilename || record.sourceFilename || "unknown.docx",
+    sourceFilepath: existing.sourceFilepath || record.sourceFilename || "unknown.docx",
+    sha256: existing.sha256 || record.sha256 || "",
+    extractionStatus:
+      existing.extractionStatus === "ready_for_extraction" ||
+      existing.extractionStatus === "empty_document" ||
+      existing.extractionStatus === "corrupt"
+        ? existing.extractionStatus
+        : "corrupt",
+    name: existing.name || record.candidateId || "Outdated Candidate",
+    headline: existing.headline || "Legacy record requiring reprocessing",
+    summary: existing.summary || "",
+    experience: Array.isArray(existing.experience) ? existing.experience : [],
+    projects: Array.isArray(existing.projects) ? existing.projects : [],
+    education: Array.isArray(existing.education) ? existing.education : [],
+    certifications: Array.isArray(existing.certifications) ? existing.certifications : [],
+    skills: {
+      platforms: Array.isArray(existing.skills?.platforms) ? existing.skills.platforms : [],
+      methods: Array.isArray(existing.skills?.methods) ? existing.skills.methods : [],
+      domainKnowledge: Array.isArray(existing.skills?.domainKnowledge) ? existing.skills.domainKnowledge : [],
+      softSkills: Array.isArray(existing.skills?.softSkills) ? existing.skills.softSkills : [],
+      allSkills: Array.isArray(existing.skills?.allSkills) ? existing.skills.allSkills : []
+    },
+    totalExperienceMonths: typeof existing.totalExperienceMonths === "number" ? existing.totalExperienceMonths : 0,
+    independentLcaExperienceMonths:
+      typeof existing.independentLcaExperienceMonths === "number" ? existing.independentLcaExperienceMonths : 0,
+    designExperienceMonths: typeof existing.designExperienceMonths === "number" ? existing.designExperienceMonths : 0,
+    completedLcaProjectsCount:
+      typeof existing.completedLcaProjectsCount === "number" ? existing.completedLcaProjectsCount : 0,
+    hasDesignPortfolioOrCaseStudies: Boolean(existing.hasDesignPortfolioOrCaseStudies),
+    hasUserResearchEvidence: Boolean(existing.hasUserResearchEvidence),
+    contextualFlags: {
+      relocationMentioned: Boolean(existing.contextualFlags?.relocationMentioned),
+      travelWillingnessMentioned: Boolean(existing.contextualFlags?.travelWillingnessMentioned),
+      commitmentMentioned: Boolean(existing.contextualFlags?.commitmentMentioned),
+      subjectiveTraitsRequireReview: Boolean(existing.contextualFlags?.subjectiveTraitsRequireReview)
+    },
+    rawTextLength: typeof existing.rawTextLength === "number" ? existing.rawTextLength : 0,
+    warnings: Array.isArray(existing.warnings) && existing.warnings.length > 0 ? existing.warnings : [warningMsg],
+    lcaChunk: typeof existing.lcaChunk === "string" ? existing.lcaChunk : "",
+    uiuxChunk: typeof existing.uiuxChunk === "string" ? existing.uiuxChunk : ""
+  };
+}
 
 export interface StoredCandidateRecord extends CandidateRecord {
   fileBlob?: Blob | null;
@@ -87,24 +182,16 @@ export function validateAndMigrateRecord(record: StoredCandidateRecord): StoredC
   // If embedding configuration is incompatible, we MUST NOT reuse old semantic cosine scores!
   // Preserve the record but flag for reprocessing so user can re-upload resume.
   if (!embeddingCompatible) {
-    const safeExtraction = record.extraction || {
-      name: record.candidateId || "Outdated Candidate",
-      headline: "Legacy record requiring reprocessing",
-      totalExperienceMonths: 0,
-      independentLcaExperienceMonths: 0,
-      designExperienceMonths: 0,
-      skills: { platforms: [], methods: [], allSkills: [] },
-      education: [],
-      projects: [],
-      experienceHistory: [],
-      extractionStatus: "error"
-    };
-
+    const reason = `Embedding configuration mismatch: stored (${record.embeddings?.model || "unknown"}, rev: ${record.embeddings?.modelRevision || "legacy"}, chunk: ${record.embeddings?.chunkingVersion || "legacy"}) vs current (${currentModel}, rev: ${currentRevision}, chunk: ${currentChunking}). Stored semantic similarities cannot be safely reused. Please re-upload resume.`;
     return {
       ...record,
-      extraction: safeExtraction,
+      extraction: createSafeFallbackExtraction(record, reason),
+      scores: {
+        lca: createSafeFallbackRoleScore("lca", record.scores?.lca, reason),
+        uiux: createSafeFallbackRoleScore("uiux", record.scores?.uiux, reason)
+      },
       requiresReprocessing: true,
-      reprocessingReason: `Embedding configuration mismatch: stored (${record.embeddings?.model || "unknown"}, rev: ${record.embeddings?.modelRevision || "legacy"}, chunk: ${record.embeddings?.chunkingVersion || "legacy"}) vs current (${currentModel}, rev: ${currentRevision}, chunk: ${currentChunking}). Stored semantic similarities cannot be safely reused. Please re-upload resume.`
+      reprocessingReason: reason
     };
   }
 
@@ -134,24 +221,16 @@ export function validateAndMigrateRecord(record: StoredCandidateRecord): StoredC
   }
 
   // If cannot safely recalculate, flag for user notice rather than discarding
-  const safeExtraction = record.extraction || {
-    name: record.candidateId || "Outdated Candidate",
-    headline: "Legacy record requiring reprocessing",
-    totalExperienceMonths: 0,
-    independentLcaExperienceMonths: 0,
-    designExperienceMonths: 0,
-    skills: { platforms: [], methods: [], allSkills: [] },
-    education: [],
-    projects: [],
-    experienceHistory: [],
-    extractionStatus: "error"
-  };
-
+  const fallbackReason = `Config mismatch: stored rubric (${record.scores?.lca?.rubricVersion || "unknown"}) vs current (${currentRubric}). Please re-upload resume.`;
   return {
     ...record,
-    extraction: safeExtraction,
+    extraction: createSafeFallbackExtraction(record, fallbackReason),
+    scores: {
+      lca: createSafeFallbackRoleScore("lca", record.scores?.lca, fallbackReason),
+      uiux: createSafeFallbackRoleScore("uiux", record.scores?.uiux, fallbackReason)
+    },
     requiresReprocessing: true,
-    reprocessingReason: `Config mismatch: stored rubric (${record.scores?.lca?.rubricVersion || "unknown"}) vs current (${currentRubric}). Please re-upload resume.`
+    reprocessingReason: fallbackReason
   };
 }
 
@@ -206,6 +285,10 @@ export async function saveUploadedCandidate(
     };
 
     try {
+      const existingBySha = await db.getFromIndex("uploaded_candidates", "by-sha256", candidate.sha256);
+      if (existingBySha && existingBySha.candidateId !== candidate.candidateId) {
+        await db.delete("uploaded_candidates", existingBySha.candidateId);
+      }
       await db.put("uploaded_candidates", storedRecord);
       return { success: true, blobSaved: !!fileBlob };
     } catch (putErr: any) {

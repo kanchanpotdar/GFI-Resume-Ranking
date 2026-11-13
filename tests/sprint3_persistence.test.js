@@ -21,44 +21,46 @@ test("Sprint 3 Gate 1: SHA-256 duplicate detection distinguishes identical conte
   assert.notEqual(sha1, alteredSha, "Different content must yield different SHA-256");
 });
 
-test("Sprint 3 Gate 2: Binary magic bytes validation for PDF and DOCX", () => {
+test("Sprint 3 Gate 2: Real upload magic byte & filename sanitization enforcement", () => {
+  const { validateFileMagicBytes, sanitizeUploadFilename } = require("../lib/upload_validation.ts");
+
   // Valid PDF magic bytes: %PDF
   const validPdfHeader = Buffer.from([0x25, 0x50, 0x44, 0x46, 0x2d, 0x31, 0x2e, 0x34]);
-  const isPdf = validPdfHeader.length >= 4 &&
-    validPdfHeader[0] === 0x25 && validPdfHeader[1] === 0x50 &&
-    validPdfHeader[2] === 0x44 && validPdfHeader[3] === 0x46;
-  assert.equal(isPdf, true, "Must recognize %PDF magic signature");
+  assert.equal(validateFileMagicBytes(validPdfHeader, ".pdf").valid, true, "Must recognize %PDF magic signature");
 
   // Fake PDF (plain text)
   const fakePdf = Buffer.from("This is plain text with a .pdf extension");
-  const isFakePdf = fakePdf.length >= 4 &&
-    fakePdf[0] === 0x25 && fakePdf[1] === 0x50 &&
-    fakePdf[2] === 0x44 && fakePdf[3] === 0x46;
-  assert.equal(isFakePdf, false, "Must reject plain text masquerading as PDF");
+  assert.equal(validateFileMagicBytes(fakePdf, ".pdf").valid, false, "Must reject plain text masquerading as PDF");
 
   // Valid DOCX magic bytes: PK\x03\x04 (ZIP container)
   const validDocxHeader = Buffer.from([0x50, 0x4b, 0x03, 0x04, 0x14, 0x00]);
-  const isDocx = validDocxHeader.length >= 4 &&
-    validDocxHeader[0] === 0x50 && validDocxHeader[1] === 0x4b &&
-    validDocxHeader[2] === 0x03 && validDocxHeader[3] === 0x04;
-  assert.equal(isDocx, true, "Must recognize PK.. ZIP container signature for DOCX");
+  assert.equal(validateFileMagicBytes(validDocxHeader, ".docx").valid, true, "Must recognize PK.. ZIP signature for DOCX");
 
   // Fake DOCX
   const fakeDocx = Buffer.from("Not a real zip archive");
-  const isFakeDocx = fakeDocx.length >= 4 &&
-    fakeDocx[0] === 0x50 && fakeDocx[1] === 0x4b &&
-    fakeDocx[2] === 0x03 && fakeDocx[3] === 0x04;
-  assert.equal(isFakeDocx, false, "Must reject non-ZIP content masquerading as DOCX");
+  assert.equal(validateFileMagicBytes(fakeDocx, ".docx").valid, false, "Must reject non-ZIP content masquerading as DOCX");
+
+  // Traversal filename sanitization
+  assert.equal(sanitizeUploadFilename("../../etc/passwd/resume.pdf"), "resume.pdf");
+  assert.equal(sanitizeUploadFilename("bad\x00name?.docx"), "bad_name_.docx");
 });
 
-test("Sprint 3 Gate 3: Error messages never expose internal stack traces or server paths", () => {
-  // Standard user-facing error message defined in route handler
-  const sanitizedMessage = "An error occurred while parsing and processing the resume. Please ensure the document is a valid, uncorrupted PDF or DOCX file.";
-  
-  assert.ok(!sanitizedMessage.includes("Error:"), "Should not expose raw JS Error prefixes");
-  assert.ok(!sanitizedMessage.includes("at "), "Should not expose stack trace call frames");
-  assert.ok(!sanitizedMessage.includes("/Users/"), "Should not expose local filesystem paths");
-  assert.ok(!sanitizedMessage.includes("node_modules"), "Should not expose internal library internals");
+test("Sprint 3 Gate 3: Upload rate limiter enforces sliding window limits cleanly", () => {
+  const { checkUploadRateLimit, resetUploadRateLimiter } = require("../lib/upload_validation.ts");
+  resetUploadRateLimiter();
+
+  const t0 = 1_700_000_000_000;
+  for (let i = 0; i < 3; i++) {
+    const res = checkUploadRateLimit("198.51.100.10", 3, 60_000, t0 + i * 100);
+    assert.equal(res.allowed, true);
+  }
+  const blocked = checkUploadRateLimit("198.51.100.10", 3, 60_000, t0 + 500);
+  assert.equal(blocked.allowed, false, "4th request within window must be throttled");
+  assert.ok(blocked.retryAfterSeconds >= 1);
+
+  const afterWindow = checkUploadRateLimit("198.51.100.10", 3, 60_000, t0 + 61_000);
+  assert.equal(afterWindow.allowed, true, "Must allow again after window elapses");
+  resetUploadRateLimiter();
 });
 
 test("Sprint 3 Gate 4: Independent dual-role evaluation allows cross-role comparison", () => {
@@ -181,6 +183,10 @@ test("Sprint 3.5 Gate 7: Incompatible schema marks candidate as requiresReproces
   assert.equal(validated.requiresReprocessing, true, "Must flag incompatible record as requiring reprocessing");
   assert.ok(validated.reprocessingReason?.includes("mismatch"), "Must provide actionable mismatch explanation");
   assert.equal(validated.candidateId, "legacy_cand_001", "Must preserve record data rather than silently dropping it");
+  assert.ok(Array.isArray(validated.extraction.experience), "Fallback extraction must provide experience array for modal rendering");
+  assert.ok(Array.isArray(validated.extraction.projects), "Fallback extraction must provide projects array for modal rendering");
+  assert.ok(Array.isArray(validated.extraction.skills?.domainKnowledge), "Fallback extraction must include complete skills object");
+  assert.ok(["ready_for_extraction", "empty_document", "corrupt"].includes(validated.extraction.extractionStatus), "Fallback extractionStatus must match valid union");
 });
 
 test("Sprint 3.5 Gate 8: Failure injection hook triggers recoverable errors without silent success", async () => {
@@ -201,36 +207,52 @@ test("Sprint 3.5 Gate 8: Failure injection hook triggers recoverable errors with
   assert.equal(dbTestHooks.failNextClear, false, "Hook must automatically reset");
 });
 
-test("Sprint 3.5 Gate 9: ZIP decompression security rejects oversized uncompressed payload (Zip Bomb Defense)", () => {
-  // Construct a minimal ZIP header simulating 50MB uncompressed size
-  const buf = Buffer.alloc(100);
-  buf.writeUInt32LE(0x04034b50, 0); // PK\x03\x04
-  buf.writeUInt32LE(50 * 1024 * 1024, 22); // Uncompressed size: 50MB!
-  buf.writeUInt16LE(4, 26); // Filename len: 4
-  buf.writeUInt16LE(0, 28); // Extra len: 0
-  buf.write("test", 30);
+test("Sprint 3.5 Gate 9: Central-Directory ZIP safety accepts real DOCX and rejects Zip bombs (including data-descriptor ZIPs) and malformed ZIPs", () => {
+  const { checkZipSafety } = require("../lib/upload_validation.ts");
 
-  // Simple reproduction of checkZipSafety
-  let totalUncompressed = 0;
-  let offset = 0;
-  let isSafe = true;
-  while (offset < buf.length - 30) {
-    if (buf[offset] === 0x50 && buf[offset+1] === 0x4b && buf[offset+2] === 0x03 && buf[offset+3] === 0x04) {
-      const uncompressed = buf.readUInt32LE(offset + 22);
-      totalUncompressed += uncompressed;
-      if (totalUncompressed > 25 * 1024 * 1024) {
-        isSafe = false;
-        break;
-      }
-      const fnLen = buf.readUInt16LE(offset + 26);
-      const exLen = buf.readUInt16LE(offset + 28);
-      offset += 30 + fnLen + exLen;
-    } else {
-      offset++;
-    }
-  }
+  // 1. Genuine DOCX fixture passes
+  const sampleDocx = fs.readFileSync(path.join(ROOT, "data/fixtures/sample_lca_resume.docx"));
+  assert.equal(checkZipSafety(sampleDocx), true, "Real DOCX fixture must pass ZIP safety check");
 
-  assert.equal(isSafe, false, "Must reject ZIP container exceeding 25MB uncompressed limit");
+  // 2. Construct minimal ZIP with data-descriptor (local header size = 0) and 50MB in Central Directory
+  const localHeader = Buffer.alloc(34);
+  localHeader.writeUInt32LE(0x04034b50, 0);
+  localHeader.writeUInt16LE(0x08, 6); // Bit 3 data descriptor flag
+  localHeader.writeUInt32LE(0, 18); // compressed size 0 in local header
+  localHeader.writeUInt32LE(0, 22); // uncompressed size 0 in local header
+  localHeader.writeUInt16LE(4, 26); // filename len
+  localHeader.write("test", 30);
+
+  const cdHeader = Buffer.alloc(50);
+  cdHeader.writeUInt32LE(0x02014b50, 0);
+  cdHeader.writeUInt32LE(1024, 20); // compressed size 1KB
+  cdHeader.writeUInt32LE(50 * 1024 * 1024, 24); // 50MB uncompressed in CD!
+  cdHeader.writeUInt16LE(4, 28); // filename len
+  cdHeader.write("test", 46);
+
+  const eocd = Buffer.alloc(22);
+  eocd.writeUInt32LE(0x06054b50, 0);
+  eocd.writeUInt16LE(1, 8);
+  eocd.writeUInt16LE(1, 10);
+  eocd.writeUInt32LE(cdHeader.length, 12);
+  eocd.writeUInt32LE(localHeader.length, 16);
+
+  const zipBombWithDataDescriptor = Buffer.concat([localHeader, cdHeader, eocd]);
+  assert.equal(
+    checkZipSafety(zipBombWithDataDescriptor),
+    false,
+    "Must reject Central Directory ZIP bomb even when local header says 0 (data descriptor)"
+  );
+
+  // 3. Reject >100:1 compression ratio even under 25MB total
+  const cdRatioBomb = Buffer.from(cdHeader);
+  cdRatioBomb.writeUInt32LE(1024, 20); // 1KB compressed
+  cdRatioBomb.writeUInt32LE(5 * 1024 * 1024, 24); // 5MB uncompressed (~5120:1 ratio)
+  const ratioZip = Buffer.concat([localHeader, cdRatioBomb, eocd]);
+  assert.equal(checkZipSafety(ratioZip), false, "Must reject extreme compression ratio > 100:1");
+
+  // 4. Reject ZIP missing End of Central Directory
+  assert.equal(checkZipSafety(localHeader), false, "Must reject malformed ZIP lacking Central Directory");
 });
 
 test("Sprint 4 Gate 1: validateAndMigrateRecord rejects reuse of old semantic similarities when embedding revision or chunking version is incompatible", () => {
@@ -310,5 +332,48 @@ test("Sprint 4 Gate 3: poolAndNormalizeVectors accurately aggregates multi-chunk
   assert.ok(Math.abs(norm - 1.0) < 1e-5, "Pooled vector must be strictly unit L2 normalized");
   assert.ok(Math.abs(pooled[0] - Math.SQRT1_2) < 1e-5);
   assert.ok(Math.abs(pooled[1] - Math.SQRT1_2) < 1e-5);
+
+  assert.throws(() => poolAndNormalizeVectors([]), /empty/i, "Must reject empty vector array");
+  assert.throws(
+    () => poolAndNormalizeVectors([new Array(384).fill(0)]),
+    /zero or non-finite/i,
+    "Must reject zero-norm vector rather than returning zero array"
+  );
+});
+
+test("Pre-Deploy Audit Gate: generateEmbeddingHF retries transient 503 and fails loudly on HTTP 401 without key leak", async () => {
+  const { generateEmbeddingHF } = require("../lib/embeddings.ts");
+  const originalFetch = global.fetch;
+  let calls = 0;
+
+  try {
+    // 1. Transient 503 followed by valid 200
+    global.fetch = async () => {
+      calls++;
+      if (calls === 1) {
+        return new Response("Model loading", { status: 503 });
+      }
+      return new Response(JSON.stringify(new Array(384).fill(0.25)), {
+        status: 200,
+        headers: { "Content-Type": "application/json" }
+      });
+    };
+    const vec = await generateEmbeddingHF("LCA sample text", "hf_secret_dummy_token_123");
+    assert.equal(calls, 2, "Must retry once on transient 503");
+    assert.equal(vec.length, 384);
+
+    // 2. Persistent 401 fails without leaking token
+    global.fetch = async () => new Response("Unauthorized", { status: 401 });
+    await assert.rejects(
+      () => generateEmbeddingHF("LCA sample text", "hf_secret_dummy_token_123"),
+      (err) => {
+        assert.ok(err.message.includes("401"));
+        assert.ok(!err.message.includes("hf_secret_dummy_token_123"), "Must never leak API key in errors");
+        return true;
+      }
+    );
+  } finally {
+    global.fetch = originalFetch;
+  }
 });
 

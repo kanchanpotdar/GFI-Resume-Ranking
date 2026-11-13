@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/test";
 import path from "path";
 import fs from "fs";
+import os from "os";
 
 const FIXTURES_DIR = path.join(process.cwd(), "data/fixtures");
 
@@ -16,14 +17,14 @@ test.describe("Growth For Impact — E2E Test Suite", () => {
     const heading = page.locator("h1");
     await expect(heading).toContainText("Resume Screening & Ranked Evaluation Dashboard");
 
-    // Check tab counts (9 LCA, 22 UI/UX, 16 Neither = 47 total)
+    // Check tab counts (8 LCA, 22 UI/UX, 17 Neither = 47 total after Sept date fix)
     const lcaTab = page.getByRole("button", { name: /LCA Consultant/i });
     const uiuxTab = page.getByRole("button", { name: /UI\/UX Designer Intern/i });
     const neitherTab = page.getByRole("button", { name: /Neither \/ Uncertain Review/i });
 
-    await expect(lcaTab).toContainText("9");
+    await expect(lcaTab).toContainText("8");
     await expect(uiuxTab).toContainText("22");
-    await expect(neitherTab).toContainText("16");
+    await expect(neitherTab).toContainText("17");
 
     // Check baseline badges
     const baselineBadges = page.locator("text=Baseline");
@@ -60,7 +61,7 @@ test.describe("Growth For Impact — E2E Test Suite", () => {
     // Inspector modal opens automatically with candidate h2
     const modalHeading = page.locator('h2:has-text("Dr. Evelyn Vance")');
     await expect(modalHeading).toBeVisible({ timeout: 15000 });
-    await expect(page.locator(".fixed.inset-0").getByText("99.7").first()).toBeVisible();
+    await expect(page.locator(".fixed.inset-0").getByText("99.3").first()).toBeVisible();
 
     // Close inspector modal
     await page.getByRole("button", { name: "Close modal" }).click();
@@ -158,8 +159,8 @@ test.describe("Growth For Impact — E2E Test Suite", () => {
     await expect(page.locator("text=Reset All Uploaded Resumes?")).toBeVisible();
     await page.getByRole("button", { name: /Clear All Uploads/i }).click();
 
-    // Baseline counts must be exactly 9 LCA, 22 UI/UX, 16 Neither
-    await expect(page.getByRole("button", { name: /LCA Consultant/i })).toContainText("9");
+    // Baseline counts must be exactly 8 LCA, 22 UI/UX, 17 Neither
+    await expect(page.getByRole("button", { name: /LCA Consultant/i })).toContainText("8");
     await expect(page.getByRole("button", { name: /Reset Uploads/i })).not.toBeVisible();
   });
 
@@ -234,13 +235,15 @@ test.describe("Growth For Impact — E2E Test Suite", () => {
     await page.locator('input[type="file"]').setInputFiles(path.join(FIXTURES_DIR, "invalid_extension.txt"));
     await expect(page.locator("text=Only .pdf and .docx resume formats are supported.")).toBeVisible();
 
-    // 2. Oversized >5MB
-    const oversizedPath = path.join(FIXTURES_DIR, "oversized_file.pdf");
-    if (!fs.existsSync(oversizedPath)) {
-      fs.writeFileSync(oversizedPath, Buffer.alloc(5.1 * 1024 * 1024, "A"));
+    // 2. Oversized >5MB (generated in temp dir and cleaned up so fixtures dir stays spotless)
+    const oversizedPath = path.join(os.tmpdir(), `gfi_oversized_${Date.now()}.pdf`);
+    fs.writeFileSync(oversizedPath, Buffer.alloc(5.1 * 1024 * 1024, "A"));
+    try {
+      await page.locator('input[type="file"]').setInputFiles(oversizedPath);
+      await expect(page.locator("text=File exceeds the maximum allowable size limit of 5MB.")).toBeVisible();
+    } finally {
+      if (fs.existsSync(oversizedPath)) fs.unlinkSync(oversizedPath);
     }
-    await page.locator('input[type="file"]').setInputFiles(oversizedPath);
-    await expect(page.locator("text=File exceeds the maximum allowable size limit of 5MB.")).toBeVisible();
 
     // 3. Fake/corrupt DOCX
     await page.locator('input[type="file"]').setInputFiles(path.join(FIXTURES_DIR, "corrupt_docx.docx"));
@@ -250,12 +253,46 @@ test.describe("Growth For Impact — E2E Test Suite", () => {
     await page.getByRole("button", { name: "Close upload modal" }).click();
   });
 
-  test("17 & 18. Simulated persistence failures and error notifications", async ({ page }) => {
-    // Check storage notification banner exists
+  test("17 & 18. Simulated persistence failures surface error notifications and retain candidate state", async ({ page }) => {
     await expect(page.locator("text=Local IndexedDB Active")).toBeVisible();
+
+    // Ensure uploaded candidate is present
+    const card = page.locator('h3:has-text("Dr. Evelyn Vance")');
+    if (!(await card.isVisible())) {
+      await page.getByRole("button", { name: /Upload New Resume/i }).click();
+      await page.locator('input[type="file"]').setInputFiles(path.join(FIXTURES_DIR, "sample_lca_resume.docx"));
+      await page.getByRole("button", { name: /Process & Rank/i }).click();
+      await expect(page.locator('h2:has-text("Dr. Evelyn Vance")')).toBeVisible({ timeout: 15000 });
+      await page.getByRole("button", { name: "Close modal" }).click();
+    }
+
+    // Intercept IDBObjectStore.prototype.delete once to simulate storage write abort
+    await page.evaluate(() => {
+      const origDelete = IDBObjectStore.prototype.delete;
+      (window as any).__origIdbDelete = origDelete;
+      IDBObjectStore.prototype.delete = function (...args: any[]) {
+        IDBObjectStore.prototype.delete = origDelete;
+        throw new DOMException("Simulated IndexedDB delete lock error", "AbortError");
+      };
+    });
+
+    await page.locator('button[title*="Delete uploaded resume"]').first().click();
+    await expect(page.locator("text=Delete Uploaded Resume?")).toBeVisible();
+    await page.getByRole("button", { name: /Confirm Delete/i }).click();
+
+    // Verify error banner shown AND candidate retained in DOM
+    await expect(page.locator("text=Deletion failed:")).toBeVisible();
+    await expect(card).toBeVisible();
+
+    // Dismiss modal if still open & delete cleanly to leave browser clean
+    const cancelBtn = page.getByRole("button", { name: "Cancel" });
+    if (await cancelBtn.isVisible()) await cancelBtn.click();
+    await page.locator('button[title*="Delete uploaded resume"]').first().click();
+    await page.getByRole("button", { name: /Confirm Delete/i }).click();
+    await expect(card).not.toBeVisible();
   });
 
-  test("19. Outdated version records display warning badge", async ({ page }) => {
+  test("19. Outdated version records display warning badge and open safely in detail modal", async ({ page }) => {
     // Inject an outdated record into IndexedDB directly with full tx.oncomplete wait
     await page.evaluate(() => {
       return new Promise<void>((resolve, reject) => {
@@ -291,10 +328,16 @@ test.describe("Growth For Impact — E2E Test Suite", () => {
     await page.reload();
     await page.waitForLoadState("networkidle");
 
-    // Check Neither tab for Outdated Version badge
+    // Check Neither tab for Outdated Version badge AND inspect safely without runtime TypeError
     const neitherTab = page.getByRole("button", { name: /Neither \/ Uncertain Review/i });
     await neitherTab.click();
     await expect(page.locator("text=Outdated Version").first()).toBeVisible();
+
+    const outdatedCard = page.locator("div.bg-white", { hasText: "outdated_test_001" }).first();
+    await outdatedCard.getByRole("button", { name: /Inspect/i }).click();
+    await expect(page.locator("h2", { hasText: "outdated_test_001" })).toBeVisible();
+    await expect(page.locator("text=Work Experience (Total: 0 mos")).toBeVisible();
+    await page.getByRole("button", { name: "Close modal" }).click();
 
     // Clean up
     await page.evaluate(() => {

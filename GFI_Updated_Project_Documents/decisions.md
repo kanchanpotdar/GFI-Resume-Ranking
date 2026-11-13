@@ -168,4 +168,10 @@ For any post-approval change, append:
   *Decision:* Enforce strict state mutation serialization with `isMutating` locks. Update React state *strictly* after IndexedDB transactions resolve (`res.success === true`). Provide failure injection hooks for verification. Implement `validateAndMigrateRecord` to automatically recalculate scores when rubrics update, or mark incompatible schemas with `requiresReprocessing: true` and an amber UI badge.  
   *Impact:* 100% synchronization between React state and browser storage; zero data loss during version upgrades.
 
+### Recorded Pre-Deployment Audit Architecture Decisions
+- **ADR-S16 | 2026-11-13 | Accepted | Baseline vs. Runtime Extractor Parity, Central Directory ZIP Hardening & HF Router Caveat**  
+  *Context:* Pre-deployment independent audit identified (1) missing `'sept': 9` in `MONTH_MAP` and prefix section collisions inflating `anonymized_VM_1793682784520` (`58.9 -> 48.9`), plus minor TypeScript runtime divergence in apostrophe-year (`’25`) and `N Months` parsing; (2) data-descriptor ZIP entries (`size === 0` in local headers) bypassing byte-scanned ZIP checks; and (3) deprecated Hugging Face `api-inference.huggingface.co` endpoint with unverified live hosted pooling behavior when `HUGGINGFACE_API_KEY` is absent.  
+  *Decision:* Synchronize Python and TypeScript extractors across all 47 source DOCX resumes (47/47 exact score and classification parity); replace byte-scanning with Central Directory + EOCD ZIP validation (`lib/upload_validation.ts`) alongside sliding-window rate limiting and filename sanitization; update `generateEmbeddingHF()` to `router.huggingface.co/hf-inference/...` with retry and strict unit-norm guards while explicitly documenting live HF Router pooling equivalence as unverified until tested with a valid token during Vercel deployment.  
+  *Impact:* Deterministic extraction parity (`8` LCA / `22` UI/UX / `17` Neither), closed Zip-bomb data-descriptor bypass, and transparent pre-deployment risk disclosure.
+
 Keep `agent.md`, `sprintplan.md`, and this file aligned. Do not reinterpret unresolved verification tasks as permission to change approved decisions.

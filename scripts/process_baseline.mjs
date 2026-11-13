@@ -50,6 +50,8 @@ async function main() {
         embeddings: {
           model: EMBEDDING_MODEL,
           dimensions: EMBEDDING_DIMENSIONS,
+          modelRevision: "v1.5",
+          chunkingVersion: "1.0.0",
           lcaChunkVector: null,
           uiuxChunkVector: null,
         },
@@ -97,6 +99,8 @@ async function main() {
       embeddings: {
         model: EMBEDDING_MODEL,
         dimensions: EMBEDDING_DIMENSIONS,
+        modelRevision: "v1.5",
+        chunkingVersion: "1.0.0",
         lcaChunkVector: lcaVector,
         uiuxChunkVector: uiuxVector,
       },

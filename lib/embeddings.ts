@@ -5,14 +5,17 @@ export const EMBEDDING_DIMENSIONS = 384;
 export const MAX_CHUNK_CHARS = 1500;
 export const CHUNK_OVERLAP_CHARS = 150;
 
-let pipelineInstance: any = null;
+let pipelinePromise: Promise<any> | null = null;
 
 export async function getEmbeddingPipeline() {
-  if (!pipelineInstance) {
+  if (!pipelinePromise) {
     env.allowLocalModels = true;
-    pipelineInstance = await pipeline("feature-extraction", "Xenova/bge-small-en-v1.5");
+    pipelinePromise = pipeline("feature-extraction", "Xenova/bge-small-en-v1.5").catch((err) => {
+      pipelinePromise = null;
+      throw err;
+    });
   }
-  return pipelineInstance;
+  return pipelinePromise;
 }
 
 export function computeCosineSimilarity(
@@ -95,13 +98,17 @@ export function parseAndNormalizeHFResponse(rawData: any): number[] {
     throw new Error(`Invalid response format from Hugging Face: expected array`);
   }
 
-  // Strict unit L2 normalization
+  // Strict finite validation & unit L2 normalization
   let sumSq = 0;
   for (let i = 0; i < EMBEDDING_DIMENSIONS; i++) {
-    sumSq += vec[i] * vec[i];
+    const val = vec[i];
+    if (typeof val !== "number" || !Number.isFinite(val)) {
+      throw new Error(`Non-finite value at index ${i} in Hugging Face embedding vector`);
+    }
+    sumSq += val * val;
   }
   const norm = Math.sqrt(sumSq);
-  if (norm === 0 || !isFinite(norm)) {
+  if (norm === 0 || !Number.isFinite(norm)) {
     throw new Error("Zero or non-finite norm from Hugging Face embedding vector");
   }
 
@@ -116,13 +123,33 @@ export function parseAndNormalizeHFResponse(rawData: any): number[] {
  * Mean-pools multiple 384-dimensional chunk vectors and re-normalizes to unit L2 length.
  */
 export function poolAndNormalizeVectors(chunkVectors: number[][]): number[] {
+  if (!chunkVectors || chunkVectors.length === 0) {
+    throw new Error("Cannot pool empty chunk vector list");
+  }
   if (chunkVectors.length === 1) {
-    return chunkVectors[0];
+    const single = chunkVectors[0];
+    let sumSqSingle = 0;
+    for (let i = 0; i < EMBEDDING_DIMENSIONS; i++) {
+      const val = single[i];
+      if (typeof val !== "number" || !Number.isFinite(val)) {
+        throw new Error(`Non-finite component at index ${i} in embedding vector`);
+      }
+      sumSqSingle += val * val;
+    }
+    const singleNorm = Math.sqrt(sumSqSingle);
+    if (singleNorm === 0 || !Number.isFinite(singleNorm)) {
+      throw new Error("Embedding vector has zero or non-finite L2 norm");
+    }
+    return single.map((v) => v / singleNorm);
   }
   const pooled = new Float64Array(EMBEDDING_DIMENSIONS);
   for (const vec of chunkVectors) {
     for (let i = 0; i < EMBEDDING_DIMENSIONS; i++) {
-      pooled[i] += vec[i];
+      const val = vec[i];
+      if (typeof val !== "number" || !Number.isFinite(val)) {
+        throw new Error(`Non-finite component at index ${i} in chunk vector`);
+      }
+      pooled[i] += val;
     }
   }
   let sumSq = 0;
@@ -131,44 +158,60 @@ export function poolAndNormalizeVectors(chunkVectors: number[][]): number[] {
     sumSq += pooled[i] * pooled[i];
   }
   const norm = Math.sqrt(sumSq);
+  if (norm === 0 || !Number.isFinite(norm)) {
+    throw new Error("Pooled embedding vector has zero or non-finite L2 norm");
+  }
   const result = new Array(EMBEDDING_DIMENSIONS);
   for (let i = 0; i < EMBEDDING_DIMENSIONS; i++) {
-    result[i] = norm > 0 ? pooled[i] / norm : 0;
+    result[i] = pooled[i] / norm;
   }
   return result;
 }
 
 /**
  * Calls hosted Hugging Face Inference API for BAAI/bge-small-en-v1.5.
+ * Retries once cleanly on transient 429/503 responses.
  */
 export async function generateEmbeddingHF(text: string, apiKey: string): Promise<number[]> {
-  const url = process.env.HUGGINGFACE_API_URL || "https://api-inference.huggingface.co/pipeline/feature-extraction/BAAI/bge-small-en-v1.5";
-  
-  const response = await fetch(url, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-      "x-use-cache": "true",
-      "x-wait-for-model": "true"
-    },
-    body: JSON.stringify({
-      inputs: text,
-      parameters: {
-        pooling: "mean",
-        normalize: true
-      }
-    }),
-    signal: AbortSignal.timeout(15000)
-  });
+  const url =
+    process.env.HUGGINGFACE_API_URL ||
+    "https://router.huggingface.co/hf-inference/models/BAAI/bge-small-en-v1.5/pipeline/feature-extraction";
 
-  if (!response.ok) {
+  const maxAttempts = 2;
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+        "x-use-cache": "true",
+        "x-wait-for-model": "true"
+      },
+      body: JSON.stringify({
+        inputs: text,
+        parameters: {
+          pooling: "mean",
+          normalize: true
+        }
+      }),
+      signal: AbortSignal.timeout(15000)
+    });
+
+    if (response.ok) {
+      const rawData = await response.json();
+      return parseAndNormalizeHFResponse(rawData);
+    }
+
     const errorText = await response.text();
-    throw new Error(`Hugging Face API error (${response.status}): ${errorText.slice(0, 200)}`);
+    const isTransient = response.status === 429 || response.status === 503;
+    if (isTransient && attempt < maxAttempts) {
+      await new Promise((r) => setTimeout(r, 800));
+      continue;
+    }
+    throw new Error(`Hugging Face API error (${response.status}): ${errorText.slice(0, 160)}`);
   }
 
-  const rawData = await response.json();
-  return parseAndNormalizeHFResponse(rawData);
+  throw new Error("Hugging Face API exhausted retry budget");
 }
 
 /**

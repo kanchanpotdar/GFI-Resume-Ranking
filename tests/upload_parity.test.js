@@ -10,25 +10,36 @@ const ROOT = path.join(process.cwd());
 
 test("Sprint 2 Gate: Runtime extractor parses DOCX and matches baseline attributes", async () => {
   const baselineData = JSON.parse(fs.readFileSync(path.join(ROOT, "data/baseline.json"), "utf8"));
-  
-  // Pick representative LCA candidate: TM_495
+
+  // Always verify end-to-end Mammoth DOCX parse -> extraction -> scoring on tracked synthetic fixture
+  const fixturePath = path.join(ROOT, "data/fixtures/sample_lca_resume.docx");
+  assert.ok(fs.existsSync(fixturePath), "Tracked fixture sample_lca_resume.docx must exist on disk");
+  const fixtureBuffer = fs.readFileSync(fixturePath);
+  const fixtureMammoth = await mammoth.extractRawText({ buffer: fixtureBuffer });
+  const fixtureParas = fixtureMammoth.value.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
+  const fixtureExt = extractFromParagraphs(fixtureParas, "fixture_evelyn_vance", "sample_lca_resume.docx", "fixture_hash");
+  assert.equal(fixtureExt.extractionStatus, "ready_for_extraction");
+  assert.equal(fixtureExt.completedLcaProjectsCount, 3);
+  assert.equal(fixtureExt.independentLcaExperienceMonths, 46);
+  assert.ok(fixtureExt.education.length >= 1, "Fixture must extract education");
+
+  // When private baseline source archive exists locally, also assert exact parity on TM_495
   const tmCandidate = baselineData.candidates.find((c) => c.candidateId.includes("TM_1793682784495"));
   assert.ok(tmCandidate, "Baseline candidate TM_495 should exist");
-
   const docxPath = path.join(ROOT, "Software Development Assignment Resumes", `${tmCandidate.candidateId}.docx`);
-  assert.ok(fs.existsSync(docxPath), "Source DOCX must exist on disk");
+  if (fs.existsSync(docxPath)) {
+    const fileBuffer = fs.readFileSync(docxPath);
+    const mammothRes = await mammoth.extractRawText({ buffer: fileBuffer });
+    const paras = mammothRes.value.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
 
-  const fileBuffer = fs.readFileSync(docxPath);
-  const mammothRes = await mammoth.extractRawText({ buffer: fileBuffer });
-  const paras = mammothRes.value.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
+    const runtimeExt = extractFromParagraphs(paras, tmCandidate.candidateId, `${tmCandidate.candidateId}.docx`, tmCandidate.sha256);
 
-  const runtimeExt = extractFromParagraphs(paras, tmCandidate.candidateId, `${tmCandidate.candidateId}.docx`, tmCandidate.sha256);
-
-  assert.equal(runtimeExt.candidateId, tmCandidate.candidateId);
-  assert.equal(runtimeExt.extractionStatus, "ready_for_extraction");
-  assert.equal(runtimeExt.completedLcaProjectsCount, tmCandidate.extraction.completedLcaProjectsCount);
-  assert.equal(runtimeExt.independentLcaExperienceMonths, tmCandidate.extraction.independentLcaExperienceMonths);
-  assert.equal(runtimeExt.education.length, tmCandidate.extraction.education.length);
+    assert.equal(runtimeExt.candidateId, tmCandidate.candidateId);
+    assert.equal(runtimeExt.extractionStatus, "ready_for_extraction");
+    assert.equal(runtimeExt.completedLcaProjectsCount, tmCandidate.extraction.completedLcaProjectsCount);
+    assert.equal(runtimeExt.independentLcaExperienceMonths, tmCandidate.extraction.independentLcaExperienceMonths);
+    assert.equal(runtimeExt.education.length, tmCandidate.extraction.education.length);
+  }
 });
 
 test("Sprint 2 Gate: Scoring parity between runtime extraction and baseline scores", () => {
@@ -107,4 +118,67 @@ test("Sprint 2 Gate: Decoupled mandatory eligibility flags distinguish condition
   assert.equal(lcaScore.eligibilityFlags.meetsRoleThreshold, true, "Score meets role threshold");
   assert.equal(lcaScore.eligibilityFlags.eligibilityStatus, "conditionally_eligible", "Must be flagged as conditionally_eligible due to OpenLCA/GaBi verification requirement");
   assert.equal(lcaScore.eligibilityFlags.isEligible, false, "isEligible must be false while conditional review is pending");
+});
+
+test("Pre-Deploy Audit Gate: Runtime extractor handles Sept dates, apostrophe years, relative months, and section boundaries", () => {
+  const sampleParas = [
+    "Candidate AB",
+    "Product Designer",
+    "Experience",
+    "Product Designer — Studio One   Sept 2021 – Jun 2023",
+    "• Delivered responsive Figma prototypes and design system.",
+    "UX Design Intern — Studio Two   Sep ’25 – Dec ’25",
+    "• Conducted user interviews and wireframing.",
+    "UI Consultant — Studio Three   8 Months",
+    "• Built UI components.",
+    "Core Skills",
+    "Platforms: Figma",
+    "Tools / Technologies",
+    "Miro, FigJam",
+    "Awards / Honors",
+    "• Hackathon Winner 2024",
+    "Languages",
+    "English"
+  ];
+
+  const ext = extractFromParagraphs(sampleParas, "test_edge", "test_edge.docx", "hash_edge");
+  assert.equal(ext.experience.length, 3, "Must parse Sept span, apostrophe-year span, and relative months");
+  assert.equal(ext.experience[0].durationMonths, 22, "Sept 2021 – Jun 2023 must equal strictly 22 months");
+  assert.equal(ext.experience[1].durationMonths, 4, "Sep ’25 – Dec ’25 must equal 4 months");
+  assert.equal(ext.experience[2].durationMonths, 8, "8 Months must equal 8 months");
+  assert.ok(!ext.skills.allSkills.some((s) => s.includes("Hackathon") || s === "Awards / Honors" || s === "Languages"),
+    "Awards / Languages headers must never bleed into Core Skills"
+  );
+  assert.ok(ext.skills.platforms.includes("Miro"), "Tools / Technologies known platforms must be extracted");
+});
+
+test("Pre-Deploy Audit Gate: Runtime vs baseline parity across all 47 source DOCX resumes when archive is present", async (t) => {
+  const resumeDir = path.join(ROOT, "Software Development Assignment Resumes");
+  if (!fs.existsSync(resumeDir)) {
+    t.skip("Source archive directory omitted in clean checkout");
+    return;
+  }
+
+  const baselineData = JSON.parse(fs.readFileSync(path.join(ROOT, "data/baseline.json"), "utf8"));
+  assert.equal(baselineData.candidates.length, 47);
+
+  for (const b of baselineData.candidates) {
+    const docxPath = path.join(resumeDir, b.sourceFilename);
+    const mammothRes = await mammoth.extractRawText({ buffer: fs.readFileSync(docxPath) });
+    const paras = mammothRes.value.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
+    const runtimeExt = extractFromParagraphs(paras, b.candidateId, b.sourceFilename, b.sha256);
+
+    assert.equal(runtimeExt.extractionStatus, b.extraction.extractionStatus, `${b.candidateId} status mismatch`);
+    assert.equal(runtimeExt.independentLcaExperienceMonths, b.extraction.independentLcaExperienceMonths, `${b.candidateId} LCA months mismatch`);
+    assert.equal(runtimeExt.designExperienceMonths, b.extraction.designExperienceMonths, `${b.candidateId} design months mismatch`);
+    assert.equal(runtimeExt.completedLcaProjectsCount, b.extraction.completedLcaProjectsCount, `${b.candidateId} LCA projects mismatch`);
+
+    const lca = scoreLCARole(runtimeExt, b.scores.lca.semanticRawCosine || 0);
+    const uiux = scoreUIUXRole(runtimeExt, b.scores.uiux.semanticRawCosine || 0);
+    const cls = classifyCandidate(lca, uiux, runtimeExt.extractionStatus).classification;
+
+    assert.ok(Math.abs(lca.totalScore - b.scores.lca.totalScore) < 0.01, `${b.candidateId} LCA score mismatch`);
+    assert.ok(Math.abs(uiux.totalScore - b.scores.uiux.totalScore) < 0.01, `${b.candidateId} UI/UX score mismatch`);
+    assert.equal(cls, b.classification, `${b.candidateId} classification mismatch`);
+  }
 });

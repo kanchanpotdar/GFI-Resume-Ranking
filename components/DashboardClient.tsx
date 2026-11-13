@@ -247,20 +247,19 @@ export function DashboardClient({ initialCandidates }: DashboardClientProps) {
     };
   }, [tabCandidates, activeTab]);
 
-  const handleCandidateUploaded = async (newCandidate: CandidateRecord, file?: File | null) => {
-    if (isMutating) return;
+  const handleCandidateUploaded = async (newCandidate: CandidateRecord, file?: File | null): Promise<boolean> => {
+    if (isMutating) return false;
     setIsMutating(true);
     setMutationError(null);
 
     try {
-      // Check if already in active state
-      const alreadyExists = candidates.some(
+      // Check if already in active state (allow replacing outdated records needing reprocessing)
+      const existingMatch = candidates.find(
         (c) => c.sha256 === newCandidate.sha256 || c.candidateId === newCandidate.candidateId
       );
-      if (alreadyExists) {
+      if (existingMatch && !existingMatch.requiresReprocessing) {
         setStorageNotification(`Candidate ${newCandidate.candidateId} is already in the evaluation pool.`);
-        setIsMutating(false);
-        return;
+        return false;
       }
 
       // 1. Save to IndexedDB
@@ -292,8 +291,10 @@ export function DashboardClient({ initialCandidates }: DashboardClientProps) {
 
       // 4. Automatically open candidate details inspector
       setInspectCandidate(newCandidate);
+      return true;
     } catch (err: any) {
       setMutationError(`Failed to save uploaded candidate: ${err.message}. Record not added.`);
+      return false;
     } finally {
       setIsMutating(false);
     }

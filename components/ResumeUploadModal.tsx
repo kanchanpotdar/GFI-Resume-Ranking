@@ -8,7 +8,7 @@ import { checkLocalDuplicate } from "@/lib/db";
 interface ResumeUploadModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onCandidateUploaded: (candidate: CandidateRecord, file?: File | null) => void;
+  onCandidateUploaded: (candidate: CandidateRecord, file?: File | null) => Promise<boolean> | boolean | void;
   onViewCandidate: (candidate: CandidateRecord) => void;
   existingCandidates?: CandidateRecord[];
 }
@@ -86,12 +86,12 @@ export function ResumeUploadModal({
     setUploadStatus("Computing document cryptographic hash...");
 
     try {
-      // 1. Client-side fast SHA-256 duplicate check
+      // 1. Client-side fast SHA-256 duplicate check (allow re-upload if stored copy requires reprocessing)
       const clientSha = await computeFileSha256(file);
 
       // Check active in-memory candidates (baseline + loaded uploads)
       const inMemoryMatch = existingCandidates.find((c) => c.sha256 === clientSha);
-      if (inMemoryMatch) {
+      if (inMemoryMatch && !inMemoryMatch.requiresReprocessing) {
         setDuplicateInfo({
           candidate: inMemoryMatch,
           message: `Exact duplicate detected: Resume content matches Candidate ${inMemoryMatch.candidateId} (${inMemoryMatch.extraction.name || "Candidate"}).`,
@@ -102,7 +102,7 @@ export function ResumeUploadModal({
 
       // Check client IndexedDB database
       const inDbMatch = await checkLocalDuplicate(clientSha);
-      if (inDbMatch) {
+      if (inDbMatch && !inDbMatch.requiresReprocessing) {
         setDuplicateInfo({
           candidate: inDbMatch,
           message: `Exact duplicate detected: Resume was previously uploaded and stored in browser database as Candidate ${inDbMatch.candidateId}.`,
@@ -122,10 +122,19 @@ export function ResumeUploadModal({
         body: formData,
       });
 
-      const data = await res.json();
+      const rawBody = await res.text();
+      let data: any = null;
+      try {
+        data = rawBody ? JSON.parse(rawBody) : null;
+      } catch {
+        if (!res.ok) {
+          throw new Error(`Upload request failed (${res.status}): ${rawBody.slice(0, 140) || res.statusText}`);
+        }
+        throw new Error("Server returned an invalid response payload.");
+      }
 
       if (!res.ok) {
-        throw new Error(data.error || "Failed to process resume");
+        throw new Error(data?.error || `Failed to process resume (${res.status})`);
       }
 
       if (data.isDuplicate) {
@@ -138,13 +147,14 @@ export function ResumeUploadModal({
       }
 
       if (data.success && data.candidate) {
-        setUploadStatus("Successfully processed and ranked!");
-        setTimeout(() => {
-          onCandidateUploaded(data.candidate, file);
-          setIsUploading(false);
-          setFile(null);
-          onClose();
-        }, 600);
+        setUploadStatus("Saving to browser IndexedDB...");
+        const saved = await onCandidateUploaded(data.candidate, file);
+        if (saved === false) {
+          throw new Error("Processed resume could not be committed to browser storage.");
+        }
+        setIsUploading(false);
+        setFile(null);
+        onClose();
       }
     } catch (err: any) {
       setError(err?.message || "An unexpected error occurred during resume processing.");
@@ -217,6 +227,7 @@ export function ResumeUploadModal({
                   Drag and drop your resume here, or <span className="text-emerald-700 underline">browse</span>
                 </span>
                 <span className="text-xs text-slate-400 mt-1">Supports DOCX and PDF (Max 5MB)</span>
+                <span className="text-[11px] text-slate-400 mt-1">Stored locally in this browser&apos;s IndexedDB; processed on server solely for scoring.</span>
               </div>
             )}
           </div>

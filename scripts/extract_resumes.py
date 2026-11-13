@@ -12,7 +12,7 @@ EVAL_REF_MONTH = 11
 
 MONTH_MAP = {
     'jan': 1, 'feb': 2, 'mar': 3, 'apr': 4, 'may': 5, 'jun': 6,
-    'jul': 7, 'aug': 8, 'sep': 9, 'oct': 10, 'nov': 11, 'dec': 12,
+    'jul': 7, 'aug': 8, 'sep': 9, 'sept': 9, 'oct': 10, 'nov': 11, 'dec': 12,
     'january': 1, 'february': 2, 'march': 3, 'april': 4, 'may': 5, 'june': 6,
     'july': 7, 'august': 8, 'september': 9, 'october': 10, 'november': 11, 'december': 12
 }
@@ -280,7 +280,8 @@ def parse_resume(filepath):
         p = paras[idx]
         matched = False
         for s in sec_names:
-            if p.lower().strip() == s.lower() or p.lower().strip().startswith(s.lower()):
+            p_clean = p.lower().strip()
+            if p_clean == s.lower() or (len(p_clean) < 40 and re.match(r'^' + re.escape(s.lower()) + r'\b', p_clean)):
                 current_sec = s
                 matched = True
                 break

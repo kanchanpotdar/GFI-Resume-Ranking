@@ -4,10 +4,10 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6-blue?logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38bdf8?logo=tailwindcss)](https://tailwindcss.com/)
 [![ONNX Runtime](https://img.shields.io/badge/Embeddings-BAAI%2Fbge--small--en--v1.5-brightgreen)](https://huggingface.co/BAAI/bge-small-en-v1.5)
-[![Build & Tests](https://img.shields.io/badge/Tests-33%2F33%20Passing-success)](#evaluation--testing)
+[![Build & Tests](https://img.shields.io/badge/Tests-36%2F36%20Passing-success)](#evaluation--testing)
 [![Playwright E2E](https://img.shields.io/badge/Playwright-14%2F14%20Passing-brightgreen)](tests/e2e/dashboard.spec.ts)
-[![HTTP Suite](https://img.shields.io/badge/HTTP%20Endpoints-9%2F9%20Passing-brightgreen)](scripts/verify_sprint2_http.py)
-[![Status](https://img.shields.io/badge/Status-CONDITIONALLY%20READY-yellow)](reports/final_submission_audit.md)
+[![HTTP Suite](https://img.shields.io/badge/HTTP%20Endpoints-11%2F11%20Passing-brightgreen)](scripts/verify_sprint2_http.py)
+[![Status](https://img.shields.io/badge/Status-CONDITIONAL%20PASS%20(Pre--Deploy)-yellow)](reports/pre_deployment_independent_audit.md)
 
 A decision-support web application designed for non-technical hiring teams at **Growth For Impact** to ingest, extract, semantically compare, rank, and classify candidate resumes against two specialized job profiles:
 1. **LifeCycle Assessment (LCA) Consultant** (Onsite, Chennai)
@@ -83,10 +83,10 @@ flowchart TD
 - **Framework:** Next.js 14.2 (App Router, Server Actions)
 - **Language:** TypeScript 5.6 (Strict Mode)
 - **Styling:** Tailwind CSS 3.4
-- **Vector Embeddings (Dual-Tier):** Hosted Hugging Face Inference API (`BAAI/bge-small-en-v1.5`, 384 dimensions) with automatic offline fallback to local ONNX Runtime (`@xenova/transformers`) with identical multi-chunk mean-pooling and unit L2 normalization
-- **Document Parsers:** `mammoth` (DOCX OpenXML AST), `pdf-parse` (PDF binary extraction)
+- **Vector Embeddings (Dual-Tier):** Optional hosted Hugging Face Router Inference (`router.huggingface.co/hf-inference/models/BAAI/bge-small-en-v1.5`, 384 dimensions; requires `HUGGINGFACE_API_KEY`, live hosted pooling parity pending deployment check) and local ONNX Runtime (`@xenova/transformers`) using mean-pooling and unit L2 normalization
+- **Document Parsers:** `mammoth` (DOCX OpenXML AST) and `pdf-parse` (PDF binary extraction) with Central-Directory ZIP safety and sliding-window rate limiting
 - **Client Persistence:** Browser IndexedDB via `idb` (`gfi_resume_ranking_db`) with version migration & graceful quota degradation
-- **Testing:** Node.js native test runner (`node:test`, 33 tests), Python HTTP verification (9 tests), Playwright E2E browser automation (14 test specs across 20 user journeys)
+- **Testing:** Node.js native test runner (`node:test`, 36 tests), Python HTTP verification (11 tests), Playwright E2E browser automation (14 test scenarios)
 
 ---
 
@@ -126,42 +126,24 @@ The initial dataset consists of **47 anonymized DOCX resumes**:
 | **Sprint 0** | **Completed** | Full-text JD extraction, 47-resume input audit (`input_manifest.json`), Next.js skeleton, 100-pt rubrics, ADR-S01. |
 | **Sprint 1** | **Completed** | Structured extraction, BGE-small embeddings, deterministic scoring engine, baseline dataset precomputation (`baseline.json`). |
 | **Sprint 1.5** | **Completed** | Independent validation audit: fixed Unicode em-dash date bug, scrubbed ISO standard tokens, interval merging, and oracle reconciliation. |
-| **Sprint 2** | *Planned* | Interactive multi-tab dashboard, candidate inspection modal, live PDF/DOCX runtime upload API. |
-| **Sprint 3** | *Planned* | IndexedDB client persistence, delete/reset controls, privacy notices. |
-| **Sprint 4** | *Planned* | Public Vercel deployment, final smoke test, submission package. |
+| **Sprint 2** | **Completed** | Interactive multi-tab dashboard, candidate inspection modal, live PDF/DOCX runtime upload API (`/api/upload`). |
+| **Sprint 3** | **Completed** | IndexedDB client persistence (`idb`), SHA-256 deduplication, delete/reset controls, privacy notices. |
+| **Sprint 3.5** | **Completed** | Persistence mutation serialization, rubric/embedding version migration, Playwright E2E browser regression suite. |
+| **Sprint 4 (Pre-Deploy)** | **Pre-Deploy Audit Complete** | Runtime/baseline 47-resume parser parity (`8 LCA / 22 UI/UX / 17 Neither`), Central-Directory ZIP & rate-limit hardening, HF Router client + audit report (Vercel deployment pending). |
 
 ---
 
 ## 7. Evaluation & Testing
 
-### Automated Test Suite (15 of 15 Passing)
-```text
-> npm test
+### Automated Verification Suites
+- **Unit & Integration Tests (`npm test`):** **36 of 36 passing** across extraction parity (all 47 source DOCX resumes when archive is present), scoring bounds, IndexedDB migration guards, Central-Directory ZIP bomb defense, sliding-window rate limiting, and HF retry/error handling.
+- **HTTP Upload Verification (`scripts/verify_sprint2_http.py`):** **11 of 11 passing** against the production server (`DOCX` & `PDF` parity, corrupt binaries -> `400`, scanned 0-text PDF -> `422`, empty DOCX -> `200`, `>5MB` -> `413`, invalid MIME -> `415`, Zip bomb & corrupt internal DOCX -> `400`).
+- **Playwright E2E Browser Suite (`npx playwright test`):** **14 of 14 scenarios passing** (navigation tabs, search, scope switcher, modal inspection, DOCX/PDF upload, SHA-256 duplicate dialog, IndexedDB persistence & failure recovery, migration reprocessing).
 
-✔ Sprint 0 Gate: Input manifest exists and contains 47 verified entries (1.92ms)
-✔ Sprint 0 Gate: Verbatim JD files exist with complete text (0.48ms)
-✔ Sprint 0 Gate: Scoring rubrics sum strictly to 100 points for both roles (0.84ms)
-✔ Sprint 0 Gate: .env.example exists and contains no live secrets (0.56ms)
-✔ Sprint 1 Gate 1: Baseline dataset accounts for all 47 resumes with valid schema (14.64ms)
-✔ Sprint 1 Gate 2: Empty document record is explicitly zero-scored and classified as neither_or_uncertain (10.02ms)
-✔ Sprint 1 Gate 3: Subscores are strictly bounded within approved component budgets (10.63ms)
-✔ Sprint 1 Gate 4: Embeddings are 384-dimensional with finite numbers (13.59ms)
-✔ Sprint 1 Gate 5: ADR-S01 Experience conflict notice is explicitly attached to LCA evaluations (9.97ms)
-✔ Sprint 1 Gate 6: Classification matches independent threshold logic (10.51ms)
-✔ Sprint 1.5 Remediation: Multi-line project grouping without orphan inflation (10.50ms)
-✔ Sprint 1.5 Remediation: Education association links degree with university and year (9.80ms)
-✔ Sprint 1.5 Remediation: Calibrated 4-tier ISO standards scoring (9.80ms)
-✔ Sprint 1.5 Remediation: Strict GaBi/SimaPro vs OpenLCA scoring rules (9.80ms)
-✔ Sprint 1.5 Remediation: Non-fabrication of dates and zero-default duration (9.30ms)
-
-ℹ tests 15, pass 15, fail 0
-ℹ duration_ms 176.11ms
-```
-
-### Ranking & Classification Metrics (Sprint 1.5 Audit)
-- **LCA Role:** Precision@5: **1.00**, Precision@10: **0.90** (9/9 true LCA practitioners placed in top 10; Rank 10 is non-qualifying at 34.2/100). NDCG@10: **1.0000**.
-- **UI/UX Role:** Precision@5: **1.00**, Precision@10: **1.00**. NDCG@10: **1.0000**.
-- **Score Margin:** A 21.7 point margin separates the lowest qualified LCA candidate (55.9) from the highest unqualified applicant (34.2).
+### Baseline Distribution & Separation (Remediated Baseline)
+- **Classification Counts (47 Total Documents):** **8 LCA**, **22 UI/UX**, **0 Both**, **17 Neither / Uncertain** (including 1 empty document at `0.0`).
+- **LCA Score Separation:** Qualifying candidates score **51.1**–**84.0**; immediately below the `50.0` cutoff sits borderline `anonymized_VM_1793682784520` (**48.9**), followed by **33.5** (`anonymized_UI_1793682784506`).
+- **UI/UX Score Separation:** Qualifying candidates score **57.3**–**96.3**; highest non-qualifying profiles sit at **48.5** and **46.2**, followed by **34.5**.
 
 ---
 
@@ -169,9 +151,14 @@ The initial dataset consists of **47 anonymized DOCX resumes**:
 
 ```text
 ├── app/
+│   ├── api/upload/route.ts        # Hardened PDF/DOCX ingestion, scoring & upload endpoint
 │   ├── globals.css                # Global styles and Tailwind directives
 │   ├── layout.tsx                 # Root layout with metadata
 │   └── page.tsx                   # Candidate screening overview page
+├── components/
+│   ├── DashboardClient.tsx        # Tabbed rankings, IndexedDB hydration, delete/reset controls
+│   ├── CandidateDetailModal.tsx   # Evidence drawer, rubric breakdowns, warning badges
+│   └── ResumeUploadModal.tsx      # SHA-256 pre-flight dedup & live upload modal
 ├── data/
 │   ├── baseline.json              # 47 precomputed candidate records with embeddings & scores
 │   ├── calibration_report.json    # Threshold calibration and review sample data
@@ -187,23 +174,33 @@ The initial dataset consists of **47 anonymized DOCX resumes**:
 ├── lib/
 │   ├── types.ts                   # Core TypeScript domain models
 │   ├── scoring.ts                 # Deterministic scoring and classification logic
-│   └── embeddings.ts              # BGE-small ONNX pipeline and cosine similarity
+│   ├── embeddings.ts              # BGE-small ONNX runtime & HF Router embedding client
+│   ├── runtime_extractor.ts       # Runtime PDF/DOCX structural parser (baseline parity)
+│   ├── upload_validation.ts       # Central-Directory ZIP safety, magic-byte & rate limiting
+│   └── db.ts                      # IndexedDB store, version migration & safe fallback record
 ├── reports/
 │   ├── sprint1_validation.md      # Sprint 1.5 independent validation report
 │   ├── extraction_discrepancies.csv # Audited parser discrepancies and resolutions
 │   ├── scoring_reconciliation.csv # Baseline vs oracle score comparisons
 │   ├── embedding_validation.md    # Model architecture, parity, and pooling checks
-│   ├── ranking_evaluation.md      # Precision, recall, NDCG, and threshold analysis
-│   └── manual_review_queue.csv    # Borderline candidates flagged for recruiter review
+│   ├── ranking_evaluation.md      # Classification breakdown, rankings, and threshold analysis
+│   ├── manual_review_queue.csv    # Borderline candidates flagged for recruiter review
+│   ├── final_submission_audit.md  # Sprint 4 pre-deploy draft readiness audit
+│   └── pre_deployment_independent_audit.md # Comprehensive pre-deployment audit & verdict
 ├── scripts/
 │   ├── audit_resumes.py           # Ingestion and XML integrity auditor
 │   ├── extract_resumes.py         # Structural section and interval parser
 │   ├── process_baseline.mjs       # Embedding generation and scoring pipeline
-│   └── audit_and_validate_sprint1.py # Independent test oracle and reconciliation engine
+│   ├── audit_and_validate_sprint1.py # Independent test oracle and reconciliation engine
+│   └── verify_sprint2_http.py     # Live HTTP /api/upload contract & security suite (11 tests)
 ├── tests/
 │   ├── sprint0.test.js            # Sprint 0 manifest and rubric tests
-│   └── sprint1.test.js            # Sprint 1 & 1.5 scoring, bounds, and regression tests
+│   ├── sprint1.test.js            # Sprint 1 & 1.5 scoring, bounds, and regression tests
+│   ├── upload_parity.test.js      # Runtime vs baseline 47-resume & edge-case parity tests
+│   ├── sprint3_persistence.test.js # Persistence, migration, ZIP bomb, rate-limit, HF tests
+│   └── e2e/dashboard.spec.ts      # Playwright end-to-end browser verification (14 scenarios)
 ├── .env.example                   # Environment variable template (no real secrets)
+├── .eslintrc.json                 # ESLint Next.js core-web-vitals configuration
 ├── package.json                   # Project dependencies and npm scripts
 └── tsconfig.json                  # TypeScript compiler settings
 ```
@@ -231,17 +228,20 @@ cp .env.example .env.local
 
 ### Running Tests & Verification
 ```bash
-# Run full automated unit and integration test suite (33 tests)
+# Run full automated unit and integration test suite (36 tests)
 npm test
 
-# Run HTTP endpoint verification suite (9 tests)
-python3 scripts/verify_sprint2_http.py
-
-# Run Playwright end-to-end browser tests (14 test specs across 20 interaction scenarios)
-npx playwright test
+# Run ESLint & TypeScript static verification
+npm run lint
+npx tsc --noEmit
 
 # Run Next.js production build check
 npm run build
+
+# Start production server (in separate terminal) and run HTTP + E2E suites
+npx next start -p 3000
+python3 scripts/verify_sprint2_http.py   # 11 HTTP upload/security tests
+npx playwright test                      # 14 Playwright E2E scenarios
 ```
 
 ### Running the Application
@@ -261,4 +261,5 @@ npm run dev
 - [x] **Sprint 2:** Interactive tabbed dashboard, evidence inspection drawer, dynamic PDF/DOCX live upload with content magic-byte verification.
 - [x] **Sprint 3:** Browser IndexedDB persistence (`idb`), candidate deletion, clear-all reset controls, dual-role scope ranking, privacy audit (26 passing tests).
 - [x] **Sprint 3.5:** Final Quality Remediation & Mandatory Verification Gate: multi-surface SHA-256 deduplication, zip bomb defense, race-condition elimination, version migration, and 14-scenario Playwright E2E browser test suite (30 unit tests + 14 E2E tests passing).
-- [x] **Sprint 4:** Submission Readiness: Hugging Face hosted inference API integration with multi-chunk pooling parity, strict IndexedDB version migration regression tests (33 unit tests + 9 HTTP tests + 14 Playwright E2E tests), comprehensive submission audit report, and Vercel serverless deployment preparation.
+- [x] **Pre-Deployment Independent Audit:** 47-resume runtime/baseline extractor parity (`8 LCA / 22 UI/UX / 17 Neither`), Central-Directory ZIP safety, IP rate limiting, HF Router endpoint update (live token check pending), and ESLint/clean-room gate (**36 unit + 11 HTTP + 14 Playwright E2E passing**).
+- [ ] **Sprint 4 (Final Deployment):** Public Vercel deployment, live hosted HF inference verification with `HUGGINGFACE_API_KEY`, public URL smoke test, and final submission.
